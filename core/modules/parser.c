@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 #define LINE_LEN 512
 
@@ -14,12 +15,15 @@ int parse_file(char *file_path) {
 
   while (fgets(input, LINE_LEN, fp)) {
     line++;
-    printf("%d: %s", line, input);
+
+    if(strstr(input, "DTSTART")) { /* Find linjer hvor der er DTSTART */
+      printf("%d: %s", line, input);
+    }
   }
 
   printf("\n");
 
   fclose(fp); /* Luk filen igen */
 
-  return EXIT_SUCCESS);
+  return EXIT_SUCCESS;
 }
