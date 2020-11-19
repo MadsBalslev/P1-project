@@ -16,7 +16,7 @@ int parse_file(char *file_path) {
   while (fgets(input, LINE_LEN, fp)) {
     line++;
 
-    if (strstr(input, "BEGIN:VEVENT")) { /* Find linjer hvor der er DTSTART */
+    if (strstr(input, "BEGIN:VEVENT")) { /* Find linjer hvor et event starter */
       isEvent = 1;
       numOfEvents++;
     }
