@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#include "calendar.h"
+#include "../modules/calendar.h"
 #include "../modules/parser.h"
 
 int main(void) {
