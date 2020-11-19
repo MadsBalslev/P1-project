@@ -26,7 +26,7 @@ make planner
 
 ## Authors
 
-Contributors names and contact info
+Programmet er skrevet og udviklet af:
 
 - [Casper Ståhl](mailto:cstahl20@student.aau.dk)
 - [Jonas Laumann Ørregaard](mailto:jarreg20@student.aau.dk)
@@ -35,10 +35,6 @@ Contributors names and contact info
 - [Nicolai Kjøller Hansen](mailto:nkha20@student.aau.dk)
 - [Mads Balslev](mailto:mbalsl20@student.aau.dk)
 
-## Version History
-
-* 0.1
-    * Initial Release
 
 ## Acknowledgments
 
