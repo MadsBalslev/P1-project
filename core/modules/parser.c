@@ -1,22 +1,25 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#define LINE_LEN 512
+
 int parse_file(char *file_path) {
-  FILE *fp;
-  char *line = NULL;
-  size_t len = 0;
-  size_t read;
+  FILE *fp; /* Declare en pointer til en FILE */
+  char input[LINE_LEN];
+  int line = 0;
 
   fp = fopen(file_path, "r"); /* Åbner den angivne fil i reading mode */
   if (fp == NULL) /* Hvis filen ikke findes / eller ikke kan åbnes */
-    exit(EXIT_FAILURE);
+    return EXIT_FAILURE;
 
-  while ((read = getline(&line, &len, fp)) != -1) {
-    printf("%s", line);
+  while (fgets(input, LINE_LEN, fp)) {
+    line++;
+    printf("%d: %s", line, input);
   }
 
+  printf("\n");
+
   fclose(fp); /* Luk filen igen */
-  if (line)
-    free(line); /* Fjern linjer fra memory når vi er færdige */
-  exit(EXIT_SUCCESS);
+
+  return EXIT_SUCCESS);
 }
