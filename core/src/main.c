@@ -6,7 +6,7 @@
 
 int main(void) {
 
-    parse_file("test.ics");
+    parse_file("test.ics"); /* Path relative from parser.o location */
 
     return EXIT_SUCCESS;
 }
