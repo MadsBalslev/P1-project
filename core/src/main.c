@@ -6,7 +6,7 @@
 
 int main(void) {
 
-    parse_file("/home/mads/dev/P1/test.ics");
+    parse_file("test.ics");
 
     return EXIT_SUCCESS;
 }
