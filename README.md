@@ -3,8 +3,8 @@
 Projekt om mødeplanlægning på 1. semester af Softwarestudiet 2020
 
 ## Beskrivelse
+### Eksempel på prompt:
 
-Eksempel på prompt:
 ```sh
 $ ./main.exe fil1.ics fil2.ics filn.ics
 $ Indtast ønskede længde for møde i minutter> 120
