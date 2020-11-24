@@ -4,7 +4,28 @@ Projekt om mødeplanlægning på 1. semester af Softwarestudiet 2020
 
 ## Beskrivelse
 
-Noget mere dybegående om vores projekt...
+Eksempel på prompt:
+```sh
+$ ./main.exe fil1.ics fil2.ics filn.ics
+$ Indtast ønskede længde for møde i minutter> 120
+$ Indtast to datoer mødet skal ligge imellem> 1/12/2020 7/12/2020
+$ Magic is happening...
+$ Mødet kan ligge den 4/12 klokken 12:30 - 14:30
+```
+
+Programmet kan evt. læse DESCRIPTION tagget på hvert event i `.ics` filen og evt. kigge efter: `$P2$` i beskrivelsen som fortæller at eventet har en prioritet på 2
+
+## Features
+
+- [ ] Kan indlæse x antal .ics filer
+  - [ ] Kan parse indlæste filer og lagre det
+    - [ ] Den skal udfra en .ics event description kunne genkende prioriteringsniveauet. Som er formateret som `$px$` hvor x er en int. 
+    - [ ] Lagrer hver kalender for sig
+- [ ] Finde et hul i kalendrene indenfor et tidsrum/periode inputtet af brugeren og returnere dette til brugeren
+- [ ] Hvis ikke det er muligt at finde et hul, skal programmet kunne rykke rundt på events baseret på prioritet og derved finde et tidspunkt.
+
+### Stretch goals
+- [ ] Kan generere nye .ics filer, som brugeren bare kan importere direkte ind i sin kalender
 
 ## Getting Started
 
