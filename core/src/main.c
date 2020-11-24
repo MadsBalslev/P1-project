@@ -6,7 +6,13 @@
 
 int main(void) {
 
-    parse_file("test.ics"); /* Path relative from parser.o location */
+    int parse_success = parse_file("test.ics"); /* Path relative from parser.o location */
+    if (parse_success == EXIT_FAILURE)
+    {
+        printf("Failed to parse file test.ics");
+        return EXIT_FAILURE;
+    }
+    
 
     return EXIT_SUCCESS;
 }
