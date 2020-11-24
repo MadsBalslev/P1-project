@@ -17,6 +17,7 @@ Programmet kan evt. læse DESCRIPTION tagget på hvert event i `.ics` filen og e
 
 ## Features
 
+ToDo liste:
 - [ ] Kan indlæse x antal .ics filer
   - [ ] Kan parse indlæste filer og lagre det
     - [ ] Den skal udfra en .ics event description kunne genkende prioriteringsniveauet. Som er formateret som `$px$` hvor x er en int. 
