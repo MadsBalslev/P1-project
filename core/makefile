@@ -1,5 +1,5 @@
 CC=gcc
-CFLAGS=-Wall -pedantic
+CFLAGS=-ansi -Wall -pedantic
 
 DEPS = parser.h calendar.h
 OBJ = parser.o
@@ -14,3 +14,4 @@ main: $(OBJ)
 
 clean:
 	rm -rf *.o *.out *.exe 
+	
