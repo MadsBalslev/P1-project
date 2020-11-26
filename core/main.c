@@ -2,8 +2,8 @@
 #include <stdlib.h>
 #include <time.h>
 
-#include "../modules/calendar.h"
-#include "../modules/parser.h"
+#include "calendar.h"
+#include "parser.h"
 
 /* these should not be void xxx(void) functions */
 void checkArgs(int);
