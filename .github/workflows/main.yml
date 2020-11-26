@@ -23,13 +23,6 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
       # Runs a set of commands using the runners shell
-      - name: GitHub Pages
-        uses: crazy-max/ghaction-github-pages@v2.2.0
-        with:
-          # Git branch where assets will be deployed
-          target_branch: main
-          # Build directory to deploy
-          build_dir: ./docs
       - name: Doxygen Action
         uses: mattnotmitt/doxygen-action@v1.2.1
         with:
