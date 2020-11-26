@@ -26,6 +26,7 @@ jobs:
       - name: GitHub Pages
         uses: crazy-max/ghaction-github-pages@v2.2.0
         with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           # Git branch where assets will be deployed
           target_branch: main
           # Build directory to deploy
