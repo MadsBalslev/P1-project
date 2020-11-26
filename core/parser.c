@@ -4,6 +4,13 @@
 
 #define LINE_LEN 512
 
+/**
+ * @brief Takes a char-pointer for the file path to the file, which will be parsed, 
+ * and prints all calendar-events and the number of evetns
+ * 
+ * @param file_path 
+ * @return int 
+ */
 int parse_file(char *file_path) {
   FILE *fp; /* Declare en pointer til en FILE */
   char input[LINE_LEN];
