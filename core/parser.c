@@ -5,7 +5,7 @@
 #define LINE_LEN 512
 
 /**
- * @brief Takes a char-pointer for the file path to the file, which will be parsed, 
+ * @brief (TEST!!!) Takes a char-pointer for the file path to the file, which will be parsed, 
  * and prints all calendar-events and the number of evetns
  * 
  * @param file_path 
