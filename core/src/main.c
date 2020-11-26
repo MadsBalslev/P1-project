@@ -14,39 +14,39 @@ void findAvailableDatesByRestructuring(void);
 void userOutput(void);
 
 int main(int argc, char *argv[]) {
-  int foundDatesByLooking = 0;
-  char *filepath;
+    int foundDatesByLooking = 0;
+    char *filepath;
 
-  /* Få fil som commandline argument */
-  checkArgs(argc);
-  filepath = argv[2];
+    /* Få fil som commandline argument */
+    checkArgs(argc);
+    filepath = argv[2];
 
-  getSearchParameters();
-  getCalenderSuite();
-  foundDatesByLooking = findAvailableDatesByLooking();
+    getSearchParameters();
+    getCalenderSuite();
+    foundDatesByLooking = findAvailableDatesByLooking();
 
-  if (foundDatesByLooking) {
-    findAvailableDatesByRestructuring();
-  }
+    if (foundDatesByLooking) {
+        findAvailableDatesByRestructuring();
+    }
 
-  userOutput();
+    userOutput();
 
-  /* This should be abstracted further */
-  /* Path relative from parser.o location */
-  /* int parse_success = parse_file(filepath);
+    /* This should be abstracted further */
+    /* Path relative from parser.o location */
+    /* int parse_success = parse_file(filepath);
     if (parse_success == EXIT_FAILURE) {
         printf("Failed to parse file %s", filepath);
         return EXIT_FAILURE;
     } */
 
-  return EXIT_SUCCESS;
+    return EXIT_SUCCESS;
 }
 
 void checkArgs(int argc) {
-  if (argc < 2) {
-    printf("Please provide one or more .ics files\n");
-    exit(EXIT_FAILURE);
-  }
+    if (argc < 2) {
+        printf("Please provide one or more .ics files\n");
+        exit(EXIT_FAILURE);
+    }
 }
 
 void getSearchParameters(void) {
@@ -56,7 +56,7 @@ void getCalenderSuite(void) {
 }
 
 int findAvailableDatesByLooking(void) {
-  return 1;
+    return 1;
 }
 
 void findAvailableDatesByRestructuring(void) {
