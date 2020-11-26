@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['parse_5ffile_31',['parse_file',['../parser_8c.html#a32d025c34ccd835053b80e1f6e18d5b1',1,'parse_file(char *file_path):&#160;parser.c'],['../parser_8h.html#af39a727930989babdaae5d8fb5543dc2',1,'parse_file(char *):&#160;parser.c']]]
+  ['isicsfile_39',['isIcsFile',['../main_8c.html#a45d35bb198deacd4a3495c6906c462dc',1,'main.c']]]
 ];

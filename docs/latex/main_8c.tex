@@ -1,15 +1,26 @@
-\hypertarget{main_8c}{}\doxysection{core/main.c File Reference}
-\label{main_8c}\index{core/main.c@{core/main.c}}
+\hypertarget{main_8c}{}\doxysection{C\+:/\+Users/caspe/\+Desktop/\+Software/\+P1 git/core/main.c File Reference}
+\label{main_8c}\index{C:/Users/caspe/Desktop/Software/P1 git/core/main.c@{C:/Users/caspe/Desktop/Software/P1 git/core/main.c}}
 {\ttfamily \#include $<$stdio.\+h$>$}\newline
 {\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
 {\ttfamily \#include $<$time.\+h$>$}\newline
 {\ttfamily \#include \char`\"{}calendar.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}parser.\+h\char`\"{}}\newline
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-void \mbox{\hyperlink{main_8c_a14208cec45d32377e62412b99635d245}{check\+Args}} (int)
-\item 
+void \mbox{\hyperlink{main_8c_a763712703932d2d0f0b3f14c5a0470b1}{ctrl\+Args}} (int argc, char $\ast$argv\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em Controls whether command-\/line arguments where valid. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{main_8c_ac1ed505253e52537b9e3d154bc56d07f}{ctrl\+Args\+Amount}} (int argc)
+\begin{DoxyCompactList}\small\item\em Controls if argc is under 2, if this is the case the program if this is the case an error message is printed and the program terminates. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{main_8c_aec074ef136f13cca7367b10ead9c9ee5}{ctrl\+Args\+Is\+File}} (int argc, char $\ast$argv\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em Controls that all of the command-\/line arguments are in the format $\ast$.ics, if this is not the case an error message is printed and the program terminates. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{main_8c_a17eaebfa399d94bd172f3fb2c9c3478f}{ctrl\+Args\+Is\+File\+SA}} (char arg\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em Controls that a string ends with \char`\"{}.\+ics\char`\"{}, if this is not the case an error message is printed and the program terminates. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{main_8c_a45d35bb198deacd4a3495c6906c462dc}{is\+Ics\+File}} (char arg\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em Controls that a string ends with \char`\"{}.\+ics\char`\"{}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{main_8c_a78edd6963bf14869d34ca9caa37c327c}{exit\+With\+Error}} (void)
+\begin{DoxyCompactList}\small\item\em Displays error message and terminates the program. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{main_8c_adab0b7d2c21a1dc025ff93ff30c1af9e}{get\+Search\+Parameters}} (void)
 \item 
 void \mbox{\hyperlink{main_8c_a39bdaebb6764db84fc050f152c9ccb9c}{get\+Calender\+Suite}} (void)
@@ -25,11 +36,81 @@ int \mbox{\hyperlink{main_8c_a0ddf1224851353fc92bfbff6f499fa97}{main}} (int argc
 
 
 \doxysubsection{Function Documentation}
-\mbox{\Hypertarget{main_8c_a14208cec45d32377e62412b99635d245}\label{main_8c_a14208cec45d32377e62412b99635d245}} 
-\index{main.c@{main.c}!checkArgs@{checkArgs}}
-\index{checkArgs@{checkArgs}!main.c@{main.c}}
-\doxysubsubsection{\texorpdfstring{checkArgs()}{checkArgs()}}
-{\footnotesize\ttfamily void check\+Args (\begin{DoxyParamCaption}\item[{int}]{argc }\end{DoxyParamCaption})}
+\mbox{\Hypertarget{main_8c_a763712703932d2d0f0b3f14c5a0470b1}\label{main_8c_a763712703932d2d0f0b3f14c5a0470b1}} 
+\index{main.c@{main.c}!ctrlArgs@{ctrlArgs}}
+\index{ctrlArgs@{ctrlArgs}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{ctrlArgs()}{ctrlArgs()}}
+{\footnotesize\ttfamily void ctrl\+Args (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char $\ast$}]{argv\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Controls whether command-\/line arguments where valid. 
+
+Controls that the number of arguments (argc) gotten was over 1 and that the arguments where in the format of $\ast$.ics. If this is not the case an error message is printed and the program terminates.
+
+
+\begin{DoxyParams}{Parameters}
+{\em argc} & number of arguments \\
+\hline
+{\em argv} & arguments \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{main_8c_ac1ed505253e52537b9e3d154bc56d07f}\label{main_8c_ac1ed505253e52537b9e3d154bc56d07f}} 
+\index{main.c@{main.c}!ctrlArgsAmount@{ctrlArgsAmount}}
+\index{ctrlArgsAmount@{ctrlArgsAmount}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{ctrlArgsAmount()}{ctrlArgsAmount()}}
+{\footnotesize\ttfamily void ctrl\+Args\+Amount (\begin{DoxyParamCaption}\item[{int}]{argc }\end{DoxyParamCaption})}
+
+
+
+Controls if argc is under 2, if this is the case the program if this is the case an error message is printed and the program terminates. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em argc} & number of arguments \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{main_8c_aec074ef136f13cca7367b10ead9c9ee5}\label{main_8c_aec074ef136f13cca7367b10ead9c9ee5}} 
+\index{main.c@{main.c}!ctrlArgsIsFile@{ctrlArgsIsFile}}
+\index{ctrlArgsIsFile@{ctrlArgsIsFile}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{ctrlArgsIsFile()}{ctrlArgsIsFile()}}
+{\footnotesize\ttfamily void ctrl\+Args\+Is\+File (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char $\ast$}]{argv\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Controls that all of the command-\/line arguments are in the format $\ast$.ics, if this is not the case an error message is printed and the program terminates. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em argc} & number of arguments \\
+\hline
+{\em argv} & arguments \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{main_8c_a17eaebfa399d94bd172f3fb2c9c3478f}\label{main_8c_a17eaebfa399d94bd172f3fb2c9c3478f}} 
+\index{main.c@{main.c}!ctrlArgsIsFileSA@{ctrlArgsIsFileSA}}
+\index{ctrlArgsIsFileSA@{ctrlArgsIsFileSA}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{ctrlArgsIsFileSA()}{ctrlArgsIsFileSA()}}
+{\footnotesize\ttfamily void ctrl\+Args\+Is\+File\+SA (\begin{DoxyParamCaption}\item[{char}]{arg\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Controls that a string ends with \char`\"{}.\+ics\char`\"{}, if this is not the case an error message is printed and the program terminates. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em arg} & string to control \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{main_8c_a78edd6963bf14869d34ca9caa37c327c}\label{main_8c_a78edd6963bf14869d34ca9caa37c327c}} 
+\index{main.c@{main.c}!exitWithError@{exitWithError}}
+\index{exitWithError@{exitWithError}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{exitWithError()}{exitWithError()}}
+{\footnotesize\ttfamily void exit\+With\+Error (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Displays error message and terminates the program. 
 
 \mbox{\Hypertarget{main_8c_a4460fb754aa9e5ccaa4d1704c0097a34}\label{main_8c_a4460fb754aa9e5ccaa4d1704c0097a34}} 
 \index{main.c@{main.c}!findAvailableDatesByLooking@{findAvailableDatesByLooking}}
@@ -55,6 +136,24 @@ int \mbox{\hyperlink{main_8c_a0ddf1224851353fc92bfbff6f499fa97}{main}} (int argc
 \doxysubsubsection{\texorpdfstring{getSearchParameters()}{getSearchParameters()}}
 {\footnotesize\ttfamily void get\+Search\+Parameters (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
 
+\mbox{\Hypertarget{main_8c_a45d35bb198deacd4a3495c6906c462dc}\label{main_8c_a45d35bb198deacd4a3495c6906c462dc}} 
+\index{main.c@{main.c}!isIcsFile@{isIcsFile}}
+\index{isIcsFile@{isIcsFile}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{isIcsFile()}{isIcsFile()}}
+{\footnotesize\ttfamily int is\+Ics\+File (\begin{DoxyParamCaption}\item[{char}]{arg\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Controls that a string ends with \char`\"{}.\+ics\char`\"{}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em argv} & string to control \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 if arg is on the form $\ast$.ics, else 0 
+\end{DoxyReturn}
 \mbox{\Hypertarget{main_8c_a0ddf1224851353fc92bfbff6f499fa97}\label{main_8c_a0ddf1224851353fc92bfbff6f499fa97}} 
 \index{main.c@{main.c}!main@{main}}
 \index{main@{main}!main.c@{main.c}}

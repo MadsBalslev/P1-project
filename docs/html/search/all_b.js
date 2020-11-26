@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['useroutput_19',['userOutput',['../main_8c.html#ad07a12dcbc58de4015fc3189b803f0bd',1,'main.c']]]
+  ['tags_22',['tags',['../structevent.html#a189241cfd7d3a82116641b0a5a6c2e71',1,'event']]],
+  ['tm_23',['tm',['../calendar_8h.html#a110bf4e13553ccfd709f41c6e92f0ca2',1,'calendar.h']]]
 ];
