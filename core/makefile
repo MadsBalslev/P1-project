@@ -1,14 +1,15 @@
 CC=gcc
 CFLAGS=-ansi -Wall -pedantic
 
-DEPS = parser.h calendar.h
-OBJ = parser.o
+DEPS = header.h
+OBJ = ctrlArgs.o getSearchParameters.o getCalendarSuite.o findAvailableDatesByLooking.o findAvailableDatesByRestructuring.o userOutput.o sharedFunctions.o
 
 %.o: %.c $(DEPS)
 	$(CC) -c -o $@ $< $(CFLAGS)
 
 main: $(OBJ)
 	$(CC) $@.c $^ $(CFLAGS)
+
 
 .PHONY: clean
 
