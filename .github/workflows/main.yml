@@ -29,7 +29,7 @@ jobs:
           # Git branch where assets will be deployed
           target_branch: main
           # Build directory to deploy
-          build_dir: ./docs/html
+          build_dir: ./docs
       - name: Doxygen Action
         uses: mattnotmitt/doxygen-action@v1.2.1
         with:
