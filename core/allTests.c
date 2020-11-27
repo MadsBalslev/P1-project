@@ -1,22 +1,6 @@
 #include "header.h"
 
-
-/* ctrlArgs */
-void test1_ctrlArgsAmount(CuTest *tc);
-void test2_ctrlArgsAmount(CuTest *tc);
-/*void test_ctrlArgsIsFile(CuTest *tc);*/
-CuSuite *suite_ctrlArgs(void);
-
-/* general */
-void RunAllTests(void);
-
-
-int main(void) {
-    RunAllTests();
-    return EXIT_SUCCESS;
-}
-
-void RunAllTests(void) {
+void runAllTests(void) {
     CuString *output = CuStringNew();
     CuSuite* suite = CuSuiteNew();
     

@@ -42,11 +42,13 @@ void ctrlArgs(int argc, char *argv[]) {
     if (!argsValid) {
         exitWithError();
     }
-    
-    argsValid = ctrlArgsIsFile(argc, argv);
+
+    argsValid = ctrlArgsIsValidType(argc, argv);
     if (!argsValid) {
         exitWithError();
     }
+
+    doOptions(argc, argv);
 }
 
 void getSearchParameters(void) {

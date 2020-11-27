@@ -1,20 +1,17 @@
 CC=gcc
 CFLAGS=-ansi -Wall -pedantic
 
-DEPS = header.h
-OBJ = ctrlArgs.c #getSearchParameters.c getCalendarSuite.c findAvailableDatesByLooking.c findAvailableDatesByRestructuring.c userOutput.c sharedFunctions.c
+DEPS = header.h CuTest.h
+OBJ = ctrlArgs.c CuTest.c allTests.c #getSearchParameters.o getCalendarSuite.o findAvailableDatesByLooking.o findAvailableDatesByRestructuring.o userOutput.o sharedFunctions.o
 
 #%.o: %.c $(DEPS)
-	#$(CC) -c -o $@ $< $(CFLAGS)
+#	$(CC) -c -o $@ $< $(CFLAGS)
 
-main: $(OBJ) $(DEPS)
+main: $(DEPS) $(OBJ) 
 	$(CC) $@.c $^ $(CFLAGS)
-
-allTests: $(DEPS) $(OBJ) CuTest.h CuTest.c
-	$(CC) $@.c $^ $(CFLAGS) -o $@
 
 .PHONY: clean
 
 clean:
-	rm -rf *.o *.out *.exe 
+	rm -rf *.o *.out *.exe *.gch
 	

@@ -15,20 +15,50 @@ int ctrlArgsAmount(int argc) {
 }
 
 /**
- * @brief Controls that all of the command-line arguments are in the format *.ics.
+ * @brief Controls that all of the command-line arguments are in the right format and valid
  *
  * @param argc number of arguments
  * @param argv arguments
- * @return 1 if all commandline arguments are in the fornat *.ics, else 0 
+ * @return 1 if all commandline arguments are valid, else 0 
  */
-int ctrlArgsIsFile(int argc, char *argv[]) {
+int ctrlArgsIsValidType(int argc, char *argv[]) {
     int i = 1;
     int argsValid;
     do {
-        argsValid = isIcsFile(argv[i]);
+        argsValid = argIsValid(argv[i]);
         i++;
     } while (i < argc && argsValid);
     return argsValid;
+}
+
+/**
+ * @brief 
+ * 
+ * @param arg 
+ * @return int 
+ */
+int argIsValid(char arg[]) {
+    if (isIcsFile(arg)) {
+        return 1;
+    } else if (isOption(arg)) {
+        return 1;
+    } else {
+        return 0;
+    }
+}
+
+/**
+ * @brief 
+ * 
+ * @param arg 
+ * @return int 
+ */
+int isOption(char arg[]) {
+    if (strncmp(arg, "--test", 6) == 0) {
+        return 1;
+    } else {
+        return 0;
+    }
 }
 
 /**
@@ -42,6 +72,32 @@ int isIcsFile(char arg[]) {
         return 0;
     } else {
         return (strncmp(&arg[strlen(arg) - 4], ".ics", 4) == 0);
+    }
+}
+
+/**
+ * @brief 
+ * 
+ * @param argc 
+ * @param argv 
+ */
+void doOptions(int argc, char *argv[]) {
+    int i = 1;
+    do {
+        doOptionsSingle(argv[i]);
+        i++;
+    } while (i < argc);
+}
+
+/**
+ * @brief 
+ * 
+ * @param arg 
+ */
+void doOptionsSingle(char arg[]) {
+    if (strncmp(arg, "--test", 6) == 0) {
+        runAllTests();
+        exit(EXIT_SUCCESS);
     }
 }
 
