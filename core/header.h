@@ -8,17 +8,13 @@
  * ------------------------------------------------------------------------------------------ 
  */
 
-/* ctrlArgs */
-void getArgs(int argc, char *argv[]);
-int ctrlArgsAmount(int argc);
-int ctrlArgsType(int argc, char *argv[]);
-int argIsValid(char arg[]);
+/* ctrlAndDoArgs */
+void ctrlAndDoArgs(int argc, char *argv[]);
+int doArg(char arg[]);
 int isIcsFile(char arg[]);
 int isOption(char arg[]);
-void doOptions(int argc, char *argv[]);
 void doOption(char arg[]);
 void doIcsFile(char arg[]);
-int doArg(char arg[]);
 void exitWithError(void);
 
 /* getSearchParameters */

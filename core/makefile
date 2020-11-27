@@ -2,7 +2,7 @@ CC=gcc
 CFLAGS=-ansi -Wall -pedantic
 
 DEPS = header.h CuTest.h
-OBJ = ctrlArgs.c CuTest.c allTests.c #getSearchParameters.o getCalendarSuite.o findAvailableDatesByLooking.o findAvailableDatesByRestructuring.o userOutput.o sharedFunctions.o
+OBJ = ctrlAndDoArgs.c CuTest.c #allTests.c getSearchParameters.c getCalendarSuite.c findAvailableDatesByLooking.c findAvailableDatesByRestructuring.c userOutput.c sharedFunctions.c
 
 #%.o: %.c $(DEPS)
 #	$(CC) -c -o $@ $< $(CFLAGS)

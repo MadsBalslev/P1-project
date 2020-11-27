@@ -8,6 +8,26 @@ extern int DEBUG;
  * @param arg 
  * @return int 
  */
+int doArg(char arg[]) {
+    int returnFlag = 0;
+
+    if (isIcsFile(arg)) {
+        doIcsFile(arg);
+        returnFlag = 1;
+    } else if (isOption(arg)) {
+        doOption(arg);
+        returnFlag = 1;
+    }
+
+    return returnFlag;
+}
+
+/**
+ * @brief 
+ * 
+ * @param arg 
+ * @return int 
+ */
 int isOption(char arg[]) {
     if (strncmp(arg, "--test", 6) == 0) {
         return 1;
@@ -55,20 +75,5 @@ void exitWithError(void) {
     exit(EXIT_FAILURE);
 }
 
-int doArg(char arg[]) {
-    int returnFlag = 0;
-
-    if (isIcsFile(arg)) {
-        doIcsFile(arg);
-        returnFlag = 1;
-    } else if (isOption(arg)) {
-        doOption(arg);
-        returnFlag = 1;
-    }
-    
-    return returnFlag;
-}
-
 void doIcsFile(char arg[]) {
-
 }

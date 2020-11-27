@@ -5,8 +5,7 @@ int DEBUG = 0;
 int main(int argc, char *argv[]) {
     int foundDatesByLooking = 0;
 
-   
-    getArgs(argc, argv);
+    ctrlAndDoArgs(argc, argv);
     /*getSearchParameters();*/
     /*getCalendarSuite();*/
     foundDatesByLooking = findAvailableDatesByLooking();
@@ -30,14 +29,14 @@ int main(int argc, char *argv[]) {
     return EXIT_SUCCESS;
 }
 
-void getArgs(int argc, char *argv[]) {
+void ctrlAndDoArgs(int argc, char *argv[]) {
     int i = 1;
     int argsValid = (argc < 2 ? 0 : 1);
 
     while (argsValid) {
         argsValid = doArg(argv[i]);
         i++;
-    } 
+    }
 
     if (!argsValid) {
         exitWithError();
