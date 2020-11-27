@@ -30,7 +30,7 @@ int main(int argc, char *argv[]) {
 }
 
 /**
- * @brief Controls whether command-line arguments where valid.
+ * @brief TEST TEST TEST!! Controls whether command-line arguments where valid.
  *  
  * Controls that the number of arguments (argc) gotten was over 1 and that the arguments where
  * in the format of *.ics. If this is not the case an error message is printed and the program
