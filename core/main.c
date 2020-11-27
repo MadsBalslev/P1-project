@@ -1,12 +1,17 @@
 #include "header.h"
 
+int DEBUG = 0;
+
 int main(int argc, char *argv[]) {
     int foundDatesByLooking = 0;
 
-    ctrlArgs(argc, argv);
-    getSearchParameters();
-    getCalendarSuite();
+   
+    getArgs(argc, argv);
+    /*getSearchParameters();*/
+    /*getCalendarSuite();*/
     foundDatesByLooking = findAvailableDatesByLooking();
+
+    printf("%d", DEBUG);
 
     if (foundDatesByLooking) {
         findAvailableDatesByRestructuring();
@@ -25,30 +30,18 @@ int main(int argc, char *argv[]) {
     return EXIT_SUCCESS;
 }
 
-/**
- * @brief Controls whether command-line arguments where valid.
- *  
- * Controls that the number of arguments (argc) gotten was over 1 and that the arguments where
- * in the format of *.ics. If this is not the case an error message is printed and the program
- * terminates. 
- *
- * @param argc number of arguments
- * @param argv arguments
- */
-void ctrlArgs(int argc, char *argv[]) {
-    int argsValid = 0;
+void getArgs(int argc, char *argv[]) {
+    int i = 1;
+    int argsValid = (argc < 2 ? 0 : 1);
 
-    argsValid = ctrlArgsAmount(argc);
+    while (argsValid) {
+        argsValid = doArg(argv[i]);
+        i++;
+    } 
+
     if (!argsValid) {
         exitWithError();
     }
-
-    argsValid = ctrlArgsIsValidType(argc, argv);
-    if (!argsValid) {
-        exitWithError();
-    }
-
-    doOptions(argc, argv);
 }
 
 void getSearchParameters(void) {

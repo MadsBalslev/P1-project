@@ -4,20 +4,21 @@
 #include <time.h>
 #include "CuTest.h"
 
-
 /* PROGRAM FUNCTIONS
  * ------------------------------------------------------------------------------------------ 
  */
 
 /* ctrlArgs */
-void ctrlArgs(int argc, char *argv[]);
+void getArgs(int argc, char *argv[]);
 int ctrlArgsAmount(int argc);
-int  ctrlArgsIsValidType(int argc, char *argv[]);
+int ctrlArgsType(int argc, char *argv[]);
 int argIsValid(char arg[]);
 int isIcsFile(char arg[]);
 int isOption(char arg[]);
 void doOptions(int argc, char *argv[]);
-void doOptionsSingle(char arg[]);
+void doOption(char arg[]);
+void doIcsFile(char arg[]);
+int doArg(char arg[]);
 void exitWithError(void);
 
 /* getSearchParameters */
