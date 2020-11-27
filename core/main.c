@@ -1,7 +1,3 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <time.h>
 #include "header.h"
 
 int main(int argc, char *argv[]) {
@@ -40,8 +36,17 @@ int main(int argc, char *argv[]) {
  * @param argv arguments
  */
 void ctrlArgs(int argc, char *argv[]) {
-    ctrlArgsAmount(argc);
-    ctrlArgsIsFile(argc, argv);
+    int argsValid = 0;
+
+    argsValid = ctrlArgsAmount(argc);
+    if (!argsValid) {
+        exitWithError();
+    }
+    
+    argsValid = ctrlArgsIsFile(argc, argv);
+    if (!argsValid) {
+        exitWithError();
+    }
 }
 
 void getSearchParameters(void) {
