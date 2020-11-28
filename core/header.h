@@ -4,6 +4,11 @@
 #include <time.h>
 #include "CuTest.h"
 
+#define DO_NOTHING 0
+
+enum argType { icsFile = 1,
+               option };
+
 /* PROGRAM FUNCTIONS
  * ------------------------------------------------------------------------------------------ 
  */
@@ -32,11 +37,9 @@ void userOutput(void);
  * -------------------------------------------------------------------------------------------
  */
 
-/* ctrlArgs */
-void test1_ctrlArgsAmount(CuTest *tc);
-void test2_ctrlArgsAmount(CuTest *tc);
-/*void test_ctrlArgsIsFile(CuTest *tc);*/
-CuSuite *suite_ctrlArgs(void);
+/* ctrlAndDoArgs */
+void test1_doArg(CuTest *tc);
+CuSuite *suite_doArgs(void);
 
 /* general */
 void runAllTests(void);

@@ -9,17 +9,15 @@ extern int DEBUG;
  * @return int 
  */
 int doArg(char arg[]) {
-    int returnFlag = 0;
-
     if (isIcsFile(arg)) {
         doIcsFile(arg);
-        returnFlag = 1;
+        return icsFile;
     } else if (isOption(arg)) {
         doOption(arg);
-        returnFlag = 1;
+        return option;
+    } else {
+        return 0;
     }
-
-    return returnFlag;
 }
 
 /**
@@ -59,7 +57,7 @@ int isIcsFile(char arg[]) {
  */
 void doOption(char arg[]) {
     if (strncmp(arg, "--test", 6) == 0) {
-        /*runAllTests();*/
+        runAllTests();
         exit(EXIT_SUCCESS);
     }
     if (strncmp(arg, "--debug", 7) == 0) {

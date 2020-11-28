@@ -6,7 +6,7 @@ void runAllTests(void) {
     CuString *output = CuStringNew();
     CuSuite* suite = CuSuiteNew();
     
-    CuSuiteAddSuite(suite, suite_ctrlArgs());
+    CuSuiteAddSuite(suite, suite_doArgs());
 
     CuSuiteRun(suite);
     CuSuiteSummary(suite, output);
@@ -17,23 +17,17 @@ void runAllTests(void) {
 /* ctrlArgs 
  * -------------------------------------------------------------------------------------------
  */
-void test1_ctrlArgsAmount(CuTest *tc) {
-    int input = 4;
-    int actual = ctrlArgsAmount(input);
-    int expected = 1;
-    CuAssertIntEquals(tc, expected, actual);
-}
 
-void test2_ctrlArgsAmount(CuTest *tc) {
-    int input = 1;
-    int actual = ctrlArgsAmount(input);
+
+void test1_doArg(CuTest *tc) {
+    char input[] = "test";
+    int actual = doArg(input);
     int expected = 0;
     CuAssertIntEquals(tc, expected, actual);
 }
 
-CuSuite *suite_ctrlArgs(void) {
+CuSuite *suite_doArgs(void) {
     CuSuite *suite = CuSuiteNew();
-    SUITE_ADD_TEST(suite, test1_ctrlArgsAmount);
-    SUITE_ADD_TEST(suite, test2_ctrlArgsAmount);
+    SUITE_ADD_TEST(suite, test1_doArg);
     return suite;
 }

@@ -10,8 +10,6 @@ int main(int argc, char *argv[]) {
     /*getCalendarSuite();*/
     foundDatesByLooking = findAvailableDatesByLooking();
 
-    printf("%d", DEBUG);
-
     if (foundDatesByLooking) {
         findAvailableDatesByRestructuring();
     }
@@ -32,13 +30,19 @@ int main(int argc, char *argv[]) {
 void ctrlAndDoArgs(int argc, char *argv[]) {
     int i = 1;
     int argsValid = (argc < 2 ? 0 : 1);
+    int icsFilesGot = 0;
 
-    while (argsValid) {
+    while (argsValid && i < argc) {
         argsValid = doArg(argv[i]);
+        argsValid == icsFile ? icsFilesGot++ : DO_NOTHING;
         i++;
     }
 
-    if (!argsValid) {
+    if (DEBUG) {
+        printf("argsValid = %d\nicsFilesGot = %d\n", argsValid, icsFilesGot);
+    }
+
+    if (!argsValid || icsFilesGot < 1) {
         exitWithError();
     }
 }
