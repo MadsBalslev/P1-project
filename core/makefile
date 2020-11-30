@@ -1,5 +1,5 @@
 CC=gcc
-CFLAGS=-ansi -Wall -pedantic
+CFLAGS=-ansi -Wall -pedantic -o sp1s
 
 DEPS = header.h
 OBJ = ctrlArgs.o getSearchParameters.o getCalendarSuite.o findAvailableDatesByLooking.o findAvailableDatesByRestructuring.o userOutput.o sharedFunctions.o
