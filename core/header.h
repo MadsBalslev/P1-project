@@ -20,7 +20,8 @@ struct calendar {
   char *calName;
   int numOfEvents;
   event *firstEvent;
-} typedef struct calendar calendar;
+};
+typedef struct calendar calendar;
 
 enum argType { icsFile = 1,
                option };
