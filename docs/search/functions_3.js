@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['getcalendarsuite_39',['getCalendarSuite',['../header_8h.html#af3ec8323bdf589b96fc2e768e0fa1028',1,'getCalendarSuite(void):&#160;main.c'],['../main_8c.html#af3ec8323bdf589b96fc2e768e0fa1028',1,'getCalendarSuite(void):&#160;main.c']]],
-  ['getsearchparameters_40',['getSearchParameters',['../header_8h.html#adab0b7d2c21a1dc025ff93ff30c1af9e',1,'getSearchParameters(void):&#160;main.c'],['../main_8c.html#adab0b7d2c21a1dc025ff93ff30c1af9e',1,'getSearchParameters(void):&#160;main.c']]]
+  ['findavailabledatesbylooking_149',['findAvailableDatesByLooking',['../header_8h.html#a4460fb754aa9e5ccaa4d1704c0097a34',1,'findAvailableDatesByLooking(void):&#160;main.c'],['../main_8c.html#a4460fb754aa9e5ccaa4d1704c0097a34',1,'findAvailableDatesByLooking(void):&#160;main.c']]],
+  ['findavailabledatesbyrestructuring_150',['findAvailableDatesByRestructuring',['../header_8h.html#a4e5a9c4c4ffd0417c325224ffd6e4ff8',1,'findAvailableDatesByRestructuring(void):&#160;main.c'],['../main_8c.html#a4e5a9c4c4ffd0417c325224ffd6e4ff8',1,'findAvailableDatesByRestructuring(void):&#160;main.c']]]
 ];

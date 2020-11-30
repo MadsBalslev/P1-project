@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['getcalendarsuite_2ec_26',['getCalendarSuite.c',['../get_calendar_suite_8c.html',1,'']]],
-  ['getsearchparameters_2ec_27',['getSearchParameters.c',['../get_search_parameters_8c.html',1,'']]]
+  ['findavailabledatesbylooking_2ec_107',['findAvailableDatesByLooking.c',['../find_available_dates_by_looking_8c.html',1,'']]],
+  ['findavailabledatesbyrestructuring_2ec_108',['findAvailableDatesByRestructuring.c',['../find_available_dates_by_restructuring_8c.html',1,'']]]
 ];

@@ -1,15 +1,13 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <time.h>
 #include "header.h"
+
+int DEBUG = 0;
 
 int main(int argc, char *argv[]) {
     int foundDatesByLooking = 0;
 
-    ctrlArgs(argc, argv);
-    getSearchParameters();
-    getCalendarSuite();
+    ctrlAndDoArgs(argc, argv);
+    /*getSearchParameters();*/
+    /*getCalendarSuite();*/
     foundDatesByLooking = findAvailableDatesByLooking();
 
     if (foundDatesByLooking) {
@@ -29,19 +27,24 @@ int main(int argc, char *argv[]) {
     return EXIT_SUCCESS;
 }
 
-/**
- * @brief Controls whether command-line arguments where valid.
- *  
- * Controls that the number of arguments (argc) gotten was over 1 and that the arguments where
- * in the format of *.ics. If this is not the case an error message is printed and the program
- * terminates. 
- *
- * @param argc number of arguments
- * @param argv arguments
- */
-void ctrlArgs(int argc, char *argv[]) {
-    ctrlArgsAmount(argc);
-    ctrlArgsIsFile(argc, argv);
+void ctrlAndDoArgs(int argc, char *argv[]) {
+    int i = 1;
+    int argsValid = (argc < 2 ? 0 : 1);
+    int icsFilesGot = 0;
+
+    while (argsValid && i < argc) {
+        argsValid = doArg(argv[i]);
+        argsValid == icsFile ? icsFilesGot++ : DO_NOTHING;
+        i++;
+    }
+
+    if (DEBUG) {
+        printf("argsValid = %d\nicsFilesGot = %d\n", argsValid, icsFilesGot);
+    }
+
+    if (!argsValid || icsFilesGot < 1) {
+        exitWithError();
+    }
 }
 
 void getSearchParameters(void) {

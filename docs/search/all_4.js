@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['header_2eh_14',['header.h',['../header_8h.html',1,'']]]
+  ['exitwitherror_60',['exitWithError',['../ctrl_and_do_args_8c.html#a78edd6963bf14869d34ca9caa37c327c',1,'exitWithError(void):&#160;ctrlAndDoArgs.c'],['../header_8h.html#a78edd6963bf14869d34ca9caa37c327c',1,'exitWithError(void):&#160;ctrlAndDoArgs.c']]]
 ];

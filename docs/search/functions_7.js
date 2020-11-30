@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['useroutput_44',['userOutput',['../header_8h.html#ad07a12dcbc58de4015fc3189b803f0bd',1,'userOutput(void):&#160;main.c'],['../main_8c.html#ad07a12dcbc58de4015fc3189b803f0bd',1,'userOutput(void):&#160;main.c']]]
+  ['parse_5ffile_156',['parse_file',['../get_calendar_suite_8c.html#a32d025c34ccd835053b80e1f6e18d5b1',1,'parse_file(char *file_path):&#160;getCalendarSuite.c'],['../header_8h.html#af39a727930989babdaae5d8fb5543dc2',1,'parse_file(char *):&#160;getCalendarSuite.c']]]
 ];

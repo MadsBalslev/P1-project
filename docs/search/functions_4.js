@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['isicsfile_41',['isIcsFile',['../ctrl_args_8c.html#a45d35bb198deacd4a3495c6906c462dc',1,'isIcsFile(char arg[]):&#160;ctrlArgs.c'],['../header_8h.html#a45d35bb198deacd4a3495c6906c462dc',1,'isIcsFile(char arg[]):&#160;ctrlArgs.c']]]
+  ['getcalendarsuite_151',['getCalendarSuite',['../header_8h.html#af3ec8323bdf589b96fc2e768e0fa1028',1,'getCalendarSuite(void):&#160;main.c'],['../main_8c.html#af3ec8323bdf589b96fc2e768e0fa1028',1,'getCalendarSuite(void):&#160;main.c']]],
+  ['getsearchparameters_152',['getSearchParameters',['../header_8h.html#adab0b7d2c21a1dc025ff93ff30c1af9e',1,'getSearchParameters(void):&#160;main.c'],['../main_8c.html#adab0b7d2c21a1dc025ff93ff30c1af9e',1,'getSearchParameters(void):&#160;main.c']]]
 ];

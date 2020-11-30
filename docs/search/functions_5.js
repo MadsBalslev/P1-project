@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['main_42',['main',['../main_8c.html#a0ddf1224851353fc92bfbff6f499fa97',1,'main.c']]]
+  ['isicsfile_153',['isIcsFile',['../ctrl_and_do_args_8c.html#a45d35bb198deacd4a3495c6906c462dc',1,'isIcsFile(char arg[]):&#160;ctrlAndDoArgs.c'],['../header_8h.html#a45d35bb198deacd4a3495c6906c462dc',1,'isIcsFile(char arg[]):&#160;ctrlAndDoArgs.c']]],
+  ['isoption_154',['isOption',['../ctrl_and_do_args_8c.html#a6c5f35383c1b83381cef3071a260aba0',1,'isOption(char arg[]):&#160;ctrlAndDoArgs.c'],['../header_8h.html#a6c5f35383c1b83381cef3071a260aba0',1,'isOption(char arg[]):&#160;ctrlAndDoArgs.c']]]
 ];

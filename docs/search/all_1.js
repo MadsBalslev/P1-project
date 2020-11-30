@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['exitwitherror_5',['exitWithError',['../ctrl_args_8c.html#a78edd6963bf14869d34ca9caa37c327c',1,'exitWithError(void):&#160;ctrlArgs.c'],['../header_8h.html#a78edd6963bf14869d34ca9caa37c327c',1,'exitWithError(void):&#160;ctrlArgs.c']]]
+  ['buffer_2',['buffer',['../struct_cu_string.html#aff2566f4c366b48d73479bef43ee4d2e',1,'CuString']]]
 ];
