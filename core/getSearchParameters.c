@@ -57,7 +57,7 @@ void getDates(tm *startDate, tm *endDate) {
         printf("Enter an end date on the form dd/mm/yyyy> ");
         scanf("%d/%d/%d", &tempEndDate.tm_mday, &tempEndDate.tm_mon, &tempEndDate.tm_year);
         tempEndDate.tm_mon--;
-        validInput = isTimeValid(tempStartDate);
+        validInput = isTimeValid(tempEndDate);
         fflush(stdin);
     } while (!validInput);
 
