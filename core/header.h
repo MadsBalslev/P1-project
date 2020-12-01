@@ -7,21 +7,19 @@
 
 #define DO_NOTHING 0
 
-struct event {
+typedef struct event {
   struct tm startTime;
   struct tm endTime;
   int priority;
   char *title;
   struct event *nextEvent;
-};
-typedef struct event event;
+} event;
 
-struct calendar {
+typedef struct calendar {
   char *calName;
   int numOfEvents;
   event *firstEvent;
-};
-typedef struct calendar calendar;
+} calendar;
 
 enum argType { icsFile = 1,
                option };
