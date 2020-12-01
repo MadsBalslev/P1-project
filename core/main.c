@@ -1,12 +1,12 @@
 #include "header.h"
-
 int DEBUG = 0;
 
 int main(int argc, char *argv[]) {
     int foundDatesByLooking = 0;
+    searchParameters searchParametersMain;
 
     ctrlAndDoArgs(argc, argv);
-    /*getSearchParameters();*/
+    getSearchParameters(&searchParametersMain);
     /*getCalendarSuite();*/
     foundDatesByLooking = findAvailableDatesByLooking();
 
@@ -57,7 +57,20 @@ void ctrlAndDoArgs(int argc, char *argv[]) {
     }
 }
 
-void getSearchParameters(void) {
+/**
+ * @brief Get the Search Parameters object
+ * 
+ * @param a 
+ */
+void getSearchParameters(searchParameters *a) {
+    a->priority = getPriority();
+    a->eventLen = getEventLen();
+    getDates(&a->startDate, &a->endDate);
+    getLimits(&a->lowerLimit, &a->upperLimit);
+
+    if (DEBUG) {
+        printf("Priority: %d\nEventLen: %d", a->priority, a->eventLen);
+    }
 }
 
 void getCalendarSuite(void) {
