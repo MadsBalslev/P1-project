@@ -5,7 +5,7 @@ int DEBUG = 0;
 int main(int argc, char *argv[]) {
     int foundDatesByLooking = 0;
 
-    ctrlAndDoArgs(argc, argv);
+    ctrlAndDoArgs();
     /*getSearchParameters();*/
     /*getCalendarSuite();*/
     foundDatesByLooking = findAvailableDatesByLooking();
