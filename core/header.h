@@ -73,9 +73,12 @@ void userOutput(void);
 int isTimeValid(tm time);
 int isTimeValid_min(int tm_min);
 int isTimeValid_hour(int tm_hour);
-int isTimeValid_mday(int tm_mday);
 int isTimeValid_mon(int tm_mon);
 int isTimeValid_year(int tm_year);
+int isTimeValid_mday(int tm_year, int tm_mon, int tm_mday);
+int daysInMonth(int tm_mon, int tm_year);
+int daysInMonThFeb(int tm_year);
+int isLeapYear(int tm_year);
 
 /* UNIT TESTING FUNCTIONS
  * -------------------------------------------------------------------------------------------
@@ -83,7 +86,16 @@ int isTimeValid_year(int tm_year);
 
 /* ctrlAndDoArgs */
 void test1_doArg(CuTest *tc);
+void test2_doArg(CuTest *tc);
+void test3_doArg(CuTest *tc);
 CuSuite *suite_ctrlAndDoArgs(void);
+
+/* sharedFunctions.c */
+void test1_isTimeValid(CuTest *tc);
+void test2_isTimeValid(CuTest *tc);
+void test3_isTimeValid(CuTest *tc);
+void test4_isTimeValid(CuTest *tc);
+CuSuite *suite_sharedFunctions(void);
 
 /* general */
 void runAllTests(void);

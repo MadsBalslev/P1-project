@@ -5,17 +5,11 @@ int isTimeValid(tm time) {
     int returnFlag = 0;
 
     /*isTimeValid_sec(time.tm_sec);*/
-    printf("0: %d\n", returnFlag);
     returnFlag += isTimeValid_min(time.tm_min);
-    printf("1: %d\n", returnFlag);
     returnFlag += isTimeValid_hour(time.tm_hour);
-    printf("2: %d\n", returnFlag);
     returnFlag += isTimeValid_mon(time.tm_mon);
-    printf("3: %d\n", returnFlag);
-    returnFlag += isTimeValid_mday(time.tm_mday);
-    printf("4: %d\n", returnFlag);
     returnFlag += isTimeValid_year(time.tm_year);
-    printf("5: %d\n", returnFlag);
+    returnFlag += isTimeValid_mday(time.tm_year, time.tm_mon, time.tm_mday);
 
     if (returnFlag == 5) {
         returnFlag = 1;
@@ -58,6 +52,16 @@ int isTimeValid_year(int tm_year) {
 }
 
 int isTimeValid_mday(int tm_year, int tm_mon, int tm_mday) {
+    if (tm_mday <= daysInMonth(tm_mon, tm_year) && tm_mday > 0) {
+        return 1;
+    } else {
+        return 0;
+    }
+}
+
+int daysInMonth(int tm_mon, int tm_year) {
+    int returnValue;
+
     enum month { january,
                  february,
                  march,
@@ -79,15 +83,34 @@ int isTimeValid_mday(int tm_year, int tm_mon, int tm_mday) {
         case august:
         case october:
         case december:
-            /* code */
+            returnValue = 31;
             break;
-
+        case april:
+        case june:
+        case september:
+        case november:
+            returnValue = 30;
+            break;
+        case february:
+            returnValue = daysInMonThFeb(tm_year);
+            break;
         default:
+            returnValue = -1;
             break;
+    }
+
+    return returnValue;
+}
+
+int daysInMonThFeb(int tm_year) {
+    if (isLeapYear(tm_year)) {
+        return 29;
+    } else {
+        return 28;
     }
 }
 
-int isLeapYear(tm_year) {
+int isLeapYear(int tm_year) {
     if (tm_year % 100 == 0 && tm_year % 400 != 0) {
         return 0;
     } else if (tm_year % 4 == 0) {
@@ -96,5 +119,3 @@ int isLeapYear(tm_year) {
         return 0;
     }
 }
-
-
