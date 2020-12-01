@@ -27,7 +27,8 @@ typedef struct calendar {
     event *firstEvent;
 } calendar;
 
-enum argType { icsFile = 1,
+enum argType { invalid,
+               icsFile,
                option };
 
 /* PROGRAM FUNCTIONS

@@ -27,6 +27,16 @@ int main(int argc, char *argv[]) {
     return EXIT_SUCCESS;
 }
 
+/**
+ * @brief Controls and executes command-line arguments (only executes command-line options).
+ * If all arguments are not valid, terminates program with an error message.
+ *
+ * All arguments are considered valid if they are either an *.ics file location or an option,
+ * and when there are more than two arguments.
+ *
+ * @param argc number of arguments
+ * @param argv array of argument strings
+ */
 void ctrlAndDoArgs(int argc, char *argv[]) {
     int i = 1;
     int argsValid = (argc < 2 ? 0 : 1);
