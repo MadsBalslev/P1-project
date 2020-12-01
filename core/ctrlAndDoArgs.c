@@ -28,9 +28,13 @@ int doArg(char arg[]) {
  * @return 1 if it is an option, else 0 
  */
 int isOption(char arg[]) {
-    if (strncmp(arg, "--test", 6) == 0) {
+    if (!(strncmp(arg, "--", 2) == 0)) {
+        return 0;
+    } else if (strncmp(arg, "--test", 6) == 0) {
         return 1;
     } else if (strncmp(arg, "--debug", 7) == 0) {
+        return 1;
+    } else if (strncmp(arg, "--doNothing", 11) == 0) {
         return 1;
     } else {
         return 0;
@@ -62,6 +66,8 @@ void doOption(char arg[]) {
         exit(EXIT_SUCCESS);
     } else if (strncmp(arg, "--debug", 7) == 0) {
         DEBUG = 1;
+    } else if (strncmp(arg, "--doNothing", 11) == 0) {
+        /* do nothing */
     }
 }
 

@@ -57,11 +57,11 @@ void userOutput(void);
 
 /* UNIT TESTING FUNCTIONS
  * -------------------------------------------------------------------------------------------
-*/
+ */
 
 /* ctrlAndDoArgs */
 void test1_doArg(CuTest *tc);
-CuSuite *suite_doArgs(void);
+CuSuite *suite_ctrlAndDoArgs(void);
 
 /* general */
 void runAllTests(void);
