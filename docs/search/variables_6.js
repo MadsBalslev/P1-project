@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['message_170',['message',['../struct_cu_test.html#a254bf0858da09c96a48daf64404eb4f8',1,'CuTest']]]
+  ['length_183',['length',['../struct_cu_string.html#a9f59b34b1f25fe00023291b678246bcc',1,'CuString']]],
+  ['list_184',['list',['../struct_cu_suite.html#ab510395be1b7e26b272775c56078fbfe',1,'CuSuite']]]
 ];
