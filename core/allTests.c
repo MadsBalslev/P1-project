@@ -72,7 +72,7 @@ void test3_isTimeValid(CuTest *tc) {
 }
 
 void test4_isTimeValid(CuTest *tc) {
-    tm input = {0, 0, 0, 30, 2, 2004, 0, 0, -1};
+    tm input = {0, 0, 0, -1, 2, 2004, 0, 0, -1};
     int actual = isTimeValid(input);
     int expected = 0;
     CuAssertIntEquals(tc, expected, actual);
