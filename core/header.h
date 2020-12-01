@@ -8,8 +8,8 @@
 #define DO_NOTHING 0
 
 struct event {
-  tm startTime;
-  tm endTime;
+  struct tm startTime;
+  struct tm endTime;
   int priority;
   char *title;
   struct event *nextEvent;
