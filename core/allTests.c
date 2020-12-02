@@ -7,6 +7,7 @@ void runAllTests(void) {
     CuSuite *suite = CuSuiteNew();
 
     CuSuiteAddSuite(suite, suite_ctrlAndDoArgs());
+    CuSuiteAddSuite(suite, suite_getCalendarSuite());
     CuSuiteAddSuite(suite, suite_sharedFunctions());
 
     CuSuiteRun(suite);
@@ -44,6 +45,22 @@ CuSuite *suite_ctrlAndDoArgs(void) {
     SUITE_ADD_TEST(suite, test1_doArg);
     SUITE_ADD_TEST(suite, test2_doArg);
     SUITE_ADD_TEST(suite, test3_doArg);
+    return suite;
+}
+
+/* getCalendarSuite.c
+ * -------------------------------------------------------------------------------------------
+ */
+void test1_getCalendarSuite(CuTest *tc) {
+    /*int input =*/
+    int actual = 1;
+    int expected = 1;
+    CuAssertIntEquals(tc, expected, actual);
+}
+
+CuSuite *suite_getCalendarSuite(void) {
+    CuSuite *suite = CuSuiteNew();
+    SUITE_ADD_TEST(suite, test1_getCalendarSuite);
     return suite;
 }
 

@@ -4,10 +4,11 @@ int DEBUG = 0;
 int main(int argc, char *argv[]) {
     int foundDatesByLooking = 0;
     searchParameters searchParametersMain;
+    calendar **calendarSuite = (calendar **)malloc((argc - 1) * sizeof(calendar *));
 
     ctrlAndDoArgs(argc, argv);
     getSearchParameters(&searchParametersMain);
-    /*getCalendarSuite();*/
+    getCalendarSuite(argc, argv, calendarSuite);
     foundDatesByLooking = findAvailableDatesByLooking();
 
     if (foundDatesByLooking) {
@@ -73,7 +74,15 @@ void getSearchParameters(searchParameters *a) {
     }
 }
 
-void getCalendarSuite(void) {
+int getCalendarSuite(int argc, char *argv[], calendar *calendarSuite[]) {
+    int returnFlag = 0;
+
+    returnFlag += getCalendarSuiteGetLocation(argc, argv, calendar);
+    returnFlag += getCalendarSuiteGetEvents(calendar);
+
+    returnFlag == 2 ? returnFlag = 1 :  returnFlag = 0;
+
+    return returnFlag;
 }
 
 int findAvailableDatesByLooking(void) {

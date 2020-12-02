@@ -25,6 +25,7 @@ typedef struct eventLink {
 
 typedef struct calendar {
     char *calName;
+    FILE *location;
     int numOfEvents;
     event *firstEvent;
 } calendar;
@@ -62,7 +63,7 @@ void getDates(tm *startDate, tm *endDate);
 void getLimits(tm *upperLimit, tm *lowerLimmit);
 
 /* getCalendarSuite */
-void getCalendarSuite(void);
+int getCalendarSuite(int argc, char *argv[], calendar *calendarSuite[]);
 int parse_file(char *);
 
 int findAvailableDatesByLooking(void);
@@ -89,6 +90,10 @@ void test1_doArg(CuTest *tc);
 void test2_doArg(CuTest *tc);
 void test3_doArg(CuTest *tc);
 CuSuite *suite_ctrlAndDoArgs(void);
+
+/* getCalendarSuite */
+void test1_getCalendarSuite(CuTest *tc);
+CuSuite *suite_getCalendarSuite(void);
 
 /* sharedFunctions.c */
 void test1_isTimeValid(CuTest *tc);
