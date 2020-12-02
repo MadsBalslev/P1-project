@@ -66,10 +66,351 @@ $(function() {
 </div>
 </div><!-- top -->
 <div class="header">
+  <div class="summary">
+<a href="#func-members">Functions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
 <div class="title">sharedFunctions.c File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="header_8h_source.html">header.h</a>&quot;</code><br />
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:ac98ba39821c96c7ba1282f086ffa3ef1"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="shared_functions_8c.html#ac98ba39821c96c7ba1282f086ffa3ef1">isTimeValid</a> (<a class="el" href="header_8h.html#a110bf4e13553ccfd709f41c6e92f0ca2">tm</a> time)</td></tr>
+<tr class="memdesc:ac98ba39821c96c7ba1282f086ffa3ef1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Controls that a time is valid in terms of minutes, hours, month number, year, month day.  <a href="shared_functions_8c.html#ac98ba39821c96c7ba1282f086ffa3ef1">More...</a><br /></td></tr>
+<tr class="separator:ac98ba39821c96c7ba1282f086ffa3ef1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9f6cdcba731f6f527d4f6e64c20d77a5"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="shared_functions_8c.html#a9f6cdcba731f6f527d4f6e64c20d77a5">isTimeValid_min</a> (int tm_min)</td></tr>
+<tr class="memdesc:a9f6cdcba731f6f527d4f6e64c20d77a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Controls that tm_min == [0, 59].  <a href="shared_functions_8c.html#a9f6cdcba731f6f527d4f6e64c20d77a5">More...</a><br /></td></tr>
+<tr class="separator:a9f6cdcba731f6f527d4f6e64c20d77a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7e64169fe0b3114121bde206a7ca3564"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="shared_functions_8c.html#a7e64169fe0b3114121bde206a7ca3564">isTimeValid_hour</a> (int tm_hour)</td></tr>
+<tr class="memdesc:a7e64169fe0b3114121bde206a7ca3564"><td class="mdescLeft">&#160;</td><td class="mdescRight">Controls that tm_hour == [0, 23].  <a href="shared_functions_8c.html#a7e64169fe0b3114121bde206a7ca3564">More...</a><br /></td></tr>
+<tr class="separator:a7e64169fe0b3114121bde206a7ca3564"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa18f22f7a2e046dfc608ede997244420"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="shared_functions_8c.html#aa18f22f7a2e046dfc608ede997244420">isTimeValid_mon</a> (int tm_mon)</td></tr>
+<tr class="memdesc:aa18f22f7a2e046dfc608ede997244420"><td class="mdescLeft">&#160;</td><td class="mdescRight">Controls that tm_mon == [0, 11].  <a href="shared_functions_8c.html#aa18f22f7a2e046dfc608ede997244420">More...</a><br /></td></tr>
+<tr class="separator:aa18f22f7a2e046dfc608ede997244420"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8d622550d6492f65d464196c1183454b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="shared_functions_8c.html#a8d622550d6492f65d464196c1183454b">isTimeValid_year</a> (int tm_year)</td></tr>
+<tr class="memdesc:a8d622550d6492f65d464196c1183454b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Controls that tm_year &gt; 1900.  <a href="shared_functions_8c.html#a8d622550d6492f65d464196c1183454b">More...</a><br /></td></tr>
+<tr class="separator:a8d622550d6492f65d464196c1183454b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa0e236b43281bbd135eaff5175aa4474"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="shared_functions_8c.html#aa0e236b43281bbd135eaff5175aa4474">isTimeValid_mday</a> (int tm_year, int tm_mon, int tm_mday)</td></tr>
+<tr class="memdesc:aa0e236b43281bbd135eaff5175aa4474"><td class="mdescLeft">&#160;</td><td class="mdescRight">Controls that a month day is valid depending on the year and month.  <a href="shared_functions_8c.html#aa0e236b43281bbd135eaff5175aa4474">More...</a><br /></td></tr>
+<tr class="separator:aa0e236b43281bbd135eaff5175aa4474"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5573d63f46f52066eb24d6a251eb5f93"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="shared_functions_8c.html#a5573d63f46f52066eb24d6a251eb5f93">daysInMonth</a> (int tm_mon, int tm_year)</td></tr>
+<tr class="memdesc:a5573d63f46f52066eb24d6a251eb5f93"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates number of days in a month depending on the month and year.  <a href="shared_functions_8c.html#a5573d63f46f52066eb24d6a251eb5f93">More...</a><br /></td></tr>
+<tr class="separator:a5573d63f46f52066eb24d6a251eb5f93"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a27da01d29e45d4dc9ec0b20bcfbc5a88"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="shared_functions_8c.html#a27da01d29e45d4dc9ec0b20bcfbc5a88">daysInMonthFeb</a> (int tm_year)</td></tr>
+<tr class="memdesc:a27da01d29e45d4dc9ec0b20bcfbc5a88"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the number of days in february on a given year.  <a href="shared_functions_8c.html#a27da01d29e45d4dc9ec0b20bcfbc5a88">More...</a><br /></td></tr>
+<tr class="separator:a27da01d29e45d4dc9ec0b20bcfbc5a88"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a235097de52f9ad65a5d0ac20884a1e66"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="shared_functions_8c.html#a235097de52f9ad65a5d0ac20884a1e66">isLeapYear</a> (int tm_year)</td></tr>
+<tr class="memdesc:a235097de52f9ad65a5d0ac20884a1e66"><td class="mdescLeft">&#160;</td><td class="mdescRight">Controls is a year is a leap year.  <a href="shared_functions_8c.html#a235097de52f9ad65a5d0ac20884a1e66">More...</a><br /></td></tr>
+<tr class="separator:a235097de52f9ad65a5d0ac20884a1e66"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:a48f76a8c0dc23567f303ed6aa221e078"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="shared_functions_8c.html#a48f76a8c0dc23567f303ed6aa221e078">DEBUG</a></td></tr>
+<tr class="separator:a48f76a8c0dc23567f303ed6aa221e078"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Function Documentation</h2>
+<a id="a5573d63f46f52066eb24d6a251eb5f93"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5573d63f46f52066eb24d6a251eb5f93">&#9670;&nbsp;</a></span>daysInMonth()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int daysInMonth </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>tm_mon</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>tm_year</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Calculates number of days in a month depending on the month and year. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">tm_mon</td><td>month, january is month 0 </td></tr>
+    <tr><td class="paramname">tm_year</td><td>year </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>number of days in month </dd></dl>
+
+</div>
+</div>
+<a id="a27da01d29e45d4dc9ec0b20bcfbc5a88"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a27da01d29e45d4dc9ec0b20bcfbc5a88">&#9670;&nbsp;</a></span>daysInMonthFeb()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int daysInMonthFeb </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>tm_year</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Calculates the number of days in february on a given year. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">tm_year</td><td>year </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>number of days in february </dd></dl>
+
+</div>
+</div>
+<a id="a235097de52f9ad65a5d0ac20884a1e66"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a235097de52f9ad65a5d0ac20884a1e66">&#9670;&nbsp;</a></span>isLeapYear()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int isLeapYear </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>tm_year</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Controls is a year is a leap year. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">tm_year</td><td>year </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>1 if the year is a leap year, else 0 </dd></dl>
+
+</div>
+</div>
+<a id="ac98ba39821c96c7ba1282f086ffa3ef1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac98ba39821c96c7ba1282f086ffa3ef1">&#9670;&nbsp;</a></span>isTimeValid()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int isTimeValid </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="header_8h.html#a110bf4e13553ccfd709f41c6e92f0ca2">tm</a>&#160;</td>
+          <td class="paramname"><em>time</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Controls that a time is valid in terms of minutes, hours, month number, year, month day. </p>
+<p>The functions take leap years into account.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">time</td><td>struct tm, from time.h, to be controlled </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>1 if time is valid, else 0 </dd></dl>
+
+</div>
+</div>
+<a id="a7e64169fe0b3114121bde206a7ca3564"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7e64169fe0b3114121bde206a7ca3564">&#9670;&nbsp;</a></span>isTimeValid_hour()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int isTimeValid_hour </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>tm_hour</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Controls that tm_hour == [0, 23]. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">tm_hour</td><td>member of struct tm from time.h </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>1 if it’s within the boundary, else 0 <br  />
+ </dd></dl>
+
+</div>
+</div>
+<a id="aa0e236b43281bbd135eaff5175aa4474"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa0e236b43281bbd135eaff5175aa4474">&#9670;&nbsp;</a></span>isTimeValid_mday()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int isTimeValid_mday </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>tm_year</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>tm_mon</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>tm_mday</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Controls that a month day is valid depending on the year and month. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">tm_year</td><td>year </td></tr>
+    <tr><td class="paramname">tm_mon</td><td>month, january is month 0 </td></tr>
+    <tr><td class="paramname">tm_mday</td><td>month day </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>1 if the month day is valid, else 0 </dd></dl>
+
+</div>
+</div>
+<a id="a9f6cdcba731f6f527d4f6e64c20d77a5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9f6cdcba731f6f527d4f6e64c20d77a5">&#9670;&nbsp;</a></span>isTimeValid_min()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int isTimeValid_min </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>tm_min</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Controls that tm_min == [0, 59]. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">tm_min</td><td>member of struct tm from time.h </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>1 if it’s within the boundary, else 0 <br  />
+ </dd></dl>
+
+</div>
+</div>
+<a id="aa18f22f7a2e046dfc608ede997244420"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa18f22f7a2e046dfc608ede997244420">&#9670;&nbsp;</a></span>isTimeValid_mon()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int isTimeValid_mon </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>tm_mon</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Controls that tm_mon == [0, 11]. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">tm_mon</td><td>member of struct tm from time.h </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>1 if it’s within the boundary, else 0 <br  />
+ </dd></dl>
+
+</div>
+</div>
+<a id="a8d622550d6492f65d464196c1183454b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8d622550d6492f65d464196c1183454b">&#9670;&nbsp;</a></span>isTimeValid_year()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int isTimeValid_year </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>tm_year</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Controls that tm_year &gt; 1900. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">tm_year</td><td>member of struct tm from time.h </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>1 if it’s within the boundary, else 0 <br  />
+ </dd></dl>
+
+</div>
+</div>
+<h2 class="groupheader">Variable Documentation</h2>
+<a id="a48f76a8c0dc23567f303ed6aa221e078"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a48f76a8c0dc23567f303ed6aa221e078">&#9670;&nbsp;</a></span>DEBUG</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int DEBUG</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

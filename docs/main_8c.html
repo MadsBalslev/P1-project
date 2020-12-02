@@ -80,9 +80,11 @@ Functions</h2></td></tr>
 <tr class="memitem:a0ddf1224851353fc92bfbff6f499fa97"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#a0ddf1224851353fc92bfbff6f499fa97">main</a> (int argc, char *argv[])</td></tr>
 <tr class="separator:a0ddf1224851353fc92bfbff6f499fa97"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a28a8ef17d59f13819ef76e14165d3de2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#a28a8ef17d59f13819ef76e14165d3de2">ctrlAndDoArgs</a> (int argc, char *argv[])</td></tr>
+<tr class="memdesc:a28a8ef17d59f13819ef76e14165d3de2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Controls and executes command-line arguments (only executes command-line options). If all arguments are not valid, terminates program with an error message.  <a href="main_8c.html#a28a8ef17d59f13819ef76e14165d3de2">More...</a><br /></td></tr>
 <tr class="separator:a28a8ef17d59f13819ef76e14165d3de2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adab0b7d2c21a1dc025ff93ff30c1af9e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#adab0b7d2c21a1dc025ff93ff30c1af9e">getSearchParameters</a> (void)</td></tr>
-<tr class="separator:adab0b7d2c21a1dc025ff93ff30c1af9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4c52c3448e274e88d2ad6024c4acc8a0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#a4c52c3448e274e88d2ad6024c4acc8a0">getSearchParameters</a> (<a class="el" href="structsearch_parameters.html">searchParameters</a> *a)</td></tr>
+<tr class="memdesc:a4c52c3448e274e88d2ad6024c4acc8a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the Search Parameters object.  <a href="main_8c.html#a4c52c3448e274e88d2ad6024c4acc8a0">More...</a><br /></td></tr>
+<tr class="separator:a4c52c3448e274e88d2ad6024c4acc8a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af3ec8323bdf589b96fc2e768e0fa1028"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#af3ec8323bdf589b96fc2e768e0fa1028">getCalendarSuite</a> (void)</td></tr>
 <tr class="separator:af3ec8323bdf589b96fc2e768e0fa1028"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4460fb754aa9e5ccaa4d1704c0097a34"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#a4460fb754aa9e5ccaa4d1704c0097a34">findAvailableDatesByLooking</a> (void)</td></tr>
@@ -123,6 +125,16 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Controls and executes command-line arguments (only executes command-line options). If all arguments are not valid, terminates program with an error message. </p>
+<p>All arguments are considered valid if they are either an *.ics file location or an option, and when there are more than two arguments.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">argc</td><td>number of arguments </td></tr>
+    <tr><td class="paramname">argv</td><td>array of argument strings </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -180,8 +192,8 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="adab0b7d2c21a1dc025ff93ff30c1af9e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adab0b7d2c21a1dc025ff93ff30c1af9e">&#9670;&nbsp;</a></span>getSearchParameters()</h2>
+<a id="a4c52c3448e274e88d2ad6024c4acc8a0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4c52c3448e274e88d2ad6024c4acc8a0">&#9670;&nbsp;</a></span>getSearchParameters()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -189,12 +201,20 @@ Variables</h2></td></tr>
         <tr>
           <td class="memname">void getSearchParameters </td>
           <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype"><a class="el" href="structsearch_parameters.html">searchParameters</a> *&#160;</td>
+          <td class="paramname"><em>a</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Get the Search Parameters object. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">a</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
