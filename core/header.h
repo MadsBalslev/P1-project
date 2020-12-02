@@ -95,6 +95,7 @@ void test1_isTimeValid(CuTest *tc);
 void test2_isTimeValid(CuTest *tc);
 void test3_isTimeValid(CuTest *tc);
 void test4_isTimeValid(CuTest *tc);
+void test1_isTimeValid_mday(CuTest *tc);
 CuSuite *suite_sharedFunctions(void);
 
 /* general */

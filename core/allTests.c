@@ -72,11 +72,55 @@ void test3_isTimeValid(CuTest *tc) {
 }
 
 void test4_isTimeValid(CuTest *tc) {
-    tm input = {0, 0, 0, -1, 2, 2004, 0, 0, -1};
+    tm input = {0, 0, 0, 30, 1, 2004, 0, 0, -1};
     int actual = isTimeValid(input);
     int expected = 0;
     CuAssertIntEquals(tc, expected, actual);
 }
+
+void test5_isTimeValid(CuTest *tc) {
+    tm input = {0, 0, 0, 28, 1, 2005, 0, 0, -1};
+    int actual = isTimeValid(input);
+    int expected = 1;
+    CuAssertIntEquals(tc, expected, actual);
+}
+
+void test6_isTimeValid(CuTest *tc) {
+    tm input = {0, 0, 0, 31, 0, 2005, 0, 0, -1};
+    int actual = isTimeValid(input);
+    int expected = 1;
+    CuAssertIntEquals(tc, expected, actual);
+}
+
+void test7_isTimeValid(CuTest *tc) {
+    tm input = {0, 0, 0, 32, 0, 2005, 0, 0, -1};
+    int actual = isTimeValid(input);
+    int expected = 0;
+    CuAssertIntEquals(tc, expected, actual);
+}
+
+void test8_isTimeValid(CuTest *tc) {
+    tm input = {0, 0, 0, 30, 3, 2005, 0, 0, -1};
+    int actual = isTimeValid(input);
+    int expected = 1;
+    CuAssertIntEquals(tc, expected, actual);
+}
+
+void test9_isTimeValid(CuTest *tc) {
+    tm input = {0, 0, 0, 31, 3, 2005, 0, 0, -1};
+    int actual = isTimeValid(input);
+    int expected = 0;
+    CuAssertIntEquals(tc, expected, actual);
+}
+
+void test10_isTimeValid(CuTest *tc) {
+    tm input = { 0, 61, 25, 1, 0, 2000, 0, 0, -1 };
+    int actual = isTimeValid(input);
+    int expected = 0;
+    CuAssertIntEquals(tc, expected, actual);
+}
+
+
 
 CuSuite *suite_sharedFunctions(void) {
     CuSuite *suite = CuSuiteNew();
@@ -84,6 +128,12 @@ CuSuite *suite_sharedFunctions(void) {
     SUITE_ADD_TEST(suite, test2_isTimeValid);
     SUITE_ADD_TEST(suite, test3_isTimeValid);
     SUITE_ADD_TEST(suite, test4_isTimeValid);
+    SUITE_ADD_TEST(suite, test5_isTimeValid);
+    SUITE_ADD_TEST(suite, test6_isTimeValid);
+    SUITE_ADD_TEST(suite, test7_isTimeValid);
+    SUITE_ADD_TEST(suite, test8_isTimeValid);
+    SUITE_ADD_TEST(suite, test9_isTimeValid);
+    SUITE_ADD_TEST(suite, test10_isTimeValid);
     return suite;
 }
 
