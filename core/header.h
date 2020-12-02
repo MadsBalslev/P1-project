@@ -41,6 +41,11 @@ typedef struct searchParameters {
     tm lowerLimit;
 } searchParameters;
 
+typedef struct calendarSuite {
+    calendar **calPtrArray;
+    int Arraylen;
+} calendarSuite;
+
 enum argType { invalid,
                icsFile,
                option };
@@ -50,7 +55,8 @@ enum argType { invalid,
  */
 
 /* ctrlAndDoArgs */
-void ctrlAndDoArgs(int argc, char *argv[]);
+int ctrlAndDoArgs(int argc, char *argv[]);
+void initCalendarSuite(int n, calendarSuite *calendarSuite);
 int doArg(char arg[]);
 int isIcsFile(char arg[]);
 int isOption(char arg[]);
@@ -65,7 +71,7 @@ void getDates(tm *startDate, tm *endDate);
 void getLimits(tm *upperLimit, tm *lowerLimmit);
 
 /* getCalendarSuite */
-int getCalendarSuite(int argc, char *argv[], calendar *calendarSuite[]);
+void getCalendarSuite(int argc, char *argv[], calendarSuite *calendarSuite);
 int getCalendarSuiteGetFile(int argc, char *argv[], calendar *calendarSuite[]);
 int getCalendarSuiteGetFileSingle(char arg[], calendar *calendar);
 int getCalendarSuiteGetEvents(calendar *calendarSuite[]);
@@ -86,8 +92,8 @@ int daysInMonth(int tm_mon, int tm_year);
 int daysInMonthFeb(int tm_year);
 int isLeapYear(int tm_year);
 void errorHandling(int statement, char ErrorMessage[]);
-void printMetadataCalendarSuite(calendar *calendar[], int n);
-void printMetadataCalendar(calendar *calendar);
+void printMetadataCalendarSuite(calendarSuite calendarSuite);
+void printMetadataCalendar(const calendar *calendar);
 
 /* UNIT TESTING FUNCTIONS
  * -------------------------------------------------------------------------------------------

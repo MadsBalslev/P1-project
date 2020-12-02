@@ -1,14 +1,13 @@
 #include "header.h"
 
-int getCalendarSuiteGetFile(int argc, char *argv[], calendar *calendarSuite[]) {
+int getCalendarSuiteGetFile(int argc, char *argv[], calendar *calPtrArray[]) {
     int i = 1;
     int k = 0;
     int validFileLocation = 0;
 
     do {
         if (isIcsFile(argv[i])) {
-            calendarSuite[k] = (calendar *)malloc(sizeof(calendar));
-            validFileLocation = getCalendarSuiteGetFileSingle(argv[i], calendarSuite[k]);
+            validFileLocation = getCalendarSuiteGetFileSingle(argv[i], calPtrArray[k]);
             k++;
         }
         i++;
