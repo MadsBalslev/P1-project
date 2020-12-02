@@ -11,7 +11,7 @@ int getPriority(void) {
     int validInput = 0;
     do {
         printf("Enter a priority for the event> ");
-        validInput = scanf("%d", &priority);
+        validInput = scanf(" %d", &priority);
         fflush(stdin);
     } while (!validInput || priority < 0);
     return priority;
@@ -27,7 +27,7 @@ int getEventLen(void) {
     int validInput = 0;
     do {
         printf("Enter estimated length of the event in minutes> ");
-        validInput = scanf("%d", &eventLen);
+        validInput = scanf(" %d", &eventLen);
         fflush(stdin);
     } while (!validInput || eventLen < 0);
 
@@ -47,7 +47,7 @@ void getDates(tm *startDate, tm *endDate) {
 
     do {
         printf("Enter a starting date on the form dd/mm/yyyy> ");
-        scanf("%d/%d/%d", &tempStartDate.tm_mday, &tempStartDate.tm_mon, &tempStartDate.tm_year);
+        scanf(" %d/%d/%d", &tempStartDate.tm_mday, &tempStartDate.tm_mon, &tempStartDate.tm_year);
         tempStartDate.tm_mon--;
         validInput = isTimeValid(tempStartDate);
         fflush(stdin);
@@ -55,7 +55,7 @@ void getDates(tm *startDate, tm *endDate) {
 
     do {
         printf("Enter an end date on the form dd/mm/yyyy> ");
-        scanf("%d/%d/%d", &tempEndDate.tm_mday, &tempEndDate.tm_mon, &tempEndDate.tm_year);
+        scanf(" %d/%d/%d", &tempEndDate.tm_mday, &tempEndDate.tm_mon, &tempEndDate.tm_year);
         tempEndDate.tm_mon--;
         validInput = isTimeValid(tempEndDate);
         fflush(stdin);
@@ -83,14 +83,14 @@ void getLimits(tm *upperLimit, tm *lowerLimmit) {
 
     do {
         printf("Enter the earliest time the event can take place on the form HH:MM>  ");
-        scanf("%d:%d", &tempLowerLimit.tm_hour, &tempLowerLimit.tm_min);
+        scanf(" %d:%d", &tempLowerLimit.tm_hour, &tempLowerLimit.tm_min);
         validInput = isTimeValid(tempLowerLimit);
         fflush(stdin);
     } while (!validInput);
 
     do {
         printf("Enter the latest time the event can take place on the form HH:MM>  ");
-        scanf("%d:%d", &tempUpperLimit.tm_hour, &tempUpperLimit.tm_min);
+        scanf(" %d:%d", &tempUpperLimit.tm_hour, &tempUpperLimit.tm_min);
         validInput = isTimeValid(tempUpperLimit);
         fflush(stdin);
     } while (!validInput);
