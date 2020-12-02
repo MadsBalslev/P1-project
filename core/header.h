@@ -77,7 +77,7 @@ int isTimeValid_mon(int tm_mon);
 int isTimeValid_year(int tm_year);
 int isTimeValid_mday(int tm_year, int tm_mon, int tm_mday);
 int daysInMonth(int tm_mon, int tm_year);
-int daysInMonThFeb(int tm_year);
+int daysInMonthFeb(int tm_year);
 int isLeapYear(int tm_year);
 
 /* UNIT TESTING FUNCTIONS

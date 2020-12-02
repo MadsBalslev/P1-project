@@ -139,7 +139,7 @@ int daysInMonth(int tm_mon, int tm_year) {
             returnValue = 30;
             break;
         case february:
-            returnValue = daysInMonThFeb(tm_year);
+            returnValue = daysInMonthFeb(tm_year);
             break;
         default:
             returnValue = -1;
@@ -155,7 +155,7 @@ int daysInMonth(int tm_mon, int tm_year) {
  * @param tm_year year
  * @return number of days in february 
  */
-int daysInMonThFeb(int tm_year) {
+int daysInMonthFeb(int tm_year) {
     if (isLeapYear(tm_year)) {
         return 29;
     } else {
