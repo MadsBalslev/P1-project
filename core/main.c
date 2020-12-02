@@ -9,6 +9,7 @@ int main(int argc, char *argv[]) {
 
     ctrlAndDoArgs(argc, argv);
     getCalendarSuite(argc, argv, calendarSuite);
+    printMetadataCalendarSuite(calendarSuite, 3);
     getSearchParameters(&searchParametersMain);
     foundDatesByLooking = findAvailableDatesByLooking();
 

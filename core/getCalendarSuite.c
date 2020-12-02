@@ -11,7 +11,7 @@ int getCalendarSuiteGetLocation(int argc, char *argv[], calendar *calendarSuite[
             k++;
         }
         i++;
-    } while (i < argc && validFileLocation);
+    } while (i < argc && !validFileLocation);
 
     return validFileLocation;
 }

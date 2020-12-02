@@ -186,6 +186,27 @@ void errorHandling(int statement, char errorMessage[]) {
     }
 }
 
+/**
+ * @brief This function is broken :(.
+ * 
+ * @param calendar 
+ * @param n 
+ */
+void printMetadataCalendarSuite(calendar *calendar[], int n) {
+    int i;
+    for (i = 0; i < n; i++) {
+        printf("\nCALENDAR %d: \n", i);
+        printMetadataCalendar(calendar[i]);
+    }
+}
+
+/**
+ * @brief This function is broken :(.
+ * 
+ * @param calendar 
+ */
 void printMetadataCalendar(calendar *calendar) {
-    printf("calendar name: %s", calendar->fileName);
+    printf("calName: %s\n", calendar->calName);
+    printf("fileName: %s\n", calendar->fileName);
+    printf("numOfEvents: %d\n\n", calendar->numOfEvents);
 }

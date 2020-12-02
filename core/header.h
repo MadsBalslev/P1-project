@@ -26,9 +26,9 @@ typedef struct eventLink {
 
 typedef struct calendar {
     char *calName;
-    FILE *file;
     char fileName[100];
     int numOfEvents;
+    FILE *file;
     event *firstEvent;
 } calendar;
 
@@ -86,6 +86,7 @@ int daysInMonth(int tm_mon, int tm_year);
 int daysInMonthFeb(int tm_year);
 int isLeapYear(int tm_year);
 void errorHandling(int statement, char ErrorMessage[]);
+void printMetadataCalendarSuite(calendar *calendar[], int n);
 void printMetadataCalendar(calendar *calendar);
 
 /* UNIT TESTING FUNCTIONS
