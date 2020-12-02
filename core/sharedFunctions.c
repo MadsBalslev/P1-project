@@ -187,7 +187,7 @@ void errorHandling(int statement, char errorMessage[]) {
 }
 
 /**
- * @brief This function is broken :(.
+ * @brief This function is broken :(
  * 
  * @param calendar 
  * @param n 
@@ -201,7 +201,7 @@ void printMetadataCalendarSuite(calendar *calendar[], int n) {
 }
 
 /**
- * @brief This function is broken :(.
+ * @brief This function is broken :(
  * 
  * @param calendar 
  */

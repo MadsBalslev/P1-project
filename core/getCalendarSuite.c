@@ -6,12 +6,14 @@ int getCalendarSuiteGetLocation(int argc, char *argv[], calendar *calendarSuite[
     int validFileLocation = 0;
 
     do {
+        printf("\nk: %d\n", k);
+        printf("i: %d\n", i);
         if (isIcsFile(argv[i])) {
             validFileLocation = getCalendarSuiteGetLocationSingle(argv[i], calendarSuite[k]);
             k++;
         }
         i++;
-    } while (i < argc && !validFileLocation);
+    } while (i < argc /*&& !validFileLocation*/);
 
     return validFileLocation;
 }
