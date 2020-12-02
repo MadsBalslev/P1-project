@@ -1,12 +1,39 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <time.h>
 #include "header.h"
 
+int getCalendarSuiteGetLocation(int argc, char *argv[], calendar *calendarSuite[]) {
+    int i = 1;
+    int k = 0;
+    int validFileLocation = 0;
 
-#define LINE_LEN 512
+    do {
+        if (isIcsFile(argv[i])) {
+            validFileLocation = getCalendarSuiteGetLocationSingle(argv[i], calendarSuite[k]);
+            k++;
+        }
+        i++;
+    } while (i < argc && validFileLocation);
 
+    return validFileLocation;
+}
+
+int getCalendarSuiteGetLocationSingle(char arg[], calendar *calendar) {
+    int validFileLocation = 0;
+
+    calendar->file = fopen(arg, "r");
+    strcpy(calendar->fileName, arg);
+
+    if (calendar->file == NULL) {
+        validFileLocation = 0;
+    } else {
+        validFileLocation = 1;
+    }
+
+    return validFileLocation;
+}
+
+int getCalendarSuiteGetEvents(calendar *calendarSuite[]) {
+    return 1;
+}
 
 /**
  * @brief Takes a char-pointer for the file path to the file, which will be parsed, 

@@ -6,9 +6,10 @@ int main(int argc, char *argv[]) {
     searchParameters searchParametersMain;
     calendar **calendarSuite = (calendar **)malloc((argc - 1) * sizeof(calendar *));
 
+
     ctrlAndDoArgs(argc, argv);
-    getSearchParameters(&searchParametersMain);
     getCalendarSuite(argc, argv, calendarSuite);
+    getSearchParameters(&searchParametersMain);
     foundDatesByLooking = findAvailableDatesByLooking();
 
     if (foundDatesByLooking) {
@@ -16,7 +17,7 @@ int main(int argc, char *argv[]) {
     }
 
     userOutput();
-
+    free(calendarSuite);
     /* This should be abstracted further */
     /* Path relative from parser.o location */
     /* int parse_success = parse_file(filepath);
@@ -77,10 +78,13 @@ void getSearchParameters(searchParameters *a) {
 int getCalendarSuite(int argc, char *argv[], calendar *calendarSuite[]) {
     int returnFlag = 0;
 
-    returnFlag += getCalendarSuiteGetLocation(argc, argv, calendar);
-    returnFlag += getCalendarSuiteGetEvents(calendar);
+    returnFlag = getCalendarSuiteGetLocation(argc, argv, calendarSuite);
+    errorHandling(!returnFlag, "!!!INVALID FILE LOCATION!!!");
 
-    returnFlag == 2 ? returnFlag = 1 :  returnFlag = 0;
+    returnFlag = getCalendarSuiteGetEvents(calendarSuite);
+    errorHandling(!returnFlag, "!!!ERROR IN *.ICS FILE!!!");
+
+    /*(returnFlag == 2) ? (returnFlag = 1) : (returnFlag = 0);*/
 
     return returnFlag;
 }

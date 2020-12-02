@@ -5,6 +5,7 @@
 
 #include "CuTest.h"
 
+#define LINE_LEN 512
 #define DO_NOTHING 0
 #define INIT_TM \
     { 0, 0, 0, 1, 0, 2000, 0, 0, -1 }
@@ -25,7 +26,8 @@ typedef struct eventLink {
 
 typedef struct calendar {
     char *calName;
-    FILE *location;
+    FILE *file;
+    char fileName[100];
     int numOfEvents;
     event *firstEvent;
 } calendar;
@@ -64,6 +66,9 @@ void getLimits(tm *upperLimit, tm *lowerLimmit);
 
 /* getCalendarSuite */
 int getCalendarSuite(int argc, char *argv[], calendar *calendarSuite[]);
+int getCalendarSuiteGetLocation(int argc, char *argv[], calendar *calendarSuite[]);
+int getCalendarSuiteGetLocationSingle(char arg[], calendar *calendar);
+int getCalendarSuiteGetEvents(calendar *calendarSuite[]);
 int parse_file(char *);
 
 int findAvailableDatesByLooking(void);
@@ -80,6 +85,8 @@ int isTimeValid_mday(int tm_year, int tm_mon, int tm_mday);
 int daysInMonth(int tm_mon, int tm_year);
 int daysInMonthFeb(int tm_year);
 int isLeapYear(int tm_year);
+void errorHandling(int statement, char ErrorMessage[]);
+void printMetadataCalendar(calendar *calendar);
 
 /* UNIT TESTING FUNCTIONS
  * -------------------------------------------------------------------------------------------

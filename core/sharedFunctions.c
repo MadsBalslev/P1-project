@@ -178,3 +178,14 @@ int isLeapYear(int tm_year) {
         return 0;
     }
 }
+
+void errorHandling(int statement, char errorMessage[]) {
+    if (statement) {
+        printf("\n%s\n", errorMessage);
+        exit(EXIT_FAILURE);
+    }
+}
+
+void printMetadataCalendar(calendar *calendar) {
+    printf("calendar name: %s", calendar->fileName);
+}
