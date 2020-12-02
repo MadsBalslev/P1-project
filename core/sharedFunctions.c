@@ -4,7 +4,6 @@ extern int DEBUG;
 int isTimeValid(tm time) {
     int returnFlag = 0;
 
-    /*isTimeValid_sec(time.tm_sec);*/
     returnFlag += isTimeValid_min(time.tm_min);
     returnFlag += isTimeValid_hour(time.tm_hour);
     returnFlag += isTimeValid_mon(time.tm_mon);

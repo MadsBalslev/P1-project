@@ -44,7 +44,7 @@ enum argType { invalid,
 
 /* PROGRAM FUNCTIONS
  * ------------------------------------------------------------------------------------------ 
-*/
+ */
 
 /* ctrlAndDoArgs */
 void ctrlAndDoArgs(int argc, char *argv[]);
@@ -95,7 +95,12 @@ void test1_isTimeValid(CuTest *tc);
 void test2_isTimeValid(CuTest *tc);
 void test3_isTimeValid(CuTest *tc);
 void test4_isTimeValid(CuTest *tc);
-void test1_isTimeValid_mday(CuTest *tc);
+void test5_isTimeValid(CuTest *tc);
+void test6_isTimeValid(CuTest *tc);
+void test7_isTimeValid(CuTest *tc);
+void test8_isTimeValid(CuTest *tc);
+void test9_isTimeValid(CuTest *tc);
+void test10_isTimeValid(CuTest *tc);
 CuSuite *suite_sharedFunctions(void);
 
 /* general */

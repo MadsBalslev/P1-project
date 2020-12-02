@@ -114,13 +114,11 @@ void test9_isTimeValid(CuTest *tc) {
 }
 
 void test10_isTimeValid(CuTest *tc) {
-    tm input = { 0, 61, 25, 1, 0, 2000, 0, 0, -1 };
+    tm input = {0, 61, 25, 1, 0, 2000, 0, 0, -1};
     int actual = isTimeValid(input);
     int expected = 0;
     CuAssertIntEquals(tc, expected, actual);
 }
-
-
 
 CuSuite *suite_sharedFunctions(void) {
     CuSuite *suite = CuSuiteNew();
@@ -136,4 +134,3 @@ CuSuite *suite_sharedFunctions(void) {
     SUITE_ADD_TEST(suite, test10_isTimeValid);
     return suite;
 }
-
