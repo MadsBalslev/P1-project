@@ -6,12 +6,13 @@ int main(int argc, char *argv[]) {
     searchParameters searchParametersMain;
     calendar **calendarSuite = (calendar **)malloc((argc - 1) * sizeof(calendar *));
 
-
-    ctrlAndDoArgs(argc, argv);
-    getSearchParameters(&searchParametersMain);
-    getCalendarSuite(argc, argv, calendarSuite);
     
-    /*printMetadataCalendarSuite(calendarSuite, 3);*/
+    ctrlAndDoArgs(argc, argv);
+    getCalendarSuite(argc, argv, calendarSuite);
+    printMetadataCalendarSuite(calendarSuite, 3);
+    getSearchParameters(&searchParametersMain);
+    
+    
     
     foundDatesByLooking = findAvailableDatesByLooking();
 
@@ -20,7 +21,7 @@ int main(int argc, char *argv[]) {
     }
 
     userOutput();
-    free(calendarSuite);
+    /*free(calendarSuite);*/
     /* This should be abstracted further */
     /* Path relative from parser.o location */
     /* int parse_success = parse_file(filepath);
@@ -81,7 +82,7 @@ void getSearchParameters(searchParameters *a) {
 int getCalendarSuite(int argc, char *argv[], calendar *calendarSuite[]) {
     int returnFlag = 0;
 
-    returnFlag = getCalendarSuiteGetLocation(argc, argv, calendarSuite);
+    returnFlag = getCalendarSuiteGetFile(argc, argv, calendarSuite);
     errorHandling(!returnFlag, "!!!INVALID FILE LOCATION!!!");
 
     returnFlag = getCalendarSuiteGetEvents(calendarSuite);

@@ -1,24 +1,23 @@
 #include "header.h"
 
-int getCalendarSuiteGetLocation(int argc, char *argv[], calendar *calendarSuite[]) {
+int getCalendarSuiteGetFile(int argc, char *argv[], calendar *calendarSuite[]) {
     int i = 1;
     int k = 0;
     int validFileLocation = 0;
 
     do {
-        printf("\nk: %d\n", k);
-        printf("i: %d\n", i);
         if (isIcsFile(argv[i])) {
-            validFileLocation = getCalendarSuiteGetLocationSingle(argv[i], calendarSuite[k]);
+            calendarSuite[k] = (calendar *)malloc(sizeof(calendar));
+            validFileLocation = getCalendarSuiteGetFileSingle(argv[i], calendarSuite[k]);
             k++;
         }
         i++;
-    } while (i < argc /*&& !validFileLocation*/);
+    } while (i < argc && validFileLocation);
 
     return validFileLocation;
 }
 
-int getCalendarSuiteGetLocationSingle(char arg[], calendar *calendar) {
+int getCalendarSuiteGetFileSingle(char arg[], calendar *calendar) {
     int validFileLocation = 0;
 
     calendar->file = fopen(arg, "r");
@@ -29,7 +28,6 @@ int getCalendarSuiteGetLocationSingle(char arg[], calendar *calendar) {
     } else {
         validFileLocation = 1;
     }
-
     return validFileLocation;
 }
 

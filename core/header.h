@@ -66,8 +66,8 @@ void getLimits(tm *upperLimit, tm *lowerLimmit);
 
 /* getCalendarSuite */
 int getCalendarSuite(int argc, char *argv[], calendar *calendarSuite[]);
-int getCalendarSuiteGetLocation(int argc, char *argv[], calendar *calendarSuite[]);
-int getCalendarSuiteGetLocationSingle(char arg[], calendar *calendar);
+int getCalendarSuiteGetFile(int argc, char *argv[], calendar *calendarSuite[]);
+int getCalendarSuiteGetFileSingle(char arg[], calendar *calendar);
 int getCalendarSuiteGetEvents(calendar *calendarSuite[]);
 int parse_file(char *);
 
