@@ -20,7 +20,7 @@ typedef struct event {
     tm startTime;
     tm endTime;
     int priority;
-    char *title;
+    char title[100];
 } event;
 
 /**
@@ -103,6 +103,7 @@ int getCalendarSuiteGetFile(int argc, char *argv[], calendar *calendarSuite[]);
 int getCalendarSuiteGetFileSingle(char arg[], calendar *calendar);
 int getCalendarSuiteGetData(calendarSuite *calendarSuite);
 int getCalendarSuiteGetDataSingle(calendar *calendar);
+void addEventCal(event *newEvent, calendar *calendar);
 int parse_file(char *);
 
 int findAvailableDatesByLooking(void);

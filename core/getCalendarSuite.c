@@ -64,6 +64,7 @@ int getCalendarSuiteGetDataSingle(calendar *calendar) {
     event *newEvent;
     int isEvent = 0, numOfEvents = 0;
     char line[LINE_LEN], leftOverGarbage[LINE_LEN];
+
     while (fgets(line, LINE_LEN, calendar->file)) {
         if (strstr(line, "BEGIN:VEVENT")) { /* Find linjer hvor et event starter */
             isEvent = 1;
@@ -72,22 +73,68 @@ int getCalendarSuiteGetDataSingle(calendar *calendar) {
         }
 
         if (isEvent) {
-            sscanf(line, "DTSTART:%4d%2d%2dT%2d%2d%2d%s", &newEvent->startTime.tm_year, &newEvent->startTime.tm_mon, &newEvent->startTime.tm_mday, &newEvent->startTime.tm_hour, &newEvent->startTime.tm_min, &newEvent->startTime.tm_sec, leftOverGarbage);
+            sscanf(line, "SUMMARY: %s", newEvent->title);
+            sscanf(line, "DTSTART:%4d%2d%2dT%2d%2d%2d%s",
+                   &newEvent->startTime.tm_year,
+                   &newEvent->startTime.tm_mon,
+                   &newEvent->startTime.tm_mday,
+                   &newEvent->startTime.tm_hour,
+                   &newEvent->startTime.tm_min,
+                   &newEvent->startTime.tm_sec,
+                   leftOverGarbage);
             sscanf(line, "DESCRIPTION:$P%d$%s", &newEvent->priority, leftOverGarbage);
-            sscanf(line, "DTEND:%4d%2d%2dT%2d%2d%2d%s", &newEvent->endTime.tm_year, &newEvent->endTime.tm_mon, &newEvent->endTime.tm_mday, &newEvent->endTime.tm_hour, &newEvent->endTime.tm_min, &newEvent->endTime.tm_sec, leftOverGarbage);
+            sscanf(line, "DTEND:%4d%2d%2dT%2d%2d%2d%s",
+                   &newEvent->endTime.tm_year,
+                   &newEvent->endTime.tm_mon,
+                   &newEvent->endTime.tm_mday,
+                   &newEvent->endTime.tm_hour,
+                   &newEvent->endTime.tm_min,
+                   &newEvent->endTime.tm_sec,
+                   leftOverGarbage);
         }
 
         if (strstr(line, "END:VEVENT")) {
-            printf("DTSTART: %d/%d/%d Time: %d:%d:%d\n", newEvent->startTime.tm_year, newEvent->startTime.tm_mon, newEvent->startTime.tm_mday, newEvent->startTime.tm_hour, newEvent->startTime.tm_min, newEvent->startTime.tm_sec);
-            printf("DTEND:   %d/%d/%d Time: %d:%d:%d\n", newEvent->endTime.tm_year, newEvent->endTime.tm_mon, newEvent->endTime.tm_mday, newEvent->endTime.tm_hour, newEvent->endTime.tm_min, newEvent->endTime.tm_sec);
+            printf("SUMMARY: %s\n", newEvent->title);
+            printf("DTSTART: %d/%d/%d Time: %d:%d:%d\n",
+                   newEvent->startTime.tm_year,
+                   newEvent->startTime.tm_mon,
+                   newEvent->startTime.tm_mday,
+                   newEvent->startTime.tm_hour,
+                   newEvent->startTime.tm_min,
+                   newEvent->startTime.tm_sec);
+            printf("DTEND:   %d/%d/%d Time: %d:%d:%d\n",
+                   newEvent->endTime.tm_year,
+                   newEvent->endTime.tm_mon,
+                   newEvent->endTime.tm_mday,
+                   newEvent->endTime.tm_hour,
+                   newEvent->endTime.tm_min,
+                   newEvent->endTime.tm_sec);
             printf("Priority: %d\n", newEvent->priority);
+
+            addEventCal(newEvent, calendar);
             isEvent = 0;
             free(newEvent);
         }
     }
-
     return 1;
 }
+
+void addEventCal(event *newEvent, calendar *inputCal) {
+    int i = 0;
+    eventLink *nextEvent = inputCal->firstEvent, *newEventLink;
+
+    newEventLink->currentEvent = newEvent;
+    newEventLink->nextEventLink = NULL;
+
+    while (nextEvent != NULL) {
+        i++;
+        printf("Going to next event %d\n", i);
+        nextEvent = nextEvent->nextEventLink;
+    }
+
+    nextEvent->nextEventLink = newEventLink;
+}
+
 
 /**
  * @brief Takes a char-pointer for the file path to the file, which will be parsed, 
