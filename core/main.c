@@ -6,7 +6,7 @@ int main(int argc, char *argv[]) {
     searchParameters searchParametersMain;
     calendarSuite calendarSuiteMain;
 
-    initCalendarSuite(ctrlAndDoArgs(argc, argv), &calendarSuiteMain);
+    mallocCalendarSuite(ctrlAndDoArgs(argc, argv), &calendarSuiteMain);
     getCalendarSuite(argc, argv, &calendarSuiteMain);
 
     printMetadataCalendarSuite(calendarSuiteMain);
@@ -62,7 +62,15 @@ int ctrlAndDoArgs(int argc, char *argv[]) {
     return icsFilesGot;
 }
 
-void initCalendarSuite(int n, calendarSuite *calendarSuite) {
+/**
+ * @brief Allocates memory for an calendarSuite.calPtrArray of length n.
+ * 
+ * Terminates the program if it fails to allocate memory.
+ * 
+ * @param n length of array
+ * @param calendarSuite output parameter, calendarSuite to be allocated memory
+ */
+void mallocCalendarSuite(int n, calendarSuite *calendarSuite) {
     int i = 0;
 
     calendarSuite->Arraylen = n;
@@ -92,6 +100,13 @@ void getSearchParameters(searchParameters *a) {
     }
 }
 
+/**
+ * @brief !!!THIS FUNCTION IS NOT FINISHED!!!
+ * 
+ * @param argc 
+ * @param argv 
+ * @param calendarSuite 
+ */
 void getCalendarSuite(int argc, char *argv[], calendarSuite *calendarSuite) {
     int returnFlag = 0;
 

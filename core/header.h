@@ -56,7 +56,7 @@ enum argType { invalid,
 
 /* ctrlAndDoArgs */
 int ctrlAndDoArgs(int argc, char *argv[]);
-void initCalendarSuite(int n, calendarSuite *calendarSuite);
+void mallocCalendarSuite(int n, calendarSuite *calendarSuite);
 int doArg(char arg[]);
 int isIcsFile(char arg[]);
 int isOption(char arg[]);
@@ -106,7 +106,10 @@ void test3_doArg(CuTest *tc);
 CuSuite *suite_ctrlAndDoArgs(void);
 
 /* getCalendarSuite */
-void test1_getCalendarSuite(CuTest *tc);
+void test1_getCalendarSuiteGetFile(CuTest *tc);
+void test2_getCalendarSuiteGetFile(CuTest *tc);
+void test1_getCalendarSuiteGetFileSingle(CuTest *tc);
+void test2_getCalendarSuiteGetFileSingle(CuTest *tc);
 CuSuite *suite_getCalendarSuite(void);
 
 /* sharedFunctions.c */
