@@ -67,45 +67,130 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#define-members">Macros</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">getCalendarSuite.c File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;stdio.h&gt;</code><br />
-<code>#include &lt;stdlib.h&gt;</code><br />
-<code>#include &lt;string.h&gt;</code><br />
-<code>#include &lt;time.h&gt;</code><br />
-<code>#include &quot;<a class="el" href="header_8h_source.html">header.h</a>&quot;</code><br />
+<div class="textblock"><code>#include &quot;<a class="el" href="header_8h_source.html">header.h</a>&quot;</code><br />
 </div><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
-Macros</h2></td></tr>
-<tr class="memitem:a45db13d622cb21897aa934e5ad411c83"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="get_calendar_suite_8c.html#a45db13d622cb21897aa934e5ad411c83">LINE_LEN</a>&#160;&#160;&#160;512</td></tr>
-<tr class="separator:a45db13d622cb21897aa934e5ad411c83"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:a8cdfe1ffd4164801c99708ba7075b230"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="get_calendar_suite_8c.html#a8cdfe1ffd4164801c99708ba7075b230">getCalendarSuiteGetFile</a> (int argc, char *argv[], <a class="el" href="structcalendar.html">calendar</a> *calPtrArray[])</td></tr>
+<tr class="memdesc:a8cdfe1ffd4164801c99708ba7075b230"><td class="mdescLeft">&#160;</td><td class="mdescRight">Opens and stores file-pointer / file-path in calPtrArray.  <a href="get_calendar_suite_8c.html#a8cdfe1ffd4164801c99708ba7075b230">More...</a><br /></td></tr>
+<tr class="separator:a8cdfe1ffd4164801c99708ba7075b230"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abde63f2a2f79d3e18a2df3d131a051a0"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="get_calendar_suite_8c.html#abde63f2a2f79d3e18a2df3d131a051a0">getCalendarSuiteGetFileSingle</a> (char arg[], <a class="el" href="structcalendar.html">calendar</a> *<a class="el" href="structcalendar.html">calendar</a>)</td></tr>
+<tr class="memdesc:abde63f2a2f79d3e18a2df3d131a051a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tries to open arg as a file, stores the file-path and file-pointer in calendar.  <a href="get_calendar_suite_8c.html#abde63f2a2f79d3e18a2df3d131a051a0">More...</a><br /></td></tr>
+<tr class="separator:abde63f2a2f79d3e18a2df3d131a051a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aba70efda58f151936a5f59b227396756"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="get_calendar_suite_8c.html#aba70efda58f151936a5f59b227396756">getCalendarSuiteGetEvents</a> (<a class="el" href="structcalendar.html">calendar</a> *<a class="el" href="structcalendar_suite.html">calendarSuite</a>[])</td></tr>
+<tr class="separator:aba70efda58f151936a5f59b227396756"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a32d025c34ccd835053b80e1f6e18d5b1"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="get_calendar_suite_8c.html#a32d025c34ccd835053b80e1f6e18d5b1">parse_file</a> (char *file_path)</td></tr>
 <tr class="memdesc:a32d025c34ccd835053b80e1f6e18d5b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Takes a char-pointer for the file path to the file, which will be parsed, and prints all calendar-events and the number of evetns.  <a href="get_calendar_suite_8c.html#a32d025c34ccd835053b80e1f6e18d5b1">More...</a><br /></td></tr>
 <tr class="separator:a32d025c34ccd835053b80e1f6e18d5b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Macro Definition Documentation</h2>
-<a id="a45db13d622cb21897aa934e5ad411c83"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a45db13d622cb21897aa934e5ad411c83">&#9670;&nbsp;</a></span>LINE_LEN</h2>
+<h2 class="groupheader">Function Documentation</h2>
+<a id="aba70efda58f151936a5f59b227396756"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aba70efda58f151936a5f59b227396756">&#9670;&nbsp;</a></span>getCalendarSuiteGetEvents()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define LINE_LEN&#160;&#160;&#160;512</td>
+          <td class="memname">int getCalendarSuiteGetEvents </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structcalendar.html">calendar</a> *&#160;</td>
+          <td class="paramname"><em>calendarSuite</em>[]</td><td>)</td>
+          <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 </div>
 </div>
-<h2 class="groupheader">Function Documentation</h2>
+<a id="a8cdfe1ffd4164801c99708ba7075b230"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8cdfe1ffd4164801c99708ba7075b230">&#9670;&nbsp;</a></span>getCalendarSuiteGetFile()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int getCalendarSuiteGetFile </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>argc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>argv</em>[], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structcalendar.html">calendar</a> *&#160;</td>
+          <td class="paramname"><em>calPtrArray</em>[]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Opens and stores file-pointer / file-path in calPtrArray. </p>
+<p>Goes through argc number of arguments argv, if the argv is an *.ics file tries to open the file. The file-path, and file-pointer is stored in calPtrArray, for each *.ics file.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">argc</td><td>number of arguments </td></tr>
+    <tr><td class="paramname">argv</td><td>arguments </td></tr>
+    <tr><td class="paramname">calPtrArray</td><td>output parameter </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>1 if all file locations where valid, else 0 </dd></dl>
+
+</div>
+</div>
+<a id="abde63f2a2f79d3e18a2df3d131a051a0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abde63f2a2f79d3e18a2df3d131a051a0">&#9670;&nbsp;</a></span>getCalendarSuiteGetFileSingle()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int getCalendarSuiteGetFileSingle </td>
+          <td>(</td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>arg</em>[], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structcalendar.html">calendar</a> *&#160;</td>
+          <td class="paramname"><em>calendar</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Tries to open arg as a file, stores the file-path and file-pointer in calendar. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">arg</td><td>file-path to an *.ics file </td></tr>
+    <tr><td class="paramname">calendar</td><td>Output parameter, where file-path and file-pointer should be stored </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>1 if file-path was valid, else 0 </dd></dl>
+
+</div>
+</div>
 <a id="a32d025c34ccd835053b80e1f6e18d5b1"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a32d025c34ccd835053b80e1f6e18d5b1">&#9670;&nbsp;</a></span>parse_file()</h2>
 

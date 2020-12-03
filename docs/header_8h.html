@@ -94,9 +94,13 @@ Data Structures</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsearch_parameters.html">searchParameters</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structcalendar_suite.html">calendarSuite</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
+<tr class="memitem:a45db13d622cb21897aa934e5ad411c83"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="header_8h.html#a45db13d622cb21897aa934e5ad411c83">LINE_LEN</a>&#160;&#160;&#160;512</td></tr>
+<tr class="separator:a45db13d622cb21897aa934e5ad411c83"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaa67df6726d3707c387dec5d0355b1ee"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="header_8h.html#aaa67df6726d3707c387dec5d0355b1ee">DO_NOTHING</a>&#160;&#160;&#160;0</td></tr>
 <tr class="separator:aaa67df6726d3707c387dec5d0355b1ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4218250a2c1b842883b09e3e1da48a10"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="header_8h.html#a4218250a2c1b842883b09e3e1da48a10">INIT_TM</a>&#160;&#160;&#160;    { 0, 0, 0, 1, 0, 2000, 0, 0, -1 }</td></tr>
@@ -114,6 +118,8 @@ Typedefs</h2></td></tr>
 <tr class="separator:adf1ec73269e388fe13f7333ba8eefc2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4cbbb270a5c395ee00217bc9144eac76"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structsearch_parameters.html">searchParameters</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="header_8h.html#a4cbbb270a5c395ee00217bc9144eac76">searchParameters</a></td></tr>
 <tr class="separator:a4cbbb270a5c395ee00217bc9144eac76"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5a174bda32343c736f56b0362b520aa4"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structcalendar_suite.html">calendarSuite</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="header_8h.html#a5a174bda32343c736f56b0362b520aa4">calendarSuite</a></td></tr>
+<tr class="separator:a5a174bda32343c736f56b0362b520aa4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
 Enumerations</h2></td></tr>
@@ -125,9 +131,12 @@ Enumerations</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a28a8ef17d59f13819ef76e14165d3de2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="header_8h.html#a28a8ef17d59f13819ef76e14165d3de2">ctrlAndDoArgs</a> (int argc, char *argv[])</td></tr>
-<tr class="memdesc:a28a8ef17d59f13819ef76e14165d3de2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Controls and executes command-line arguments (only executes command-line options). If all arguments are not valid, terminates program with an error message.  <a href="header_8h.html#a28a8ef17d59f13819ef76e14165d3de2">More...</a><br /></td></tr>
-<tr class="separator:a28a8ef17d59f13819ef76e14165d3de2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a04fd014ff170a31fe85c36b3aace5090"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="header_8h.html#a04fd014ff170a31fe85c36b3aace5090">ctrlAndDoArgs</a> (int argc, char *argv[])</td></tr>
+<tr class="memdesc:a04fd014ff170a31fe85c36b3aace5090"><td class="mdescLeft">&#160;</td><td class="mdescRight">Controls and executes command-line arguments (only executes command-line options). If all arguments are not valid, terminates program with an error message.  <a href="header_8h.html#a04fd014ff170a31fe85c36b3aace5090">More...</a><br /></td></tr>
+<tr class="separator:a04fd014ff170a31fe85c36b3aace5090"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3abe2f53fd23c4260ac49df136253456"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="header_8h.html#a3abe2f53fd23c4260ac49df136253456">mallocCalendarSuite</a> (int n, <a class="el" href="structcalendar_suite.html">calendarSuite</a> *<a class="el" href="structcalendar_suite.html">calendarSuite</a>)</td></tr>
+<tr class="memdesc:a3abe2f53fd23c4260ac49df136253456"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allocates memory for an <a class="el" href="structcalendar_suite.html#a67026a93f07ea5de6989fb1d50b490e3">calendarSuite.calPtrArray</a> of length n.  <a href="header_8h.html#a3abe2f53fd23c4260ac49df136253456">More...</a><br /></td></tr>
+<tr class="separator:a3abe2f53fd23c4260ac49df136253456"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a28ec08b9dd742544b63dfd9b5d6e7968"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="header_8h.html#a28ec08b9dd742544b63dfd9b5d6e7968">doArg</a> (char arg[])</td></tr>
 <tr class="memdesc:a28ec08b9dd742544b63dfd9b5d6e7968"><td class="mdescLeft">&#160;</td><td class="mdescRight">Controls what a command line argument is considered, and executes options if command line argument is an option.  <a href="header_8h.html#a28ec08b9dd742544b63dfd9b5d6e7968">More...</a><br /></td></tr>
 <tr class="separator:a28ec08b9dd742544b63dfd9b5d6e7968"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -158,8 +167,17 @@ Functions</h2></td></tr>
 <tr class="memitem:a0a17d3869032b22d49447a210129f67f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="header_8h.html#a0a17d3869032b22d49447a210129f67f">getLimits</a> (<a class="el" href="header_8h.html#a110bf4e13553ccfd709f41c6e92f0ca2">tm</a> *upperLimit, <a class="el" href="header_8h.html#a110bf4e13553ccfd709f41c6e92f0ca2">tm</a> *lowerLimmit)</td></tr>
 <tr class="memdesc:a0a17d3869032b22d49447a210129f67f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the Limits object.  <a href="header_8h.html#a0a17d3869032b22d49447a210129f67f">More...</a><br /></td></tr>
 <tr class="separator:a0a17d3869032b22d49447a210129f67f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af3ec8323bdf589b96fc2e768e0fa1028"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="header_8h.html#af3ec8323bdf589b96fc2e768e0fa1028">getCalendarSuite</a> (void)</td></tr>
-<tr class="separator:af3ec8323bdf589b96fc2e768e0fa1028"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad9ca3cfb0a3cd44f0cd4ca4b6271f637"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="header_8h.html#ad9ca3cfb0a3cd44f0cd4ca4b6271f637">getCalendarSuite</a> (int argc, char *argv[], <a class="el" href="structcalendar_suite.html">calendarSuite</a> *<a class="el" href="structcalendar_suite.html">calendarSuite</a>)</td></tr>
+<tr class="memdesc:ad9ca3cfb0a3cd44f0cd4ca4b6271f637"><td class="mdescLeft">&#160;</td><td class="mdescRight">!!!THIS FUNCTION IS NOT FINISHED!!!  <a href="header_8h.html#ad9ca3cfb0a3cd44f0cd4ca4b6271f637">More...</a><br /></td></tr>
+<tr class="separator:ad9ca3cfb0a3cd44f0cd4ca4b6271f637"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a54cb484f4a13884e2920fb0d4f5ccfbb"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="header_8h.html#a54cb484f4a13884e2920fb0d4f5ccfbb">getCalendarSuiteGetFile</a> (int argc, char *argv[], <a class="el" href="structcalendar.html">calendar</a> *<a class="el" href="structcalendar_suite.html">calendarSuite</a>[])</td></tr>
+<tr class="memdesc:a54cb484f4a13884e2920fb0d4f5ccfbb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Opens and stores file-pointer / file-path in calPtrArray.  <a href="header_8h.html#a54cb484f4a13884e2920fb0d4f5ccfbb">More...</a><br /></td></tr>
+<tr class="separator:a54cb484f4a13884e2920fb0d4f5ccfbb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abde63f2a2f79d3e18a2df3d131a051a0"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="header_8h.html#abde63f2a2f79d3e18a2df3d131a051a0">getCalendarSuiteGetFileSingle</a> (char arg[], <a class="el" href="structcalendar.html">calendar</a> *<a class="el" href="structcalendar.html">calendar</a>)</td></tr>
+<tr class="memdesc:abde63f2a2f79d3e18a2df3d131a051a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tries to open arg as a file, stores the file-path and file-pointer in calendar.  <a href="header_8h.html#abde63f2a2f79d3e18a2df3d131a051a0">More...</a><br /></td></tr>
+<tr class="separator:abde63f2a2f79d3e18a2df3d131a051a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aba70efda58f151936a5f59b227396756"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="header_8h.html#aba70efda58f151936a5f59b227396756">getCalendarSuiteGetEvents</a> (<a class="el" href="structcalendar.html">calendar</a> *<a class="el" href="structcalendar_suite.html">calendarSuite</a>[])</td></tr>
+<tr class="separator:aba70efda58f151936a5f59b227396756"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af39a727930989babdaae5d8fb5543dc2"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="header_8h.html#af39a727930989babdaae5d8fb5543dc2">parse_file</a> (char *)</td></tr>
 <tr class="memdesc:af39a727930989babdaae5d8fb5543dc2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Takes a char-pointer for the file path to the file, which will be parsed, and prints all calendar-events and the number of evetns.  <a href="header_8h.html#af39a727930989babdaae5d8fb5543dc2">More...</a><br /></td></tr>
 <tr class="separator:af39a727930989babdaae5d8fb5543dc2"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -196,6 +214,14 @@ Functions</h2></td></tr>
 <tr class="memitem:a235097de52f9ad65a5d0ac20884a1e66"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="header_8h.html#a235097de52f9ad65a5d0ac20884a1e66">isLeapYear</a> (int tm_year)</td></tr>
 <tr class="memdesc:a235097de52f9ad65a5d0ac20884a1e66"><td class="mdescLeft">&#160;</td><td class="mdescRight">Controls is a year is a leap year.  <a href="header_8h.html#a235097de52f9ad65a5d0ac20884a1e66">More...</a><br /></td></tr>
 <tr class="separator:a235097de52f9ad65a5d0ac20884a1e66"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a27c48aa11bd8e7594a1fb4a64085f293"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="header_8h.html#a27c48aa11bd8e7594a1fb4a64085f293">errorHandling</a> (int statement, char ErrorMessage[])</td></tr>
+<tr class="separator:a27c48aa11bd8e7594a1fb4a64085f293"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a12fd1d5292cd5d102de5806ce508cab5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="header_8h.html#a12fd1d5292cd5d102de5806ce508cab5">printMetadataCalendarSuite</a> (<a class="el" href="structcalendar_suite.html">calendarSuite</a> <a class="el" href="structcalendar_suite.html">calendarSuite</a>)</td></tr>
+<tr class="memdesc:a12fd1d5292cd5d102de5806ce508cab5"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function is broken :(.  <a href="header_8h.html#a12fd1d5292cd5d102de5806ce508cab5">More...</a><br /></td></tr>
+<tr class="separator:a12fd1d5292cd5d102de5806ce508cab5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a752dee3a55606bf69da36570f8891d3a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="header_8h.html#a752dee3a55606bf69da36570f8891d3a">printMetadataCalendar</a> (const <a class="el" href="structcalendar.html">calendar</a> *<a class="el" href="structcalendar.html">calendar</a>)</td></tr>
+<tr class="memdesc:a752dee3a55606bf69da36570f8891d3a"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function is broken :(.  <a href="header_8h.html#a752dee3a55606bf69da36570f8891d3a">More...</a><br /></td></tr>
+<tr class="separator:a752dee3a55606bf69da36570f8891d3a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a848295a863065a9c3d7065cdfe6aec09"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="header_8h.html#a848295a863065a9c3d7065cdfe6aec09">test1_doArg</a> (<a class="el" href="struct_cu_test.html">CuTest</a> *tc)</td></tr>
 <tr class="separator:a848295a863065a9c3d7065cdfe6aec09"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a62c1f528823d7c7a89bf896c8707da83"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="header_8h.html#a62c1f528823d7c7a89bf896c8707da83">test2_doArg</a> (<a class="el" href="struct_cu_test.html">CuTest</a> *tc)</td></tr>
@@ -204,6 +230,16 @@ Functions</h2></td></tr>
 <tr class="separator:a7635fc8b447af5107d3f481ff7eece62"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4e94534aea339bb3ac65d3f50f83cc73"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_cu_suite.html">CuSuite</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="header_8h.html#a4e94534aea339bb3ac65d3f50f83cc73">suite_ctrlAndDoArgs</a> (void)</td></tr>
 <tr class="separator:a4e94534aea339bb3ac65d3f50f83cc73"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac86c40c59098c0779d4533fa33dc6164"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="header_8h.html#ac86c40c59098c0779d4533fa33dc6164">test1_getCalendarSuiteGetFile</a> (<a class="el" href="struct_cu_test.html">CuTest</a> *tc)</td></tr>
+<tr class="separator:ac86c40c59098c0779d4533fa33dc6164"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa78beafeb6b5656e91eb59ce9bc360ac"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="header_8h.html#aa78beafeb6b5656e91eb59ce9bc360ac">test2_getCalendarSuiteGetFile</a> (<a class="el" href="struct_cu_test.html">CuTest</a> *tc)</td></tr>
+<tr class="separator:aa78beafeb6b5656e91eb59ce9bc360ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a321e0c6ac5ae32da737734c7aabbf763"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="header_8h.html#a321e0c6ac5ae32da737734c7aabbf763">test1_getCalendarSuiteGetFileSingle</a> (<a class="el" href="struct_cu_test.html">CuTest</a> *tc)</td></tr>
+<tr class="separator:a321e0c6ac5ae32da737734c7aabbf763"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a89a7173dfdda59cf2960e65e17d53745"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="header_8h.html#a89a7173dfdda59cf2960e65e17d53745">test2_getCalendarSuiteGetFileSingle</a> (<a class="el" href="struct_cu_test.html">CuTest</a> *tc)</td></tr>
+<tr class="separator:a89a7173dfdda59cf2960e65e17d53745"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a28e9600455e6b4f99b8ba1759a28dcd7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_cu_suite.html">CuSuite</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="header_8h.html#a28e9600455e6b4f99b8ba1759a28dcd7">suite_getCalendarSuite</a> (void)</td></tr>
+<tr class="separator:a28e9600455e6b4f99b8ba1759a28dcd7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a71a6d76c0e7c2c77abde23b836022c33"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="header_8h.html#a71a6d76c0e7c2c77abde23b836022c33">test1_isTimeValid</a> (<a class="el" href="struct_cu_test.html">CuTest</a> *tc)</td></tr>
 <tr class="separator:a71a6d76c0e7c2c77abde23b836022c33"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a309f91756f54318826f669b597e1de26"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="header_8h.html#a309f91756f54318826f669b597e1de26">test2_isTimeValid</a> (<a class="el" href="struct_cu_test.html">CuTest</a> *tc)</td></tr>
@@ -258,6 +294,20 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="a45db13d622cb21897aa934e5ad411c83"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a45db13d622cb21897aa934e5ad411c83">&#9670;&nbsp;</a></span>LINE_LEN</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define LINE_LEN&#160;&#160;&#160;512</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <h2 class="groupheader">Typedef Documentation</h2>
 <a id="adf1ec73269e388fe13f7333ba8eefc2c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#adf1ec73269e388fe13f7333ba8eefc2c">&#9670;&nbsp;</a></span>calendar</h2>
@@ -267,6 +317,20 @@ Functions</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">typedef struct <a class="el" href="structcalendar.html">calendar</a> <a class="el" href="structcalendar.html">calendar</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5a174bda32343c736f56b0362b520aa4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5a174bda32343c736f56b0362b520aa4">&#9670;&nbsp;</a></span>calendarSuite</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="structcalendar_suite.html">calendarSuite</a> <a class="el" href="structcalendar_suite.html">calendarSuite</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -350,14 +414,14 @@ Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="a28a8ef17d59f13819ef76e14165d3de2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a28a8ef17d59f13819ef76e14165d3de2">&#9670;&nbsp;</a></span>ctrlAndDoArgs()</h2>
+<a id="a04fd014ff170a31fe85c36b3aace5090"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a04fd014ff170a31fe85c36b3aace5090">&#9670;&nbsp;</a></span>ctrlAndDoArgs()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void ctrlAndDoArgs </td>
+          <td class="memname">int ctrlAndDoArgs </td>
           <td>(</td>
           <td class="paramtype">int&#160;</td>
           <td class="paramname"><em>argc</em>, </td>
@@ -506,6 +570,34 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="a27c48aa11bd8e7594a1fb4a64085f293"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a27c48aa11bd8e7594a1fb4a64085f293">&#9670;&nbsp;</a></span>errorHandling()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void errorHandling </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>statement</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>ErrorMessage</em>[]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a78edd6963bf14869d34ca9caa37c327c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a78edd6963bf14869d34ca9caa37c327c">&#9670;&nbsp;</a></span>exitWithError()</h2>
 
@@ -562,8 +654,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="af3ec8323bdf589b96fc2e768e0fa1028"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af3ec8323bdf589b96fc2e768e0fa1028">&#9670;&nbsp;</a></span>getCalendarSuite()</h2>
+<a id="ad9ca3cfb0a3cd44f0cd4ca4b6271f637"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad9ca3cfb0a3cd44f0cd4ca4b6271f637">&#9670;&nbsp;</a></span>getCalendarSuite()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -571,12 +663,140 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">void getCalendarSuite </td>
           <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>argc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>argv</em>[], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structcalendar_suite.html">calendarSuite</a> *&#160;</td>
+          <td class="paramname"><em>calendarSuite</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>!!!THIS FUNCTION IS NOT FINISHED!!! </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">argc</td><td></td></tr>
+    <tr><td class="paramname">argv</td><td></td></tr>
+    <tr><td class="paramname"><a class="el" href="structcalendar_suite.html">calendarSuite</a></td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aba70efda58f151936a5f59b227396756"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aba70efda58f151936a5f59b227396756">&#9670;&nbsp;</a></span>getCalendarSuiteGetEvents()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int getCalendarSuiteGetEvents </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structcalendar.html">calendar</a> *&#160;</td>
+          <td class="paramname"><em>calendarSuite</em>[]</td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
+
+</div>
+</div>
+<a id="a54cb484f4a13884e2920fb0d4f5ccfbb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a54cb484f4a13884e2920fb0d4f5ccfbb">&#9670;&nbsp;</a></span>getCalendarSuiteGetFile()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int getCalendarSuiteGetFile </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>argc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>argv</em>[], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structcalendar.html">calendar</a> *&#160;</td>
+          <td class="paramname"><em>calPtrArray</em>[]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Opens and stores file-pointer / file-path in calPtrArray. </p>
+<p>Goes through argc number of arguments argv, if the argv is an *.ics file tries to open the file. The file-path, and file-pointer is stored in calPtrArray, for each *.ics file.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">argc</td><td>number of arguments </td></tr>
+    <tr><td class="paramname">argv</td><td>arguments </td></tr>
+    <tr><td class="paramname">calPtrArray</td><td>output parameter </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>1 if all file locations where valid, else 0 </dd></dl>
+
+</div>
+</div>
+<a id="abde63f2a2f79d3e18a2df3d131a051a0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abde63f2a2f79d3e18a2df3d131a051a0">&#9670;&nbsp;</a></span>getCalendarSuiteGetFileSingle()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int getCalendarSuiteGetFileSingle </td>
+          <td>(</td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>arg</em>[], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structcalendar.html">calendar</a> *&#160;</td>
+          <td class="paramname"><em>calendar</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Tries to open arg as a file, stores the file-path and file-pointer in calendar. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">arg</td><td>file-path to an *.ics file </td></tr>
+    <tr><td class="paramname">calendar</td><td>Output parameter, where file-path and file-pointer should be stored </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>1 if file-path was valid, else 0 </dd></dl>
 
 </div>
 </div>
@@ -607,6 +827,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Get the Dates object. </p>
+<p>Først spørger vi om hvilken data arrengementet starter på, og reducere måneden med 1, da tm_mon i tm structen, tæller med måneder siden januar. Derefter ser vi om det er et valid input der er angivet, hvis det er det, så spørger vi om slutningen på arrengementet, og gør de samme ting som nævnt før. Til sidst printer vi inputtet vi har fået, og fastsætter start- og slutdato.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">startDate</td><td></td></tr>
@@ -634,6 +855,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Get the Event Len object. </p>
+<p>Her tjekker vi for længden på arrangementet, og tjekker om det er et positivt og valid input vi får, ellers spørger vi igen.</p>
 <dl class="section return"><dt>Returns</dt><dd>int </dd></dl>
 
 </div>
@@ -665,6 +887,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Get the Limits object. </p>
+<p>Her tjekker vi om hvor meget datoen kan rykkes med, inden for samme dag, så kun timer og minutter. Dette gør vi for både øvre- og nedre grænse. Til sidst printer vi inputtet vi har fået, og fastsætter øvre- og nedre grænse.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">upperLimit</td><td></td></tr>
@@ -692,6 +915,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Get the Priority object. </p>
+<p>Her spørger vi om hvilken prioritet arrangementet skal have, så tjekker vi om der er et valid input, hvis der er det og prioriten er et positivt tal, så retunere vi prioriteten.</p>
 <dl class="section return"><dt>Returns</dt><dd>int </dd></dl>
 
 </div>
@@ -988,6 +1212,44 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="a3abe2f53fd23c4260ac49df136253456"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3abe2f53fd23c4260ac49df136253456">&#9670;&nbsp;</a></span>mallocCalendarSuite()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void mallocCalendarSuite </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>n</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structcalendar_suite.html">calendarSuite</a> *&#160;</td>
+          <td class="paramname"><em>calendarSuite</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Allocates memory for an <a class="el" href="structcalendar_suite.html#a67026a93f07ea5de6989fb1d50b490e3">calendarSuite.calPtrArray</a> of length n. </p>
+<p>Terminates the program if it fails to allocate memory.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">n</td><td>length of array </td></tr>
+    <tr><td class="paramname"><a class="el" href="structcalendar_suite.html">calendarSuite</a></td><td>output parameter, <a class="el" href="structcalendar_suite.html">calendarSuite</a> to be allocated memory </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="af39a727930989babdaae5d8fb5543dc2"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af39a727930989babdaae5d8fb5543dc2">&#9670;&nbsp;</a></span>parse_file()</h2>
 
@@ -1012,6 +1274,59 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>int </dd></dl>
+
+</div>
+</div>
+<a id="a752dee3a55606bf69da36570f8891d3a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a752dee3a55606bf69da36570f8891d3a">&#9670;&nbsp;</a></span>printMetadataCalendar()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void printMetadataCalendar </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structcalendar.html">calendar</a> *&#160;</td>
+          <td class="paramname"><em>calendar</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>This function is broken :(. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">calendar</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a12fd1d5292cd5d102de5806ce508cab5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a12fd1d5292cd5d102de5806ce508cab5">&#9670;&nbsp;</a></span>printMetadataCalendarSuite()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void printMetadataCalendarSuite </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structcalendar_suite.html">calendarSuite</a>&#160;</td>
+          <td class="paramname"><em>calendarSuite</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>This function is broken :(. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">calendar</td><td></td></tr>
+    <tr><td class="paramname">n</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -1041,6 +1356,24 @@ Functions</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="struct_cu_suite.html">CuSuite</a>* suite_ctrlAndDoArgs </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a28e9600455e6b4f99b8ba1759a28dcd7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a28e9600455e6b4f99b8ba1759a28dcd7">&#9670;&nbsp;</a></span>suite_getCalendarSuite()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_cu_suite.html">CuSuite</a>* suite_getCalendarSuite </td>
           <td>(</td>
           <td class="paramtype">void&#160;</td>
           <td class="paramname"></td><td>)</td>
@@ -1105,6 +1438,42 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="ac86c40c59098c0779d4533fa33dc6164"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac86c40c59098c0779d4533fa33dc6164">&#9670;&nbsp;</a></span>test1_getCalendarSuiteGetFile()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void test1_getCalendarSuiteGetFile </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_cu_test.html">CuTest</a> *&#160;</td>
+          <td class="paramname"><em>tc</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a321e0c6ac5ae32da737734c7aabbf763"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a321e0c6ac5ae32da737734c7aabbf763">&#9670;&nbsp;</a></span>test1_getCalendarSuiteGetFileSingle()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void test1_getCalendarSuiteGetFileSingle </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_cu_test.html">CuTest</a> *&#160;</td>
+          <td class="paramname"><em>tc</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a71a6d76c0e7c2c77abde23b836022c33"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a71a6d76c0e7c2c77abde23b836022c33">&#9670;&nbsp;</a></span>test1_isTimeValid()</h2>
 
@@ -1131,6 +1500,42 @@ Functions</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">void test2_doArg </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_cu_test.html">CuTest</a> *&#160;</td>
+          <td class="paramname"><em>tc</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa78beafeb6b5656e91eb59ce9bc360ac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa78beafeb6b5656e91eb59ce9bc360ac">&#9670;&nbsp;</a></span>test2_getCalendarSuiteGetFile()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void test2_getCalendarSuiteGetFile </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_cu_test.html">CuTest</a> *&#160;</td>
+          <td class="paramname"><em>tc</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a89a7173dfdda59cf2960e65e17d53745"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a89a7173dfdda59cf2960e65e17d53745">&#9670;&nbsp;</a></span>test2_getCalendarSuiteGetFileSingle()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void test2_getCalendarSuiteGetFileSingle </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="struct_cu_test.html">CuTest</a> *&#160;</td>
           <td class="paramname"><em>tc</em></td><td>)</td>

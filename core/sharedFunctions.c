@@ -178,3 +178,35 @@ int isLeapYear(int tm_year) {
         return 0;
     }
 }
+
+void errorHandling(int statement, char errorMessage[]) {
+    if (statement) {
+        printf("\n%s\n", errorMessage);
+        exit(EXIT_FAILURE);
+    }
+}
+
+/**
+ * @brief This function is broken :(
+ * 
+ * @param calendar 
+ * @param n 
+ */
+void printMetadataCalendarSuite(calendarSuite calendarSuite) {
+    int i;
+    for (i = 0; i < calendarSuite.Arraylen; i++) {
+        printf("\nCALENDAR %d: \n", i);
+        printMetadataCalendar(calendarSuite.calPtrArray[i]);
+    }
+}
+
+/**
+ * @brief This function is broken :(
+ * 
+ * @param calendar 
+ */
+void printMetadataCalendar(const calendar *calendar) {
+    printf("calName: %s\n", calendar->calName);
+    printf("fileName: %s\n", calendar->fileName);
+    printf("numOfEvents: %d\n\n", calendar->numOfEvents);
+}

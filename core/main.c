@@ -4,18 +4,21 @@ int DEBUG = 0;
 int main(int argc, char *argv[]) {
     int foundDatesByLooking = 0;
     searchParameters searchParametersMain;
+    calendarSuite calendarSuiteMain;
 
-    ctrlAndDoArgs(argc, argv);
+    mallocCalendarSuite(ctrlAndDoArgs(argc, argv), &calendarSuiteMain);
+    getCalendarSuite(argc, argv, &calendarSuiteMain);
+
+    printMetadataCalendarSuite(calendarSuiteMain);
+
     getSearchParameters(&searchParametersMain);
-    /*getCalendarSuite();*/
     foundDatesByLooking = findAvailableDatesByLooking();
-
     if (foundDatesByLooking) {
         findAvailableDatesByRestructuring();
     }
 
     userOutput();
-
+    /*free(calendarSuite);*/
     /* This should be abstracted further */
     /* Path relative from parser.o location */
     /* int parse_success = parse_file(filepath);
@@ -23,7 +26,7 @@ int main(int argc, char *argv[]) {
         printf("Failed to parse file %s", filepath);
         return EXIT_FAILURE;
     } */
-
+    free(calendarSuiteMain.calPtrArray);
     return EXIT_SUCCESS;
 }
 
@@ -37,7 +40,7 @@ int main(int argc, char *argv[]) {
  * @param argc number of arguments
  * @param argv array of argument strings
  */
-void ctrlAndDoArgs(int argc, char *argv[]) {
+int ctrlAndDoArgs(int argc, char *argv[]) {
     int i = 1;
     int argsValid = (argc < 2 ? 0 : 1);
     int icsFilesGot = 0;
@@ -54,6 +57,30 @@ void ctrlAndDoArgs(int argc, char *argv[]) {
 
     if (!argsValid || icsFilesGot < 1) {
         exitWithError();
+    }
+
+    return icsFilesGot;
+}
+
+/**
+ * @brief Allocates memory for an calendarSuite.calPtrArray of length n.
+ * 
+ * Terminates the program if it fails to allocate memory.
+ * 
+ * @param n length of array
+ * @param calendarSuite output parameter, calendarSuite to be allocated memory
+ */
+void mallocCalendarSuite(int n, calendarSuite *calendarSuite) {
+    int i = 0;
+
+    calendarSuite->Arraylen = n;
+    calendarSuite->calPtrArray = (calendar **)malloc((n) * sizeof(calendar *));
+    errorHandling(calendarSuite->calPtrArray == NULL, "!!!FAILED TO ALLOCATE MEMORY STEP 1!!!");
+
+    while (i < n) {
+        calendarSuite->calPtrArray[i] = (calendar *)malloc(sizeof(calendar));
+        errorHandling(calendarSuite->calPtrArray[i] == NULL, "!!!FAILED TO ALLOCATE MEMORY STEP 2!!!");
+        i++;
     }
 }
 
@@ -73,7 +100,21 @@ void getSearchParameters(searchParameters *a) {
     }
 }
 
-void getCalendarSuite(void) {
+/**
+ * @brief !!!THIS FUNCTION IS NOT FINISHED!!!
+ * 
+ * @param argc 
+ * @param argv 
+ * @param calendarSuite 
+ */
+void getCalendarSuite(int argc, char *argv[], calendarSuite *calendarSuite) {
+    int returnFlag = 0;
+
+    returnFlag = getCalendarSuiteGetFile(argc, argv, calendarSuite->calPtrArray);
+    errorHandling(!returnFlag, "!!!INVALID FILE LOCATION!!!");
+
+    returnFlag = getCalendarSuiteGetEvents(calendarSuite->calPtrArray);
+    errorHandling(!returnFlag, "!!!ERROR IN *.ICS FILE!!!");
 }
 
 int findAvailableDatesByLooking(void) {

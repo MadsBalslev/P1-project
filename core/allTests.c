@@ -7,6 +7,7 @@ void runAllTests(void) {
     CuSuite *suite = CuSuiteNew();
 
     CuSuiteAddSuite(suite, suite_ctrlAndDoArgs());
+    CuSuiteAddSuite(suite, suite_getCalendarSuite());
     CuSuiteAddSuite(suite, suite_sharedFunctions());
 
     CuSuiteRun(suite);
@@ -44,6 +45,61 @@ CuSuite *suite_ctrlAndDoArgs(void) {
     SUITE_ADD_TEST(suite, test1_doArg);
     SUITE_ADD_TEST(suite, test2_doArg);
     SUITE_ADD_TEST(suite, test3_doArg);
+    return suite;
+}
+
+/* getCalendarSuite.c
+ * -------------------------------------------------------------------------------------------
+ */
+void test1_getCalendarSuiteGetFile(CuTest *tc) {
+    int actual;
+    int expected;
+    int input1 = 4;
+    char *input2[] = {"a", ".\\sample-ics-files\\cal1.ics", ".\\sample-ics-files\\cal2.ics", ".\\sample-ics-files\\cal3.ics"}; 
+    calendarSuite input3;
+    mallocCalendarSuite(3, &input3);
+    actual = getCalendarSuiteGetFile(input1, input2, input3.calPtrArray);
+    expected = 1;
+    free(input3.calPtrArray);
+    CuAssertIntEquals(tc, expected, actual);
+}
+
+void test2_getCalendarSuiteGetFile(CuTest *tc) {
+    int actual;
+    int expected;
+    int input1 = 4;
+    char *input2[] = {"a", ".\\sample-ics-files\\notAValidFileLocation.ics", ".\\sample-ics-files\\cal2.ics", ".\\sample-ics-files\\cal3.ics"}; 
+    calendarSuite input3;
+    mallocCalendarSuite(3, &input3);
+    actual = getCalendarSuiteGetFile(input1, input2, input3.calPtrArray);
+    expected = 0;
+    free(input3.calPtrArray);
+    CuAssertIntEquals(tc, expected, actual);
+}
+
+
+void test1_getCalendarSuiteGetFileSingle(CuTest *tc) {
+    char input1[] = ".\\sample-ics-files\\cal1.ics";
+    calendar input2;
+    int actual = getCalendarSuiteGetFileSingle(input1, &input2);
+    int expected = 1;
+    CuAssertIntEquals(tc, expected, actual);
+}
+
+void test2_getCalendarSuiteGetFileSingle(CuTest *tc) {
+    char input1[] = ".\\sample-ics-files\\notAValidFileLocation.ics";
+    calendar input2;
+    int actual = getCalendarSuiteGetFileSingle(input1, &input2);
+    int expected = 0;
+    CuAssertIntEquals(tc, expected, actual);
+}
+
+CuSuite *suite_getCalendarSuite(void) {
+    CuSuite *suite = CuSuiteNew();
+    SUITE_ADD_TEST(suite, test1_getCalendarSuiteGetFile);
+    SUITE_ADD_TEST(suite, test2_getCalendarSuiteGetFile);
+    SUITE_ADD_TEST(suite, test1_getCalendarSuiteGetFileSingle);
+    SUITE_ADD_TEST(suite, test2_getCalendarSuiteGetFileSingle);
     return suite;
 }
 
