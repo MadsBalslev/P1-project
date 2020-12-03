@@ -11,16 +11,13 @@
  * @param calPtrArray output parameter
  * @return 1 if all file locations where valid, else 0 
  */
-int getCalendarSuiteGetFile(int argc, char *argv[], calendar *calPtrArray[])
-{
+int getCalendarSuiteGetFile(int argc, char *argv[], calendar *calPtrArray[]) {
     int i = 1;
     int k = 0;
     int validFileLocation = 0;
 
-    do
-    {
-        if (isIcsFile(argv[i]))
-        {
+    do {
+        if (isIcsFile(argv[i])) {
             validFileLocation = getCalendarSuiteGetFileSingle(argv[i], calPtrArray[k]);
             k++;
         }
@@ -37,31 +34,25 @@ int getCalendarSuiteGetFile(int argc, char *argv[], calendar *calPtrArray[])
  * @param calendar Output parameter, where file-path and file-pointer should be stored
  * @return 1 if file-path was valid, else 0 
  */
-int getCalendarSuiteGetFileSingle(char arg[], calendar *calendar)
-{
+int getCalendarSuiteGetFileSingle(char arg[], calendar *calendar) {
     int validFileLocation = 0;
 
     calendar->file = fopen(arg, "r");
     strcpy(calendar->fileName, arg);
 
-    if (calendar->file == NULL)
-    {
+    if (calendar->file == NULL) {
         validFileLocation = 0;
-    }
-    else
-    {
+    } else {
         validFileLocation = 1;
     }
     return validFileLocation;
 }
 
-int getCalendarSuiteGetData(calendarSuite *calendarSuite)
-{
+int getCalendarSuiteGetData(calendarSuite *calendarSuite) {
     int i = 0;
     int errorFlag = 1;
 
-    while (i < calendarSuite->Arraylen && errorFlag)
-    {
+    while (i < calendarSuite->Arraylen && errorFlag) {
         errorFlag = getCalendarSuiteGetDataSingle(calendarSuite->calPtrArray[i]);
         i++;
     }
@@ -69,30 +60,26 @@ int getCalendarSuiteGetData(calendarSuite *calendarSuite)
     return errorFlag;
 }
 
-int getCalendarSuiteGetDataSingle(calendar *calendar)
-{
+int getCalendarSuiteGetDataSingle(calendar *calendar) {
     event *newEvent;
     int isEvent = 0, numOfEvents = 0;
     char line[LINE_LEN], leftOverGarbage[LINE_LEN];
-    while (fgets(line, LINE_LEN, calendar->file))
-    {
-        if (strstr(line, "BEGIN:VEVENT"))
-        { /* Find linjer hvor et event starter */
+    while (fgets(line, LINE_LEN, calendar->file)) {
+        if (strstr(line, "BEGIN:VEVENT")) { /* Find linjer hvor et event starter */
             isEvent = 1;
             numOfEvents++;
-            newEvent = (event*) malloc(sizeof(event));
+            newEvent = (event *)malloc(sizeof(event));
         }
 
-        if (isEvent)
-        {
-            sscanf(line,"DTSTART:%4d%2d%2dT%2d%2d%2d%s", &newEvent->startTime.tm_year,&newEvent->startTime.tm_mon,&newEvent->startTime.tm_mday,&newEvent->startTime.tm_hour,&newEvent->startTime.tm_min,&newEvent->startTime.tm_sec, leftOverGarbage);
-            sscanf(line,"DTEND:%4d%2d%2dT%2d%2d%2d%s", &newEvent->endTime.tm_year,&newEvent->endTime.tm_mon,&newEvent->endTime.tm_mday,&newEvent->endTime.tm_hour,&newEvent->endTime.tm_min,&newEvent->endTime.tm_sec, leftOverGarbage);
+        if (isEvent) {
+            sscanf(line, "DTSTART:%4d%2d%2dT%2d%2d%2d%s", &newEvent->startTime.tm_year, &newEvent->startTime.tm_mon, &newEvent->startTime.tm_mday, &newEvent->startTime.tm_hour, &newEvent->startTime.tm_min, &newEvent->startTime.tm_sec, leftOverGarbage);
+            sscanf(line, "DESCRIPTION:%s$P%d$%s", leftOverGarbage, &newEvent->priority, leftOverGarbage);
+            sscanf(line, "DTEND:%4d%2d%2dT%2d%2d%2d%s", &newEvent->endTime.tm_year, &newEvent->endTime.tm_mon, &newEvent->endTime.tm_mday, &newEvent->endTime.tm_hour, &newEvent->endTime.tm_min, &newEvent->endTime.tm_sec, leftOverGarbage);
         }
 
-        if (strstr(line, "END:VEVENT"))
-        {
-            printf("DTSTART: %d/%d/%d Time: %d:%d:%d\n", newEvent->startTime.tm_year,newEvent->startTime.tm_mon,newEvent->startTime.tm_mday,newEvent->startTime.tm_hour,newEvent->startTime.tm_min,newEvent->startTime.tm_sec);
-            printf("DTEND:   %d/%d/%d Time: %d:%d:%d\n", newEvent->endTime.tm_year,newEvent->endTime.tm_mon,newEvent->endTime.tm_mday,newEvent->endTime.tm_hour,newEvent->endTime.tm_min,newEvent->endTime.tm_sec);
+        if (strstr(line, "END:VEVENT")) {
+            printf("DTSTART: %d/%d/%d Time: %d:%d:%d\n", newEvent->startTime.tm_year, newEvent->startTime.tm_mon, newEvent->startTime.tm_mday, newEvent->startTime.tm_hour, newEvent->startTime.tm_min, newEvent->startTime.tm_sec);
+            printf("DTEND:   %d/%d/%d Time: %d:%d:%d\n", newEvent->endTime.tm_year, newEvent->endTime.tm_mon, newEvent->endTime.tm_mday, newEvent->endTime.tm_hour, newEvent->endTime.tm_min, newEvent->endTime.tm_sec);
             isEvent = 0;
             free(newEvent);
         }
@@ -108,8 +95,7 @@ int getCalendarSuiteGetDataSingle(calendar *calendar)
  * @param file_path 
  * @return int 
  */
-int parse_file(char *file_path)
-{
+int parse_file(char *file_path) {
     FILE *fp; /* Declare en pointer til en FILE */
     char input[LINE_LEN];
     int line = 0, isEvent, numOfEvents = 0;
@@ -118,23 +104,19 @@ int parse_file(char *file_path)
     if (fp == NULL)             /* Hvis filen ikke findes / eller ikke kan åbnes */
         return EXIT_FAILURE;
 
-    while (fgets(input, LINE_LEN, fp))
-    {
+    while (fgets(input, LINE_LEN, fp)) {
         line++;
 
-        if (strstr(input, "BEGIN:VEVENT"))
-        { /* Find linjer hvor et event starter */
+        if (strstr(input, "BEGIN:VEVENT")) { /* Find linjer hvor et event starter */
             isEvent = 1;
             numOfEvents++;
         }
 
-        if (isEvent)
-        {
+        if (isEvent) {
             printf("%d: %s", line, input);
         }
 
-        if (strstr(input, "END:VEVENT"))
-        {
+        if (strstr(input, "END:VEVENT")) {
             isEvent = 0;
         }
     }
