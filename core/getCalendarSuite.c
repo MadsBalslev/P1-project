@@ -73,13 +73,14 @@ int getCalendarSuiteGetDataSingle(calendar *calendar) {
 
         if (isEvent) {
             sscanf(line, "DTSTART:%4d%2d%2dT%2d%2d%2d%s", &newEvent->startTime.tm_year, &newEvent->startTime.tm_mon, &newEvent->startTime.tm_mday, &newEvent->startTime.tm_hour, &newEvent->startTime.tm_min, &newEvent->startTime.tm_sec, leftOverGarbage);
-            sscanf(line, "DESCRIPTION:%s$P%d$%s", leftOverGarbage, &newEvent->priority, leftOverGarbage);
+            sscanf(line, "DESCRIPTION:$P%d$%s", &newEvent->priority, leftOverGarbage);
             sscanf(line, "DTEND:%4d%2d%2dT%2d%2d%2d%s", &newEvent->endTime.tm_year, &newEvent->endTime.tm_mon, &newEvent->endTime.tm_mday, &newEvent->endTime.tm_hour, &newEvent->endTime.tm_min, &newEvent->endTime.tm_sec, leftOverGarbage);
         }
 
         if (strstr(line, "END:VEVENT")) {
             printf("DTSTART: %d/%d/%d Time: %d:%d:%d\n", newEvent->startTime.tm_year, newEvent->startTime.tm_mon, newEvent->startTime.tm_mday, newEvent->startTime.tm_hour, newEvent->startTime.tm_min, newEvent->startTime.tm_sec);
             printf("DTEND:   %d/%d/%d Time: %d:%d:%d\n", newEvent->endTime.tm_year, newEvent->endTime.tm_mon, newEvent->endTime.tm_mday, newEvent->endTime.tm_hour, newEvent->endTime.tm_min, newEvent->endTime.tm_sec);
+            printf("Priority: %d\n", newEvent->priority);
             isEvent = 0;
             free(newEvent);
         }
