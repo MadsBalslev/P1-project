@@ -113,7 +113,7 @@ void getCalendarSuite(int argc, char *argv[], calendarSuite *calendarSuite) {
     returnFlag = getCalendarSuiteGetFile(argc, argv, calendarSuite->calPtrArray);
     errorHandling(!returnFlag, "!!!INVALID FILE LOCATION!!!");
 
-    returnFlag = getCalendarSuiteGetEvents(calendarSuite->calPtrArray);
+    returnFlag = getCalendarSuiteGetData(calendarSuite);
     errorHandling(!returnFlag, "!!!ERROR IN *.ICS FILE!!!");
 }
 

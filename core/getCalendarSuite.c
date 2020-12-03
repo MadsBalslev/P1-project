@@ -48,9 +48,22 @@ int getCalendarSuiteGetFileSingle(char arg[], calendar *calendar) {
     return validFileLocation;
 }
 
-int getCalendarSuiteGetEvents(calendar *calendarSuite[]) {
-    return 1;
+int getCalendarSuiteGetData(calendarSuite *calendarSuite) {
+    int i = 0;
+    int errorFlag = 1;
+
+    while (i < calendarSuite->Arraylen && errorFlag) {
+        errorFlag = getCalendarSuiteGetDataSingle(calendarSuite->calPtrArray[i]);
+        i++;
+    }
+
+    return errorFlag;
 }
+
+int getCalendarSuiteGetDataSingle(calendar *calendar) {
+
+    return 1;
+} 
 
 /**
  * @brief Takes a char-pointer for the file path to the file, which will be parsed, 

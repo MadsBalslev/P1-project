@@ -101,7 +101,8 @@ void getLimits(tm *upperLimit, tm *lowerLimmit);
 void getCalendarSuite(int argc, char *argv[], calendarSuite *calendarSuite);
 int getCalendarSuiteGetFile(int argc, char *argv[], calendar *calendarSuite[]);
 int getCalendarSuiteGetFileSingle(char arg[], calendar *calendar);
-int getCalendarSuiteGetEvents(calendar *calendarSuite[]);
+int getCalendarSuiteGetData(calendarSuite *calendarSuite);
+int getCalendarSuiteGetDataSingle(calendar *calendar);
 int parse_file(char *);
 
 int findAvailableDatesByLooking(void);
