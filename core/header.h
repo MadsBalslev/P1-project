@@ -12,6 +12,10 @@
 
 typedef struct tm tm;
 
+/**
+ * @brief  Struct for holding event information.  
+ * 
+ */
 typedef struct event {
     tm startTime;
     tm endTime;
@@ -19,19 +23,36 @@ typedef struct event {
     char *title;
 } event;
 
+/**
+ * @brief Struct for a linked list of event structs.
+ * 
+ */
 typedef struct eventLink {
     event *currentEvent;
     struct eventLink *nextEventLink;
 } eventLink;
 
+/**
+ * @brief Head of linked list of eventLinks. 
+ *
+ * contains metadata about the events in the eventLinks, a linked list like this is called a
+ * calendar-list. Events form the same calendar are supposed to be stored in the same
+ * calendar-list
+ *
+ */
 typedef struct calendar {
     char *calName;
     char fileName[100];
     int numOfEvents;
     FILE *file;
-    event *firstEvent;
+    eventLink *firstEvent;
 } calendar;
 
+/**
+ * @brief Struct for search parameters used to scope the search of available dates in
+ * calendar-lists.
+ *
+ */
 typedef struct searchParameters {
     int priority;
     int eventLen; /* in minutes */
@@ -41,6 +62,12 @@ typedef struct searchParameters {
     tm lowerLimit;
 } searchParameters;
 
+/**
+ * @brief struct for containing an array of pointer to calendar-lists. 
+ * 
+ * ArrayLen is the length of calPtrArray
+ *
+ */
 typedef struct calendarSuite {
     calendar **calPtrArray;
     int Arraylen;
