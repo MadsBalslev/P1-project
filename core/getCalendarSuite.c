@@ -1,11 +1,56 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <time.h>
 #include "header.h"
 
+/**
+ * @brief Opens and stores file-pointer / file-path in calPtrArray.
+ * 
+ * Goes through argc number of arguments argv, if the argv is an *.ics file tries to open the
+ * file. The file-path, and file-pointer is stored in calPtrArray, for each *.ics file.
+ * 
+ * @param argc number of arguments
+ * @param argv arguments
+ * @param calPtrArray output parameter
+ * @return 1 if all file locations where valid, else 0 
+ */
+int getCalendarSuiteGetFile(int argc, char *argv[], calendar *calPtrArray[]) {
+    int i = 1;
+    int k = 0;
+    int validFileLocation = 0;
 
-#define LINE_LEN 512
+    do {
+        if (isIcsFile(argv[i])) {
+            validFileLocation = getCalendarSuiteGetFileSingle(argv[i], calPtrArray[k]);
+            k++;
+        }
+        i++;
+    } while (i < argc && validFileLocation);
+
+    return validFileLocation;
+}
+
+/**
+ * @brief Tries to open arg as a file, stores the file-path and file-pointer in calendar.
+ * 
+ * @param arg file-path to an *.ics file
+ * @param calendar Output parameter, where file-path and file-pointer should be stored
+ * @return 1 if file-path was valid, else 0 
+ */
+int getCalendarSuiteGetFileSingle(char arg[], calendar *calendar) {
+    int validFileLocation = 0;
+
+    calendar->file = fopen(arg, "r");
+    strcpy(calendar->fileName, arg);
+
+    if (calendar->file == NULL) {
+        validFileLocation = 0;
+    } else {
+        validFileLocation = 1;
+    }
+    return validFileLocation;
+}
+
+int getCalendarSuiteGetEvents(calendar *calendarSuite[]) {
+    return 1;
+}
 
 /**
  * @brief Takes a char-pointer for the file path to the file, which will be parsed, 
