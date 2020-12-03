@@ -69,6 +69,9 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
+<p>Head of linked list of eventLinks.  
+ <a href="structcalendar.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="header_8h_source.html">header.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
@@ -81,10 +84,13 @@ Data Fields</h2></td></tr>
 <tr class="separator:aae8a2425f5f8178962fbe130bb8d0330"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a702945180aa732857b380a007a7e2a21"><td class="memItemLeft" align="right" valign="top">FILE *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structcalendar.html#a702945180aa732857b380a007a7e2a21">file</a></td></tr>
 <tr class="separator:a702945180aa732857b380a007a7e2a21"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7ac3a73a063bb3d94703ce202721af96"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structevent.html">event</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structcalendar.html#a7ac3a73a063bb3d94703ce202721af96">firstEvent</a></td></tr>
-<tr class="separator:a7ac3a73a063bb3d94703ce202721af96"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad0a8056e0c26ee7b8cbeb70e8f2751f8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structevent_link.html">eventLink</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structcalendar.html#ad0a8056e0c26ee7b8cbeb70e8f2751f8">firstEvent</a></td></tr>
+<tr class="separator:ad0a8056e0c26ee7b8cbeb70e8f2751f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Field Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Head of linked list of eventLinks. </p>
+<p>contains metadata about the events in the eventLinks, a linked list like this is called a calendar-list. Events form the same calendar are supposed to be stored in the same calendar-list </p>
+</div><h2 class="groupheader">Field Documentation</h2>
 <a id="aaad2118ab23276c30287a41ef1c8e7a6"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aaad2118ab23276c30287a41ef1c8e7a6">&#9670;&nbsp;</a></span>calName</h2>
 
@@ -127,14 +133,14 @@ Data Fields</h2></td></tr>
 
 </div>
 </div>
-<a id="a7ac3a73a063bb3d94703ce202721af96"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7ac3a73a063bb3d94703ce202721af96">&#9670;&nbsp;</a></span>firstEvent</h2>
+<a id="ad0a8056e0c26ee7b8cbeb70e8f2751f8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad0a8056e0c26ee7b8cbeb70e8f2751f8">&#9670;&nbsp;</a></span>firstEvent</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structevent.html">event</a>* firstEvent</td>
+          <td class="memname"><a class="el" href="structevent_link.html">eventLink</a>* firstEvent</td>
         </tr>
       </table>
 </div><div class="memdoc">
