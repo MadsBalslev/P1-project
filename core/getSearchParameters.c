@@ -4,6 +4,8 @@ extern int DEBUG;
 /**
  * @brief Get the Priority object
  * 
+ * Her spørger vi om hvilken prioritet arrangementet skal have, så tjekker vi om der er et valid input, hvis der er det og prioriten er et positivt tal, så retunere vi prioriteten.
+ * 
  * @return int 
  */
 int getPriority(void) {
@@ -19,6 +21,8 @@ int getPriority(void) {
 
 /**
  * @brief Get the Event Len object
+ * 
+ * Her tjekker vi for længden på arrangementet, og tjekker om det er et positivt og valid input vi får, ellers spørger vi igen.
  * 
  * @return int 
  */
@@ -36,6 +40,10 @@ int getEventLen(void) {
 
 /**
  * @brief Get the Dates object
+ * 
+ * Først spørger vi om hvilken data arrengementet starter på, og reducere måneden med 1, da tm_mon i tm structen, tæller med måneder siden januar.
+ * Derefter ser vi om det er et valid input der er angivet, hvis det er det, så spørger vi om slutningen på arrengementet, og gør de samme ting som nævnt før.
+ * Til sidst printer vi inputtet vi har fået, og fastsætter start- og slutdato.
  * 
  * @param startDate 
  * @param endDate 
@@ -72,6 +80,10 @@ void getDates(tm *startDate, tm *endDate) {
 
 /**
  * @brief Get the Limits object
+ * 
+ * Her tjekker vi om hvor meget datoen kan rykkes med, inden for samme dag, så kun timer og minutter.
+ * Dette gør vi for både øvre- og nedre grænse.
+ * Til sidst printer vi inputtet vi har fået, og fastsætter øvre- og nedre grænse.
  * 
  * @param upperLimit 
  * @param lowerLimmit 
