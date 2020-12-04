@@ -20,7 +20,7 @@ typedef struct event {
     tm startTime;
     tm endTime;
     int priority;
-    char title[100];
+    char title[LINE_LEN];
 } event;
 
 /**
@@ -41,8 +41,8 @@ typedef struct eventLink {
  *
  */
 typedef struct calendar {
-    char *calName;
-    char fileName[100];
+    char calName[LINE_LEN];
+    char fileName[LINE_LEN];
     int numOfEvents;
     FILE *file;
     eventLink *firstEvent;
