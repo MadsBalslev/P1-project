@@ -95,7 +95,7 @@ int getCalendarSuiteGetDataSingle(calendar *calendar) {
         }
 
         if (strstr(line, "END:VEVENT")) {
-            printf("SUMMARY: %s\n", newEvent->title);
+            printf("\n\nSUMMARY: %s\n", newEvent->title);
             printf("DTSTART: %d/%d/%d Time: %d:%d:%d\n",
                    newEvent->startTime.tm_year,
                    newEvent->startTime.tm_mon,
@@ -112,7 +112,7 @@ int getCalendarSuiteGetDataSingle(calendar *calendar) {
                    newEvent->endTime.tm_sec);
             printf("Priority: %d\n", newEvent->priority);
 
-            addEventCalAlt(newEvent, calendar);
+            addEventCal(newEvent, calendar);
             isEvent = 0;
             free(newEvent);
         }
@@ -120,100 +120,43 @@ int getCalendarSuiteGetDataSingle(calendar *calendar) {
     return 1;
 }
 
-/* TODO: This shit doesn't work */
-/*void addEventCal(event *newEvent, calendar *inputCal) {
-    int eventNum = 0;
-    eventLink *nextEvent, *newEventLink;*/
-
-/* inputcal.firstevent = newEventLink */
-
-/*newEventLink->currentEvent = newEvent;
-    newEventLink->nextEventLink = NULL;
-
-    while (nextEvent->nextEventLink != NULL) {
-        nextEvent = nextEvent->nextEventLink;
-
-        eventNum++;
-        printf("Going to next event %d\n", eventNum);
-    }*/
-
-/*nextEvent->nextEventLink = newEventLink;
-
-
-    Algorithm to insert node at the end of a Singly Linked List
-    Begin:
-        createSinglyLinkedList (head)
-        alloc (newNode)
-        If (newNode == NULL) then
-            write ('Unable to allocate memory')
-        End if
-        Else then
-            read (data)
-            newNode.data ← data
-            newNode.next ← NULL
-            temp ← head
-            While (temp.next != NULL) do
-                temp ← temp.next
-            End while
-            temp.next ← newNode
-        End else
-    End
-}*/
-
-void addEventCalAlt(event *newEvent, calendar *inputCal) {
-    eventLink *newLink;
-
-    newLink = (eventLink *)malloc(sizeof(eventLink));
-    newLink->currentEvent = newEvent;
-    newLink->nextEventLink = (eventLink *)malloc(sizeof(eventLink));
-    newLink->nextEventLink = NULL;
+/**
+ * @brief 
+ * 
+ * @param newEvent The new event to be added at the end of the linked list
+ * @param inputCal The calendar from which the event comes
+ */
+void addEventCal(event *newEvent, calendar *inputCal) {
+    eventLink *cursor, *newLink;
+    newLink = mallocEventLink(newEvent, NULL);
 
     if (inputCal->firstEvent == NULL) {
         inputCal->firstEvent = newLink;
     } else {
-        newLink->nextEventLink = inputCal->firstEvent;
+        cursor = inputCal->firstEvent;
 
-        while (newLink->nextEventLink != NULL) {
-            printf("%d\n", newLink->nextEventLink);
-            newLink = newLink->nextEventLink;
+        while (cursor->nextEventLink != NULL) {
+            cursor = cursor->nextEventLink;
         }
+
+        cursor->nextEventLink = newLink;
     }
+}
 
-    /*eventLink *temp, *pos;
+/**
+ * @brief 
+ * 
+ * @param event 
+ * @param pointer 
+ * @return eventLink* 
+ */
+eventLink *mallocEventLink(event *event, eventLink *pointer) {
+    eventLink *newLink;
 
-    pos = (eventLink *)malloc(sizeof(eventLink));
+    newLink = (eventLink *)malloc(sizeof(eventLink)); /* Memory leak */
+    newLink->currentEvent = event;
+    newLink->nextEventLink = (eventLink *)malloc(sizeof(eventLink));
+    newLink->nextEventLink = pointer;
 
-    temp = (eventLink *)malloc(sizeof(eventLink));
-    temp->currentEvent = (event *)malloc(sizeof(event));
-    temp->nextEventLink = (eventLink *)malloc(sizeof(eventLink));
-
-    temp->currentEvent = newEvent;
-    temp->nextEventLink = NULL;
-
-    if (inputCal->firstEvent == NULL) {
-        inputCal->firstEvent = temp;
-        printf("Kalenderen er ikke længere tom, som mit liv <3\n");
-    } else {
-        pos = inputCal->firstEvent;
-
-        while (pos != NULL) {
-            pos = pos->nextEventLink;
-        }
-
-        pos->nextEventLink = (eventLink *)malloc(sizeof(eventLink));
-
-        pos->nextEventLink = temp;*/
-
-    /*
-        temp = inputCal->firstEvent;
-        printf("jeg kom her\n");
-
-        
-        
-        
-        while (temp->nextEventLink != NULL) {
-            temp = temp->nextEventLink;
-            printf("Going to next event\n");
-        }
-        */
+    return newLink;
 }
