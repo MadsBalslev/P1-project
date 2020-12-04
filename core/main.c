@@ -42,12 +42,14 @@ int main(int argc, char *argv[]) {
  */
 int ctrlAndDoArgs(int argc, char *argv[]) {
     int i = 1;
-    int argsValid = (argc < 2 ? 0 : 1);
+    int argsValid = argc >= 2;
     int icsFilesGot = 0;
 
     while (argsValid && i < argc) {
         argsValid = doArg(argv[i]);
-        argsValid == icsFile ? icsFilesGot++ : DO_NOTHING;
+        if (argsValid == icsFile) {
+            icsFilesGot++;
+        }
         i++;
     }
 
