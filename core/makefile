@@ -1,5 +1,5 @@
 CC=gcc
-CFLAGS=-ansi -Wall -pedantic -g
+CFLAGS= -Wall -pedantic -g -ansi
 
 DEPS = header.h CuTest.h
 OBJ = ctrlAndDoArgs.c CuTest.c allTests.c getSearchParameters.c sharedFunctions.c getCalendarSuite.c #findAvailableDatesByLooking.c findAvailableDatesByRestructuring.c userOutput.c 

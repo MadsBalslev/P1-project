@@ -62,8 +62,10 @@ int getCalendarSuiteGetData(calendarSuite *calendarSuite) {
 
 int getCalendarSuiteGetDataSingle(calendar *calendar) {
     event *newEvent;
+
+    
     int isEvent = 0, numOfEvents = 0;
-    char line[LINE_LEN], leftOverGarbage[LINE_LEN], description[LINE_LEN];
+    char line[LINE_LEN], leftOverGarbage[LINE_LEN];
 
     while (fgets(line, LINE_LEN, calendar->file)) {
         if (strstr(line, "BEGIN:VEVENT")) { /* Find linjer hvor et event starter */
@@ -73,7 +75,7 @@ int getCalendarSuiteGetDataSingle(calendar *calendar) {
         }
 
         if (isEvent) {
-            sscanf(line, "SUMMARY: %s", newEvent->title);
+            sscanf(line, "SUMMARY: %[0-9a-zA-Z ]", newEvent->title);
             sscanf(line, "DTSTART:%4d%2d%2dT%2d%2d%2d%s",
                    &newEvent->startTime.tm_year,
                    &newEvent->startTime.tm_mon,
@@ -82,7 +84,8 @@ int getCalendarSuiteGetDataSingle(calendar *calendar) {
                    &newEvent->startTime.tm_min,
                    &newEvent->startTime.tm_sec,
                    leftOverGarbage);
-            sscanf(line, "DESCRIPTION:%s", description);
+                   /*Reads the priority if there is a whitespace before the $ in the description*/
+            sscanf(line, "DESCRIPTION:%[0-9a-zA-Z ]$P%d$", leftOverGarbage, &newEvent->priority);
 
             sscanf(line, "DTEND:%4d%2d%2dT%2d%2d%2d%s",
                    &newEvent->endTime.tm_year,
@@ -95,7 +98,7 @@ int getCalendarSuiteGetDataSingle(calendar *calendar) {
         }
 
         if (strstr(line, "END:VEVENT")) {
-            printf("\n\nSUMMARY: %s\n", newEvent->title);
+            /*printf("\n\nSUMMARY: %s\n", newEvent->title);
             printf("DTSTART: %d/%d/%d Time: %d:%d:%d\n",
                    newEvent->startTime.tm_year,
                    newEvent->startTime.tm_mon,
@@ -110,7 +113,7 @@ int getCalendarSuiteGetDataSingle(calendar *calendar) {
                    newEvent->endTime.tm_hour,
                    newEvent->endTime.tm_min,
                    newEvent->endTime.tm_sec);
-            printf("Priority: %d\n", newEvent->priority);
+            printf("Priority: %d\n", newEvent->priority);*/
 
             addEventCal(newEvent, calendar);
             isEvent = 0;
@@ -137,14 +140,17 @@ void addEventCal(event *newEvent, calendar *inputCal) {
 
         while (cursor->nextEventLink != NULL) {
             cursor = cursor->nextEventLink;
+            printf("cursor: %s\n", cursor->currentEvent->title);
         }
-
+        
         cursor->nextEventLink = newLink;
     }
 }
 
 /**
  * @brief 
+ * 
+ *
  * 
  * @param event 
  * @param pointer 
@@ -153,10 +159,27 @@ void addEventCal(event *newEvent, calendar *inputCal) {
 eventLink *mallocEventLink(event *event, eventLink *pointer) {
     eventLink *newLink;
 
-    newLink = (eventLink *)malloc(sizeof(eventLink)); /* Memory leak */
+    newLink = (eventLink *)malloc(sizeof(eventLink));
     newLink->currentEvent = event;
     newLink->nextEventLink = (eventLink *)malloc(sizeof(eventLink));
     newLink->nextEventLink = pointer;
 
     return newLink;
+}
+
+void printCalendar(calendar *calendar) {
+    /*eventLink *cursor;*/
+    /*int i = 0;*/
+
+    printf("yeet: %s", calendar->firstEvent->currentEvent->title);
+    /*cursor = calendar->firstEvent;
+    printf("\n\nSUMMARY: %s\n",  cursor->currentEvent->title);
+
+    while (cursor->nextEventLink != NULL) {
+        
+        cursor = cursor->nextEventLink;
+        printf("\n\nSUMMARY: %s\n",  cursor->currentEvent->title);
+        i++;
+        printf("i: %d\n", i);
+    }*/
 }

@@ -106,7 +106,7 @@ int getCalendarSuiteGetDataSingle(calendar *calendar);
 void addEventCal(event *newEvent, calendar *calendar);
 /*eventLink */ void addEventCalAlt(event *newEvent, calendar *calendar);
 void addEventCal(event *newEvent, calendar *calendar);
-eventLink *mallocEventLink(event *event, eventLink *pointer);
+eventLink *mallocEventLink(event *eventP, eventLink *eventLinkP);
 int parse_file(char *);
 
 int findAvailableDatesByLooking(void);
@@ -126,6 +126,7 @@ int isLeapYear(int tm_year);
 void errorHandling(int statement, char ErrorMessage[]);
 void printMetadataCalendarSuite(calendarSuite calendarSuite);
 void printMetadataCalendar(const calendar *calendar);
+void printCalendar(calendar *calendar);
 
 /* UNIT TESTING FUNCTIONS
  * -------------------------------------------------------------------------------------------
