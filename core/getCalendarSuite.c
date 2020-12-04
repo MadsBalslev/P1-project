@@ -62,8 +62,6 @@ int getCalendarSuiteGetData(calendarSuite *calendarSuite) {
 
 int getCalendarSuiteGetDataSingle(calendar *calendar) {
     event *newEvent;
-
-    
     int isEvent = 0, numOfEvents = 0;
     char line[LINE_LEN], leftOverGarbage[LINE_LEN];
 
@@ -84,7 +82,7 @@ int getCalendarSuiteGetDataSingle(calendar *calendar) {
                    &newEvent->startTime.tm_min,
                    &newEvent->startTime.tm_sec,
                    leftOverGarbage);
-                   /*Reads the priority if there is a whitespace before the $ in the description*/
+            /*Reads the priority if there is a whitespace before the $ in the description*/
             sscanf(line, "DESCRIPTION:%[0-9a-zA-Z ]$P%d$", leftOverGarbage, &newEvent->priority);
 
             sscanf(line, "DTEND:%4d%2d%2dT%2d%2d%2d%s",
@@ -98,26 +96,9 @@ int getCalendarSuiteGetDataSingle(calendar *calendar) {
         }
 
         if (strstr(line, "END:VEVENT")) {
-            /*printf("\n\nSUMMARY: %s\n", newEvent->title);
-            printf("DTSTART: %d/%d/%d Time: %d:%d:%d\n",
-                   newEvent->startTime.tm_year,
-                   newEvent->startTime.tm_mon,
-                   newEvent->startTime.tm_mday,
-                   newEvent->startTime.tm_hour,
-                   newEvent->startTime.tm_min,
-                   newEvent->startTime.tm_sec);
-            printf("DTEND:   %d/%d/%d Time: %d:%d:%d\n",
-                   newEvent->endTime.tm_year,
-                   newEvent->endTime.tm_mon,
-                   newEvent->endTime.tm_mday,
-                   newEvent->endTime.tm_hour,
-                   newEvent->endTime.tm_min,
-                   newEvent->endTime.tm_sec);
-            printf("Priority: %d\n", newEvent->priority);*/
-
             addEventCal(newEvent, calendar);
             isEvent = 0;
-            free(newEvent);
+            
         }
     }
     return 1;
@@ -137,12 +118,9 @@ void addEventCal(event *newEvent, calendar *inputCal) {
         inputCal->firstEvent = newLink;
     } else {
         cursor = inputCal->firstEvent;
-
         while (cursor->nextEventLink != NULL) {
             cursor = cursor->nextEventLink;
-            printf("cursor: %s\n", cursor->currentEvent->title);
         }
-        
         cursor->nextEventLink = newLink;
     }
 }
@@ -167,19 +145,37 @@ eventLink *mallocEventLink(event *event, eventLink *pointer) {
     return newLink;
 }
 
-void printCalendar(calendar *calendar) {
-    /*eventLink *cursor;*/
-    /*int i = 0;*/
+void printCalendar(const calendar *calendar) {
+    eventLink *cursor;
+    int i = 1;
 
-    printf("yeet: %s", calendar->firstEvent->currentEvent->title);
-    /*cursor = calendar->firstEvent;
-    printf("\n\nSUMMARY: %s\n",  cursor->currentEvent->title);
+    cursor = calendar->firstEvent;
+    printf("EVENT: 0\n");
+    printEvent(cursor->currentEvent);
 
     while (cursor->nextEventLink != NULL) {
-        
         cursor = cursor->nextEventLink;
-        printf("\n\nSUMMARY: %s\n",  cursor->currentEvent->title);
+        printf("EVENT: %d\n", i);
+        printEvent(cursor->currentEvent);
         i++;
-        printf("i: %d\n", i);
-    }*/
+    }
+}
+
+void printEvent(const event *a) {
+    printf("SUMMARY: %s\n", a->title);
+    printf("DTSTART: %d/%d/%d Time: %d:%d:%d\n",
+           a->startTime.tm_year,
+           a->startTime.tm_mon,
+           a->startTime.tm_mday,
+           a->startTime.tm_hour,
+           a->startTime.tm_min,
+           a->startTime.tm_sec);
+    printf("DTEND:   %d/%d/%d Time: %d:%d:%d\n",
+           a->endTime.tm_year,
+           a->endTime.tm_mon,
+           a->endTime.tm_mday,
+           a->endTime.tm_hour,
+           a->endTime.tm_min,
+           a->endTime.tm_sec);
+    printf("Priority: %d\n\n", a->priority);
 }
