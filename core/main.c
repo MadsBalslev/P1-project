@@ -81,6 +81,7 @@ void mallocCalendarSuite(int n, calendarSuite *calendarSuite) {
 
     while (i < n) {
         calendarSuite->calPtrArray[i] = (calendar *)malloc(sizeof(calendar));
+        calendarSuite->calPtrArray[i]->firstEvent = NULL;
         errorHandling(calendarSuite->calPtrArray[i] == NULL, "!!!FAILED TO ALLOCATE MEMORY STEP 2!!!");
         i++;
     }

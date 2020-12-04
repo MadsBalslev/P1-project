@@ -104,6 +104,7 @@ int getCalendarSuiteGetFileSingle(char arg[], calendar *calendar);
 int getCalendarSuiteGetData(calendarSuite *calendarSuite);
 int getCalendarSuiteGetDataSingle(calendar *calendar);
 void addEventCal(event *newEvent, calendar *calendar);
+void addEventCalAlt(event *newEvent, calendar *calendar);
 int parse_file(char *);
 
 int findAvailableDatesByLooking(void);
