@@ -98,7 +98,6 @@ int getCalendarSuiteGetDataSingle(calendar *calendar) {
         if (strstr(line, "END:VEVENT")) {
             addEventCal(newEvent, calendar);
             isEvent = 0;
-            
         }
     }
     return 1;
@@ -179,3 +178,20 @@ void printEvent(const event *a) {
            a->endTime.tm_sec);
     printf("Priority: %d\n\n", a->priority);
 }
+
+/*                    ____________________
+ *                   |                   |
+ *                   |   -------------   |   
+ *                   |   FUNCTION JAIL   |
+ *                   |   -------------   | 
+ *                   |___________________|
+ *                      |             |
+ *                   #####################
+ *                   ##                 ##
+ *                k  ##                 ##       k
+ *             O  |  ## free(newEvent); ##    O  |
+ *           ()Y==o  ##                 ##  ()Y==o
+ *            /_\ |  ##                 ##   /_\ |
+ *            _W_ |  #####################   _W_ |
+ * 
+ */
