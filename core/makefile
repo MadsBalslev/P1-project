@@ -7,7 +7,7 @@ OBJ = ctrlAndDoArgs.c CuTest.c allTests.c getSearchParameters.c helperFunctions.
 #%.o: %.c $(DEPS)
 #	$(CC) -c -o $@ $< $(CFLAGS)
 
-sp1s: $(DEPS) $(OBJ) 
+main: $(DEPS) $(OBJ) 
 	$(CC) $@.c $^ $(CFLAGS)
 
 .PHONY: clean
