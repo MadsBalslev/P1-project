@@ -29,6 +29,7 @@ ToDo liste:
 - [ ] Kan generere nye .ics filer, som brugeren bare kan importere direkte ind i sin kalender
 
 ## Getting Started
+Read the docs [here](https://madsbalslev.github.io/P1-project/)
 
 ### Dependencies
 
