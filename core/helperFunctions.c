@@ -210,3 +210,12 @@ void printMetadataCalendar(const calendar *calendar) {
     printf("fileName: %s\n", calendar->fileName);
     printf("numOfEvents: %d\n\n", calendar->numOfEvents);
 }
+
+void printCalendars(calendarSuite *calendarSuite) {
+    int i;
+    if (DEBUG) {
+        for (i = 0; i < calendarSuite->Arraylen; i++) {
+            printCalendar(calendarSuite->calPtrArray[i]);
+        }
+    }
+}
