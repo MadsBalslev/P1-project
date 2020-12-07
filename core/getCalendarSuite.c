@@ -157,34 +157,34 @@ void printCalendar(const calendar *calendar) {
     int i = 1;
 
     cursor = calendar->firstEvent;
-    printf("EVENT: 0\n");
+    printf("    EVENT: 0\n");
     printEvent(cursor->currentEvent);
 
     while (cursor->nextEventLink != NULL) {
         cursor = cursor->nextEventLink;
-        printf("EVENT: %d\n", i);
+        printf("    EVENT: %d\n", i);
         printEvent(cursor->currentEvent);
         i++;
     }
 }
 
 void printEvent(const event *a) {
-    printf("SUMMARY: %s\n", a->title);
-    printf("DTSTART: %d/%d/%d Time: %d:%d:%d\n",
+    printf("    SUMMARY: %s\n", a->title);
+    printf("    DTSTART: %d/%d/%d Time: %d:%d:%d\n",
            a->startTime.tm_year,
            a->startTime.tm_mon,
            a->startTime.tm_mday,
            a->startTime.tm_hour,
            a->startTime.tm_min,
            a->startTime.tm_sec);
-    printf("DTEND:   %d/%d/%d Time: %d:%d:%d\n",
+    printf("    DTEND:   %d/%d/%d Time: %d:%d:%d\n",
            a->endTime.tm_year,
            a->endTime.tm_mon,
            a->endTime.tm_mday,
            a->endTime.tm_hour,
            a->endTime.tm_min,
            a->endTime.tm_sec);
-    printf("Priority: %d\n\n", a->priority);
+    printf("    Priority: %d\n\n", a->priority);
 }
 
 

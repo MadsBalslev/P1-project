@@ -213,9 +213,8 @@ void printMetadataCalendar(const calendar *calendar) {
 
 void printCalendars(calendarSuite *calendarSuite) {
     int i;
-    if (DEBUG) {
-        for (i = 0; i < calendarSuite->Arraylen; i++) {
-            printCalendar(calendarSuite->calPtrArray[i]);
-        }
+    for (i = 0; i < calendarSuite->Arraylen; i++) {
+        printMetadataCalendar(calendarSuite->calPtrArray[i]);
+        printCalendar(calendarSuite->calPtrArray[i]);
     }
 }

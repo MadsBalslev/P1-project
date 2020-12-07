@@ -9,8 +9,8 @@ int main(int argc, char *argv[]) {
     mallocCalendarSuite(ctrlAndDoArgs(argc, argv), &calendarSuiteMain);
     getCalendarSuite(argc, argv, &calendarSuiteMain);
 
-    printMetadataCalendarSuite(calendarSuiteMain);
-    printCalendar(calendarSuiteMain.calPtrArray[0]);
+    
+    
 
     getSearchParameters(&searchParametersMain);
     foundDatesByLooking = findAvailableDatesByLooking();
@@ -119,6 +119,11 @@ void getCalendarSuite(int argc, char *argv[], calendarSuite *calendarSuite) {
 
     returnFlag = getCalendarSuiteGetData(calendarSuite);
     errorHandling(!returnFlag, "!!!ERROR IN *.ICS FILE!!!");
+
+    if (DEBUG) {
+        printf("\nICS FILE DATA GOT:\n\n");
+        printCalendars(calendarSuite);
+    }
 }
 
 int findAvailableDatesByLooking(void) {
