@@ -187,7 +187,13 @@ void printEvent(const event *a) {
     printf("Priority: %d\n\n", a->priority);
 }
 
-
+void printCalendars(calendarSuite *calendarSuite){
+    int i;
+    for (i = 0; i < calendarSuite->Arraylen; i++)
+    {
+        printCalendar(calendarSuite->calPtrArray[i]);
+    }
+}
 
 /*                    ____________________
  *                   |                   |

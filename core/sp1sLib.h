@@ -124,6 +124,7 @@ void errorHandling(int statement, char ErrorMessage[]);
 void printMetadataCalendarSuite(calendarSuite calendarSuite);
 void printMetadataCalendar(const calendar *calendar);
 void printCalendar(const calendar *calendar);
+void printCalendars(calendarSuite *calendarSuite);
 void printEvent(const event *a);
 
 /* UNIT TESTING FUNCTIONS
