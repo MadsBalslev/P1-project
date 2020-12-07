@@ -18,10 +18,10 @@ Programmet kan evt. læse DESCRIPTION tagget på hvert event i `.ics` filen og e
 ## Features
 
 ToDo liste:
-- [ ] Kan indlæse x antal .ics filer
-  - [ ] Kan parse indlæste filer og lagre det
-    - [ ] Den skal udfra en .ics event description kunne genkende prioriteringsniveauet. Som er formateret som `$px$` hvor x er en int. 
-    - [ ] Lagrer hver kalender for sig
+- [x] Kan indlæse x antal .ics filer
+  - [x] Kan parse indlæste filer og lagre det
+    - [x] Den skal udfra en .ics event description kunne genkende prioriteringsniveauet. Som er formateret som `$px$` hvor x er en int. 
+    - [x] Lagrer hver kalender for sig
 - [ ] Finde et hul i kalendrene indenfor et tidsrum/periode inputtet af brugeren og returnere dette til brugeren
 - [ ] Hvis ikke det er muligt at finde et hul, skal programmet kunne rykke rundt på events baseret på prioritet og derved finde et tidspunkt.
 
