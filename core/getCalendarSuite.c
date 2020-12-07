@@ -83,7 +83,15 @@ int getCalendarSuiteGetDataSingle(calendar *calendar) {
                    &newEvent->startTime.tm_sec,
                    leftOverGarbage);
             /*Reads the priority if there is a whitespace before the $ in the description*/
-            sscanf(line, "DESCRIPTION:%[0-9a-zA-Z ]$P%d$", leftOverGarbage, &newEvent->priority);
+            if (sscanf(line, "DESCRIPTION:%[0-9a-zA-Z ]", leftOverGarbage) && leftOverGarbage[0] != '$') {
+                sscanf(line, "DESCRIPTION:$P%d$", &newEvent->priority);
+            } else {
+                sscanf(line, "DESCRIPTION:$P%d$", &newEvent->priority);
+            } 
+            
+            if (newEvent->priority < -100) {
+                newEvent->priority = 0;
+            }
 
             sscanf(line, "DTEND:%4d%2d%2dT%2d%2d%2d%s",
                    &newEvent->endTime.tm_year,
@@ -179,6 +187,8 @@ void printEvent(const event *a) {
     printf("Priority: %d\n\n", a->priority);
 }
 
+
+
 /*                    ____________________
  *                   |                   |
  *                   |   -------------   |   
@@ -193,5 +203,6 @@ void printEvent(const event *a) {
  *           ()Y==o  ##                 ##  ()Y==o
  *            /_\ |  ##                 ##   /_\ |
  *            _W_ |  #####################   _W_ |
+ *                         LOOOOL
  * 
  */
