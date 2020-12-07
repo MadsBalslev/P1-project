@@ -1,4 +1,4 @@
-#include "header.h"
+#include "sp1sLib.h"
 int DEBUG = 0;
 
 int main(int argc, char *argv[]) {

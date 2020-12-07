@@ -1,4 +1,4 @@
-#include "header.h"
+#include "sp1sLib.h"
 
 /**
  * @brief Opens and stores file-pointer / file-path in calPtrArray.
