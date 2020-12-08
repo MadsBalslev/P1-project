@@ -74,7 +74,7 @@ int getCalendarSuiteGetDataSingle(calendar *calendar) {
         }
 
         if (isEvent) {
-            sscanf(line, "SUMMARY: %[^-1]", newEvent->title);
+            sscanf(line, "SUMMARY: %[^-1]", newEvent->title); /* Reads every character until -1 (EOF) */
             sscanf(line, "DTSTART:%4d%2d%2dT%2d%2d%2d%s",
                    &newEvent->startTime.tm_year,
                    &newEvent->startTime.tm_mon,
