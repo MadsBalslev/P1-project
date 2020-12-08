@@ -74,7 +74,7 @@ int getCalendarSuiteGetDataSingle(calendar *calendar) {
         }
 
         if (isEvent) {
-            sscanf(line, "SUMMARY: %[0-9a-zA-Z ]", newEvent->title);
+            sscanf(line, "SUMMARY: %[^-1]", newEvent->title);
             sscanf(line, "DTSTART:%4d%2d%2dT%2d%2d%2d%s",
                    &newEvent->startTime.tm_year,
                    &newEvent->startTime.tm_mon,
@@ -83,7 +83,6 @@ int getCalendarSuiteGetDataSingle(calendar *calendar) {
                    &newEvent->startTime.tm_min,
                    &newEvent->startTime.tm_sec,
                    leftOverGarbage);
-            /*Reads the priority if there is a whitespace before the $ in the description*/
             if (sscanf(line, "DESCRIPTION:%[0-9a-zA-Z ]", leftOverGarbage) && leftOverGarbage[0] != '$') {
                 sscanf(line, "DESCRIPTION:$P%d$", &newEvent->priority);
             } else {
