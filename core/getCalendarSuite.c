@@ -14,7 +14,7 @@
 int getCalendarSuiteGetFile(int argc, char *argv[], calendar *calPtrArray[]) {
     int i = 1;
     int k = 0;
-    int validFileLocation = 0;
+    int validFileLocation = 1;
 
     do {
         if (isIcsFile(argv[i])) {
