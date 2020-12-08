@@ -9,24 +9,14 @@ int main(int argc, char *argv[]) {
     mallocCalendarSuite(ctrlAndDoArgs(argc, argv), &calendarSuiteMain);
     getCalendarSuite(argc, argv, &calendarSuiteMain);
 
-    
-    
-
     getSearchParameters(&searchParametersMain);
     foundDatesByLooking = findAvailableDatesByLooking();
+    
     if (foundDatesByLooking) {
         findAvailableDatesByRestructuring();
     }
-
     userOutput();
-    /*free(calendarSuite);*/
-    /* This should be abstracted further */
-    /* Path relative from parser.o location */
-    /* int parse_success = parse_file(filepath);
-    if (parse_success == EXIT_FAILURE) {
-        printf("Failed to parse file %s", filepath);
-        return EXIT_FAILURE;
-    } */
+
     free(calendarSuiteMain.calPtrArray);
     return EXIT_SUCCESS;
 }
