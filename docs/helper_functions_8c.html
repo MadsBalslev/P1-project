@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.20"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>$P1$: /github/workspace/core/sharedFunctions.c File Reference</title>
+<title>$P1$: /github/workspace/core/helperFunctions.c File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -70,52 +70,54 @@ $(function() {
 <a href="#func-members">Functions</a> &#124;
 <a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
-<div class="title">sharedFunctions.c File Reference</div>  </div>
+<div class="title">helperFunctions.c File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &quot;<a class="el" href="header_8h_source.html">header.h</a>&quot;</code><br />
+<div class="textblock"><code>#include &quot;<a class="el" href="sp1s_lib_8h_source.html">sp1sLib.h</a>&quot;</code><br />
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ac98ba39821c96c7ba1282f086ffa3ef1"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="shared_functions_8c.html#ac98ba39821c96c7ba1282f086ffa3ef1">isTimeValid</a> (<a class="el" href="header_8h.html#a110bf4e13553ccfd709f41c6e92f0ca2">tm</a> time)</td></tr>
-<tr class="memdesc:ac98ba39821c96c7ba1282f086ffa3ef1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Controls that a time is valid in terms of minutes, hours, month number, year, month day.  <a href="shared_functions_8c.html#ac98ba39821c96c7ba1282f086ffa3ef1">More...</a><br /></td></tr>
+<tr class="memitem:ac98ba39821c96c7ba1282f086ffa3ef1"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="helper_functions_8c.html#ac98ba39821c96c7ba1282f086ffa3ef1">isTimeValid</a> (<a class="el" href="sp1s_lib_8h.html#a110bf4e13553ccfd709f41c6e92f0ca2">tm</a> time)</td></tr>
+<tr class="memdesc:ac98ba39821c96c7ba1282f086ffa3ef1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Controls that a time is valid in terms of minutes, hours, month number, year, month day.  <a href="helper_functions_8c.html#ac98ba39821c96c7ba1282f086ffa3ef1">More...</a><br /></td></tr>
 <tr class="separator:ac98ba39821c96c7ba1282f086ffa3ef1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9f6cdcba731f6f527d4f6e64c20d77a5"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="shared_functions_8c.html#a9f6cdcba731f6f527d4f6e64c20d77a5">isTimeValid_min</a> (int tm_min)</td></tr>
-<tr class="memdesc:a9f6cdcba731f6f527d4f6e64c20d77a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Controls that tm_min == [0, 59].  <a href="shared_functions_8c.html#a9f6cdcba731f6f527d4f6e64c20d77a5">More...</a><br /></td></tr>
+<tr class="memitem:a9f6cdcba731f6f527d4f6e64c20d77a5"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="helper_functions_8c.html#a9f6cdcba731f6f527d4f6e64c20d77a5">isTimeValid_min</a> (int tm_min)</td></tr>
+<tr class="memdesc:a9f6cdcba731f6f527d4f6e64c20d77a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Controls that tm_min == [0, 59].  <a href="helper_functions_8c.html#a9f6cdcba731f6f527d4f6e64c20d77a5">More...</a><br /></td></tr>
 <tr class="separator:a9f6cdcba731f6f527d4f6e64c20d77a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7e64169fe0b3114121bde206a7ca3564"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="shared_functions_8c.html#a7e64169fe0b3114121bde206a7ca3564">isTimeValid_hour</a> (int tm_hour)</td></tr>
-<tr class="memdesc:a7e64169fe0b3114121bde206a7ca3564"><td class="mdescLeft">&#160;</td><td class="mdescRight">Controls that tm_hour == [0, 23].  <a href="shared_functions_8c.html#a7e64169fe0b3114121bde206a7ca3564">More...</a><br /></td></tr>
+<tr class="memitem:a7e64169fe0b3114121bde206a7ca3564"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="helper_functions_8c.html#a7e64169fe0b3114121bde206a7ca3564">isTimeValid_hour</a> (int tm_hour)</td></tr>
+<tr class="memdesc:a7e64169fe0b3114121bde206a7ca3564"><td class="mdescLeft">&#160;</td><td class="mdescRight">Controls that tm_hour == [0, 23].  <a href="helper_functions_8c.html#a7e64169fe0b3114121bde206a7ca3564">More...</a><br /></td></tr>
 <tr class="separator:a7e64169fe0b3114121bde206a7ca3564"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa18f22f7a2e046dfc608ede997244420"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="shared_functions_8c.html#aa18f22f7a2e046dfc608ede997244420">isTimeValid_mon</a> (int tm_mon)</td></tr>
-<tr class="memdesc:aa18f22f7a2e046dfc608ede997244420"><td class="mdescLeft">&#160;</td><td class="mdescRight">Controls that tm_mon == [0, 11].  <a href="shared_functions_8c.html#aa18f22f7a2e046dfc608ede997244420">More...</a><br /></td></tr>
+<tr class="memitem:aa18f22f7a2e046dfc608ede997244420"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="helper_functions_8c.html#aa18f22f7a2e046dfc608ede997244420">isTimeValid_mon</a> (int tm_mon)</td></tr>
+<tr class="memdesc:aa18f22f7a2e046dfc608ede997244420"><td class="mdescLeft">&#160;</td><td class="mdescRight">Controls that tm_mon == [0, 11].  <a href="helper_functions_8c.html#aa18f22f7a2e046dfc608ede997244420">More...</a><br /></td></tr>
 <tr class="separator:aa18f22f7a2e046dfc608ede997244420"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8d622550d6492f65d464196c1183454b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="shared_functions_8c.html#a8d622550d6492f65d464196c1183454b">isTimeValid_year</a> (int tm_year)</td></tr>
-<tr class="memdesc:a8d622550d6492f65d464196c1183454b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Controls that tm_year &gt; 1900.  <a href="shared_functions_8c.html#a8d622550d6492f65d464196c1183454b">More...</a><br /></td></tr>
+<tr class="memitem:a8d622550d6492f65d464196c1183454b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="helper_functions_8c.html#a8d622550d6492f65d464196c1183454b">isTimeValid_year</a> (int tm_year)</td></tr>
+<tr class="memdesc:a8d622550d6492f65d464196c1183454b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Controls that tm_year &gt; 1900.  <a href="helper_functions_8c.html#a8d622550d6492f65d464196c1183454b">More...</a><br /></td></tr>
 <tr class="separator:a8d622550d6492f65d464196c1183454b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa0e236b43281bbd135eaff5175aa4474"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="shared_functions_8c.html#aa0e236b43281bbd135eaff5175aa4474">isTimeValid_mday</a> (int tm_year, int tm_mon, int tm_mday)</td></tr>
-<tr class="memdesc:aa0e236b43281bbd135eaff5175aa4474"><td class="mdescLeft">&#160;</td><td class="mdescRight">Controls that a month day is valid depending on the year and month.  <a href="shared_functions_8c.html#aa0e236b43281bbd135eaff5175aa4474">More...</a><br /></td></tr>
+<tr class="memitem:aa0e236b43281bbd135eaff5175aa4474"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="helper_functions_8c.html#aa0e236b43281bbd135eaff5175aa4474">isTimeValid_mday</a> (int tm_year, int tm_mon, int tm_mday)</td></tr>
+<tr class="memdesc:aa0e236b43281bbd135eaff5175aa4474"><td class="mdescLeft">&#160;</td><td class="mdescRight">Controls that a month day is valid depending on the year and month.  <a href="helper_functions_8c.html#aa0e236b43281bbd135eaff5175aa4474">More...</a><br /></td></tr>
 <tr class="separator:aa0e236b43281bbd135eaff5175aa4474"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5573d63f46f52066eb24d6a251eb5f93"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="shared_functions_8c.html#a5573d63f46f52066eb24d6a251eb5f93">daysInMonth</a> (int tm_mon, int tm_year)</td></tr>
-<tr class="memdesc:a5573d63f46f52066eb24d6a251eb5f93"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates number of days in a month depending on the month and year.  <a href="shared_functions_8c.html#a5573d63f46f52066eb24d6a251eb5f93">More...</a><br /></td></tr>
+<tr class="memitem:a5573d63f46f52066eb24d6a251eb5f93"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="helper_functions_8c.html#a5573d63f46f52066eb24d6a251eb5f93">daysInMonth</a> (int tm_mon, int tm_year)</td></tr>
+<tr class="memdesc:a5573d63f46f52066eb24d6a251eb5f93"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates number of days in a month depending on the month and year.  <a href="helper_functions_8c.html#a5573d63f46f52066eb24d6a251eb5f93">More...</a><br /></td></tr>
 <tr class="separator:a5573d63f46f52066eb24d6a251eb5f93"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a27da01d29e45d4dc9ec0b20bcfbc5a88"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="shared_functions_8c.html#a27da01d29e45d4dc9ec0b20bcfbc5a88">daysInMonthFeb</a> (int tm_year)</td></tr>
-<tr class="memdesc:a27da01d29e45d4dc9ec0b20bcfbc5a88"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the number of days in february on a given year.  <a href="shared_functions_8c.html#a27da01d29e45d4dc9ec0b20bcfbc5a88">More...</a><br /></td></tr>
+<tr class="memitem:a27da01d29e45d4dc9ec0b20bcfbc5a88"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="helper_functions_8c.html#a27da01d29e45d4dc9ec0b20bcfbc5a88">daysInMonthFeb</a> (int tm_year)</td></tr>
+<tr class="memdesc:a27da01d29e45d4dc9ec0b20bcfbc5a88"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the number of days in february on a given year.  <a href="helper_functions_8c.html#a27da01d29e45d4dc9ec0b20bcfbc5a88">More...</a><br /></td></tr>
 <tr class="separator:a27da01d29e45d4dc9ec0b20bcfbc5a88"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a235097de52f9ad65a5d0ac20884a1e66"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="shared_functions_8c.html#a235097de52f9ad65a5d0ac20884a1e66">isLeapYear</a> (int tm_year)</td></tr>
-<tr class="memdesc:a235097de52f9ad65a5d0ac20884a1e66"><td class="mdescLeft">&#160;</td><td class="mdescRight">Controls is a year is a leap year.  <a href="shared_functions_8c.html#a235097de52f9ad65a5d0ac20884a1e66">More...</a><br /></td></tr>
+<tr class="memitem:a235097de52f9ad65a5d0ac20884a1e66"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="helper_functions_8c.html#a235097de52f9ad65a5d0ac20884a1e66">isLeapYear</a> (int tm_year)</td></tr>
+<tr class="memdesc:a235097de52f9ad65a5d0ac20884a1e66"><td class="mdescLeft">&#160;</td><td class="mdescRight">Controls is a year is a leap year.  <a href="helper_functions_8c.html#a235097de52f9ad65a5d0ac20884a1e66">More...</a><br /></td></tr>
 <tr class="separator:a235097de52f9ad65a5d0ac20884a1e66"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7c955386ae708673bd1b306239717211"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="shared_functions_8c.html#a7c955386ae708673bd1b306239717211">errorHandling</a> (int statement, char errorMessage[])</td></tr>
+<tr class="memitem:a7c955386ae708673bd1b306239717211"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="helper_functions_8c.html#a7c955386ae708673bd1b306239717211">errorHandling</a> (int statement, char errorMessage[])</td></tr>
 <tr class="separator:a7c955386ae708673bd1b306239717211"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a12fd1d5292cd5d102de5806ce508cab5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="shared_functions_8c.html#a12fd1d5292cd5d102de5806ce508cab5">printMetadataCalendarSuite</a> (<a class="el" href="structcalendar_suite.html">calendarSuite</a> <a class="el" href="structcalendar_suite.html">calendarSuite</a>)</td></tr>
-<tr class="memdesc:a12fd1d5292cd5d102de5806ce508cab5"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function is broken :(.  <a href="shared_functions_8c.html#a12fd1d5292cd5d102de5806ce508cab5">More...</a><br /></td></tr>
+<tr class="memitem:a12fd1d5292cd5d102de5806ce508cab5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="helper_functions_8c.html#a12fd1d5292cd5d102de5806ce508cab5">printMetadataCalendarSuite</a> (<a class="el" href="structcalendar_suite.html">calendarSuite</a> <a class="el" href="structcalendar_suite.html">calendarSuite</a>)</td></tr>
+<tr class="memdesc:a12fd1d5292cd5d102de5806ce508cab5"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function is broken :(.  <a href="helper_functions_8c.html#a12fd1d5292cd5d102de5806ce508cab5">More...</a><br /></td></tr>
 <tr class="separator:a12fd1d5292cd5d102de5806ce508cab5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a752dee3a55606bf69da36570f8891d3a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="shared_functions_8c.html#a752dee3a55606bf69da36570f8891d3a">printMetadataCalendar</a> (const <a class="el" href="structcalendar.html">calendar</a> *<a class="el" href="structcalendar.html">calendar</a>)</td></tr>
-<tr class="memdesc:a752dee3a55606bf69da36570f8891d3a"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function is broken :(.  <a href="shared_functions_8c.html#a752dee3a55606bf69da36570f8891d3a">More...</a><br /></td></tr>
+<tr class="memitem:a752dee3a55606bf69da36570f8891d3a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="helper_functions_8c.html#a752dee3a55606bf69da36570f8891d3a">printMetadataCalendar</a> (const <a class="el" href="structcalendar.html">calendar</a> *<a class="el" href="structcalendar.html">calendar</a>)</td></tr>
+<tr class="memdesc:a752dee3a55606bf69da36570f8891d3a"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function is broken :(.  <a href="helper_functions_8c.html#a752dee3a55606bf69da36570f8891d3a">More...</a><br /></td></tr>
 <tr class="separator:a752dee3a55606bf69da36570f8891d3a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a40ecf137c65893ebfeb72fa8f080ae80"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="helper_functions_8c.html#a40ecf137c65893ebfeb72fa8f080ae80">printCalendars</a> (<a class="el" href="structcalendar_suite.html">calendarSuite</a> *<a class="el" href="structcalendar_suite.html">calendarSuite</a>)</td></tr>
+<tr class="separator:a40ecf137c65893ebfeb72fa8f080ae80"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:a48f76a8c0dc23567f303ed6aa221e078"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="shared_functions_8c.html#a48f76a8c0dc23567f303ed6aa221e078">DEBUG</a></td></tr>
+<tr class="memitem:a48f76a8c0dc23567f303ed6aa221e078"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="helper_functions_8c.html#a48f76a8c0dc23567f303ed6aa221e078">DEBUG</a></td></tr>
 <tr class="separator:a48f76a8c0dc23567f303ed6aa221e078"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
@@ -248,7 +250,7 @@ Variables</h2></td></tr>
         <tr>
           <td class="memname">int isTimeValid </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="header_8h.html#a110bf4e13553ccfd709f41c6e92f0ca2">tm</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="sp1s_lib_8h.html#a110bf4e13553ccfd709f41c6e92f0ca2">tm</a>&#160;</td>
           <td class="paramname"><em>time</em></td><td>)</td>
           <td></td>
         </tr>
@@ -421,6 +423,24 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>1 if it’s within the boundary, else 0 <br  />
  </dd></dl>
+
+</div>
+</div>
+<a id="a40ecf137c65893ebfeb72fa8f080ae80"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a40ecf137c65893ebfeb72fa8f080ae80">&#9670;&nbsp;</a></span>printCalendars()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void printCalendars </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structcalendar_suite.html">calendarSuite</a> *&#160;</td>
+          <td class="paramname"><em>calendarSuite</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
 
 </div>
 </div>

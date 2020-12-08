@@ -1,4 +1,4 @@
-#include "header.h"
+#include "sp1sLib.h"
 
 extern int DEBUG;
 

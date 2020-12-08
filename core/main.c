@@ -1,4 +1,4 @@
-#include "header.h"
+#include "sp1sLib.h"
 int DEBUG = 0;
 
 int main(int argc, char *argv[]) {
@@ -9,23 +9,14 @@ int main(int argc, char *argv[]) {
     mallocCalendarSuite(ctrlAndDoArgs(argc, argv), &calendarSuiteMain);
     getCalendarSuite(argc, argv, &calendarSuiteMain);
 
-    printMetadataCalendarSuite(calendarSuiteMain);
-
     getSearchParameters(&searchParametersMain);
     foundDatesByLooking = findAvailableDatesByLooking();
+    
     if (foundDatesByLooking) {
         findAvailableDatesByRestructuring();
     }
-
     userOutput();
-    /*free(calendarSuite);*/
-    /* This should be abstracted further */
-    /* Path relative from parser.o location */
-    /* int parse_success = parse_file(filepath);
-    if (parse_success == EXIT_FAILURE) {
-        printf("Failed to parse file %s", filepath);
-        return EXIT_FAILURE;
-    } */
+
     free(calendarSuiteMain.calPtrArray);
     return EXIT_SUCCESS;
 }
@@ -42,12 +33,14 @@ int main(int argc, char *argv[]) {
  */
 int ctrlAndDoArgs(int argc, char *argv[]) {
     int i = 1;
-    int argsValid = (argc < 2 ? 0 : 1);
+    int argsValid = argc >= 2;
     int icsFilesGot = 0;
 
     while (argsValid && i < argc) {
         argsValid = doArg(argv[i]);
-        argsValid == icsFile ? icsFilesGot++ : DO_NOTHING;
+        if (argsValid == icsFile) {
+            icsFilesGot++;
+        }
         i++;
     }
 
@@ -79,6 +72,7 @@ void mallocCalendarSuite(int n, calendarSuite *calendarSuite) {
 
     while (i < n) {
         calendarSuite->calPtrArray[i] = (calendar *)malloc(sizeof(calendar));
+        calendarSuite->calPtrArray[i]->firstEvent = NULL;
         errorHandling(calendarSuite->calPtrArray[i] == NULL, "!!!FAILED TO ALLOCATE MEMORY STEP 2!!!");
         i++;
     }
@@ -113,8 +107,13 @@ void getCalendarSuite(int argc, char *argv[], calendarSuite *calendarSuite) {
     returnFlag = getCalendarSuiteGetFile(argc, argv, calendarSuite->calPtrArray);
     errorHandling(!returnFlag, "!!!INVALID FILE LOCATION!!!");
 
-    returnFlag = getCalendarSuiteGetEvents(calendarSuite->calPtrArray);
+    returnFlag = getCalendarSuiteGetData(calendarSuite);
     errorHandling(!returnFlag, "!!!ERROR IN *.ICS FILE!!!");
+
+    if (DEBUG) {
+        printf("\nICS FILE DATA GOT:\n\n");
+        printCalendars(calendarSuite);
+    }
 }
 
 int findAvailableDatesByLooking(void) {

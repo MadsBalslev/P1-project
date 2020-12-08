@@ -1,4 +1,4 @@
-#include "header.h"
+#include "sp1sLib.h"
 extern int DEBUG;
 
 /**
@@ -209,4 +209,12 @@ void printMetadataCalendar(const calendar *calendar) {
     printf("calName: %s\n", calendar->calName);
     printf("fileName: %s\n", calendar->fileName);
     printf("numOfEvents: %d\n\n", calendar->numOfEvents);
+}
+
+void printCalendars(calendarSuite *calendarSuite) {
+    int i;
+    for (i = 0; i < calendarSuite->Arraylen; i++) {
+        printMetadataCalendar(calendarSuite->calPtrArray[i]);
+        printCalendar(calendarSuite->calPtrArray[i]);
+    }
 }
