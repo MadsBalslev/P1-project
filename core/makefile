@@ -13,5 +13,5 @@ main: $(DEPS) $(OBJ)
 .PHONY: clean
 
 clean:
-	rm -rf *.o *.out *.exe *.gch
+	rm -rf *.o *.out *.exe *.gch ./*.*.dSYM
 	
