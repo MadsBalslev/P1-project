@@ -20,7 +20,7 @@ typedef struct event {
     tm startTime;
     tm endTime;
     int priority;
-    char *title;
+    char title[LINE_LEN];
 } event;
 
 /**
@@ -41,8 +41,8 @@ typedef struct eventLink {
  *
  */
 typedef struct calendar {
-    char *calName;
-    char fileName[100];
+    char calName[LINE_LEN];
+    char fileName[LINE_LEN];
     int numOfEvents;
     FILE *file;
     eventLink *firstEvent;
@@ -101,8 +101,10 @@ void getLimits(tm *upperLimit, tm *lowerLimmit);
 void getCalendarSuite(int argc, char *argv[], calendarSuite *calendarSuite);
 int getCalendarSuiteGetFile(int argc, char *argv[], calendar *calendarSuite[]);
 int getCalendarSuiteGetFileSingle(char arg[], calendar *calendar);
-int getCalendarSuiteGetEvents(calendar *calendarSuite[]);
-int parse_file(char *);
+int getCalendarSuiteGetData(calendarSuite *calendarSuite);
+int getCalendarSuiteGetDataSingle(calendar *calendar);
+void addEventCal(event *newEvent, calendar *calendar);
+eventLink *mallocEventLink(event *eventP, eventLink *eventLinkP);
 
 int findAvailableDatesByLooking(void);
 void findAvailableDatesByRestructuring(void);
@@ -121,6 +123,9 @@ int isLeapYear(int tm_year);
 void errorHandling(int statement, char ErrorMessage[]);
 void printMetadataCalendarSuite(calendarSuite calendarSuite);
 void printMetadataCalendar(const calendar *calendar);
+void printCalendar(const calendar *calendar);
+void printCalendars(calendarSuite *calendarSuite);
+void printEvent(const event *a);
 
 /* UNIT TESTING FUNCTIONS
  * -------------------------------------------------------------------------------------------
