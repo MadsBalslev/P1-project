@@ -39,13 +39,11 @@ Read the docs [here](https://madsbalslev.github.io/P1-project/)
 
 * Nogle ændringer man skal lave? Evt. hvordan man indlæser en fil fra sin kalender
 
-### Executing program
+### Running the program
 
-* Hvordan man compiler programmet
-* Step by step (Tænker vi får en makefile der håndterer det)
-```sh
-make planner
-```
+* cd into `/core` direcotry
+* run makefile by writing `make` in the terminal
+* Run program by writing `a [path to cal1] [path to cal2] [path to caln]`
 
 ## Authors
 
