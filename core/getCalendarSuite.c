@@ -54,6 +54,7 @@ int getCalendarSuiteGetData(calendarSuite *calendarSuite) {
 
     while (i < calendarSuite->Arraylen && errorFlag) {
         errorFlag = getCalendarSuiteGetDataSingle(calendarSuite->calPtrArray[i]);
+        fclose(calendarSuite->calPtrArray[i]->file);
         i++;
     }
 
