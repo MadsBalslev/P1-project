@@ -78,6 +78,7 @@ $(function() {
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a0ddf1224851353fc92bfbff6f499fa97"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#a0ddf1224851353fc92bfbff6f499fa97">main</a> (int argc, char *argv[])</td></tr>
+<tr class="memdesc:a0ddf1224851353fc92bfbff6f499fa97"><td class="mdescLeft">&#160;</td><td class="mdescRight">This is where the magic happens 🤖  <a href="main_8c.html#a0ddf1224851353fc92bfbff6f499fa97">More...</a><br /></td></tr>
 <tr class="separator:a0ddf1224851353fc92bfbff6f499fa97"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a04fd014ff170a31fe85c36b3aace5090"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#a04fd014ff170a31fe85c36b3aace5090">ctrlAndDoArgs</a> (int argc, char *argv[])</td></tr>
 <tr class="memdesc:a04fd014ff170a31fe85c36b3aace5090"><td class="mdescLeft">&#160;</td><td class="mdescRight">Controls and executes command-line arguments (only executes command-line options). If all arguments are not valid, terminates program with an error message.  <a href="main_8c.html#a04fd014ff170a31fe85c36b3aace5090">More...</a><br /></td></tr>
@@ -86,15 +87,12 @@ Functions</h2></td></tr>
 <tr class="memdesc:a3abe2f53fd23c4260ac49df136253456"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allocates memory for an <a class="el" href="structcalendar_suite.html#a67026a93f07ea5de6989fb1d50b490e3">calendarSuite.calPtrArray</a> of length n.  <a href="main_8c.html#a3abe2f53fd23c4260ac49df136253456">More...</a><br /></td></tr>
 <tr class="separator:a3abe2f53fd23c4260ac49df136253456"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4c52c3448e274e88d2ad6024c4acc8a0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#a4c52c3448e274e88d2ad6024c4acc8a0">getSearchParameters</a> (<a class="el" href="structsearch_parameters.html">searchParameters</a> *a)</td></tr>
-<tr class="memdesc:a4c52c3448e274e88d2ad6024c4acc8a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the Search Parameters object.  <a href="main_8c.html#a4c52c3448e274e88d2ad6024c4acc8a0">More...</a><br /></td></tr>
 <tr class="separator:a4c52c3448e274e88d2ad6024c4acc8a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad9ca3cfb0a3cd44f0cd4ca4b6271f637"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#ad9ca3cfb0a3cd44f0cd4ca4b6271f637">getCalendarSuite</a> (int argc, char *argv[], <a class="el" href="structcalendar_suite.html">calendarSuite</a> *<a class="el" href="structcalendar_suite.html">calendarSuite</a>)</td></tr>
-<tr class="memdesc:ad9ca3cfb0a3cd44f0cd4ca4b6271f637"><td class="mdescLeft">&#160;</td><td class="mdescRight">!!!THIS FUNCTION IS NOT FINISHED!!!  <a href="main_8c.html#ad9ca3cfb0a3cd44f0cd4ca4b6271f637">More...</a><br /></td></tr>
+<tr class="memdesc:ad9ca3cfb0a3cd44f0cd4ca4b6271f637"><td class="mdescLeft">&#160;</td><td class="mdescRight">Based on a number of filepaths to *.ics files, builds an array of pointers to linked lists of calendar links/nodes and links/nodes data.  <a href="main_8c.html#ad9ca3cfb0a3cd44f0cd4ca4b6271f637">More...</a><br /></td></tr>
 <tr class="separator:ad9ca3cfb0a3cd44f0cd4ca4b6271f637"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4460fb754aa9e5ccaa4d1704c0097a34"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#a4460fb754aa9e5ccaa4d1704c0097a34">findAvailableDatesByLooking</a> (void)</td></tr>
-<tr class="separator:a4460fb754aa9e5ccaa4d1704c0097a34"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4e5a9c4c4ffd0417c325224ffd6e4ff8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#a4e5a9c4c4ffd0417c325224ffd6e4ff8">findAvailableDatesByRestructuring</a> (void)</td></tr>
-<tr class="separator:a4e5a9c4c4ffd0417c325224ffd6e4ff8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a573e8b50e0974679427e3213c6e21a77"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#a573e8b50e0974679427e3213c6e21a77">findAvailableDates</a> (<a class="el" href="structcalendar_suite.html">calendarSuite</a> *suite, const <a class="el" href="structsearch_parameters.html">searchParameters</a> *param, int <a class="el" href="sp1s_lib_8h.html#abd76a749c3f50d7d9169a6ce8d8faf55">searchMode</a>)</td></tr>
+<tr class="separator:a573e8b50e0974679427e3213c6e21a77"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad07a12dcbc58de4015fc3189b803f0bd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#ad07a12dcbc58de4015fc3189b803f0bd">userOutput</a> (void)</td></tr>
 <tr class="separator:ad07a12dcbc58de4015fc3189b803f0bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -142,39 +140,46 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="a4460fb754aa9e5ccaa4d1704c0097a34"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4460fb754aa9e5ccaa4d1704c0097a34">&#9670;&nbsp;</a></span>findAvailableDatesByLooking()</h2>
+<a id="a573e8b50e0974679427e3213c6e21a77"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a573e8b50e0974679427e3213c6e21a77">&#9670;&nbsp;</a></span>findAvailableDates()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int findAvailableDatesByLooking </td>
+          <td class="memname">int findAvailableDates </td>
           <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
+          <td class="paramtype"><a class="el" href="structcalendar_suite.html">calendarSuite</a> *&#160;</td>
+          <td class="paramname"><em>suite</em>, </td>
         </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a4e5a9c4c4ffd0417c325224ffd6e4ff8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4e5a9c4c4ffd0417c325224ffd6e4ff8">&#9670;&nbsp;</a></span>findAvailableDatesByRestructuring()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
         <tr>
-          <td class="memname">void findAvailableDatesByRestructuring </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">const <a class="el" href="structsearch_parameters.html">searchParameters</a> *&#160;</td>
+          <td class="paramname"><em>param</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>searchMode</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">suite</td><td>A pointer to a <a class="el" href="structcalendar_suite.html" title="struct for containing an array of pointer to calendar-lists.">calendarSuite</a> for the program to find a date in. </td></tr>
+    <tr><td class="paramname">param</td><td>A struct of search paramerters </td></tr>
+    <tr><td class="paramname">searchMode</td><td>Used to check if priority of param is used, or using default value </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>int Bool value telling if a possible date for event was found. </dd></dl>
 
 </div>
 </div>
@@ -210,15 +215,18 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>!!!THIS FUNCTION IS NOT FINISHED!!! </p>
+<p>Based on a number of filepaths to *.ics files, builds an array of pointers to linked lists of calendar links/nodes and links/nodes data. </p>
+<p>Each linked list correspondes to each *.ics file gotten. Each linked list starts with a node/link struct called calendar, this struct is documented in <a class="el" href="sp1s_lib_8h.html">sp1sLib.h</a>. After this the linked list is made of node/link structs called <a class="el" href="structevent_link.html" title="Struct for a linked list of event structs.">eventLink</a>, these contain data for one event each, they are also documented in <a class="el" href="sp1s_lib_8h.html">sp1sLib.h</a>.</p>
+<p>The function looks through argc amount of arguments, argv, not all argumets need to be *.ics file paths, but all *.ics filepaths have to be valid, if this is not the case function terminates program with an error message.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">argc</td><td></td></tr>
-    <tr><td class="paramname">argv</td><td></td></tr>
-    <tr><td class="paramname"><a class="el" href="structcalendar_suite.html" title="struct for containing an array of pointer to calendar-lists.">calendarSuite</a></td><td></td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">argc</td><td>number of arguments </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">argv</td><td>arguments </td></tr>
+    <tr><td class="paramdir">[in,out]</td><td class="paramname"><a class="el" href="structcalendar_suite.html" title="struct for containing an array of pointer to calendar-lists.">calendarSuite</a></td><td></td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section warning"><dt>Warning</dt><dd>This function does not control the validity of the data gotten from the *.ics files. [errorHandling(!returnFlag, "!!!ERROR IN *.ICS FILE!!!");] does nothing at the moment. </dd></dl>
 
 </div>
 </div>
@@ -237,8 +245,6 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Get the Search Parameters object. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">a</td><td></td></tr>
@@ -273,6 +279,16 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>This is where the magic happens 🤖 </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">argc</td><td>Amount of arguments provided as a command line input including the program itself </td></tr>
+    <tr><td class="paramname">argv</td><td>An array of all command line arguments including the program itself </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>int The exit code of the program </dd></dl>
 
 </div>
 </div>

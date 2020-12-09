@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['icsfile_322',['icsFile',['../sp1s_lib_8h.html#a9fbe86528f280abfa5ad58320b7a37dbacca00230f83584e3a0a077d2105518a4',1,'sp1sLib.h']]],
-  ['invalid_323',['invalid',['../sp1s_lib_8h.html#a9fbe86528f280abfa5ad58320b7a37dbaaf3d1efdf1095604d189748d8b46fc56',1,'sp1sLib.h']]]
+  ['bylooking_334',['bylooking',['../sp1s_lib_8h.html#abd76a749c3f50d7d9169a6ce8d8faf55afd06e0634fcf6f80afeddf8c2fc59133',1,'sp1sLib.h']]],
+  ['byrestructuring_335',['byRestructuring',['../sp1s_lib_8h.html#abd76a749c3f50d7d9169a6ce8d8faf55a7d43503b0bd53826fa6e401489286438',1,'sp1sLib.h']]]
 ];
