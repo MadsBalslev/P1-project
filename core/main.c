@@ -10,9 +10,9 @@ int main(int argc, char *argv[]) {
     getCalendarSuite(argc, argv, &calendarSuiteMain);
 
     getSearchParameters(&searchParametersMain);
-    foundDatesByLooking = findAvailableDatesByLooking();
-    
-    if (foundDatesByLooking) {
+    foundDatesByLooking = findAvailableDatesByLooking(&calendarSuiteMain);
+
+    if (!foundDatesByLooking) {
         findAvailableDatesByRestructuring();
     }
     userOutput();
@@ -79,7 +79,7 @@ void mallocCalendarSuite(int n, calendarSuite *calendarSuite) {
 }
 
 /**
- * @brief Get the Search Parameters object
+ * @brief 
  * 
  * @param a 
  */
@@ -116,8 +116,56 @@ void getCalendarSuite(int argc, char *argv[], calendarSuite *calendarSuite) {
     }
 }
 
-int findAvailableDatesByLooking(void) {
-    return 1;
+/**
+ * @brief 
+ * 
+ * @param suite A pointer to a calendarSuite for the program to find a date in.
+ * @return int Bool value telling if a possible date for event was found.
+ */
+int findAvailableDatesByLooking(calendarSuite *suite) {
+    int foundDate = 0;
+    int sumAllEvents = 0;
+    event **allEvents;
+
+    sumAllEvents = findSumAllEvents(suite);
+    printf("\nsumAllEvents: %d", sumAllEvents);
+
+    allEvents = (event **)malloc(sumAllEvents * sizeof(event *));
+    errorHandling(allEvents == NULL, "!!!FAILED TO ALLOCATE MEMORY STEP 3!!!");
+
+    calSuiteToEventArray(suite, allEvents, sumAllEvents);
+    /*sortEventArray();*/
+
+    free(allEvents); /* <------ MIGHT BREAK EVERYTHING */
+    return foundDate;
+}
+
+int findSumAllEvents(const calendarSuite *suite) {
+    int i = 0, sum = 0;
+
+    while (i < suite->Arraylen) {
+        sum += suite->calPtrArray[i]->numOfEvents;
+        i++;
+    }
+
+    return sum;
+}
+
+void calSuiteToEventArray(const calendarSuite *suite, event *eventPtrArray[], int sumAllEvents) {
+    int i = 0, k;
+    eventLink *cursor;
+
+    printf("ArrayLen: %d\n", suite->Arraylen);
+    for (k = 0; k < suite->Arraylen; k++) {
+        cursor = suite->calPtrArray[k]->firstEvent;
+        while(cursor != NULL) {
+            eventPtrArray[i] = cursor->currentEvent;
+
+            cursor = cursor->nextEventLink;
+            printf("\n%s\n", eventPtrArray[i]->title);
+            i++;
+        }
+    }
 }
 
 void findAvailableDatesByRestructuring(void) {

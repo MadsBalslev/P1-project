@@ -49,8 +49,7 @@ int getCalendarSuiteGetFileSingle(char arg[], calendar *calendar) {
 }
 
 int getCalendarSuiteGetData(calendarSuite *calendarSuite) {
-    int i = 0;
-    int errorFlag = 1;
+    int i = 0, errorFlag = 1;
 
     while (i < calendarSuite->Arraylen && errorFlag) {
         errorFlag = getCalendarSuiteGetDataSingle(calendarSuite->calPtrArray[i]);
@@ -108,6 +107,7 @@ int getCalendarSuiteGetDataSingle(calendar *calendar) {
             isEvent = 0;
         }
     }
+    calendar->numOfEvents = numOfEvents;
     return 1;
 }
 
@@ -166,6 +166,8 @@ void printCalendar(const calendar *calendar) {
         printEvent(cursor->currentEvent);
         i++;
     }
+
+    printf("Number of events: %d\n", calendar->numOfEvents);
 }
 
 void printEvent(const event *a) {
