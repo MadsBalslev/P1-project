@@ -1,6 +1,13 @@
 #include "sp1sLib.h"
 int DEBUG = 0;
 
+/**
+ * @brief This is where the magic happens 🤖
+ * 
+ * @param argc Amount of arguments provided as a command line input including the program itself
+ * @param argv An array of all command line arguments including the program itself 
+ * @return int The exit code of the program
+ */
 int main(int argc, char *argv[]) {
     int foundDatesByLooking = 0;
     searchParameters searchParametersMain;
@@ -10,10 +17,10 @@ int main(int argc, char *argv[]) {
     getCalendarSuite(argc, argv, &calendarSuiteMain);
 
     getSearchParameters(&searchParametersMain);
-    foundDatesByLooking = findAvailableDatesByLooking(&calendarSuiteMain);
+    foundDatesByLooking = findAvailableDates(&calendarSuiteMain, &searchParametersMain, bylooking);
 
     if (!foundDatesByLooking) {
-        findAvailableDatesByRestructuring();
+        findAvailableDates(&calendarSuiteMain, &searchParametersMain, byRestructuring);
     }
     userOutput();
 
@@ -95,11 +102,25 @@ void getSearchParameters(searchParameters *a) {
 }
 
 /**
- * @brief !!!THIS FUNCTION IS NOT FINISHED!!!
- * 
- * @param argc 
- * @param argv 
- * @param calendarSuite 
+ * @brief Based on a number of filepaths to *.ics files, builds an array of pointers to linked
+ * lists of calendar links/nodes and links/nodes data.
+ *
+ * Each linked list correspondes to each *.ics file gotten. Each linked list starts with a
+ * node/link struct called calendar, this struct is documented in sp1sLib.h. After this the
+ * linked list is made of node/link structs called eventLink, these contain data for one event
+ * each, they are also documented in sp1sLib.h. 
+ *
+ * The function looks through argc amount of arguments, argv, not all argumets need to be
+ * *.ics file paths, but all *.ics filepaths have to be valid, if this is not the case
+ * function terminates program with an error message.
+ *
+ * @param argc number of arguments
+ * @param argv arguments
+ * @param[in, out] calendarSuite
+ *
+ * @warning This function does not control the validity of the data gotten from the *.ics
+ * files. [errorHandling(!returnFlag, "!!!ERROR IN *.ICS FILE!!!");] does nothing at the
+ * moment.
  */
 void getCalendarSuite(int argc, char *argv[], calendarSuite *calendarSuite) {
     int returnFlag = 0;
@@ -120,106 +141,45 @@ void getCalendarSuite(int argc, char *argv[], calendarSuite *calendarSuite) {
  * @brief 
  * 
  * @param suite A pointer to a calendarSuite for the program to find a date in.
+ * @param param A struct of search paramerters
+ * @param searchMode Used to check if priority of param is used, or using default value
  * @return int Bool value telling if a possible date for event was found.
  */
-int findAvailableDatesByLooking(calendarSuite *suite) {
-    int foundDate = 0;
-    int sumAllEvents = 0;
-    int i;
+int findAvailableDates(calendarSuite *suite, const searchParameters *param, int searchMode) {
+    int foundDate = 1, sumAllEvents = 0; /* <-------- foundDate should be 0, but for now it's not*/
     event **allEvents;
 
     sumAllEvents = findSumAllEvents(suite);
-    printf("\nsumAllEvents: %d", sumAllEvents);
+    if (DEBUG) {
+        printf("\nsumAllEvents: %d", sumAllEvents);
+    }
 
     allEvents = (event **)malloc(sumAllEvents * sizeof(event *));
     errorHandling(allEvents == NULL, "!!!FAILED TO ALLOCATE MEMORY STEP 3!!!");
 
-    calSuiteToEventArray(suite, allEvents, sumAllEvents);
-    qsort(allEvents, sumAllEvents, sizeof(event *), endTimeCmp);
-
-    for (i = 0; i < sumAllEvents; i++) {
-        printEvent(allEvents[i]);
+    if (searchMode == bylooking) {
+        calSuiteToEventArray(suite, allEvents, sumAllEvents, 1000); /* <------ This should be account for elsewhere*/
+    } else if (searchMode == byRestructuring) {
+        calSuiteToEventArray(suite, allEvents, sumAllEvents, param->priority);
     }
+
+    if (DEBUG) {
+        printf("\nEVENT ARRAY:\n");
+        printEventPtrArray(allEvents, sumAllEvents);
+    }
+
+    qsort(allEvents, sumAllEvents, sizeof(event *), endTimeCmp); /* Sorting array of events in chronological order by endTime */
+
+    if (DEBUG) {
+        printf("\nSORTED EVENT ARRAY:\n");
+        printEventPtrArray(allEvents, sumAllEvents);
+    }
+
+    /* Find huller i events */
 
     free(allEvents); /* <------ MIGHT BREAK EVERYTHING */
+
     return foundDate;
-}
-
-int findSumAllEvents(const calendarSuite *suite) {
-    int i = 0, sum = 0;
-
-    while (i < suite->Arraylen) {
-        sum += suite->calPtrArray[i]->numOfEvents;
-        i++;
-    }
-
-    return sum;
-}
-
-void calSuiteToEventArray(const calendarSuite *suite, event *eventPtrArray[], int sumAllEvents) {
-    int i = 0, k;
-    eventLink *cursor;
-
-    printf("ArrayLen: %d\n", suite->Arraylen);
-    for (k = 0; k < suite->Arraylen; k++) {
-        cursor = suite->calPtrArray[k]->firstEvent;
-        while (cursor != NULL) {
-            eventPtrArray[i] = cursor->currentEvent;
-
-            cursor = cursor->nextEventLink;
-            i++;
-        }
-    }
-}
-
-int endTimeCmp(const void *arg1, const void *arg2) {
-    event **event1 = (event **)arg1;
-    event **event2 = (event **)arg2;
-
-    if (eventEndsLater(*event1, *event2)) {
-        return 1;
-    } else if (eventEndsLater(*event2, *event1)) {
-        return -1;
-    } else {
-        return 0;
-    }
-}
-/**
- * @brief Determines if event1 end later than event2
- * 
- * @param event1 
- * @param event2 
- * @return int 1 if event1 ends later than event 2, 0 if event 2 ends later than event1 or they end at the same time
- */
-int eventEndsLater(event *event1, event *event2) {
-    if (event1->endTime.tm_year > event2->endTime.tm_year) { /* Check year */
-        return 1;
-    } else if (event1->endTime.tm_year < event2->endTime.tm_year) {
-        return 0;
-    } else if (event1->endTime.tm_mon > event2->endTime.tm_mon) { /* Check month */
-        return 1;
-    } else if (event1->endTime.tm_year < event2->endTime.tm_year) {
-        return 0;
-    } else if (event1->endTime.tm_mday > event2->endTime.tm_mday) { /* Check day */
-        return 1;
-    } else if (event1->endTime.tm_mday < event2->endTime.tm_mday) {
-        return 0;
-    } else if (event1->endTime.tm_hour > event2->endTime.tm_hour) { /* Check hour */
-        return 1;
-    } else if (event1->endTime.tm_hour < event2->endTime.tm_hour) {
-        return 0;
-    } else if (event1->endTime.tm_min > event2->endTime.tm_min) { /* Check min */
-        return 1;
-    } else if (event1->endTime.tm_min < event2->endTime.tm_min) {
-        return 0;
-    } else if (event1->endTime.tm_sec > event2->endTime.tm_sec) { /* Check secs */
-        return 1;
-    } else {
-        return 0;
-    }
-}
-
-void findAvailableDatesByRestructuring(void) {
 }
 
 void userOutput(void) {
