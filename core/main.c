@@ -1,6 +1,13 @@
 #include "sp1sLib.h"
 int DEBUG = 0;
 
+/**
+ * @brief This is where the magic happens 🤖
+ * 
+ * @param argc Amount of arguments provided as a command line input including the program itself
+ * @param argv An array of all command line arguments including the program itself 
+ * @return int The exit code of the program
+ */
 int main(int argc, char *argv[]) {
     int foundDatesByLooking = 0;
     searchParameters searchParametersMain;
@@ -10,10 +17,10 @@ int main(int argc, char *argv[]) {
     getCalendarSuite(argc, argv, &calendarSuiteMain);
 
     getSearchParameters(&searchParametersMain);
-    foundDatesByLooking = findAvailableDatesByLooking();
-    
-    if (foundDatesByLooking) {
-        findAvailableDatesByRestructuring();
+    foundDatesByLooking = findAvailableDates(&calendarSuiteMain, &searchParametersMain, bylooking);
+
+    if (!foundDatesByLooking) {
+        findAvailableDates(&calendarSuiteMain, &searchParametersMain, byRestructuring);
     }
     userOutput();
 
@@ -79,7 +86,7 @@ void mallocCalendarSuite(int n, calendarSuite *calendarSuite) {
 }
 
 /**
- * @brief Get the Search Parameters object
+ * @brief 
  * 
  * @param a 
  */
@@ -95,11 +102,25 @@ void getSearchParameters(searchParameters *a) {
 }
 
 /**
- * @brief !!!THIS FUNCTION IS NOT FINISHED!!!
- * 
- * @param argc 
- * @param argv 
- * @param calendarSuite 
+ * @brief Based on a number of filepaths to *.ics files, builds an array of pointers to linked
+ * lists of calendar links/nodes and links/nodes data.
+ *
+ * Each linked list correspondes to each *.ics file gotten. Each linked list starts with a
+ * node/link struct called calendar, this struct is documented in sp1sLib.h. After this the
+ * linked list is made of node/link structs called eventLink, these contain data for one event
+ * each, they are also documented in sp1sLib.h. 
+ *
+ * The function looks through argc amount of arguments, argv, not all argumets need to be
+ * *.ics file paths, but all *.ics filepaths have to be valid, if this is not the case
+ * function terminates program with an error message.
+ *
+ * @param argc number of arguments
+ * @param argv arguments
+ * @param[in, out] calendarSuite
+ *
+ * @warning This function does not control the validity of the data gotten from the *.ics
+ * files. [errorHandling(!returnFlag, "!!!ERROR IN *.ICS FILE!!!");] does nothing at the
+ * moment.
  */
 void getCalendarSuite(int argc, char *argv[], calendarSuite *calendarSuite) {
     int returnFlag = 0;
@@ -116,11 +137,49 @@ void getCalendarSuite(int argc, char *argv[], calendarSuite *calendarSuite) {
     }
 }
 
-int findAvailableDatesByLooking(void) {
-    return 1;
-}
+/**
+ * @brief 
+ * 
+ * @param suite A pointer to a calendarSuite for the program to find a date in.
+ * @param param A struct of search paramerters
+ * @param searchMode Used to check if priority of param is used, or using default value
+ * @return int Bool value telling if a possible date for event was found.
+ */
+int findAvailableDates(calendarSuite *suite, const searchParameters *param, int searchMode) {
+    int foundDate = 1, sumAllEvents = 0; /* <-------- foundDate should be 0, but for now it's not*/
+    event **allEvents;
 
-void findAvailableDatesByRestructuring(void) {
+    sumAllEvents = findSumAllEvents(suite);
+    if (DEBUG) {
+        printf("\nsumAllEvents: %d", sumAllEvents);
+    }
+
+    allEvents = (event **)malloc(sumAllEvents * sizeof(event *));
+    errorHandling(allEvents == NULL, "!!!FAILED TO ALLOCATE MEMORY STEP 3!!!");
+
+    if (searchMode == bylooking) {
+        calSuiteToEventArray(suite, allEvents, sumAllEvents, 1000); /* <------ This should be account for elsewhere*/
+    } else if (searchMode == byRestructuring) {
+        calSuiteToEventArray(suite, allEvents, sumAllEvents, param->priority);
+    }
+
+    if (DEBUG) {
+        printf("\nEVENT ARRAY:\n");
+        printEventPtrArray(allEvents, sumAllEvents);
+    }
+
+    qsort(allEvents, sumAllEvents, sizeof(event *), endTimeCmp); /* Sorting array of events in chronological order by endTime */
+
+    if (DEBUG) {
+        printf("\nSORTED EVENT ARRAY:\n");
+        printEventPtrArray(allEvents, sumAllEvents);
+    }
+
+    /* Find huller i events */
+
+    free(allEvents); /* <------ MIGHT BREAK EVERYTHING */
+
+    return foundDate;
 }
 
 void userOutput(void) {

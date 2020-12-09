@@ -17,10 +17,10 @@ typedef struct tm tm;
  * 
  */
 typedef struct event {
-    tm startTime;
-    tm endTime;
-    int priority;
-    char title[LINE_LEN];
+    tm startTime;         /*!< The starting time of an event detailed by a tm struct from <time.h> */
+    tm endTime;           /*!< The ending time of an event detailed by a tm struct from <time.h> */
+    int priority;         /*!< The priority of an event. Defaults to 0 if no priority is given */
+    char title[LINE_LEN]; /*!< The title of an event */
 } event;
 
 /**
@@ -55,7 +55,7 @@ typedef struct calendar {
  */
 typedef struct searchParameters {
     int priority;
-    int eventLen; /* in minutes */
+    int eventLen; /*!< Length of the event in minutes */
     tm startDate;
     tm endDate;
     tm upperLimit;
@@ -76,6 +76,9 @@ typedef struct calendarSuite {
 enum argType { invalid,
                icsFile,
                option };
+
+enum searchMode { bylooking,
+                  byRestructuring };
 
 /* PROGRAM FUNCTIONS
  * ------------------------------------------------------------------------------------------ 
@@ -106,11 +109,17 @@ int getCalendarSuiteGetDataSingle(calendar *calendar);
 void addEventCal(event *newEvent, calendar *calendar);
 eventLink *mallocEventLink(event *eventP, eventLink *eventLinkP);
 
-int findAvailableDatesByLooking(void);
-void findAvailableDatesByRestructuring(void);
+/* findAvailableDatesByLooking */
+int findAvailableDates(calendarSuite *suite, const searchParameters *param, int searchMode);
+int findSumAllEvents(const calendarSuite *suite);
+void calSuiteToEventArray(const calendarSuite *suite, event *eventPtrArray[], int sumAllEvents, int priority);
+int endTimeCmp(const void *arg1, const void *arg2);
+int eventEndsLater(event *event1, event *event2);
+
+void findAvailableDatesByRestructuring(calendarSuite *suite, const searchParameters *param);
 void userOutput(void);
 
-/* SharedFunctions */
+/* helperFunctions */
 int isTimeValid(tm time);
 int isTimeValid_min(int tm_min);
 int isTimeValid_hour(int tm_hour);
@@ -126,6 +135,8 @@ void printMetadataCalendar(const calendar *calendar);
 void printCalendar(const calendar *calendar);
 void printCalendars(calendarSuite *calendarSuite);
 void printEvent(const event *a);
+
+void printEventPtrArray(event *allEvents[], int n);
 
 /* UNIT TESTING FUNCTIONS
  * -------------------------------------------------------------------------------------------

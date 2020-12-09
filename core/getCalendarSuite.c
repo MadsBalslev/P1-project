@@ -48,9 +48,14 @@ int getCalendarSuiteGetFileSingle(char arg[], calendar *calendar) {
     return validFileLocation;
 }
 
+/**
+ * @brief Get the Calendar Suite Get Data object
+ * 
+ * @param calendarSuite 
+ * @return int 
+ */
 int getCalendarSuiteGetData(calendarSuite *calendarSuite) {
-    int i = 0;
-    int errorFlag = 1;
+    int i = 0, errorFlag = 1;
 
     while (i < calendarSuite->Arraylen && errorFlag) {
         errorFlag = getCalendarSuiteGetDataSingle(calendarSuite->calPtrArray[i]);
@@ -61,6 +66,12 @@ int getCalendarSuiteGetData(calendarSuite *calendarSuite) {
     return errorFlag;
 }
 
+/**
+ * @brief Get the Calendar Suite Get Data Single object
+ * 
+ * @param calendar 
+ * @return int 
+ */
 int getCalendarSuiteGetDataSingle(calendar *calendar) {
     event *newEvent;
     int isEvent = 0, numOfEvents = 0;
@@ -108,6 +119,7 @@ int getCalendarSuiteGetDataSingle(calendar *calendar) {
             isEvent = 0;
         }
     }
+    calendar->numOfEvents = numOfEvents;
     return 1;
 }
 
@@ -135,8 +147,6 @@ void addEventCal(event *newEvent, calendar *inputCal) {
 /**
  * @brief 
  * 
- *
- * 
  * @param event 
  * @param pointer 
  * @return eventLink* 
@@ -152,6 +162,11 @@ eventLink *mallocEventLink(event *event, eventLink *pointer) {
     return newLink;
 }
 
+/**
+ * @brief 
+ * 
+ * @param calendar 
+ */
 void printCalendar(const calendar *calendar) {
     eventLink *cursor;
     int i = 1;
@@ -166,8 +181,15 @@ void printCalendar(const calendar *calendar) {
         printEvent(cursor->currentEvent);
         i++;
     }
+
+    printf("Number of events: %d\n", calendar->numOfEvents);
 }
 
+/**
+ * @brief 
+ * 
+ * @param a 
+ */
 void printEvent(const event *a) {
     printf("    SUMMARY: %s\n", a->title);
     printf("    DTSTART: %.2d/%.2d/%.2d Time: %.2d:%.2d:%.2d\n",
