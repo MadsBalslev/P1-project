@@ -106,9 +106,12 @@ int getCalendarSuiteGetDataSingle(calendar *calendar);
 void addEventCal(event *newEvent, calendar *calendar);
 eventLink *mallocEventLink(event *eventP, eventLink *eventLinkP);
 
+/* findAvailableDatesByLooking */
 int findAvailableDatesByLooking(calendarSuite *suite);
 int findSumAllEvents(const calendarSuite *suite);
 void calSuiteToEventArray(const calendarSuite *suite, event *eventPtrArray[], int sumAllEvents);
+int endTimeCmp(const void *arg1, const void *arg2);
+int eventEndsLater(event *event1, event *event2);
 
 
 void findAvailableDatesByRestructuring(void);

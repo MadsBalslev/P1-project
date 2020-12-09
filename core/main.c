@@ -125,6 +125,7 @@ void getCalendarSuite(int argc, char *argv[], calendarSuite *calendarSuite) {
 int findAvailableDatesByLooking(calendarSuite *suite) {
     int foundDate = 0;
     int sumAllEvents = 0;
+    int i;
     event **allEvents;
 
     sumAllEvents = findSumAllEvents(suite);
@@ -134,7 +135,11 @@ int findAvailableDatesByLooking(calendarSuite *suite) {
     errorHandling(allEvents == NULL, "!!!FAILED TO ALLOCATE MEMORY STEP 3!!!");
 
     calSuiteToEventArray(suite, allEvents, sumAllEvents);
-    /*sortEventArray();*/
+    qsort(allEvents, sumAllEvents, sizeof(event *), endTimeCmp);
+
+    for (i = 0; i < sumAllEvents; i++) {
+        printEvent(allEvents[i]);
+    }
 
     free(allEvents); /* <------ MIGHT BREAK EVERYTHING */
     return foundDate;
@@ -158,13 +163,59 @@ void calSuiteToEventArray(const calendarSuite *suite, event *eventPtrArray[], in
     printf("ArrayLen: %d\n", suite->Arraylen);
     for (k = 0; k < suite->Arraylen; k++) {
         cursor = suite->calPtrArray[k]->firstEvent;
-        while(cursor != NULL) {
+        while (cursor != NULL) {
             eventPtrArray[i] = cursor->currentEvent;
 
             cursor = cursor->nextEventLink;
-            printf("\n%s\n", eventPtrArray[i]->title);
             i++;
         }
+    }
+}
+
+int endTimeCmp(const void *arg1, const void *arg2) {
+    event **event1 = (event **)arg1;
+    event **event2 = (event **)arg2;
+
+    if (eventEndsLater(*event1, *event2)) {
+        return 1;
+    } else if (eventEndsLater(*event2, *event1)) {
+        return -1;
+    } else {
+        return 0;
+    }
+}
+/**
+ * @brief Determines if event1 end later than event2
+ * 
+ * @param event1 
+ * @param event2 
+ * @return int 1 if event1 ends later than event 2, 0 if event 2 ends later than event1 or they end at the same time
+ */
+int eventEndsLater(event *event1, event *event2) {
+    if (event1->endTime.tm_year > event2->endTime.tm_year) { /* Check year */
+        return 1;
+    } else if (event1->endTime.tm_year < event2->endTime.tm_year) {
+        return 0;
+    } else if (event1->endTime.tm_mon > event2->endTime.tm_mon) { /* Check month */
+        return 1;
+    } else if (event1->endTime.tm_year < event2->endTime.tm_year) {
+        return 0;
+    } else if (event1->endTime.tm_mday > event2->endTime.tm_mday) { /* Check day */
+        return 1;
+    } else if (event1->endTime.tm_mday < event2->endTime.tm_mday) {
+        return 0;
+    } else if (event1->endTime.tm_hour > event2->endTime.tm_hour) { /* Check hour */
+        return 1;
+    } else if (event1->endTime.tm_hour < event2->endTime.tm_hour) {
+        return 0;
+    } else if (event1->endTime.tm_min > event2->endTime.tm_min) { /* Check min */
+        return 1;
+    } else if (event1->endTime.tm_min < event2->endTime.tm_min) {
+        return 0;
+    } else if (event1->endTime.tm_sec > event2->endTime.tm_sec) { /* Check secs */
+        return 1;
+    } else {
+        return 0;
     }
 }
 
