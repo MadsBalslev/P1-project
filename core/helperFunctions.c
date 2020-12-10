@@ -247,15 +247,15 @@ void printCalendar(const calendar *calendar) {
 void printEvent(const event *a) {
     printf("    SUMMARY: %s\n", a->title);
     printf("    DTSTART: %.2d/%.2d/%.2d Time: %.2d:%.2d:%.2d\n",
-           a->startTime.tm_year,
-           a->startTime.tm_mon,
+           a->startTime.tm_year + 1900,
+           a->startTime.tm_mon + 1,
            a->startTime.tm_mday,
            a->startTime.tm_hour,
            a->startTime.tm_min,
            a->startTime.tm_sec);
     printf("    DTEND:   %.2d/%.2d/%.2d Time: %.2d:%.2d:%.2d\n",
-           a->endTime.tm_year,
-           a->endTime.tm_mon,
+           a->endTime.tm_year + 1900,
+           a->endTime.tm_mon + 1,
            a->endTime.tm_mday,
            a->endTime.tm_hour,
            a->endTime.tm_min,

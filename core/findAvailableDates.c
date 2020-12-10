@@ -130,30 +130,26 @@ void printEventPtrArray(event *allEvents[], int n) {
 
 /* 1. Sammenflet alle overlappende events til ét samlet event */
 
-event lookForFreeSlot(event *allEvents[], int arrLen, int minutes) {
-    int i = 0;
-    event eventBlock; /* Declare a new eventBlock */
+time_t lookForFreeSlot(event *allEvents[], int arrLen, searchParameters *p) {
+    tm cursor = allEvents[0]->endTime;
+    time_t unixCursor = timegm(&cursor);
+    int i;
 
-    /* Initialize eventBlock to be the first event */
-    eventBlock.startTime = allEvents[i]->startTime;
-    eventBlock.endTime = allEvents[i]->endTime;
+    for (i = 1; i < arrLen || allEvents[i] != NULL; i++) {
+        time_t unixStart = timegm(&allEvents[i]->startTime);
+        time_t unixEnd = timegm(&allEvents[i]->endTime);
 
-    /* while (eventBeginBeforeEnd(allEvents[i], allEvents[i + 1]) && i < (arrLen - 1)) { Segmentation fault here
-        eventBlock.endTime = allEvents[i + 1]->endTime;
-        i++;
-    } */
+        if (unixCursor > unixStart && unixCursor < unixEnd) {
+            unixCursor = unixEnd;
+            printf("New cursor: %d\n", unixCursor);
+        } else if (unixCursor < unixStart && unixStart - unixCursor >= (p->eventLen * 60)) { /*<---- 60 should be #define 'd */
+            break;
+        } else if (unixCursor < unixStart && unixStart - unixCursor < (p->eventLen * 60)) { /*<---- 60 should be #define 'd */
+            unixCursor = unixEnd;
+        }
+    }
 
-    printf("Free slot in calendar from %.2d/%.2d/%.4d %.2d:%.2d to %.2d/%.2d/%.4d %.2d:%.2d\n",
-           eventBlock.endTime.tm_mday,
-           eventBlock.endTime.tm_mon,
-           eventBlock.endTime.tm_year,
-           eventBlock.endTime.tm_hour,
-           eventBlock.endTime.tm_min,
-           allEvents[i + 1]->startTime.tm_mday,
-           allEvents[i + 1]->startTime.tm_mon,
-           allEvents[i + 1]->startTime.tm_year,
-           allEvents[i + 1]->startTime.tm_hour,
-           allEvents[i + 1]->startTime.tm_min);
+    return unixCursor;
 }
 
 /**
@@ -163,31 +159,39 @@ event lookForFreeSlot(event *allEvents[], int arrLen, int minutes) {
  * @param event2 
  * @return int 
  */
-int eventBeginBeforeEnd(event *event1, event *event2) {
-    if (event1->endTime.tm_year >= event2->startTime.tm_year) { /* Check year */
-        return 1;
-    } else if (event1->endTime.tm_year < event2->startTime.tm_year) {
-        return 0;
-    } else if (event1->endTime.tm_mon >= event2->startTime.tm_mon) { /* Check month */
-        return 1;
-    } else if (event1->endTime.tm_year < event2->startTime.tm_year) {
-        return 0;
-    } else if (event1->endTime.tm_mday >= event2->startTime.tm_mday) { /* Check day */
-        return 1;
-    } else if (event1->endTime.tm_mday < event2->startTime.tm_mday) {
-        return 0;
-    } else if (event1->endTime.tm_hour >= event2->startTime.tm_hour) { /* Check hour */
-        return 1;
-    } else if (event1->endTime.tm_hour < event2->startTime.tm_hour) {
-        return 0;
-    } else if (event1->endTime.tm_min >= event2->startTime.tm_min) { /* Check min */
-        return 1;
-    } else if (event1->endTime.tm_min < event2->startTime.tm_min) {
-        return 0;
-    } else if (event1->endTime.tm_sec >= event2->startTime.tm_sec) { /* Check secs */
+int eventBeginBeforeEnd(time_t *event1, time_t *event2) {
+    if (event2 <= event1) {
         return 1;
     } else {
         return 0;
+    }
+}
+
+int tmCmp(tm t1, tm t2) {
+    if (t1.tm_year > t2.tm_year) { /* Check year */
+        return 1;
+    } else if (t1.tm_year < t2.tm_year) {
+        return 0;
+    } else if (t1.tm_mon > t2.tm_mon) { /* Check month */
+        return 1;
+    } else if (t1.tm_year < t2.tm_year) {
+        return 0;
+    } else if (t1.tm_mday > t2.tm_mday) { /* Check day */
+        return 1;
+    } else if (t1.tm_mday < t2.tm_mday) {
+        return 0;
+    } else if (t1.tm_hour > t2.tm_hour) { /* Check hour */
+        return 1;
+    } else if (t1.tm_hour < t2.tm_hour) {
+        return 0;
+    } else if (t1.tm_min > t2.tm_min) { /* Check min */
+        return 1;
+    } else if (t1.tm_min < t2.tm_min) {
+        return 0;
+    } else if (t1.tm_sec > t2.tm_sec) { /* Check secs */
+        return 1;
+    } else {
+        return 1;
     }
 }
 

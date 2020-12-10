@@ -148,6 +148,7 @@ void getCalendarSuite(int argc, char *argv[], calendarSuite *calendarSuite) {
 int findAvailableDates(calendarSuite *suite, const searchParameters *param, int searchMode) {
     int foundDate = 1, sumAllEvents = 0; /* <-------- foundDate should be 0, but for now it's not*/
     event **allEvents;
+    time_t freeSlot;
 
     sumAllEvents = findSumAllEvents(suite);
     if (DEBUG) {
@@ -163,6 +164,8 @@ int findAvailableDates(calendarSuite *suite, const searchParameters *param, int 
         calSuiteToEventArray(suite, allEvents, sumAllEvents, param->priority);
     }
 
+    printf("%d\n", mktime(&allEvents[1]->startTime));
+
     if (DEBUG) {
         printf("\nEVENT ARRAY:\n");
         printEventPtrArray(allEvents, sumAllEvents);
@@ -176,7 +179,9 @@ int findAvailableDates(calendarSuite *suite, const searchParameters *param, int 
     }
 
     /* Find huller i events */
-    lookForFreeSlot(allEvents, sumAllEvents, 60);
+    freeSlot = lookForFreeSlot(allEvents, sumAllEvents, param);
+
+    printf("Free slot found at: %d\n", freeSlot);
 
     free(allEvents); /* <------ MIGHT BREAK EVERYTHING */
 

@@ -115,8 +115,8 @@ int findSumAllEvents(const calendarSuite *suite);
 void calSuiteToEventArray(const calendarSuite *suite, event *eventPtrArray[], int sumAllEvents, int priority);
 int endTimeCmp(const void *arg1, const void *arg2);
 int eventStartsLater(event *event1, event *event2);
-event lookForFreeSlot(event *allEvents[], int arrLen, int minutes);
-int eventBeginBeforeEnd(event *event1, event *event2);
+time_t lookForFreeSlot(event *allEvents[], int arrLen, searchParameters *p);
+int eventBeginBeforeEnd(time_t *event1, time_t *event2);
 
 void findAvailableDatesByRestructuring(calendarSuite *suite, const searchParameters *param);
 void userOutput(void);
