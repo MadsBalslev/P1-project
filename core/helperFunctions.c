@@ -193,9 +193,9 @@ void errorHandling(int statement, char errorMessage[]) {
 }
 
 /**
- * @brief 
+ * @brief Prints all data stored in calendarSuite.
  * 
- * @param calendarSuite 
+ * @param calendarSuite Suite to print.
  */
 void printCalendars(calendarSuite *calendarSuite) {
     int i;
@@ -206,9 +206,9 @@ void printCalendars(calendarSuite *calendarSuite) {
 }
 
 /**
- * @brief
+ * @brief Prints all "readable" data in a calendar structure.
  * 
- * @param calendar 
+ * @param calendar Calendar structure to print.
  */
 void printMetadataCalendar(const calendar *calendar) {
     printf("calName: %s\n", calendar->calName);
@@ -217,9 +217,9 @@ void printMetadataCalendar(const calendar *calendar) {
 }
 
 /**
- * @brief 
+ * @brief Prints data stored in the linked list of eventLinks pointed to by calendar.
  * 
- * @param calendar 
+ * @param calendar Pointer to calendar from where the linked list should be printed.
  */
 void printCalendar(const calendar *calendar) {
     eventLink *cursor;
@@ -240,9 +240,9 @@ void printCalendar(const calendar *calendar) {
 }
 
 /**
- * @brief 
+ * @brief Prints all data from one single event structure.
  * 
- * @param a 
+ * @param a Pointer to event structure.
  */
 void printEvent(const event *a) {
     printf("    SUMMARY: %s\n", a->title);
@@ -264,9 +264,9 @@ void printEvent(const event *a) {
 }
 
 /**
- * @brief 
+ * @brief Prints all data stored in calendar structs pointed to by calendarSuite.calPtrArray
  * 
- * @param calendarSuite 
+ * @param calendarSuite Suite from where the data should be printed from.
  */
 void printMetadataCalendarSuite(calendarSuite calendarSuite) {
     int i;
