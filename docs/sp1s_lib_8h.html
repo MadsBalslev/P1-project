@@ -192,14 +192,16 @@ Functions</h2></td></tr>
 <tr class="memdesc:abde63f2a2f79d3e18a2df3d131a051a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tries to open arg as a file, stores the file-path and file-pointer in calendar.  <a href="sp1s_lib_8h.html#abde63f2a2f79d3e18a2df3d131a051a0">More...</a><br /></td></tr>
 <tr class="separator:abde63f2a2f79d3e18a2df3d131a051a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a32bf7cff75f8ad64355dd9cd215d3939"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sp1s_lib_8h.html#a32bf7cff75f8ad64355dd9cd215d3939">getCalendarSuiteGetData</a> (<a class="el" href="structcalendar_suite.html">calendarSuite</a> *<a class="el" href="structcalendar_suite.html">calendarSuite</a>)</td></tr>
-<tr class="memdesc:a32bf7cff75f8ad64355dd9cd215d3939"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the Calendar Suite Get Data object.  <a href="sp1s_lib_8h.html#a32bf7cff75f8ad64355dd9cd215d3939">More...</a><br /></td></tr>
+<tr class="memdesc:a32bf7cff75f8ad64355dd9cd215d3939"><td class="mdescLeft">&#160;</td><td class="mdescRight">Builds a linked list of eventLinks, for each calendar pointed to by <a class="el" href="structcalendar_suite.html#a67026a93f07ea5de6989fb1d50b490e3">calendarSuite.calPtrArray</a>.  <a href="sp1s_lib_8h.html#a32bf7cff75f8ad64355dd9cd215d3939">More...</a><br /></td></tr>
 <tr class="separator:a32bf7cff75f8ad64355dd9cd215d3939"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af1b260c6d83e73d17195c5ae514826ce"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sp1s_lib_8h.html#af1b260c6d83e73d17195c5ae514826ce">getCalendarSuiteGetDataSingle</a> (<a class="el" href="structcalendar.html">calendar</a> *<a class="el" href="structcalendar.html">calendar</a>)</td></tr>
-<tr class="memdesc:af1b260c6d83e73d17195c5ae514826ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the Calendar Suite Get Data Single object.  <a href="sp1s_lib_8h.html#af1b260c6d83e73d17195c5ae514826ce">More...</a><br /></td></tr>
+<tr class="memdesc:af1b260c6d83e73d17195c5ae514826ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">Builds a linked list from data pointed to by the FILE pointer file contained in calendar, makes <a class="el" href="structcalendar.html#ad0a8056e0c26ee7b8cbeb70e8f2751f8">calendar.firstEvent</a> point to the first link/nodes in this linked list of <a class="el" href="structevent_link.html" title="Struct for a linked list of event structs.">eventLink</a>.  <a href="sp1s_lib_8h.html#af1b260c6d83e73d17195c5ae514826ce">More...</a><br /></td></tr>
 <tr class="separator:af1b260c6d83e73d17195c5ae514826ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a848004c34b77195e19143ad99f2f3199"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sp1s_lib_8h.html#a848004c34b77195e19143ad99f2f3199">addEventCal</a> (<a class="el" href="structevent.html">event</a> *newEvent, <a class="el" href="structcalendar.html">calendar</a> *<a class="el" href="structcalendar.html">calendar</a>)</td></tr>
+<tr class="memdesc:a848004c34b77195e19143ad99f2f3199"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds an <a class="el" href="structevent_link.html" title="Struct for a linked list of event structs.">eventLink</a> pointing to newEvent to the end of the linked list that is inputCal.  <a href="sp1s_lib_8h.html#a848004c34b77195e19143ad99f2f3199">More...</a><br /></td></tr>
 <tr class="separator:a848004c34b77195e19143ad99f2f3199"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adb86a7ee0d3a82abdc6d26ad5a17f157"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structevent_link.html">eventLink</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sp1s_lib_8h.html#adb86a7ee0d3a82abdc6d26ad5a17f157">mallocEventLink</a> (<a class="el" href="structevent.html">event</a> *eventP, <a class="el" href="structevent_link.html">eventLink</a> *eventLinkP)</td></tr>
+<tr class="memdesc:adb86a7ee0d3a82abdc6d26ad5a17f157"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new <a class="el" href="structevent_link.html" title="Struct for a linked list of event structs.">eventLink</a>.  <a href="sp1s_lib_8h.html#adb86a7ee0d3a82abdc6d26ad5a17f157">More...</a><br /></td></tr>
 <tr class="separator:adb86a7ee0d3a82abdc6d26ad5a17f157"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a573e8b50e0974679427e3213c6e21a77"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sp1s_lib_8h.html#a573e8b50e0974679427e3213c6e21a77">findAvailableDates</a> (<a class="el" href="structcalendar_suite.html">calendarSuite</a> *suite, const <a class="el" href="structsearch_parameters.html">searchParameters</a> *param, int <a class="el" href="sp1s_lib_8h.html#abd76a749c3f50d7d9169a6ce8d8faf55">searchMode</a>)</td></tr>
 <tr class="separator:a573e8b50e0974679427e3213c6e21a77"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -212,8 +214,14 @@ Functions</h2></td></tr>
 <tr class="memitem:a5d8ba0641470e0250dd619c311f787f7"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sp1s_lib_8h.html#a5d8ba0641470e0250dd619c311f787f7">endTimeCmp</a> (const void *arg1, const void *arg2)</td></tr>
 <tr class="memdesc:a5d8ba0641470e0250dd619c311f787f7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compares two events to determine which event ends the latest.  <a href="sp1s_lib_8h.html#a5d8ba0641470e0250dd619c311f787f7">More...</a><br /></td></tr>
 <tr class="separator:a5d8ba0641470e0250dd619c311f787f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae7cef6543fe438cd0d78205cace81ec1"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sp1s_lib_8h.html#ae7cef6543fe438cd0d78205cace81ec1">eventEndsLater</a> (<a class="el" href="structevent.html">event</a> *event1, <a class="el" href="structevent.html">event</a> *event2)</td></tr>
-<tr class="separator:ae7cef6543fe438cd0d78205cace81ec1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad12e76fe02460a24d0d765cfe3a73e76"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sp1s_lib_8h.html#ad12e76fe02460a24d0d765cfe3a73e76">eventStartsLater</a> (<a class="el" href="structevent.html">event</a> *event1, <a class="el" href="structevent.html">event</a> *event2)</td></tr>
+<tr class="memdesc:ad12e76fe02460a24d0d765cfe3a73e76"><td class="mdescLeft">&#160;</td><td class="mdescRight">Determines if event1 ends later than event2.  <a href="sp1s_lib_8h.html#ad12e76fe02460a24d0d765cfe3a73e76">More...</a><br /></td></tr>
+<tr class="separator:ad12e76fe02460a24d0d765cfe3a73e76"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5fccc6982a2c9777fd5d581df5c00eaf"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structevent.html">event</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sp1s_lib_8h.html#a5fccc6982a2c9777fd5d581df5c00eaf">lookForFreeSlot</a> (<a class="el" href="structevent.html">event</a> *allEvents[], int arrLen, int minutes)</td></tr>
+<tr class="separator:a5fccc6982a2c9777fd5d581df5c00eaf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a10e99925083adaf7471bb51ccf59bc45"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sp1s_lib_8h.html#a10e99925083adaf7471bb51ccf59bc45">eventBeginBeforeEnd</a> (<a class="el" href="structevent.html">event</a> *event1, <a class="el" href="structevent.html">event</a> *event2)</td></tr>
+<tr class="memdesc:a10e99925083adaf7471bb51ccf59bc45"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if an event begins before the event of previous event.  <a href="sp1s_lib_8h.html#a10e99925083adaf7471bb51ccf59bc45">More...</a><br /></td></tr>
+<tr class="separator:a10e99925083adaf7471bb51ccf59bc45"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab01739c25754e763c3d09c74fc4e1448"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sp1s_lib_8h.html#ab01739c25754e763c3d09c74fc4e1448">findAvailableDatesByRestructuring</a> (<a class="el" href="structcalendar_suite.html">calendarSuite</a> *suite, const <a class="el" href="structsearch_parameters.html">searchParameters</a> *param)</td></tr>
 <tr class="separator:ab01739c25754e763c3d09c74fc4e1448"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad07a12dcbc58de4015fc3189b803f0bd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sp1s_lib_8h.html#ad07a12dcbc58de4015fc3189b803f0bd">userOutput</a> (void)</td></tr>
@@ -246,18 +254,22 @@ Functions</h2></td></tr>
 <tr class="memdesc:a235097de52f9ad65a5d0ac20884a1e66"><td class="mdescLeft">&#160;</td><td class="mdescRight">Controls is a year is a leap year.  <a href="sp1s_lib_8h.html#a235097de52f9ad65a5d0ac20884a1e66">More...</a><br /></td></tr>
 <tr class="separator:a235097de52f9ad65a5d0ac20884a1e66"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a27c48aa11bd8e7594a1fb4a64085f293"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sp1s_lib_8h.html#a27c48aa11bd8e7594a1fb4a64085f293">errorHandling</a> (int statement, char ErrorMessage[])</td></tr>
+<tr class="memdesc:a27c48aa11bd8e7594a1fb4a64085f293"><td class="mdescLeft">&#160;</td><td class="mdescRight">If statement is true: print errorMessage and exit program returning EXIT_FAILURE.  <a href="sp1s_lib_8h.html#a27c48aa11bd8e7594a1fb4a64085f293">More...</a><br /></td></tr>
 <tr class="separator:a27c48aa11bd8e7594a1fb4a64085f293"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a12fd1d5292cd5d102de5806ce508cab5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sp1s_lib_8h.html#a12fd1d5292cd5d102de5806ce508cab5">printMetadataCalendarSuite</a> (<a class="el" href="structcalendar_suite.html">calendarSuite</a> <a class="el" href="structcalendar_suite.html">calendarSuite</a>)</td></tr>
-<tr class="memdesc:a12fd1d5292cd5d102de5806ce508cab5"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function is broken :(.  <a href="sp1s_lib_8h.html#a12fd1d5292cd5d102de5806ce508cab5">More...</a><br /></td></tr>
+<tr class="memdesc:a12fd1d5292cd5d102de5806ce508cab5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints all data stored in calendar structs pointed to by <a class="el" href="structcalendar_suite.html#a67026a93f07ea5de6989fb1d50b490e3">calendarSuite.calPtrArray</a>.  <a href="sp1s_lib_8h.html#a12fd1d5292cd5d102de5806ce508cab5">More...</a><br /></td></tr>
 <tr class="separator:a12fd1d5292cd5d102de5806ce508cab5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a752dee3a55606bf69da36570f8891d3a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sp1s_lib_8h.html#a752dee3a55606bf69da36570f8891d3a">printMetadataCalendar</a> (const <a class="el" href="structcalendar.html">calendar</a> *<a class="el" href="structcalendar.html">calendar</a>)</td></tr>
-<tr class="memdesc:a752dee3a55606bf69da36570f8891d3a"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function is broken :(.  <a href="sp1s_lib_8h.html#a752dee3a55606bf69da36570f8891d3a">More...</a><br /></td></tr>
+<tr class="memdesc:a752dee3a55606bf69da36570f8891d3a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints all "readable" data in a calendar structure.  <a href="sp1s_lib_8h.html#a752dee3a55606bf69da36570f8891d3a">More...</a><br /></td></tr>
 <tr class="separator:a752dee3a55606bf69da36570f8891d3a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa20e779fb52ff979736715132d61e959"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sp1s_lib_8h.html#aa20e779fb52ff979736715132d61e959">printCalendar</a> (const <a class="el" href="structcalendar.html">calendar</a> *<a class="el" href="structcalendar.html">calendar</a>)</td></tr>
+<tr class="memdesc:aa20e779fb52ff979736715132d61e959"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints data stored in the linked list of eventLinks pointed to by calendar.  <a href="sp1s_lib_8h.html#aa20e779fb52ff979736715132d61e959">More...</a><br /></td></tr>
 <tr class="separator:aa20e779fb52ff979736715132d61e959"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a40ecf137c65893ebfeb72fa8f080ae80"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sp1s_lib_8h.html#a40ecf137c65893ebfeb72fa8f080ae80">printCalendars</a> (<a class="el" href="structcalendar_suite.html">calendarSuite</a> *<a class="el" href="structcalendar_suite.html">calendarSuite</a>)</td></tr>
+<tr class="memdesc:a40ecf137c65893ebfeb72fa8f080ae80"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints all data stored in <a class="el" href="structcalendar_suite.html" title="struct for containing an array of pointer to calendar-lists.">calendarSuite</a>.  <a href="sp1s_lib_8h.html#a40ecf137c65893ebfeb72fa8f080ae80">More...</a><br /></td></tr>
 <tr class="separator:a40ecf137c65893ebfeb72fa8f080ae80"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7fc992a1dd9470ea345efd8cafc9acf8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sp1s_lib_8h.html#a7fc992a1dd9470ea345efd8cafc9acf8">printEvent</a> (const <a class="el" href="structevent.html">event</a> *a)</td></tr>
+<tr class="memdesc:a7fc992a1dd9470ea345efd8cafc9acf8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints all data from one single event structure.  <a href="sp1s_lib_8h.html#a7fc992a1dd9470ea345efd8cafc9acf8">More...</a><br /></td></tr>
 <tr class="separator:a7fc992a1dd9470ea345efd8cafc9acf8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6ea4ffcb3925da349bd7e7f575d32bda"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sp1s_lib_8h.html#a6ea4ffcb3925da349bd7e7f575d32bda">printEventPtrArray</a> (<a class="el" href="structevent.html">event</a> *allEvents[], int n)</td></tr>
 <tr class="memdesc:a6ea4ffcb3925da349bd7e7f575d32bda"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints all event data in a given array of pointer to events of length n.  <a href="sp1s_lib_8h.html#a6ea4ffcb3925da349bd7e7f575d32bda">More...</a><br /></td></tr>
@@ -510,10 +522,13 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Adds an <a class="el" href="structevent_link.html" title="Struct for a linked list of event structs.">eventLink</a> pointing to newEvent to the end of the linked list that is inputCal. </p>
+<p>Allocates space for the new <a class="el" href="structevent_link.html" title="Struct for a linked list of event structs.">eventLink</a>, then goes to the bottom of the linked list inputCal and points the NULL pointer to the new <a class="el" href="structevent_link.html" title="Struct for a linked list of event structs.">eventLink</a>.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">newEvent</td><td>The new event to be added at the end of the linked list </td></tr>
-    <tr><td class="paramname">inputCal</td><td>The calendar from which the event comes </td></tr>
+    <tr><td class="paramname">newEvent</td><td>The new event to be added at the end of the linked list. </td></tr>
+    <tr><td class="paramname">inputCal</td><td>First element in the linked list where newEvent needs to be added. </td></tr>
   </table>
   </dd>
 </dl>
@@ -782,7 +797,7 @@ Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">char&#160;</td>
-          <td class="paramname"><em>ErrorMessage</em>[]&#160;</td>
+          <td class="paramname"><em>errorMessage</em>[]&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -792,16 +807,25 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>If statement is true: print errorMessage and exit program returning EXIT_FAILURE. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">statement</td><td>Boolean expression. </td></tr>
+    <tr><td class="paramname">errorMessage</td><td>message to print if statement is true. </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
-<a id="ae7cef6543fe438cd0d78205cace81ec1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae7cef6543fe438cd0d78205cace81ec1">&#9670;&nbsp;</a></span>eventEndsLater()</h2>
+<a id="a10e99925083adaf7471bb51ccf59bc45"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a10e99925083adaf7471bb51ccf59bc45">&#9670;&nbsp;</a></span>eventBeginBeforeEnd()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int eventEndsLater </td>
+          <td class="memname">int eventBeginBeforeEnd </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structevent.html">event</a> *&#160;</td>
           <td class="paramname"><em>event1</em>, </td>
@@ -819,6 +843,54 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Checks if an event begins before the event of previous event. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">event1</td><td></td></tr>
+    <tr><td class="paramname">event2</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>int </dd></dl>
+
+</div>
+</div>
+<a id="ad12e76fe02460a24d0d765cfe3a73e76"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad12e76fe02460a24d0d765cfe3a73e76">&#9670;&nbsp;</a></span>eventStartsLater()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int eventStartsLater </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structevent.html">event</a> *&#160;</td>
+          <td class="paramname"><em>event1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structevent.html">event</a> *&#160;</td>
+          <td class="paramname"><em>event2</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Determines if event1 ends later than event2. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">event1</td><td>pointer to event structure </td></tr>
+    <tr><td class="paramname">event2</td><td>pointer to event structure </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>int 1 if event1 ends later than event 2, 0 if event 2 ends later than event1 or they end at the same time </dd></dl>
 
 </div>
 </div>
@@ -1004,14 +1076,15 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Get the Calendar Suite Get Data object. </p>
+<p>Builds a linked list of eventLinks, for each calendar pointed to by <a class="el" href="structcalendar_suite.html#a67026a93f07ea5de6989fb1d50b490e3">calendarSuite.calPtrArray</a>. </p>
+<p>This functions will also fclose the filepointer stored in each <a class="el" href="structcalendar_suite.html" title="struct for containing an array of pointer to calendar-lists.">calendarSuite</a>, when it has read the data it needs.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname"><a class="el" href="structcalendar_suite.html" title="struct for containing an array of pointer to calendar-lists.">calendarSuite</a></td><td></td></tr>
+    <tr><td class="paramname"><a class="el" href="structcalendar_suite.html" title="struct for containing an array of pointer to calendar-lists.">calendarSuite</a></td><td>Suite of calendars from where the linked lists should be build. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>int </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Returns 1 if no error is found i files, else 0 (this is not implemented at the moment). </dd></dl>
 
 </div>
 </div>
@@ -1031,14 +1104,15 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Get the Calendar Suite Get Data Single object. </p>
+<p>Builds a linked list from data pointed to by the FILE pointer file contained in calendar, makes <a class="el" href="structcalendar.html#ad0a8056e0c26ee7b8cbeb70e8f2751f8">calendar.firstEvent</a> point to the first link/nodes in this linked list of <a class="el" href="structevent_link.html" title="Struct for a linked list of event structs.">eventLink</a>. </p>
+<p>This functions scans through the file pointed to by the FILE pointer contained in calendar. For each events the functions reads allocates space for this data in the heap, and points to this data in the linked list that is created. The number of events in each calendar is calculated and stored in <a class="el" href="structcalendar.html#aae8a2425f5f8178962fbe130bb8d0330">calendar.numOfEvents</a>.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">calendar</td><td></td></tr>
+    <tr><td class="paramname">calendar</td><td>Calendar from where the linked list should be build from. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>int </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>1. </dd></dl>
 
 </div>
 </div>
@@ -1536,6 +1610,40 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="a5fccc6982a2c9777fd5d581df5c00eaf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5fccc6982a2c9777fd5d581df5c00eaf">&#9670;&nbsp;</a></span>lookForFreeSlot()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structevent.html">event</a> lookForFreeSlot </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structevent.html">event</a> *&#160;</td>
+          <td class="paramname"><em>allEvents</em>[], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>arrLen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>minutes</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a3abe2f53fd23c4260ac49df136253456"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a3abe2f53fd23c4260ac49df136253456">&#9670;&nbsp;</a></span>mallocCalendarSuite()</h2>
 
@@ -1599,14 +1707,17 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Creates a new <a class="el" href="structevent_link.html" title="Struct for a linked list of event structs.">eventLink</a>. </p>
+<p>Allocates space on the heap for a new evenLink, makes the <a class="el" href="structevent_link.html" title="Struct for a linked list of event structs.">eventLink</a> point to event, and pointer.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">event</td><td></td></tr>
-    <tr><td class="paramname">pointer</td><td></td></tr>
+    <tr><td class="paramname">event</td><td>Event this link should point to. </td></tr>
+    <tr><td class="paramname">pointer</td><td>Next link this link should point to. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>eventLink* </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Pointer to the new <a class="el" href="structevent_link.html" title="Struct for a linked list of event structs.">eventLink</a> that has been created. </dd></dl>
 
 </div>
 </div>
@@ -1625,9 +1736,11 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Prints data stored in the linked list of eventLinks pointed to by calendar. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">calendar</td><td></td></tr>
+    <tr><td class="paramname">calendar</td><td>Pointer to calendar from where the linked list should be printed. </td></tr>
   </table>
   </dd>
 </dl>
@@ -1650,6 +1763,14 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Prints all data stored in <a class="el" href="structcalendar_suite.html" title="struct for containing an array of pointer to calendar-lists.">calendarSuite</a>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname"><a class="el" href="structcalendar_suite.html" title="struct for containing an array of pointer to calendar-lists.">calendarSuite</a></td><td>Suite to print. </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="a7fc992a1dd9470ea345efd8cafc9acf8"></a>
@@ -1667,9 +1788,11 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Prints all data from one single event structure. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">a</td><td></td></tr>
+    <tr><td class="paramname">a</td><td>Pointer to event structure. </td></tr>
   </table>
   </dd>
 </dl>
@@ -1729,10 +1852,10 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>This function is broken :(. </p>
+<p>Prints all "readable" data in a calendar structure. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">calendar</td><td></td></tr>
+    <tr><td class="paramname">calendar</td><td>Calendar structure to print. </td></tr>
   </table>
   </dd>
 </dl>
@@ -1755,11 +1878,10 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>This function is broken :(. </p>
+<p>Prints all data stored in calendar structs pointed to by <a class="el" href="structcalendar_suite.html#a67026a93f07ea5de6989fb1d50b490e3">calendarSuite.calPtrArray</a>. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">calendar</td><td></td></tr>
-    <tr><td class="paramname">n</td><td></td></tr>
+    <tr><td class="paramname"><a class="el" href="structcalendar_suite.html" title="struct for containing an array of pointer to calendar-lists.">calendarSuite</a></td><td>Suite from where the data should be printed from. </td></tr>
   </table>
   </dd>
 </dl>

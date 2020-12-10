@@ -92,6 +92,11 @@ Functions</h2></td></tr>
 <tr class="memitem:a6ea4ffcb3925da349bd7e7f575d32bda"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="find_available_dates_8c.html#a6ea4ffcb3925da349bd7e7f575d32bda">printEventPtrArray</a> (<a class="el" href="structevent.html">event</a> *allEvents[], int n)</td></tr>
 <tr class="memdesc:a6ea4ffcb3925da349bd7e7f575d32bda"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints all event data in a given array of pointer to events of length n.  <a href="find_available_dates_8c.html#a6ea4ffcb3925da349bd7e7f575d32bda">More...</a><br /></td></tr>
 <tr class="separator:a6ea4ffcb3925da349bd7e7f575d32bda"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5fccc6982a2c9777fd5d581df5c00eaf"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structevent.html">event</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="find_available_dates_8c.html#a5fccc6982a2c9777fd5d581df5c00eaf">lookForFreeSlot</a> (<a class="el" href="structevent.html">event</a> *allEvents[], int arrLen, int minutes)</td></tr>
+<tr class="separator:a5fccc6982a2c9777fd5d581df5c00eaf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a10e99925083adaf7471bb51ccf59bc45"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="find_available_dates_8c.html#a10e99925083adaf7471bb51ccf59bc45">eventBeginBeforeEnd</a> (<a class="el" href="structevent.html">event</a> *event1, <a class="el" href="structevent.html">event</a> *event2)</td></tr>
+<tr class="memdesc:a10e99925083adaf7471bb51ccf59bc45"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if an event begins before the event of previous event.  <a href="find_available_dates_8c.html#a10e99925083adaf7471bb51ccf59bc45">More...</a><br /></td></tr>
+<tr class="separator:a10e99925083adaf7471bb51ccf59bc45"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
@@ -189,6 +194,44 @@ Variables</h2></td></tr>
 
 </div>
 </div>
+<a id="a10e99925083adaf7471bb51ccf59bc45"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a10e99925083adaf7471bb51ccf59bc45">&#9670;&nbsp;</a></span>eventBeginBeforeEnd()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int eventBeginBeforeEnd </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structevent.html">event</a> *&#160;</td>
+          <td class="paramname"><em>event1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structevent.html">event</a> *&#160;</td>
+          <td class="paramname"><em>event2</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Checks if an event begins before the event of previous event. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">event1</td><td></td></tr>
+    <tr><td class="paramname">event2</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>int </dd></dl>
+
+</div>
+</div>
 <a id="ad12e76fe02460a24d0d765cfe3a73e76"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad12e76fe02460a24d0d765cfe3a73e76">&#9670;&nbsp;</a></span>eventStartsLater()</h2>
 
@@ -252,6 +295,40 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>sum of all events in <a class="el" href="structcalendar_suite.html" title="struct for containing an array of pointer to calendar-lists.">calendarSuite</a> </dd></dl>
+
+</div>
+</div>
+<a id="a5fccc6982a2c9777fd5d581df5c00eaf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5fccc6982a2c9777fd5d581df5c00eaf">&#9670;&nbsp;</a></span>lookForFreeSlot()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structevent.html">event</a> lookForFreeSlot </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structevent.html">event</a> *&#160;</td>
+          <td class="paramname"><em>allEvents</em>[], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>arrLen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>minutes</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
 
 </div>
 </div>

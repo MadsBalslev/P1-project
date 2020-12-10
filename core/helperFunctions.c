@@ -179,6 +179,12 @@ int isLeapYear(int tm_year) {
     }
 }
 
+/**
+ * @brief If statement is true: print errorMessage and exit program returning EXIT_FAILURE.
+ * 
+ * @param statement Boolean expression.
+ * @param errorMessage message to print if statement is true.
+ */
 void errorHandling(int statement, char errorMessage[]) {
     if (statement) {
         printf("\n%s\n", errorMessage);
@@ -187,23 +193,22 @@ void errorHandling(int statement, char errorMessage[]) {
 }
 
 /**
- * @brief This function is broken :(
+ * @brief Prints all data stored in calendarSuite.
  * 
- * @param calendar 
- * @param n 
+ * @param calendarSuite Suite to print.
  */
-void printMetadataCalendarSuite(calendarSuite calendarSuite) {
+void printCalendars(calendarSuite *calendarSuite) {
     int i;
-    for (i = 0; i < calendarSuite.Arraylen; i++) {
-        printf("\nCALENDAR %d: \n", i);
-        printMetadataCalendar(calendarSuite.calPtrArray[i]);
+    for (i = 0; i < calendarSuite->Arraylen; i++) {
+        printMetadataCalendar(calendarSuite->calPtrArray[i]);
+        printCalendar(calendarSuite->calPtrArray[i]);
     }
 }
 
 /**
- * @brief This function is broken :(
+ * @brief Prints all "readable" data in a calendar structure.
  * 
- * @param calendar 
+ * @param calendar Calendar structure to print.
  */
 void printMetadataCalendar(const calendar *calendar) {
     printf("calName: %s\n", calendar->calName);
@@ -211,10 +216,62 @@ void printMetadataCalendar(const calendar *calendar) {
     printf("numOfEvents: %d\n\n", calendar->numOfEvents);
 }
 
-void printCalendars(calendarSuite *calendarSuite) {
+/**
+ * @brief Prints data stored in the linked list of eventLinks pointed to by calendar.
+ * 
+ * @param calendar Pointer to calendar from where the linked list should be printed.
+ */
+void printCalendar(const calendar *calendar) {
+    eventLink *cursor;
+    int i = 1;
+
+    cursor = calendar->firstEvent;
+    printf("    EVENT: 0\n");
+    printEvent(cursor->currentEvent);
+
+    while (cursor->nextEventLink != NULL) {
+        cursor = cursor->nextEventLink;
+        printf("    EVENT: %d\n", i);
+        printEvent(cursor->currentEvent);
+        i++;
+    }
+
+    printf("Number of events: %d\n", calendar->numOfEvents);
+}
+
+/**
+ * @brief Prints all data from one single event structure.
+ * 
+ * @param a Pointer to event structure.
+ */
+void printEvent(const event *a) {
+    printf("    SUMMARY: %s\n", a->title);
+    printf("    DTSTART: %.2d/%.2d/%.2d Time: %.2d:%.2d:%.2d\n",
+           a->startTime.tm_year,
+           a->startTime.tm_mon,
+           a->startTime.tm_mday,
+           a->startTime.tm_hour,
+           a->startTime.tm_min,
+           a->startTime.tm_sec);
+    printf("    DTEND:   %.2d/%.2d/%.2d Time: %.2d:%.2d:%.2d\n",
+           a->endTime.tm_year,
+           a->endTime.tm_mon,
+           a->endTime.tm_mday,
+           a->endTime.tm_hour,
+           a->endTime.tm_min,
+           a->endTime.tm_sec);
+    printf("    Priority: %d\n\n", a->priority);
+}
+
+/**
+ * @brief Prints all data stored in calendar structs pointed to by calendarSuite.calPtrArray
+ * 
+ * @param calendarSuite Suite from where the data should be printed from.
+ */
+void printMetadataCalendarSuite(calendarSuite calendarSuite) {
     int i;
-    for (i = 0; i < calendarSuite->Arraylen; i++) {
-        printMetadataCalendar(calendarSuite->calPtrArray[i]);
-        printCalendar(calendarSuite->calPtrArray[i]);
+    for (i = 0; i < calendarSuite.Arraylen; i++) {
+        printf("\nCALENDAR %d: \n", i);
+        printMetadataCalendar(calendarSuite.calPtrArray[i]);
     }
 }
