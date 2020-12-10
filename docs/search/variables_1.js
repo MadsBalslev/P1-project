@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['buffer_294',['buffer',['../struct_cu_string.html#aff2566f4c366b48d73479bef43ee4d2e',1,'CuString']]]
+  ['buffer_296',['buffer',['../struct_cu_string.html#aff2566f4c366b48d73479bef43ee4d2e',1,'CuString']]]
 ];
