@@ -49,10 +49,15 @@ int getCalendarSuiteGetFileSingle(char arg[], calendar *calendar) {
 }
 
 /**
- * @brief 
- * 
- * @param calendarSuite 
- * @return int 
+ * @brief Builds a linked list of eventLinks, for each calendar pointed to by
+ * calendarSuite.calPtrArray.
+ *
+ * This functions will also fclose the filepointer stored in each calendarSuite, when it has
+ * read the data it needs.
+ *
+ * @param calendarSuite Suite of calendars from where the linked lists should be build.
+ * @return Returns 1 if no error is found i files, else 0 (this is not implemented at the
+ * moment). 
  */
 int getCalendarSuiteGetData(calendarSuite *calendarSuite) {
     int i = 0, errorFlag = 1;
@@ -67,10 +72,17 @@ int getCalendarSuiteGetData(calendarSuite *calendarSuite) {
 }
 
 /**
- * @brief Get the Calendar Suite Get Data Single object
- * 
- * @param calendar 
- * @return int 
+ * @brief Builds a linked list from data pointed to by the FILE pointer file contained in
+ * calendar, makes calendar.firstEvent point to the first link/nodes in this linked list of
+ * eventLink.
+ *
+ * This functions scans through the file pointed to by the FILE pointer contained in calendar.
+ * For each events the functions reads allocates space for this data in the heap, and points
+ * to this data in the linked list that is created. The number of events in each calendar is
+ * calculated and stored in calendar.numOfEvents.
+ *
+ * @param calendar Calendar from where the linked list should be build from.
+ * @return 1.
  */
 int getCalendarSuiteGetDataSingle(calendar *calendar) {
     event *newEvent;
