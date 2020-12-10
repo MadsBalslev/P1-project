@@ -49,7 +49,7 @@ int getCalendarSuiteGetFileSingle(char arg[], calendar *calendar) {
 }
 
 /**
- * @brief Get the Calendar Suite Get Data object
+ * @brief 
  * 
  * @param calendarSuite 
  * @return int 
@@ -156,57 +156,10 @@ eventLink *mallocEventLink(event *event, eventLink *pointer) {
 
     newLink = (eventLink *)malloc(sizeof(eventLink));
     newLink->currentEvent = event;
-    newLink->nextEventLink = (eventLink *)malloc(sizeof(eventLink));
+    /*newLink->nextEventLink = (eventLink *)malloc(sizeof(eventLink));*/
     newLink->nextEventLink = pointer;
 
     return newLink;
-}
-
-/**
- * @brief 
- * 
- * @param calendar 
- */
-void printCalendar(const calendar *calendar) {
-    eventLink *cursor;
-    int i = 1;
-
-    cursor = calendar->firstEvent;
-    printf("    EVENT: 0\n");
-    printEvent(cursor->currentEvent);
-
-    while (cursor->nextEventLink != NULL) {
-        cursor = cursor->nextEventLink;
-        printf("    EVENT: %d\n", i);
-        printEvent(cursor->currentEvent);
-        i++;
-    }
-
-    printf("Number of events: %d\n", calendar->numOfEvents);
-}
-
-/**
- * @brief 
- * 
- * @param a 
- */
-void printEvent(const event *a) {
-    printf("    SUMMARY: %s\n", a->title);
-    printf("    DTSTART: %.2d/%.2d/%.2d Time: %.2d:%.2d:%.2d\n",
-           a->startTime.tm_year,
-           a->startTime.tm_mon,
-           a->startTime.tm_mday,
-           a->startTime.tm_hour,
-           a->startTime.tm_min,
-           a->startTime.tm_sec);
-    printf("    DTEND:   %.2d/%.2d/%.2d Time: %.2d:%.2d:%.2d\n",
-           a->endTime.tm_year,
-           a->endTime.tm_mon,
-           a->endTime.tm_mday,
-           a->endTime.tm_hour,
-           a->endTime.tm_min,
-           a->endTime.tm_sec);
-    printf("    Priority: %d\n\n", a->priority);
 }
 
 /*                    ____________________
