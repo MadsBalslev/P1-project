@@ -49,10 +49,15 @@ int getCalendarSuiteGetFileSingle(char arg[], calendar *calendar) {
 }
 
 /**
- * @brief Get the Calendar Suite Get Data object
- * 
- * @param calendarSuite 
- * @return int 
+ * @brief Builds a linked list of eventLinks, for each calendar pointed to by
+ * calendarSuite.calPtrArray.
+ *
+ * This functions will also fclose the filepointer stored in each calendarSuite, when it has
+ * read the data it needs.
+ *
+ * @param calendarSuite Suite of calendars from where the linked lists should be build.
+ * @return Returns 1 if no error is found i files, else 0 (this is not implemented at the
+ * moment). 
  */
 int getCalendarSuiteGetData(calendarSuite *calendarSuite) {
     int i = 0, errorFlag = 1;
@@ -67,10 +72,17 @@ int getCalendarSuiteGetData(calendarSuite *calendarSuite) {
 }
 
 /**
- * @brief Get the Calendar Suite Get Data Single object
- * 
- * @param calendar 
- * @return int 
+ * @brief Builds a linked list from data pointed to by the FILE pointer file contained in
+ * calendar, makes calendar.firstEvent point to the first link/nodes in this linked list of
+ * eventLink.
+ *
+ * This functions scans through the file pointed to by the FILE pointer contained in calendar.
+ * For each events the functions reads allocates space for this data in the heap, and points
+ * to this data in the linked list that is created. The number of events in each calendar is
+ * calculated and stored in calendar.numOfEvents.
+ *
+ * @param calendar Calendar from where the linked list should be build from.
+ * @return 1.
  */
 int getCalendarSuiteGetDataSingle(calendar *calendar) {
     event *newEvent;
@@ -101,7 +113,7 @@ int getCalendarSuiteGetDataSingle(calendar *calendar) {
             }
 
             if (newEvent->priority < 0) {
-                newEvent->priority = 0;
+                newEvent->priority = 0; 
             }
 
             sscanf(line, "DTEND:%4d%2d%2dT%2d%2d%2d%s",
@@ -124,10 +136,14 @@ int getCalendarSuiteGetDataSingle(calendar *calendar) {
 }
 
 /**
- * @brief 
- * 
- * @param newEvent The new event to be added at the end of the linked list
- * @param inputCal The calendar from which the event comes
+ * @brief Adds an eventLink pointing to newEvent to the end of the linked list that is
+ * inputCal.
+ *
+ * Allocates space for the new eventLink, then goes to the bottom of the linked list inputCal
+ * and points the NULL pointer to the new eventLink.
+ *
+ * @param newEvent The new event to be added at the end of the linked list.
+ * @param inputCal First element in the linked list where newEvent needs to be added.
  */
 void addEventCal(event *newEvent, calendar *inputCal) {
     eventLink *cursor, *newLink;
@@ -145,68 +161,24 @@ void addEventCal(event *newEvent, calendar *inputCal) {
 }
 
 /**
- * @brief 
- * 
- * @param event 
- * @param pointer 
- * @return eventLink* 
+ * @brief Creates a new eventLink.
+ *
+ * Allocates space on the heap for a new evenLink, makes the eventLink point to event, and
+ * pointer.
+ *
+ * @param event Event this link should point to.
+ * @param pointer Next link this link should point to.
+ * @return Pointer to the new eventLink that has been created.
  */
 eventLink *mallocEventLink(event *event, eventLink *pointer) {
     eventLink *newLink;
 
     newLink = (eventLink *)malloc(sizeof(eventLink));
     newLink->currentEvent = event;
-    newLink->nextEventLink = (eventLink *)malloc(sizeof(eventLink));
+    /*newLink->nextEventLink = (eventLink *)malloc(sizeof(eventLink));*/ /* <----- this is unnecessary*/
     newLink->nextEventLink = pointer;
 
     return newLink;
-}
-
-/**
- * @brief 
- * 
- * @param calendar 
- */
-void printCalendar(const calendar *calendar) {
-    eventLink *cursor;
-    int i = 1;
-
-    cursor = calendar->firstEvent;
-    printf("    EVENT: 0\n");
-    printEvent(cursor->currentEvent);
-
-    while (cursor->nextEventLink != NULL) {
-        cursor = cursor->nextEventLink;
-        printf("    EVENT: %d\n", i);
-        printEvent(cursor->currentEvent);
-        i++;
-    }
-
-    printf("Number of events: %d\n", calendar->numOfEvents);
-}
-
-/**
- * @brief 
- * 
- * @param a 
- */
-void printEvent(const event *a) {
-    printf("    SUMMARY: %s\n", a->title);
-    printf("    DTSTART: %.2d/%.2d/%.2d Time: %.2d:%.2d:%.2d\n",
-           a->startTime.tm_year,
-           a->startTime.tm_mon,
-           a->startTime.tm_mday,
-           a->startTime.tm_hour,
-           a->startTime.tm_min,
-           a->startTime.tm_sec);
-    printf("    DTEND:   %.2d/%.2d/%.2d Time: %.2d:%.2d:%.2d\n",
-           a->endTime.tm_year,
-           a->endTime.tm_mon,
-           a->endTime.tm_mday,
-           a->endTime.tm_hour,
-           a->endTime.tm_min,
-           a->endTime.tm_sec);
-    printf("    Priority: %d\n\n", a->priority);
 }
 
 /*                    ____________________
