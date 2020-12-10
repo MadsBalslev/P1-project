@@ -141,10 +141,10 @@ time_t lookForFreeSlot(event *allEvents[], int arrLen, searchParameters *p) {
 
         if (unixCursor > unixStart && unixCursor < unixEnd) {
             unixCursor = unixEnd;
-            printf("New cursor: %d\n", unixCursor);
-        } else if (unixCursor < unixStart && unixStart - unixCursor >= (p->eventLen * 60)) { /*<---- 60 should be #define 'd */
+            printf("New cursor: %ld\n", unixCursor);
+        } else if (unixCursor < unixStart && unixStart - unixCursor >= (p->eventLen * MIN_TO_SEC)) {
             break;
-        } else if (unixCursor < unixStart && unixStart - unixCursor < (p->eventLen * 60)) { /*<---- 60 should be #define 'd */
+        } else if (unixCursor < unixStart && unixStart - unixCursor < (p->eventLen * MIN_TO_SEC)) {
             unixCursor = unixEnd;
         }
     }

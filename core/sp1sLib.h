@@ -9,6 +9,7 @@
 #define DO_NOTHING 0
 #define INIT_TM \
     { 0, 0, 0, 1, 0, 2000, 0, 0, -1 }
+#define MIN_TO_SEC 60
 
 typedef struct tm tm;
 
