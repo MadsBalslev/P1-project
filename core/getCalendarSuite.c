@@ -98,9 +98,9 @@ int getCalendarSuiteGetDataSingle(calendar *calendar) {
                 sscanf(line, "DESCRIPTION:$P%d$", &newEvent->priority);
             } else {
                 sscanf(line, "DESCRIPTION:$P%d$", &newEvent->priority);
-            } 
-            
-            if (newEvent->priority < -100) {
+            }
+
+            if (newEvent->priority < 0) {
                 newEvent->priority = 0;
             }
 
@@ -208,8 +208,6 @@ void printEvent(const event *a) {
            a->endTime.tm_sec);
     printf("    Priority: %d\n\n", a->priority);
 }
-
-
 
 /*                    ____________________
  *                   |                   |
