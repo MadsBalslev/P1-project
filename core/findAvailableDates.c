@@ -85,28 +85,28 @@ int endTimeCmp(const void *arg1, const void *arg2) {
  * @param event2 pointer to event structure
  * @return int 1 if event1 ends later than event 2, 0 if event 2 ends later than event1 or they end at the same time
  */
-int eventEndsLater(event *event1, event *event2) {
-    if (event1->endTime.tm_year > event2->endTime.tm_year) { /* Check year */
+int eventStartsLater(event *event1, event *event2) {
+    if (event1->startTime.tm_year > event2->startTime.tm_year) { /* Check year */
         return 1;
-    } else if (event1->endTime.tm_year < event2->endTime.tm_year) {
+    } else if (event1->startTime.tm_year < event2->startTime.tm_year) {
         return 0;
-    } else if (event1->endTime.tm_mon > event2->endTime.tm_mon) { /* Check month */
+    } else if (event1->startTime.tm_mon > event2->startTime.tm_mon) { /* Check month */
         return 1;
-    } else if (event1->endTime.tm_year < event2->endTime.tm_year) {
+    } else if (event1->startTime.tm_year < event2->startTime.tm_year) {
         return 0;
-    } else if (event1->endTime.tm_mday > event2->endTime.tm_mday) { /* Check day */
+    } else if (event1->startTime.tm_mday > event2->startTime.tm_mday) { /* Check day */
         return 1;
-    } else if (event1->endTime.tm_mday < event2->endTime.tm_mday) {
+    } else if (event1->startTime.tm_mday < event2->startTime.tm_mday) {
         return 0;
-    } else if (event1->endTime.tm_hour > event2->endTime.tm_hour) { /* Check hour */
+    } else if (event1->startTime.tm_hour > event2->startTime.tm_hour) { /* Check hour */
         return 1;
-    } else if (event1->endTime.tm_hour < event2->endTime.tm_hour) {
+    } else if (event1->startTime.tm_hour < event2->startTime.tm_hour) {
         return 0;
-    } else if (event1->endTime.tm_min > event2->endTime.tm_min) { /* Check min */
+    } else if (event1->startTime.tm_min > event2->startTime.tm_min) { /* Check min */
         return 1;
-    } else if (event1->endTime.tm_min < event2->endTime.tm_min) {
+    } else if (event1->startTime.tm_min < event2->startTime.tm_min) {
         return 0;
-    } else if (event1->endTime.tm_sec > event2->endTime.tm_sec) { /* Check secs */
+    } else if (event1->startTime.tm_sec > event2->startTime.tm_sec) { /* Check secs */
         return 1;
     } else {
         return 0;
