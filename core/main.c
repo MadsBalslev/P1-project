@@ -176,6 +176,7 @@ int findAvailableDates(calendarSuite *suite, const searchParameters *param, int 
     }
 
     /* Find huller i events */
+    lookForFreeSlot(allEvents, sumAllEvents, 60);
 
     free(allEvents); /* <------ MIGHT BREAK EVERYTHING */
 
