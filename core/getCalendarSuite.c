@@ -101,7 +101,7 @@ int getCalendarSuiteGetDataSingle(calendar *calendar) {
             }
 
             if (newEvent->priority < 0) {
-                newEvent->priority = 0;
+                newEvent->priority = 0; 
             }
 
             sscanf(line, "DTEND:%4d%2d%2dT%2d%2d%2d%s",
@@ -124,10 +124,14 @@ int getCalendarSuiteGetDataSingle(calendar *calendar) {
 }
 
 /**
- * @brief 
- * 
- * @param newEvent The new event to be added at the end of the linked list
- * @param inputCal The calendar from which the event comes
+ * @brief Adds an eventLink pointing to newEvent to the end of the linked list that is
+ * inputCal.
+ *
+ * Allocates space for the new eventLink, then goes to the bottom of the linked list inputCal
+ * and points the NULL pointer to the new eventLink.
+ *
+ * @param newEvent The new event to be added at the end of the linked list.
+ * @param inputCal First element in the linked list where newEvent needs to be added.
  */
 void addEventCal(event *newEvent, calendar *inputCal) {
     eventLink *cursor, *newLink;
@@ -145,18 +149,21 @@ void addEventCal(event *newEvent, calendar *inputCal) {
 }
 
 /**
- * @brief 
- * 
- * @param event 
- * @param pointer 
- * @return eventLink* 
+ * @brief Creates a new eventLink.
+ *
+ * Allocates space on the heap for a new evenLink, makes the eventLink point to event, and
+ * pointer.
+ *
+ * @param event Event this link should point to.
+ * @param pointer Next link this link should point to.
+ * @return Pointer to the new eventLink that has been created.
  */
 eventLink *mallocEventLink(event *event, eventLink *pointer) {
     eventLink *newLink;
 
     newLink = (eventLink *)malloc(sizeof(eventLink));
     newLink->currentEvent = event;
-    /*newLink->nextEventLink = (eventLink *)malloc(sizeof(eventLink));*/
+    /*newLink->nextEventLink = (eventLink *)malloc(sizeof(eventLink));*/ /* <----- this is unnecessary*/
     newLink->nextEventLink = pointer;
 
     return newLink;

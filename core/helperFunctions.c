@@ -179,6 +179,12 @@ int isLeapYear(int tm_year) {
     }
 }
 
+/**
+ * @brief If statement is true: print errorMessage and exit program returning EXIT_FAILURE.
+ * 
+ * @param statement Boolean expression.
+ * @param errorMessage message to print if statement is true.
+ */
 void errorHandling(int statement, char errorMessage[]) {
     if (statement) {
         printf("\n%s\n", errorMessage);
