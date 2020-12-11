@@ -35,15 +35,12 @@ void calSuiteToEventArray(const calendarSuite *suite, event *eventPtrArray[], in
     int i = 0, k;
     eventLink *cursor;
 
-    printf("ArrayLen: %d\n", suite->Arraylen);
     for (k = 0; k < suite->Arraylen; k++) {
         cursor = suite->calPtrArray[k]->firstEvent;
         while (cursor != NULL) {
-            printf("!");
             if (cursor->currentEvent->priority <= priority) {
                 eventPtrArray[i] = cursor->currentEvent;
             } else {
-                printf("\nNULL\n");
                 eventPtrArray[i] = NULL;
             }
 
@@ -130,19 +127,78 @@ void printEventPtrArray(event *allEvents[], int n) {
     }
 }
 
+tm lookForFreeSlot(event *allEvents[], int arrLen, searchParameters *p) {
+    tm dateFound;
+    time_t head;
+    int i = 0;
+
+    dateFound.tm_year = -1;
+    head = mktime(&p->lowerLimit) + mktime(&p->startDate);
+
+    while (i < arrLen && allEvents[i] != NULL && dateFound.tm_year != -1) {
+        dateFound = lookForFreeSlotSingle(allEvents[i], p, &head);
+        i++;
+    }
+
+    return dateFound;
+}
+
+tm lookForFreeSlotSingle(event *event, searchParameters *p, time_t *head) {
+    tm dateFound;
+    dateFound.tm_year = -2;
+    
+
+    if (endOfLine(event, p, head)) {
+        dateFound.tm_year = -1;
+    } else if (canGo(event, p, head)) {
+        go(event, p, head);
+    } else if (canSwallow(event, p, head)) {
+        swallow(event, p, head);
+    } else if (stuck(event, p, head)) {
+        dateFound = *localtime(head);
+    }
+
+    return dateFound;
+}
+
+int endOfLine(event *event, searchParameters *p, time_t *head) {
+    time_t eolTime = mktime(&p->upperLimit) + mktime(&p->endDate);
+    return *head >= eolTime;
+}
+
+int canGo(const event *event, const searchParameters *p, const time_t *head) {
+    return 1;
+}
+
+int canSwallow(const event *event, const searchParameters *p, const time_t *head) {
+    return 1;
+}
+
+
+int stuck(const event *event, const searchParameters *p, const time_t *head) {
+    return 1;
+}
+
+void go(const event *event, const searchParameters *p, time_t *head) {
+}
+
+void swallow(const event *event, const searchParameters *p, time_t *head) {
+    
+}
+
 /* 1. Sammenflet alle overlappende events til ét samlet event */
 
-tm *lookForFreeSlot(event *allEvents[], int arrLen, searchParameters *p) {
+tm *lookForFreeSlotAlt(event *allEvents[], int arrLen, searchParameters *p) {
     tm cursor, *freeSlot = NULL, *tempSlot;
     time_t unixCursor;
     int i;
-    
+
     cursor.tm_year = p->startDate.tm_year;
     cursor.tm_mon = p->startDate.tm_mon;
     cursor.tm_mday = p->startDate.tm_mday;
     cursor.tm_hour = p->lowerLimit.tm_hour;
     cursor.tm_min = p->lowerLimit.tm_min;
-    
+
     unixCursor = mktime(&cursor);
 
     for (i = 0; i < arrLen || allEvents[i] != NULL; i++) {
@@ -153,15 +209,15 @@ tm *lookForFreeSlot(event *allEvents[], int arrLen, searchParameters *p) {
             unixCursor = unixEnd;
             printf("New cursor: %ld\n", unixCursor);
         } else if (unixCursor < unixStart && unixStart - unixCursor >= ((p->eventLen * MIN_TO_SEC) + (2 * p->buffer * MIN_TO_SEC))) {
-                if (withinScope(unixCursor, p)) {
-                    break;
-                }
+            if (withinScope(unixCursor, p)) {
+                break;
+            }
         } else if (unixCursor < unixStart && unixStart - unixCursor < ((p->eventLen * MIN_TO_SEC) + (2 * p->buffer * MIN_TO_SEC))) {
             unixCursor = unixEnd;
         }
 
         tempSlot = localtime(&unixCursor);
-        printf("cursor was: %.2d/%.2d/%.4d %.2d:%.2d\n", tempSlot->tm_mday, tempSlot->tm_mon + 1, tempSlot->tm_year + 1900, tempSlot->tm_hour, tempSlot->tm_min);   
+        printf("cursor was: %.2d/%.2d/%.4d %.2d:%.2d\n", tempSlot->tm_mday, tempSlot->tm_mon + 1, tempSlot->tm_year + 1900, tempSlot->tm_hour, tempSlot->tm_min);
     }
 
     unixCursor = unixCursor + (p->buffer * MIN_TO_SEC);
@@ -178,7 +234,7 @@ int withinScope(time_t unixCursor, const searchParameters *p) {
     cursorStart = localtime(&unixCursor);
     cursorEnd = localtime(&unixCursor + (p->eventLen * MIN_TO_SEC) + (2 * p->buffer * MIN_TO_SEC));
 
-    if((cursorStart->tm_hour >= p->lowerLimit.tm_hour) && (cursorEnd->tm_hour <= p->upperLimit.tm_hour)) {
+    if ((cursorStart->tm_hour >= p->lowerLimit.tm_hour) && (cursorEnd->tm_hour <= p->upperLimit.tm_hour)) {
         return 1;
     } else {
         return 0;
@@ -191,7 +247,7 @@ int withinScope(time_t unixCursor, const searchParameters *p) {
     convertedTime = *localtime(inputUnix);
 
     return convertedTime;
-}*/ 
+}*/
 
 /**
  * @brief Checks if an event begins before the event of previous event

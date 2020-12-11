@@ -121,7 +121,20 @@ int findSumAllEvents(const calendarSuite *suite);
 void calSuiteToEventArray(const calendarSuite *suite, event *eventPtrArray[], int sumAllEvents, int priority);
 int endTimeCmp(const void *arg1, const void *arg2);
 int eventStartsLater(event *event1, event *event2);
-tm * lookForFreeSlot(event *allEvents[], int arrLen, searchParameters *p);
+tm lookForFreeSlot(event *allEvents[], int arrLen, searchParameters *p);
+tm lookForFreeSlotSingle(event *event, searchParameters *p, time_t *head);
+
+int endOfLine(event *event, searchParameters *p, time_t *head);
+int canGo(const event *event, const searchParameters *p, const time_t *head);
+int canSwallow(const event *event, const searchParameters *p, const time_t *head);
+int stuck(const event *event, const searchParameters *p, const time_t *head);
+
+void go(const event *event, const searchParameters *p, time_t *head);
+void swallow(const event *event, const searchParameters *p, time_t *head);
+
+
+
+
 int withinScope(time_t unixCursor, const searchParameters *p);
 tm convertUnixTime(time_t unix);
 int eventBeginBeforeEnd(time_t *event1, time_t *event2);

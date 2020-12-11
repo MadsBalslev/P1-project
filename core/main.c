@@ -149,7 +149,7 @@ void getCalendarSuite(int argc, char *argv[], calendarSuite *calendarSuite) {
 int findAvailableDates(calendarSuite *suite, searchParameters *param, int searchMode) {
     int foundDate = 0, sumAllEvents = 0; /* <-------- foundDate should be 0, but for now it's not*/
     event **allEvents;
-    tm *freeSlot;
+    tm freeSlot;
 
     sumAllEvents = findSumAllEvents(suite);
     if (DEBUG) {
@@ -182,13 +182,13 @@ int findAvailableDates(calendarSuite *suite, searchParameters *param, int search
     /* Find huller i events */
     freeSlot = lookForFreeSlot(allEvents, sumAllEvents, param);
 
-    if(freeSlot != NULL) {
+    if(freeSlot.tm_year != -1) {
         printf("Free slot found at: %.2d/%.2d/%.4d %.2d:%.2d\n", 
-                freeSlot->tm_mday, 
-                freeSlot->tm_mon + 1, 
-                freeSlot->tm_year + 1900,
-                freeSlot->tm_hour,
-                freeSlot->tm_min);
+                freeSlot.tm_mday, 
+                freeSlot.tm_mon + 1, 
+                freeSlot.tm_year + 1900,
+                freeSlot.tm_hour,
+                freeSlot.tm_min);
         foundDate = 1;
     } else {
         printf("Found no date :(\n");
