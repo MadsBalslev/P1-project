@@ -130,19 +130,19 @@ void printEventPtrArray(event *allEvents[], int n) {
 
 /* 1. Sammenflet alle overlappende events til ét samlet event */
 
-tm lookForFreeSlot(event *allEvents[], int arrLen, searchParameters *p) {
-    tm cursor, freeSlot;
-    time_t unixCursor = timegm(&cursor);
+tm * lookForFreeSlot(event *allEvents[], int arrLen, searchParameters *p) {
+    tm cursor = allEvents[0]->endTime, *freeSlot;
+    time_t unixCursor = mktime(&cursor);
     int i;
 
-    unixCursor = timegm(&p->startDate) + timegm(&p->lowerLimit); /* sets cursor to total lowerLimit */
-    while (timegm(&allEvents[i]->endTime) <= unixCursor) { /* sets i to be the first event ending within total lowerLimit */
-        i++;
-    }
+    /*unixCursor = mktime(&p->startDate) + mktime(&p->lowerLimit);*/ /* sets cursor to total lowerLimit */
+    /*while (mktime(&allEvents[i]->endTime) <= unixCursor {*/ /* sets i to be the first event ending within total lowerLimit */
+    /*    i++;
+    }*/
 
-    for (; i < arrLen || allEvents[i] != NULL; i++) {
-        time_t unixStart = timegm(&allEvents[i]->startTime);
-        time_t unixEnd = timegm(&allEvents[i]->endTime);
+    for (i = 1; i < arrLen || allEvents[i] != NULL; i++) {
+        time_t unixStart = mktime(&allEvents[i]->startTime);
+        time_t unixEnd = mktime(&allEvents[i]->endTime);
 
         if (unixCursor > unixStart && unixCursor < unixEnd) {
             unixCursor = unixEnd;
@@ -154,18 +154,18 @@ tm lookForFreeSlot(event *allEvents[], int arrLen, searchParameters *p) {
         }
     }
 
-    freeSlot = convertUnixTime(unixCursor);
+    freeSlot = localtime(&unixCursor); 
 
     return freeSlot;
 }
 
-tm convertUnixTime(time_t unix) {
+/*tm convertUnixTime(time_t inputUnix) {
     tm convertedTime;
 
-    convertedTime = *localtime(unix);
+    convertedTime = *localtime(inputUnix);
 
     return convertedTime;
-}
+}*/ 
 
 /**
  * @brief Checks if an event begins before the event of previous event
@@ -174,41 +174,41 @@ tm convertUnixTime(time_t unix) {
  * @param event2 
  * @return int 
  */
-int eventBeginBeforeEnd(time_t *event1, time_t *event2) {
+/*int eventBeginBeforeEnd(time_t *event1, time_t *event2) {
     if (event2 <= event1) {
         return 1;
     } else {
         return 0;
     }
-}
+}*/
 
-int tmCmp(tm t1, tm t2) {
-    if (t1.tm_year > t2.tm_year) { /* Check year */
+/*int tmCmp(tm t1, tm t2) {
+    if (t1.tm_year > t2.tm_year) { 
         return 1;
     } else if (t1.tm_year < t2.tm_year) {
         return 0;
-    } else if (t1.tm_mon > t2.tm_mon) { /* Check month */
+    } else if (t1.tm_mon > t2.tm_mon) { 
         return 1;
     } else if (t1.tm_year < t2.tm_year) {
         return 0;
-    } else if (t1.tm_mday > t2.tm_mday) { /* Check day */
+    } else if (t1.tm_mday > t2.tm_mday) { 
         return 1;
     } else if (t1.tm_mday < t2.tm_mday) {
         return 0;
-    } else if (t1.tm_hour > t2.tm_hour) { /* Check hour */
+    } else if (t1.tm_hour > t2.tm_hour) { 
         return 1;
     } else if (t1.tm_hour < t2.tm_hour) {
         return 0;
-    } else if (t1.tm_min > t2.tm_min) { /* Check min */
+    } else if (t1.tm_min > t2.tm_min) { 
         return 1;
     } else if (t1.tm_min < t2.tm_min) {
         return 0;
-    } else if (t1.tm_sec > t2.tm_sec) { /* Check secs */
+    } else if (t1.tm_sec > t2.tm_sec) { 
         return 1;
     } else {
         return 1;
     }
-}
+}*/
 
 /* 2. Find ledig tid mellem sammenflettede events */
 

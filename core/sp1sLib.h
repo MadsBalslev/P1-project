@@ -10,6 +10,7 @@
 #define INIT_TM \
     { 0, 0, 0, 1, 0, 2000, 0, 0, -1 }
 #define MIN_TO_SEC 60
+/*#define timegm _mkgmtime*/ /* timegm for mingw */
 
 typedef struct tm tm;
 
@@ -118,7 +119,7 @@ int findSumAllEvents(const calendarSuite *suite);
 void calSuiteToEventArray(const calendarSuite *suite, event *eventPtrArray[], int sumAllEvents, int priority);
 int endTimeCmp(const void *arg1, const void *arg2);
 int eventStartsLater(event *event1, event *event2);
-tm lookForFreeSlot(event *allEvents[], int arrLen, searchParameters *p);
+tm * lookForFreeSlot(event *allEvents[], int arrLen, searchParameters *p);
 tm convertUnixTime(time_t unix);
 int eventBeginBeforeEnd(time_t *event1, time_t *event2);
 
