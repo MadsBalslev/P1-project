@@ -74,7 +74,9 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &quot;<a class="el" href="sp1s_lib_8h_source.html">sp1sLib.h</a>&quot;</code><br />
-</div><table class="memberdecls">
+</div>
+<p><a href="get_search_parameters_8c_source.html">Go to the source code of this file.</a></p>
+<table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a1231d448050b20aeac9b5939b71bfcf9"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="get_search_parameters_8c.html#a1231d448050b20aeac9b5939b71bfcf9">getPriority</a> (void)</td></tr>
@@ -132,6 +134,41 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 
+<p class="definition">Definition at line <a class="el" href="get_search_parameters_8c_source.html#l00053">53</a> of file <a class="el" href="get_search_parameters_8c_source.html">getSearchParameters.c</a>.</p>
+<div class="fragment"><div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;                                          {</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keywordtype">int</span> validInput = 0;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <a class="code" href="sp1s_lib_8h.html#a110bf4e13553ccfd709f41c6e92f0ca2">tm</a> tempStartDate = <a class="code" href="sp1s_lib_8h.html#a4218250a2c1b842883b09e3e1da48a10">INIT_TM</a>;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <a class="code" href="sp1s_lib_8h.html#a110bf4e13553ccfd709f41c6e92f0ca2">tm</a> tempEndDate = <a class="code" href="sp1s_lib_8h.html#a4218250a2c1b842883b09e3e1da48a10">INIT_TM</a>; </div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keywordflow">do</span> {</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        printf(<span class="stringliteral">&quot;Enter a starting date on the form dd/mm/yyyy&gt; &quot;</span>);</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        scanf(<span class="stringliteral">&quot; %d/%d/%d&quot;</span>, &amp;tempStartDate.tm_mday, &amp;tempStartDate.tm_mon, &amp;tempStartDate.tm_year);</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        tempStartDate.tm_mon--;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        validInput = <a class="code" href="helper_functions_8c.html#ac98ba39821c96c7ba1282f086ffa3ef1">isTimeValid</a>(tempStartDate);</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        fflush(stdin);</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    } <span class="keywordflow">while</span> (!validInput);</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keywordflow">do</span> {</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        printf(<span class="stringliteral">&quot;Enter an end date on the form dd/mm/yyyy&gt; &quot;</span>);</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        scanf(<span class="stringliteral">&quot; %d/%d/%d&quot;</span>, &amp;tempEndDate.tm_mday, &amp;tempEndDate.tm_mon, &amp;tempEndDate.tm_year);</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        tempEndDate.tm_mon--;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        validInput = <a class="code" href="helper_functions_8c.html#ac98ba39821c96c7ba1282f086ffa3ef1">isTimeValid</a>(tempEndDate);</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        fflush(stdin);</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    } <span class="keywordflow">while</span> (!validInput);</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="get_search_parameters_8c.html#a48f76a8c0dc23567f303ed6aa221e078">DEBUG</a>) {</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        printf(<span class="stringliteral">&quot;tempStartDate: %.2d/%.2d/%.4d\n&quot;</span>, tempStartDate.tm_mday, tempStartDate.tm_mon, tempStartDate.tm_year);</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        printf(<span class="stringliteral">&quot;tempEndDate: %.2d/%.2d/%.4d\n   &quot;</span>, tempEndDate.tm_mday, tempEndDate.tm_mon, tempEndDate.tm_year);</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    }</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    *startDate = tempStartDate;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    *endDate = tempEndDate;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;}</div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="main_8c_source.html#l00002">DEBUG</a>, <a class="el" href="sp1s_lib_8h_source.html#l00010">INIT_TM</a>, and <a class="el" href="helper_functions_8c_source.html#l00013">isTimeValid()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="main_8c_source.html#l00093">getSearchParameters()</a>.</p>
+
 </div>
 </div>
 <a id="a738e74f6ad0b6a9a20687963b3aa11c8"></a>
@@ -153,6 +190,21 @@ Variables</h2></td></tr>
 <p>Get the Event Len object. </p>
 <p>Here we ask for the length of the event in minutes, and check if it's a valid and positiv input we are getting. If yes, then we return the length from the function.</p>
 <dl class="section return"><dt>Returns</dt><dd>int </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="get_search_parameters_8c_source.html#l00030">30</a> of file <a class="el" href="get_search_parameters_8c_source.html">getSearchParameters.c</a>.</p>
+<div class="fragment"><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;                      {</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keywordtype">int</span> eventLen = 0;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keywordtype">int</span> validInput = 0;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keywordflow">do</span> {</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        printf(<span class="stringliteral">&quot;Enter estimated length of the event in minutes&gt; &quot;</span>);</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        validInput = scanf(<span class="stringliteral">&quot; %d&quot;</span>, &amp;eventLen);</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        fflush(stdin);</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    } <span class="keywordflow">while</span> (!validInput || eventLen &lt; 0);</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keywordflow">return</span> eventLen;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;}</div>
+</div><!-- fragment -->
+<p class="reference">Referenced by <a class="el" href="main_8c_source.html#l00093">getSearchParameters()</a>.</p>
 
 </div>
 </div>
@@ -192,6 +244,39 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 
+<p class="definition">Definition at line <a class="el" href="get_search_parameters_8c_source.html#l00093">93</a> of file <a class="el" href="get_search_parameters_8c_source.html">getSearchParameters.c</a>.</p>
+<div class="fragment"><div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;                                                {</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <span class="keywordtype">int</span> validInput = 0;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <a class="code" href="sp1s_lib_8h.html#a110bf4e13553ccfd709f41c6e92f0ca2">tm</a> tempLowerLimit = <a class="code" href="sp1s_lib_8h.html#a4218250a2c1b842883b09e3e1da48a10">INIT_TM</a>;</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <a class="code" href="sp1s_lib_8h.html#a110bf4e13553ccfd709f41c6e92f0ca2">tm</a> tempUpperLimit = <a class="code" href="sp1s_lib_8h.html#a4218250a2c1b842883b09e3e1da48a10">INIT_TM</a>;</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160; </div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <span class="keywordflow">do</span> {</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        printf(<span class="stringliteral">&quot;Enter the earliest time the event can take place on the form HH:MM&gt;  &quot;</span>);</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        scanf(<span class="stringliteral">&quot; %d:%d&quot;</span>, &amp;tempLowerLimit.tm_hour, &amp;tempLowerLimit.tm_min);</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        validInput = <a class="code" href="helper_functions_8c.html#ac98ba39821c96c7ba1282f086ffa3ef1">isTimeValid</a>(tempLowerLimit);</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        fflush(stdin);</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    } <span class="keywordflow">while</span> (!validInput);</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160; </div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    <span class="keywordflow">do</span> {</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        printf(<span class="stringliteral">&quot;Enter the latest time the event can take place on the form HH:MM&gt;  &quot;</span>);</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;        scanf(<span class="stringliteral">&quot; %d:%d&quot;</span>, &amp;tempUpperLimit.tm_hour, &amp;tempUpperLimit.tm_min);</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        validInput = <a class="code" href="helper_functions_8c.html#ac98ba39821c96c7ba1282f086ffa3ef1">isTimeValid</a>(tempUpperLimit);</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        fflush(stdin);</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    } <span class="keywordflow">while</span> (!validInput);</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160; </div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="get_search_parameters_8c.html#a48f76a8c0dc23567f303ed6aa221e078">DEBUG</a>) {</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        printf(<span class="stringliteral">&quot;%.2d:%.2d\n&quot;</span>, tempLowerLimit.tm_hour, tempLowerLimit.tm_min);</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        printf(<span class="stringliteral">&quot;%.2d:%.2d\n&quot;</span>, tempUpperLimit.tm_hour, tempUpperLimit.tm_min);</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    }</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160; </div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    *lowerLimmit = tempLowerLimit;</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    *upperLimit = tempUpperLimit;</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;}</div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="main_8c_source.html#l00002">DEBUG</a>, <a class="el" href="sp1s_lib_8h_source.html#l00010">INIT_TM</a>, and <a class="el" href="helper_functions_8c_source.html#l00013">isTimeValid()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="main_8c_source.html#l00093">getSearchParameters()</a>.</p>
+
 </div>
 </div>
 <a id="a1231d448050b20aeac9b5939b71bfcf9"></a>
@@ -213,6 +298,20 @@ Variables</h2></td></tr>
 <p>Get the Priority object. </p>
 <p>Here we ask for a priority for the event. Once the user has given us a valid input, then we return the priority from the function.</p>
 <dl class="section return"><dt>Returns</dt><dd>int </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="get_search_parameters_8c_source.html#l00011">11</a> of file <a class="el" href="get_search_parameters_8c_source.html">getSearchParameters.c</a>.</p>
+<div class="fragment"><div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;                      {</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    <span class="keywordtype">int</span> priority = 0;</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <span class="keywordtype">int</span> validInput = 0;</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <span class="keywordflow">do</span> {</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        printf(<span class="stringliteral">&quot;Enter a priority for the event&gt; &quot;</span>);</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        validInput = scanf(<span class="stringliteral">&quot; %d&quot;</span>, &amp;priority);</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        fflush(stdin);</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    } <span class="keywordflow">while</span> (!validInput || priority &lt; 0);</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="keywordflow">return</span> priority;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;}</div>
+</div><!-- fragment -->
+<p class="reference">Referenced by <a class="el" href="main_8c_source.html#l00093">getSearchParameters()</a>.</p>
 
 </div>
 </div>
@@ -237,9 +336,17 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p class="definition">Definition at line <a class="el" href="main_8c_source.html#l00002">2</a> of file <a class="el" href="main_8c_source.html">main.c</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="get_search_parameters_8c_source.html#l00053">getDates()</a>, and <a class="el" href="get_search_parameters_8c_source.html#l00093">getLimits()</a>.</p>
+
 </div>
 </div>
 </div><!-- contents -->
+<div class="ttc" id="aget_search_parameters_8c_html_a48f76a8c0dc23567f303ed6aa221e078"><div class="ttname"><a href="get_search_parameters_8c.html#a48f76a8c0dc23567f303ed6aa221e078">DEBUG</a></div><div class="ttdeci">int DEBUG</div><div class="ttdef"><b>Definition:</b> <a href="main_8c_source.html#l00002">main.c:2</a></div></div>
+<div class="ttc" id="asp1s_lib_8h_html_a110bf4e13553ccfd709f41c6e92f0ca2"><div class="ttname"><a href="sp1s_lib_8h.html#a110bf4e13553ccfd709f41c6e92f0ca2">tm</a></div><div class="ttdeci">struct tm tm</div><div class="ttdef"><b>Definition:</b> <a href="sp1s_lib_8h_source.html#l00001">sp1sLib.h:13</a></div></div>
+<div class="ttc" id="ahelper_functions_8c_html_ac98ba39821c96c7ba1282f086ffa3ef1"><div class="ttname"><a href="helper_functions_8c.html#ac98ba39821c96c7ba1282f086ffa3ef1">isTimeValid</a></div><div class="ttdeci">int isTimeValid(tm time)</div><div class="ttdoc">Controls that a time is valid in terms of minutes, hours, month number, year, month day.</div><div class="ttdef"><b>Definition:</b> <a href="helper_functions_8c_source.html#l00013">helperFunctions.c:13</a></div></div>
+<div class="ttc" id="asp1s_lib_8h_html_a4218250a2c1b842883b09e3e1da48a10"><div class="ttname"><a href="sp1s_lib_8h.html#a4218250a2c1b842883b09e3e1da48a10">INIT_TM</a></div><div class="ttdeci">#define INIT_TM</div><div class="ttdef"><b>Definition:</b> <a href="sp1s_lib_8h_source.html#l00010">sp1sLib.h:10</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by&#160;<a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20

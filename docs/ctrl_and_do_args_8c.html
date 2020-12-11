@@ -74,7 +74,9 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &quot;<a class="el" href="sp1s_lib_8h_source.html">sp1sLib.h</a>&quot;</code><br />
-</div><table class="memberdecls">
+</div>
+<p><a href="ctrl_and_do_args_8c_source.html">Go to the source code of this file.</a></p>
+<table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a28ec08b9dd742544b63dfd9b5d6e7968"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ctrl_and_do_args_8c.html#a28ec08b9dd742544b63dfd9b5d6e7968">doArg</a> (char arg[])</td></tr>
@@ -124,6 +126,22 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>enum icsFile if the argument is an *.ics file, enum option if the argument is an option, else enum invalid. </dd></dl>
 
+<p class="definition">Definition at line <a class="el" href="ctrl_and_do_args_8c_source.html#l00012">12</a> of file <a class="el" href="ctrl_and_do_args_8c_source.html">ctrlAndDoArgs.c</a>.</p>
+<div class="fragment"><div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;                      {</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="ctrl_and_do_args_8c.html#a45d35bb198deacd4a3495c6906c462dc">isIcsFile</a>(arg)) {</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="sp1s_lib_8h.html#a9fbe86528f280abfa5ad58320b7a37dbacca00230f83584e3a0a077d2105518a4">icsFile</a>;</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code" href="ctrl_and_do_args_8c.html#a6c5f35383c1b83381cef3071a260aba0">isOption</a>(arg)) {</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        <a class="code" href="ctrl_and_do_args_8c.html#ac9a29ac2d98673c595b9b9dbc8052efc">doOption</a>(arg);</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="sp1s_lib_8h.html#a9fbe86528f280abfa5ad58320b7a37dba4001b0d617a3b14166fbebb2e2db0856">option</a>;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="sp1s_lib_8h.html#a9fbe86528f280abfa5ad58320b7a37dbaaf3d1efdf1095604d189748d8b46fc56">invalid</a>;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    }</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;}</div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="ctrl_and_do_args_8c_source.html#l00062">doOption()</a>, <a class="el" href="sp1s_lib_8h_source.html#l00077">icsFile</a>, <a class="el" href="sp1s_lib_8h_source.html#l00076">invalid</a>, <a class="el" href="ctrl_and_do_args_8c_source.html#l00049">isIcsFile()</a>, <a class="el" href="ctrl_and_do_args_8c_source.html#l00029">isOption()</a>, and <a class="el" href="sp1s_lib_8h_source.html#l00078">option</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="main_8c_source.html#l00041">ctrlAndDoArgs()</a>, <a class="el" href="all_tests_8c_source.html#l00022">test1_doArg()</a>, <a class="el" href="all_tests_8c_source.html#l00029">test2_doArg()</a>, and <a class="el" href="all_tests_8c_source.html#l00036">test3_doArg()</a>.</p>
+
 </div>
 </div>
 <a id="ac9a29ac2d98673c595b9b9dbc8052efc"></a>
@@ -150,6 +168,22 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 
+<p class="definition">Definition at line <a class="el" href="ctrl_and_do_args_8c_source.html#l00062">62</a> of file <a class="el" href="ctrl_and_do_args_8c_source.html">ctrlAndDoArgs.c</a>.</p>
+<div class="fragment"><div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;                          {</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keywordflow">if</span> (strncmp(arg, <span class="stringliteral">&quot;--test&quot;</span>, 6) == 0) {</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        <a class="code" href="all_tests_8c.html#a412d99aa97100cb6957917e7ee3719b1">runAllTests</a>();</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        exit(EXIT_SUCCESS);</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (strncmp(arg, <span class="stringliteral">&quot;--debug&quot;</span>, 7) == 0) {</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        <a class="code" href="ctrl_and_do_args_8c.html#a48f76a8c0dc23567f303ed6aa221e078">DEBUG</a> = 1;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (strncmp(arg, <span class="stringliteral">&quot;--doNothing&quot;</span>, 11) == 0) {</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        <span class="comment">/* do nothing */</span></div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    }</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;}</div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="main_8c_source.html#l00002">DEBUG</a>, and <a class="el" href="all_tests_8c_source.html#l00005">runAllTests()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="ctrl_and_do_args_8c_source.html#l00012">doArg()</a>.</p>
+
 </div>
 </div>
 <a id="a78edd6963bf14869d34ca9caa37c327c"></a>
@@ -169,6 +203,14 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Displays error message and terminates the program. </p>
+
+<p class="definition">Definition at line <a class="el" href="ctrl_and_do_args_8c_source.html#l00076">76</a> of file <a class="el" href="ctrl_and_do_args_8c_source.html">ctrlAndDoArgs.c</a>.</p>
+<div class="fragment"><div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;                         {</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    printf(<span class="stringliteral">&quot;Invalid argument, Please provide one or more .ics files\n&quot;</span>);</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    exit(EXIT_FAILURE);</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;}</div>
+</div><!-- fragment -->
+<p class="reference">Referenced by <a class="el" href="main_8c_source.html#l00041">ctrlAndDoArgs()</a>.</p>
 
 </div>
 </div>
@@ -197,6 +239,17 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>1 if it does end with ".ics", else 0 </dd></dl>
 
+<p class="definition">Definition at line <a class="el" href="ctrl_and_do_args_8c_source.html#l00049">49</a> of file <a class="el" href="ctrl_and_do_args_8c_source.html">ctrlAndDoArgs.c</a>.</p>
+<div class="fragment"><div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;                          {</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keywordflow">if</span> ((strlen(arg)) &lt; 5) {</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        <span class="keywordflow">return</span> (strncmp(&amp;arg[strlen(arg) - 4], <span class="stringliteral">&quot;.ics&quot;</span>, 4) == 0);</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    }</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;}</div>
+</div><!-- fragment -->
+<p class="reference">Referenced by <a class="el" href="ctrl_and_do_args_8c_source.html#l00012">doArg()</a>, and <a class="el" href="get_calendar_suite_8c_source.html#l00014">getCalendarSuiteGetFile()</a>.</p>
+
 </div>
 </div>
 <a id="a6c5f35383c1b83381cef3071a260aba0"></a>
@@ -224,6 +277,23 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>1 if it is an option, else 0 </dd></dl>
 
+<p class="definition">Definition at line <a class="el" href="ctrl_and_do_args_8c_source.html#l00029">29</a> of file <a class="el" href="ctrl_and_do_args_8c_source.html">ctrlAndDoArgs.c</a>.</p>
+<div class="fragment"><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;                         {</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keywordflow">if</span> (!(strncmp(arg, <span class="stringliteral">&quot;--&quot;</span>, 2) == 0)) {</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (strncmp(arg, <span class="stringliteral">&quot;--test&quot;</span>, 6) == 0) {</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        <span class="keywordflow">return</span> 1;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (strncmp(arg, <span class="stringliteral">&quot;--debug&quot;</span>, 7) == 0) {</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        <span class="keywordflow">return</span> 1;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (strncmp(arg, <span class="stringliteral">&quot;--doNothing&quot;</span>, 11) == 0) {</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        <span class="keywordflow">return</span> 1;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    }</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;}</div>
+</div><!-- fragment -->
+<p class="reference">Referenced by <a class="el" href="ctrl_and_do_args_8c_source.html#l00012">doArg()</a>.</p>
+
 </div>
 </div>
 <h2 class="groupheader">Variable Documentation</h2>
@@ -247,9 +317,21 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p class="definition">Definition at line <a class="el" href="main_8c_source.html#l00002">2</a> of file <a class="el" href="main_8c_source.html">main.c</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="ctrl_and_do_args_8c_source.html#l00062">doOption()</a>.</p>
+
 </div>
 </div>
 </div><!-- contents -->
+<div class="ttc" id="actrl_and_do_args_8c_html_a6c5f35383c1b83381cef3071a260aba0"><div class="ttname"><a href="ctrl_and_do_args_8c.html#a6c5f35383c1b83381cef3071a260aba0">isOption</a></div><div class="ttdeci">int isOption(char arg[])</div><div class="ttdoc">Controls if a string is considered an option from the command line.</div><div class="ttdef"><b>Definition:</b> <a href="ctrl_and_do_args_8c_source.html#l00029">ctrlAndDoArgs.c:29</a></div></div>
+<div class="ttc" id="asp1s_lib_8h_html_a9fbe86528f280abfa5ad58320b7a37dbaaf3d1efdf1095604d189748d8b46fc56"><div class="ttname"><a href="sp1s_lib_8h.html#a9fbe86528f280abfa5ad58320b7a37dbaaf3d1efdf1095604d189748d8b46fc56">invalid</a></div><div class="ttdeci">@ invalid</div><div class="ttdef"><b>Definition:</b> <a href="sp1s_lib_8h_source.html#l00076">sp1sLib.h:76</a></div></div>
+<div class="ttc" id="actrl_and_do_args_8c_html_a48f76a8c0dc23567f303ed6aa221e078"><div class="ttname"><a href="ctrl_and_do_args_8c.html#a48f76a8c0dc23567f303ed6aa221e078">DEBUG</a></div><div class="ttdeci">int DEBUG</div><div class="ttdef"><b>Definition:</b> <a href="main_8c_source.html#l00002">main.c:2</a></div></div>
+<div class="ttc" id="aall_tests_8c_html_a412d99aa97100cb6957917e7ee3719b1"><div class="ttname"><a href="all_tests_8c.html#a412d99aa97100cb6957917e7ee3719b1">runAllTests</a></div><div class="ttdeci">void runAllTests(void)</div><div class="ttdef"><b>Definition:</b> <a href="all_tests_8c_source.html#l00005">allTests.c:5</a></div></div>
+<div class="ttc" id="actrl_and_do_args_8c_html_a45d35bb198deacd4a3495c6906c462dc"><div class="ttname"><a href="ctrl_and_do_args_8c.html#a45d35bb198deacd4a3495c6906c462dc">isIcsFile</a></div><div class="ttdeci">int isIcsFile(char arg[])</div><div class="ttdoc">Controls that a string ends with &quot;.ics&quot;.</div><div class="ttdef"><b>Definition:</b> <a href="ctrl_and_do_args_8c_source.html#l00049">ctrlAndDoArgs.c:49</a></div></div>
+<div class="ttc" id="asp1s_lib_8h_html_a9fbe86528f280abfa5ad58320b7a37dbacca00230f83584e3a0a077d2105518a4"><div class="ttname"><a href="sp1s_lib_8h.html#a9fbe86528f280abfa5ad58320b7a37dbacca00230f83584e3a0a077d2105518a4">icsFile</a></div><div class="ttdeci">@ icsFile</div><div class="ttdef"><b>Definition:</b> <a href="sp1s_lib_8h_source.html#l00077">sp1sLib.h:77</a></div></div>
+<div class="ttc" id="actrl_and_do_args_8c_html_ac9a29ac2d98673c595b9b9dbc8052efc"><div class="ttname"><a href="ctrl_and_do_args_8c.html#ac9a29ac2d98673c595b9b9dbc8052efc">doOption</a></div><div class="ttdeci">void doOption(char arg[])</div><div class="ttdoc">Executes an option.</div><div class="ttdef"><b>Definition:</b> <a href="ctrl_and_do_args_8c_source.html#l00062">ctrlAndDoArgs.c:62</a></div></div>
+<div class="ttc" id="asp1s_lib_8h_html_a9fbe86528f280abfa5ad58320b7a37dba4001b0d617a3b14166fbebb2e2db0856"><div class="ttname"><a href="sp1s_lib_8h.html#a9fbe86528f280abfa5ad58320b7a37dba4001b0d617a3b14166fbebb2e2db0856">option</a></div><div class="ttdeci">@ option</div><div class="ttdef"><b>Definition:</b> <a href="sp1s_lib_8h_source.html#l00078">sp1sLib.h:78</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by&#160;<a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20
