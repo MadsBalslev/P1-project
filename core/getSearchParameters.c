@@ -82,6 +82,7 @@ void getDates(tm *startDate, tm *endDate) {
         printf("Enter a starting date on the form dd/mm/yyyy> ");
         scanf(" %d/%d/%d", &tempStartDate.tm_mday, &tempStartDate.tm_mon, &tempStartDate.tm_year);
         tempStartDate.tm_mon--;
+        tempStartDate.tm_year = tempStartDate.tm_year - EPOCH;
         validInput = isTimeValid(tempStartDate);
         fflush(stdin);
     } while (!validInput);
@@ -90,13 +91,14 @@ void getDates(tm *startDate, tm *endDate) {
         printf("Enter an end date on the form dd/mm/yyyy> ");
         scanf(" %d/%d/%d", &tempEndDate.tm_mday, &tempEndDate.tm_mon, &tempEndDate.tm_year);
         tempEndDate.tm_mon--;
+        tempEndDate.tm_year = tempEndDate.tm_year - EPOCH;
         validInput = isTimeValid(tempEndDate);
         fflush(stdin);
     } while (!validInput);
 
     if (DEBUG) {
-        printf("tempStartDate: %.2d/%.2d/%.4d\n", tempStartDate.tm_mday, tempStartDate.tm_mon, tempStartDate.tm_year);
-        printf("tempEndDate: %.2d/%.2d/%.4d\n   ", tempEndDate.tm_mday, tempEndDate.tm_mon, tempEndDate.tm_year);
+        printf("tempStartDate: %.2d/%.2d/%.4d\n", tempStartDate.tm_mday, tempStartDate.tm_mon, tempStartDate.tm_year + EPOCH);
+        printf("tempEndDate: %.2d/%.2d/%.4d\n", tempEndDate.tm_mday, tempEndDate.tm_mon, tempEndDate.tm_year + EPOCH);
     }
 
     *startDate = tempStartDate;

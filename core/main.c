@@ -147,7 +147,7 @@ void getCalendarSuite(int argc, char *argv[], calendarSuite *calendarSuite) {
  * @return int Bool value telling if a possible date for event was found.
  */
 int findAvailableDates(calendarSuite *suite, searchParameters *param, int searchMode) {
-    int foundDate = 1, sumAllEvents = 0; /* <-------- foundDate should be 0, but for now it's not*/
+    int foundDate = 0, sumAllEvents = 0; /* <-------- foundDate should be 0, but for now it's not*/
     event **allEvents;
     tm *freeSlot;
 
@@ -160,7 +160,7 @@ int findAvailableDates(calendarSuite *suite, searchParameters *param, int search
     errorHandling(allEvents == NULL, "!!!FAILED TO ALLOCATE MEMORY STEP 3!!!");
 
     if (searchMode == bylooking) {
-        calSuiteToEventArray(suite, allEvents, sumAllEvents, 1000); /* <------ This should be account for elsewhere*/
+        calSuiteToEventArray(suite, allEvents, sumAllEvents, MAX_PRIORITY); /* <------ This should be account for elsewhere*/
     } else if (searchMode == byRestructuring) {
         calSuiteToEventArray(suite, allEvents, sumAllEvents, param->priority);
     }
@@ -182,12 +182,18 @@ int findAvailableDates(calendarSuite *suite, searchParameters *param, int search
     /* Find huller i events */
     freeSlot = lookForFreeSlot(allEvents, sumAllEvents, param);
 
-    printf("Free slot found at: %.2d/%.2d/%.4d %.2d:%.2d\n", 
-            freeSlot->tm_mday, 
-            freeSlot->tm_mon + 1, 
-            freeSlot->tm_year + 1900,
-            freeSlot->tm_hour,
-            freeSlot->tm_min);
+    if(freeSlot != NULL) {
+        printf("Free slot found at: %.2d/%.2d/%.4d %.2d:%.2d\n", 
+                freeSlot->tm_mday, 
+                freeSlot->tm_mon + 1, 
+                freeSlot->tm_year + 1900,
+                freeSlot->tm_hour,
+                freeSlot->tm_min);
+        foundDate = 1;
+    } else {
+        printf("Found no date :(\n");
+    }
+
 
     free(allEvents); /* <------ MIGHT BREAK EVERYTHING */
 

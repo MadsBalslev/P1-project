@@ -101,6 +101,7 @@ int getCalendarSuiteGetDataSingle(calendar *calendar) {
 
             newEvent->startTime.tm_isdst = 0;
             newEvent->endTime.tm_isdst = 0;
+            newEvent->priority = 0;
 
             sscanf(line, "SUMMARY: %[^\n]", newEvent->title); /* Reads every character until -1 (EOF) */
             sscanf(line, "DTSTART:%4d%2d%2dT%2d%2d%2d%s",
@@ -122,6 +123,8 @@ int getCalendarSuiteGetDataSingle(calendar *calendar) {
 
             if (newEvent->priority < 0) {
                 newEvent->priority = 0; 
+            } else if (newEvent->priority > MAX_PRIORITY){
+                newEvent->priority = MAX_PRIORITY;
             }
 
             sscanf(line, "DTEND:%4d%2d%2dT%2d%2d%2d%s",

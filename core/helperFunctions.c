@@ -76,7 +76,7 @@ int isTimeValid_mon(int tm_mon) {
  * @return 1 if it’s within the boundary, else 0  
  */
 int isTimeValid_year(int tm_year) {
-    if (tm_year > 1970) {
+    if (tm_year >= 0) {
         return 1;
     } else {
         return 0;

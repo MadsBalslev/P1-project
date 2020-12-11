@@ -8,8 +8,10 @@
 #define LINE_LEN 512
 #define DO_NOTHING 0
 #define INIT_TM \
-    { 0, 0, 0, 1, 0, 2000, 0, 0, -1 }
+    { 0, 0, 0, 1, 0, 0, 0, 0, -1 }
 #define MIN_TO_SEC 60
+#define EPOCH 1900
+#define MAX_PRIORITY 1000
 /*#define timegm _mkgmtime*/ /* timegm for mingw */
 
 typedef struct tm tm;
@@ -120,6 +122,7 @@ void calSuiteToEventArray(const calendarSuite *suite, event *eventPtrArray[], in
 int endTimeCmp(const void *arg1, const void *arg2);
 int eventStartsLater(event *event1, event *event2);
 tm * lookForFreeSlot(event *allEvents[], int arrLen, searchParameters *p);
+int withinScope(time_t unixCursor, const searchParameters *p);
 tm convertUnixTime(time_t unix);
 int eventBeginBeforeEnd(time_t *event1, time_t *event2);
 
