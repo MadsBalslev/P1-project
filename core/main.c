@@ -93,6 +93,7 @@ void mallocCalendarSuite(int n, calendarSuite *calendarSuite) {
 void getSearchParameters(searchParameters *a) {
     a->priority = getPriority();
     a->eventLen = getEventLen();
+    a->buffer  = getEventBuffer();
     getDates(&a->startDate, &a->endDate);
     getLimits(&a->lowerLimit, &a->upperLimit);
 
@@ -145,10 +146,10 @@ void getCalendarSuite(int argc, char *argv[], calendarSuite *calendarSuite) {
  * @param searchMode Used to check if priority of param is used, or using default value
  * @return int Bool value telling if a possible date for event was found.
  */
-int findAvailableDates(calendarSuite *suite, const searchParameters *param, int searchMode) {
+int findAvailableDates(calendarSuite *suite, searchParameters *param, int searchMode) {
     int foundDate = 1, sumAllEvents = 0; /* <-------- foundDate should be 0, but for now it's not*/
     event **allEvents;
-    time_t freeSlot;
+    tm freeSlot;
 
     sumAllEvents = findSumAllEvents(suite);
     if (DEBUG) {
@@ -164,7 +165,7 @@ int findAvailableDates(calendarSuite *suite, const searchParameters *param, int 
         calSuiteToEventArray(suite, allEvents, sumAllEvents, param->priority);
     }
 
-    printf("%d\n", mktime(&allEvents[1]->startTime));
+    printf("%ld\n", mktime(&allEvents[1]->startTime));
 
     if (DEBUG) {
         printf("\nEVENT ARRAY:\n");
@@ -181,7 +182,12 @@ int findAvailableDates(calendarSuite *suite, const searchParameters *param, int 
     /* Find huller i events */
     freeSlot = lookForFreeSlot(allEvents, sumAllEvents, param);
 
-    printf("Free slot found at: %d\n", freeSlot);
+    printf("Free slot found at: %.2d/%.2d/%.4d %.2d:%.2d\n", 
+            freeSlot.tm_mday, 
+            freeSlot.tm_mon + 1, 
+            freeSlot.tm_year + 1900,
+            freeSlot.tm_hour,
+            freeSlot.tm_min);
 
     free(allEvents); /* <------ MIGHT BREAK EVERYTHING */
 

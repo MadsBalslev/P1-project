@@ -4,8 +4,9 @@ extern int DEBUG;
 /**
  * @brief Get the Priority object
  *
- * Here we ask for a priority for the event. Once the user has given us a valid input, then we return the priority from the function.
- *  
+ * Here we ask for a priority for the event. Once the user has given us a valid input, then we
+ * return the priority from the function.
+ *
  * @return int 
  */
 int getPriority(void) {
@@ -21,10 +22,11 @@ int getPriority(void) {
 
 /**
  * @brief Get the Event Len object
- * 
- * 
- * Here we ask for the length of the event in minutes, and check if it's a valid and positiv input we are getting. If yes, then we return the length from the function.
- * 
+ *
+ *
+ * Here we ask for the length of the event in minutes, and check if it's a valid and positiv
+ * input we are getting. If yes, then we return the length from the function.
+ *
  * @return int 
  */
 int getEventLen(void) {
@@ -40,12 +42,33 @@ int getEventLen(void) {
 }
 
 /**
+ * @brief Prompts user: Enter how much buffer time should be in beginning and end of event.
+ * 
+ * Input by user can not be under 0.
+ * 
+ * @return buffer entered.  
+ */
+int getEventBuffer(void) {
+    int eventBuffer = 0;
+    int validInput = 0;
+    do {
+        printf("Enter how much buffer time should be in beginning and end of event in minutes> ");
+        validInput = scanf(" %d", &eventBuffer);
+        fflush(stdin);
+    } while (!validInput || eventBuffer < 0);
+
+    return eventBuffer;
+}
+
+/**
  * @brief Get the Dates object
  * 
  * 
- * First we ask for a start date, and reuce the value by 1. We do this because tm_mon in the tm struct, uses months after january, so if we want the event to start in february, the input needs to be 1
- * because february is one month after january. We do this for the enddate for the event as well.
- * And to end it off we print the dates and confirm the start- and end dates.
+ * First we ask for a start date, and reuce the value by 1. We do this because tm_mon in the
+ * tm struct, uses months after january, so if we want the event to start in february, the
+ * input needs to be 1 because february is one month after january. We do this for the enddate
+ * for the event as well. And to end it off we print the dates and confirm the start- and end
+ * dates.
  * 
  * @param startDate 
  * @param endDate 
@@ -84,8 +107,8 @@ void getDates(tm *startDate, tm *endDate) {
  * @brief Get the Limits object
  * 
  * Here we ask how much the event can be moved witin the same day, so only hours and minutes.
- * We do this for both the upper- and lower limit.
- * And at the end of the function we print, and confirm the upper- and lower limit.
+ * We do this for both the upper- and lower limit. And at the end of the function we print,
+ * and confirm the upper- and lower limit.
  * 
  * @param upperLimit 
  * @param lowerLimmit 

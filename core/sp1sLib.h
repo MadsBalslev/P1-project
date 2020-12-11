@@ -57,6 +57,7 @@ typedef struct calendar {
 typedef struct searchParameters {
     int priority;
     int eventLen; /*!< Length of the event in minutes */
+    int buffer; /*!< Buffer to be added at both start and end of event */
     tm startDate;
     tm endDate;
     tm upperLimit;
@@ -98,6 +99,7 @@ void exitWithError(void);
 void getSearchParameters(searchParameters *a);
 int getPriority(void);
 int getEventLen(void);
+int getEventBuffer(void);
 void getDates(tm *startDate, tm *endDate);
 void getLimits(tm *upperLimit, tm *lowerLimmit);
 
@@ -111,12 +113,13 @@ void addEventCal(event *newEvent, calendar *calendar);
 eventLink *mallocEventLink(event *eventP, eventLink *eventLinkP);
 
 /* findAvailableDatesByLooking */
-int findAvailableDates(calendarSuite *suite, const searchParameters *param, int searchMode);
+int findAvailableDates(calendarSuite *suite, searchParameters *param, int searchMode);
 int findSumAllEvents(const calendarSuite *suite);
 void calSuiteToEventArray(const calendarSuite *suite, event *eventPtrArray[], int sumAllEvents, int priority);
 int endTimeCmp(const void *arg1, const void *arg2);
 int eventStartsLater(event *event1, event *event2);
-time_t lookForFreeSlot(event *allEvents[], int arrLen, searchParameters *p);
+tm lookForFreeSlot(event *allEvents[], int arrLen, searchParameters *p);
+tm convertUnixTime(time_t unix);
 int eventBeginBeforeEnd(time_t *event1, time_t *event2);
 
 void findAvailableDatesByRestructuring(calendarSuite *suite, const searchParameters *param);

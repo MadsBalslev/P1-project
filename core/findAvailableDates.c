@@ -130,26 +130,41 @@ void printEventPtrArray(event *allEvents[], int n) {
 
 /* 1. Sammenflet alle overlappende events til ét samlet event */
 
-time_t lookForFreeSlot(event *allEvents[], int arrLen, searchParameters *p) {
-    tm cursor = allEvents[0]->endTime;
+tm lookForFreeSlot(event *allEvents[], int arrLen, searchParameters *p) {
+    tm cursor, freeSlot;
     time_t unixCursor = timegm(&cursor);
     int i;
 
-    for (i = 1; i < arrLen || allEvents[i] != NULL; i++) {
+    unixCursor = timegm(&p->startDate) + timegm(&p->lowerLimit); /* sets cursor to total lowerLimit */
+    while (timegm(&allEvents[i]->endTime) <= unixCursor) { /* sets i to be the first event ending within total lowerLimit */
+        i++;
+    }
+
+    for (; i < arrLen || allEvents[i] != NULL; i++) {
         time_t unixStart = timegm(&allEvents[i]->startTime);
         time_t unixEnd = timegm(&allEvents[i]->endTime);
 
         if (unixCursor > unixStart && unixCursor < unixEnd) {
             unixCursor = unixEnd;
             printf("New cursor: %ld\n", unixCursor);
-        } else if (unixCursor < unixStart && unixStart - unixCursor >= (p->eventLen * MIN_TO_SEC)) {
+        } else if (unixCursor < unixStart && unixStart - unixCursor >= (p->eventLen * MIN_TO_SEC + (2 * p->buffer))) {
             break;
-        } else if (unixCursor < unixStart && unixStart - unixCursor < (p->eventLen * MIN_TO_SEC)) {
+        } else if (unixCursor < unixStart && unixStart - unixCursor < (p->eventLen * MIN_TO_SEC + (2 * p->buffer))) {
             unixCursor = unixEnd;
         }
     }
 
-    return unixCursor;
+    freeSlot = convertUnixTime(unixCursor);
+
+    return freeSlot;
+}
+
+tm convertUnixTime(time_t unix) {
+    tm convertedTime;
+
+    convertedTime = *localtime(unix);
+
+    return convertedTime;
 }
 
 /**
