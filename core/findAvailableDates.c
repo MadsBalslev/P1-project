@@ -147,12 +147,14 @@ tm * lookForFreeSlot(event *allEvents[], int arrLen, searchParameters *p) {
         if (unixCursor > unixStart && unixCursor < unixEnd) {
             unixCursor = unixEnd;
             printf("New cursor: %ld\n", unixCursor);
-        } else if (unixCursor < unixStart && unixStart - unixCursor >= (p->eventLen * MIN_TO_SEC + (2 * p->buffer))) {
+        } else if (unixCursor < unixStart && unixStart - unixCursor >= ((p->eventLen * MIN_TO_SEC) + (2 * p->buffer * MIN_TO_SEC))) {
             break;
-        } else if (unixCursor < unixStart && unixStart - unixCursor < (p->eventLen * MIN_TO_SEC + (2 * p->buffer))) {
+        } else if (unixCursor < unixStart && unixStart - unixCursor < ((p->eventLen * MIN_TO_SEC) + (2 * p->buffer * MIN_TO_SEC))) {
             unixCursor = unixEnd;
         }
     }
+
+    unixCursor = unixCursor + (p->buffer * MIN_TO_SEC);
 
     freeSlot = localtime(&unixCursor); 
 
