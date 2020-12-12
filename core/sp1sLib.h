@@ -128,7 +128,7 @@ tm lookForFreeSlot(event *allEvents[], int arrLen, searchParameters *p);
 tm lookForFreeSlotSingle(event *event, searchParameters *p, time_t *head);
 
 int endOfLine(searchParameters *p, time_t head);
-int canGo(time_t eventStartTimeUnix, time_t eventEndTimeUnix, time_t head, const searchParameters *p);
+int canElongate(time_t eventStartTimeUnix, time_t eventEndTimeUnix, time_t head, const searchParameters *p);
 int canSwallow(time_t eventStartTimeUnix, time_t eventEndTimeUnix, time_t head);
 int stuck(time_t eventStartTimeUnix, time_t eventEndTimeUnix, time_t head, const searchParameters *p);
 tm stuckProcedure(time_t eventStartTimeUnix, time_t eventEndTimeUnix, searchParameters *p, time_t *head); 

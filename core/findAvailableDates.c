@@ -133,12 +133,12 @@ void printEventPtrArray(event *allEvents[], int n) {
 
 tm lookForFreeSlot(event *allEvents[], int arrLen, searchParameters *p) {
     time_t head = getStartOfLine(p);
-    tm dateFound; 
+    tm dateFound;
     int i = 0;
 
     dateFound.tm_year = look;
 
-    while (i < arrLen && allEvents[i] != NULL && dateFound.tm_year < 0) {
+    while (i < arrLen && allEvents[i] != NULL && dateFound.tm_year < 0 && dateFound.tm_year != eol) {
         dateFound = lookForFreeSlotSingle(allEvents[i], p, &head);
         i++;
     }
@@ -153,16 +153,15 @@ tm lookForFreeSlotSingle(event *event, searchParameters *p, time_t *head) {
     dateFound.tm_year = look;
 
     if (endOfLine(p, *head)) {
-        printf("endOfLine!\n");
+        if (DEBUG) printf("endOfLine\n");
         dateFound.tm_year = eol;
-    } else if (canGo(eventStartTimeUnix, eventEndTimeUnix, *head, p)) {
-        printf("go!\n");
+    } else if (canElongate(eventStartTimeUnix, eventEndTimeUnix, *head, p)) {
+        if (DEBUG) printf("elongate\n");
         *head = eventEndTimeUnix;
     } else if (canSwallow(eventStartTimeUnix, eventEndTimeUnix, *head)) {
-        printf("swallow\n");
-        /* swallow */
+        if (DEBUG) printf("swallow\n");
     } else if (stuck(eventStartTimeUnix, eventEndTimeUnix, *head, p)) {
-        printf("stuck\n");
+        if (DEBUG) printf("stuck\n");
         dateFound = stuckProcedure(eventStartTimeUnix, eventEndTimeUnix, p, head);
     }
 
@@ -174,9 +173,9 @@ int endOfLine(searchParameters *p, time_t head) {
     return head >= eolTime;
 }
 
-int canGo(time_t eventStartTimeUnix, time_t eventEndTimeUnix, time_t head, const searchParameters *p) {
-    return ((head < eventEndTimeUnix) && (head > eventStartTimeUnix)) ||
-           ((head < eventStartTimeUnix) && (eventEndTimeUnix - head < (p->eventLen * MIN_TO_SEC) + (2 * p->buffer * MIN_TO_SEC)));
+int canElongate(time_t eventStartTimeUnix, time_t eventEndTimeUnix, time_t head, const searchParameters *p) {
+    return ((head < eventEndTimeUnix) && (head >= eventStartTimeUnix)) ||
+           ((head < eventStartTimeUnix) && ((eventStartTimeUnix - head) < ((p->eventLen * MIN_TO_SEC) + (2 * p->buffer * MIN_TO_SEC))));
 }
 
 int canSwallow(time_t eventStartTimeUnix, time_t eventEndTimeUnix, time_t head) {
@@ -184,41 +183,47 @@ int canSwallow(time_t eventStartTimeUnix, time_t eventEndTimeUnix, time_t head) 
 }
 
 int stuck(time_t eventStartTimeUnix, time_t eventEndTimeUnix, time_t head, const searchParameters *p) {
-    return ((head < eventStartTimeUnix) && (eventEndTimeUnix - head >= (p->eventLen * MIN_TO_SEC) + (2 * p->buffer * MIN_TO_SEC)));
+    return ((head < eventStartTimeUnix) && ((eventStartTimeUnix - head) >= ((p->eventLen * MIN_TO_SEC) + (2 * p->buffer * MIN_TO_SEC))));
 }
 
 tm stuckProcedure(time_t eventStartTimeUnix, time_t eventEndTimeUnix, searchParameters *p, time_t *head) {
     tm dateFound;
 
     if (headWithinLimits(p, *head)) {
-        /**head = eventEndTimeUnix;*/ 
-        *head += p->buffer * MIN_TO_SEC; 
+        *head += p->buffer * MIN_TO_SEC;
         dateFound = *localtime(head);
     } else {
-        setHeadToNextLL (p, head);
-        dateFound.tm_year = look; 
+        setHeadToNextLL(p, head);
+        dateFound.tm_year = look;
     }
 
     return dateFound;
 }
 
-int headWithinLimits(searchParameters *p, time_t head) {  
-    
+int headWithinLimits(searchParameters *p, time_t head) {
+    /*tm tm_headStart;
+    tm tm_headEnd;
+    time_t headEnd;
+
+    headEnd = head + (p->eventLen * MIN_TO_SEC) + (2 * p->buffer * MIN_TO_SEC);
+
+    tm_headStart = *localtime(&head);
+    tm_headEnd   = *localtime(&headEnd);*/
+
     return 1;
 }
 
-void setHeadToNextLL (searchParameters *p, time_t *head) {
-
+void setHeadToNextLL(searchParameters *p, time_t *head) {
 }
 
 time_t getStartOfLine(const searchParameters *p) {
     tm time_tm = INIT_TM;
     time_t time;
 
-    time_tm.tm_min  = p->lowerLimit.tm_min;
+    time_tm.tm_min = p->lowerLimit.tm_min;
     time_tm.tm_hour = p->lowerLimit.tm_hour;
     time_tm.tm_mday = p->startDate.tm_mday;
-    time_tm.tm_mon  = p->startDate.tm_mon;
+    time_tm.tm_mon = p->startDate.tm_mon;
     time_tm.tm_year = p->startDate.tm_year;
 
     time = mktime(&time_tm);
@@ -230,10 +235,10 @@ time_t getEndOfLine(const searchParameters *p) {
     tm time_tm = INIT_TM;
     time_t time;
 
-    time_tm.tm_min  = p->upperLimit.tm_min;
+    time_tm.tm_min = p->upperLimit.tm_min;
     time_tm.tm_hour = p->upperLimit.tm_hour;
     time_tm.tm_mday = p->endDate.tm_mday;
-    time_tm.tm_mon  = p->endDate.tm_mon;
+    time_tm.tm_mon = p->endDate.tm_mon;
     time_tm.tm_year = p->endDate.tm_year;
 
     time = mktime(&time_tm);
@@ -244,8 +249,8 @@ time_t getEndOfLine(const searchParameters *p) {
 void print_time_t(time_t time) {
     tm *time_tm = localtime(&time);
 
-    printf("%.2d/%.2d/%.2d - %.2d:%.2d\n", 
-           time_tm->tm_mday, 
+    printf("%.2d/%.2d/%.2d - %.2d:%.2d\n",
+           time_tm->tm_mday,
            time_tm->tm_mon + 1,
            time_tm->tm_year + EPOCH,
            time_tm->tm_hour,
@@ -306,8 +311,6 @@ int withinScope(time_t unixCursor, const searchParameters *p) {
         return 0;
     }
 }
-
-
 
 /*tm convertUnixTime(time_t inputUnix) {
     tm convertedTime;

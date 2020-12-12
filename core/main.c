@@ -18,12 +18,6 @@ int main(int argc, char *argv[]) {
 
     getSearchParameters(&searchParametersMain);
 
-    printf("searchParameters::: %d:%d | %d:%d", 
-           searchParametersMain.lowerLimit.tm_hour,
-           searchParametersMain.lowerLimit.tm_min,
-           searchParametersMain.upperLimit.tm_hour,
-           searchParametersMain.upperLimit.tm_hour);
-
     foundDatesByLooking = findAvailableDates(&calendarSuiteMain, &searchParametersMain, bylooking);
 
     if (!foundDatesByLooking) {
