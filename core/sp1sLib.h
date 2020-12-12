@@ -86,7 +86,8 @@ enum searchMode { bylooking,
                   byRestructuring };
 
 enum lookForFreeSlotStatus { eol = -1, /* endOfLine */
-                             look = -2 };
+                             look = -2,
+                             redo = -3 };
 
 /* PROGRAM FUNCTIONS
  * ------------------------------------------------------------------------------------------ 
@@ -131,14 +132,13 @@ int endOfLine(searchParameters *p, time_t head);
 int canElongate(time_t eventStartTimeUnix, time_t eventEndTimeUnix, time_t head, const searchParameters *p);
 int canSwallow(time_t eventStartTimeUnix, time_t eventEndTimeUnix, time_t head);
 int stuck(time_t eventStartTimeUnix, time_t eventEndTimeUnix, time_t head, const searchParameters *p);
-tm stuckProcedure(time_t eventStartTimeUnix, time_t eventEndTimeUnix, searchParameters *p, time_t *head); 
-int headWithinLimits(searchParameters *p, time_t head);  
-void setHeadToNextLL (searchParameters *p, time_t *head);
+tm stuckProcedure(time_t eventStartTimeUnix, time_t eventEndTimeUnix, searchParameters *p, time_t *head);
+int headWithinLimits(searchParameters *p, time_t head);
+void setHeadToNextLL(searchParameters *p, time_t *head);
 void print_time_t(time_t time);
 time_t getStartOfLine(const searchParameters *p);
 time_t getEndOfLine(const searchParameters *p);
 int tmWithinLimits(searchParameters *p, tm *time);
-
 
 int withinScope(time_t unixCursor, const searchParameters *p);
 tm convertUnixTime(time_t unix);

@@ -139,8 +139,17 @@ tm lookForFreeSlot(event *allEvents[], int arrLen, searchParameters *p) {
     dateFound.tm_year = look;
 
     while (i < arrLen && allEvents[i] != NULL && dateFound.tm_year < 0 && dateFound.tm_year != eol) {
+        
         dateFound = lookForFreeSlotSingle(allEvents[i], p, &head);
-        i++;
+        
+        if (DEBUG) {
+            printf("Event: %d\n", i + 1);
+            printf("head: "); print_time_t(head); printf("\n");
+        }
+
+        if (dateFound.tm_year != redo) {
+            i++;
+        }
     }
 
     return dateFound;
@@ -194,7 +203,7 @@ tm stuckProcedure(time_t eventStartTimeUnix, time_t eventEndTimeUnix, searchPara
         dateFound = *localtime(head);
     } else {
         setHeadToNextLL(p, head);
-        dateFound.tm_year = look;
+        dateFound.tm_year = redo;
     }
 
     return dateFound;
@@ -234,7 +243,15 @@ int tmWithinLimits(searchParameters *p, tm *time) {
     }
 }
 
+/* THIS FUNCTIONS IS VERY BROKEN ATM */
 void setHeadToNextLL(searchParameters *p, time_t *head) {
+    tm head_tm = *localtime(head);
+
+    head_tm.tm_mday += 1;
+    head_tm.tm_min = p->lowerLimit.tm_min;
+    head_tm.tm_hour = p->lowerLimit.tm_hour;
+
+    *head = mktime(&head_tm);
 }
 
 time_t getStartOfLine(const searchParameters *p) {
@@ -277,5 +294,3 @@ void print_time_t(time_t time) {
            time_tm->tm_hour,
            time_tm->tm_min);
 }
-
-

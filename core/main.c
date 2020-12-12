@@ -179,7 +179,7 @@ int findAvailableDates(calendarSuite *suite, searchParameters *param, int search
     /* Find huller i events */
     freeSlot = lookForFreeSlot(allEvents, sumAllEvents, param);
 
-    if(freeSlot.tm_year != -1) {
+    if(freeSlot.tm_year >= 0) {
         printf("Free slot found at: %.2d/%.2d/%.4d %.2d:%.2d\n", 
                 freeSlot.tm_mday, 
                 freeSlot.tm_mon + 1, 
