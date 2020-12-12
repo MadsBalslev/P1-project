@@ -131,7 +131,7 @@ int endOfLine(searchParameters *p, time_t head);
 int canGo(time_t eventStartTimeUnix, time_t eventEndTimeUnix, time_t head, const searchParameters *p);
 int canSwallow(time_t eventStartTimeUnix, time_t eventEndTimeUnix, time_t head);
 int stuck(time_t eventStartTimeUnix, time_t eventEndTimeUnix, time_t head, const searchParameters *p);
-tm stuckProcedure(event *event, searchParameters *p, time_t *head); 
+tm stuckProcedure(time_t eventStartTimeUnix, time_t eventEndTimeUnix, searchParameters *p, time_t *head); 
 int headWithinLimits(searchParameters *p, time_t head);  
 void setHeadToNextLL (searchParameters *p, time_t *head);
 void print_time_t(time_t time);
