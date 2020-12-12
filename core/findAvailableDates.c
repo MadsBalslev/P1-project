@@ -201,16 +201,37 @@ tm stuckProcedure(time_t eventStartTimeUnix, time_t eventEndTimeUnix, searchPara
 }
 
 int headWithinLimits(searchParameters *p, time_t head) {
-    /*tm tm_headStart;
+    int returnFlag = 0;
+    tm tm_headStart;
     tm tm_headEnd;
     time_t headEnd;
 
     headEnd = head + (p->eventLen * MIN_TO_SEC) + (2 * p->buffer * MIN_TO_SEC);
 
     tm_headStart = *localtime(&head);
-    tm_headEnd   = *localtime(&headEnd);*/
+    tm_headEnd = *localtime(&headEnd);
 
-    return 1;
+    returnFlag += tmWithinLimits(p, &tm_headStart);
+    returnFlag += tmWithinLimits(p, &tm_headEnd);
+
+    if (returnFlag == 2) {
+        returnFlag = 1;
+    } else {
+        returnFlag = 0;
+    }
+
+    return returnFlag;
+}
+
+int tmWithinLimits(searchParameters *p, tm *time) {
+    if (time->tm_hour > p->lowerLimit.tm_hour && time->tm_hour < p->upperLimit.tm_hour) {
+        return 1;
+    } else if ((time->tm_hour == p->lowerLimit.tm_hour && time->tm_min >= p->lowerLimit.tm_min) &&
+               (time->tm_hour == p->upperLimit.tm_hour && time->tm_min <= p->upperLimit.tm_min)) {
+        return 1;
+    } else {
+        return 0;
+    }
 }
 
 void setHeadToNextLL(searchParameters *p, time_t *head) {

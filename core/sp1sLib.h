@@ -137,6 +137,7 @@ void setHeadToNextLL (searchParameters *p, time_t *head);
 void print_time_t(time_t time);
 time_t getStartOfLine(const searchParameters *p);
 time_t getEndOfLine(const searchParameters *p);
+int tmWithinLimits(searchParameters *p, tm *time);
 
 
 int withinScope(time_t unixCursor, const searchParameters *p);
