@@ -139,13 +139,16 @@ tm lookForFreeSlot(event *allEvents[], int arrLen, searchParameters *p) {
     dateFound.tm_year = look;
 
     while (i < arrLen && allEvents[i] != NULL && dateFound.tm_year < 0 && dateFound.tm_year != eol) {
+        if (DEBUG) printf("Event: %s\n", allEvents[i]->title);
+
         dateFound = lookForFreeSlotSingle(allEvents[i], p, &head);
-        
+
         if (DEBUG) {
-            printf("Event: %s\n", allEvents[i]->title);
-            printf("head: "); print_time_t(head); printf("\n");
+            printf("head: ");
+            print_time_t(head);
+            printf("\n");
         }
-    
+
         if (dateFound.tm_year != redo) {
             i++;
         }
@@ -201,7 +204,7 @@ tm stuckProcedure(time_t eventStartTimeUnix, time_t eventEndTimeUnix, searchPara
         *head += p->buffer * MIN_TO_SEC;
         dateFound = *localtime(head);
     } else {
-        if (DEBUG) printf("stuck but go on\n");
+        if (DEBUG) printf("stuck but got on\n");
         setHeadToNextLL(p, head);
         dateFound.tm_year = redo;
     }
