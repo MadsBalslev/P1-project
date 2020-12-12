@@ -79,7 +79,7 @@ void getDates(tm *startDate, tm *endDate) {
     tm tempEndDate = INIT_TM; 
 
     do {
-        printf("Enter a starting date on the form dd/mm/yyyy> ");
+        printf("Enter the earliest date the event can take place on the form dd/mm/yyyy> ");
         scanf(" %d/%d/%d", &tempStartDate.tm_mday, &tempStartDate.tm_mon, &tempStartDate.tm_year);
         tempStartDate.tm_mon--;
         tempStartDate.tm_year = tempStartDate.tm_year - EPOCH;
@@ -88,7 +88,7 @@ void getDates(tm *startDate, tm *endDate) {
     } while (!validInput);
 
     do {
-        printf("Enter an end date on the form dd/mm/yyyy> ");
+        printf("Enter the latest date the event can take place on the form dd/mm/yyyy> ");
         scanf(" %d/%d/%d", &tempEndDate.tm_mday, &tempEndDate.tm_mon, &tempEndDate.tm_year);
         tempEndDate.tm_mon--;
         tempEndDate.tm_year = tempEndDate.tm_year - EPOCH;
