@@ -139,11 +139,10 @@ tm lookForFreeSlot(event *allEvents[], int arrLen, searchParameters *p) {
     dateFound.tm_year = look;
 
     while (i < arrLen && allEvents[i] != NULL && dateFound.tm_year < 0 && dateFound.tm_year != eol) {
-        if (DEBUG) printf("Event: %d\n", i + 1);
-
         dateFound = lookForFreeSlotSingle(allEvents[i], p, &head);
         
         if (DEBUG) {
+            printf("Event: %s\n", allEvents[i]->title);
             printf("head: "); print_time_t(head); printf("\n");
         }
     
