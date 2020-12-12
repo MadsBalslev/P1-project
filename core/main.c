@@ -22,9 +22,7 @@ int main(int argc, char *argv[]) {
     if (!foundDatesByLooking) {
         findAvailableDates(&calendarSuiteMain, &searchParametersMain, byRestructuring);
     }
-    userOutput();
 
-    free(calendarSuiteMain.calPtrArray);
     return EXIT_SUCCESS;
 }
 
@@ -147,7 +145,7 @@ void getCalendarSuite(int argc, char *argv[], calendarSuite *calendarSuite) {
  * @return int Bool value telling if a possible date for event was found.
  */
 int findAvailableDates(calendarSuite *suite, searchParameters *param, int searchMode) {
-    int foundDate = 0, sumAllEvents = 0; /* <-------- foundDate should be 0, but for now it's not*/
+    int foundDate = 0, sumAllEvents = 0; 
     event **allEvents;
     tm freeSlot;
 
@@ -164,8 +162,6 @@ int findAvailableDates(calendarSuite *suite, searchParameters *param, int search
     } else if (searchMode == byRestructuring) {
         calSuiteToEventArray(suite, allEvents, sumAllEvents, param->priority);
     }
-
-    printf("%ld\n", mktime(&allEvents[1]->startTime));
 
     if (DEBUG) {
         printf("\nEVENT ARRAY:\n");

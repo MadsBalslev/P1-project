@@ -60,7 +60,7 @@ typedef struct calendar {
 typedef struct searchParameters {
     int priority;
     int eventLen; /*!< Length of the event in minutes */
-    int buffer; /*!< Buffer to be added at both start and end of event */
+    int buffer;   /*!< Buffer to be added at both start and end of event */
     tm startDate;
     tm endDate;
     tm upperLimit;
@@ -84,6 +84,9 @@ enum argType { invalid,
 
 enum searchMode { bylooking,
                   byRestructuring };
+
+enum lookForFreeSlotStatus { eol = -1, /* endOfLine */
+                             look = -2 };
 
 /* PROGRAM FUNCTIONS
  * ------------------------------------------------------------------------------------------ 
@@ -124,15 +127,13 @@ int eventStartsLater(event *event1, event *event2);
 tm lookForFreeSlot(event *allEvents[], int arrLen, searchParameters *p);
 tm lookForFreeSlotSingle(event *event, searchParameters *p, time_t *head);
 
-int endOfLine(event *event, searchParameters *p, time_t *head);
-int canGo(const event *event, const searchParameters *p, const time_t *head);
-int canSwallow(const event *event, const searchParameters *p, const time_t *head);
-int stuck(const event *event, const searchParameters *p, const time_t *head);
-
-void go(const event *event, const searchParameters *p, time_t *head);
-void swallow(const event *event, const searchParameters *p, time_t *head);
-
-
+int endOfLine(searchParameters *p, time_t head);
+int canGo(time_t eventStartTimeUnix, time_t eventEndTimeUnix, time_t head, const searchParameters *p);
+int canSwallow(time_t eventStartTimeUnix, time_t eventEndTimeUnix, time_t head);
+int stuck(time_t eventStartTimeUnix, time_t eventEndTimeUnix, time_t head, const searchParameters *p);
+tm stuckProcedure(event *event, searchParameters *p, time_t *head); 
+int headWithinLimits(searchParameters *p, time_t head);  
+void setHeadToNextLL (searchParameters *p, time_t *head);
 
 
 int withinScope(time_t unixCursor, const searchParameters *p);

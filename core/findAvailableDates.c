@@ -21,15 +21,18 @@ int findSumAllEvents(const calendarSuite *suite) {
 }
 
 /**
- * @brief Iterates through all events from all calendar-files and adds them all to one big array
- * 
- * The function loops through all calendars and adds all the events to one array. An event will only be added
- * to the array if it has priority over the event we are finding an avaliable slot for. 
- * 
+ * @brief Iterates through all events from all calendar-files and adds them all to one big
+ * array
+ *
+ * The function loops through all calendars and adds all the events to one array. An event
+ * will only be added to the array if it has priority over the event we are finding an
+ * avaliable slot for. 
+ *
  * @param suite the suite of calendars to look through
  * @param eventPtrArray The array to put all events into
  * @param sumAllEvents The amount of events across all calendar files
- * @param priority The priority of the event the user wants to find an avaliable time slot for. Defaults to 1000
+ * @param priority The priority of the event the user wants to find an avaliable time slot
+ * for. Defaults to 1000
  */
 void calSuiteToEventArray(const calendarSuite *suite, event *eventPtrArray[], int sumAllEvents, int priority) {
     int i = 0, k;
@@ -79,10 +82,11 @@ int endTimeCmp(const void *arg1, const void *arg2) {
 
 /**
  * @brief Determines if event1 ends later than event2.
- * 
+ *
  * @param event1 pointer to event structure
  * @param event2 pointer to event structure
- * @return int 1 if event1 ends later than event 2, 0 if event 2 ends later than event1 or they end at the same time
+ * @return int 1 if event1 ends later than event 2, 0 if event 2 ends later than event1 or
+ * they end at the same time
  */
 int eventStartsLater(event *event1, event *event2) {
     if (event1->startTime.tm_year > event2->startTime.tm_year) { /* Check year */
@@ -132,10 +136,10 @@ tm lookForFreeSlot(event *allEvents[], int arrLen, searchParameters *p) {
     time_t head;
     int i = 0;
 
-    dateFound.tm_year = -1;
+    dateFound.tm_year = look;
     head = mktime(&p->lowerLimit) + mktime(&p->startDate);
 
-    while (i < arrLen && allEvents[i] != NULL && dateFound.tm_year != -1) {
+    while (i < arrLen && allEvents[i] != NULL && dateFound.tm_year != eol) {
         dateFound = lookForFreeSlotSingle(allEvents[i], p, &head);
         i++;
     }
@@ -144,47 +148,65 @@ tm lookForFreeSlot(event *allEvents[], int arrLen, searchParameters *p) {
 }
 
 tm lookForFreeSlotSingle(event *event, searchParameters *p, time_t *head) {
+    time_t eventStartTimeUnix = mktime(&event->startTime);
+    time_t eventEndTimeUnix = mktime(&event->endTime);
     tm dateFound;
-    dateFound.tm_year = -2;
-    
+    dateFound.tm_year = look;
 
-    if (endOfLine(event, p, head)) {
-        dateFound.tm_year = -1;
-    } else if (canGo(event, p, head)) {
-        go(event, p, head);
-    } else if (canSwallow(event, p, head)) {
-        swallow(event, p, head);
-    } else if (stuck(event, p, head)) {
-        dateFound = *localtime(head);
+    if (endOfLine(p, *head)) {
+        dateFound.tm_year = eol;
+    } else if (canGo(eventStartTimeUnix, eventEndTimeUnix, *head, p)) {
+        *head = eventEndTimeUnix;
+    } else if (canSwallow(eventStartTimeUnix, eventEndTimeUnix, *head)) {
+        /* swallow */
+    } else if (stuck(eventStartTimeUnix, eventEndTimeUnix, *head, p)) {
+        dateFound = stuckProcedure(event, p, head);
     }
 
     return dateFound;
 }
 
-int endOfLine(event *event, searchParameters *p, time_t *head) {
+int endOfLine(searchParameters *p, time_t head) {
     time_t eolTime = mktime(&p->upperLimit) + mktime(&p->endDate);
-    return *head >= eolTime;
+    return head >= eolTime;
 }
 
-int canGo(const event *event, const searchParameters *p, const time_t *head) {
-    return 1;
+int canGo(time_t eventStartTimeUnix, time_t eventEndTimeUnix, time_t head, const searchParameters *p) {
+    return ((head < eventEndTimeUnix) && (head > eventStartTimeUnix)) ||
+           ((head < eventStartTimeUnix) && (eventEndTimeUnix - head < (p->eventLen * MIN_TO_SEC) + (2 * p->buffer * MIN_TO_SEC)));
 }
 
-int canSwallow(const event *event, const searchParameters *p, const time_t *head) {
-    return 1;
+int canSwallow(time_t eventStartTimeUnix, time_t eventEndTimeUnix, time_t head) {
+    return (head > eventEndTimeUnix) && (head > eventStartTimeUnix);
 }
 
-
-int stuck(const event *event, const searchParameters *p, const time_t *head) {
-    return 1;
+int stuck(time_t eventStartTimeUnix, time_t eventEndTimeUnix, time_t head, const searchParameters *p) {
+    return ((head < eventStartTimeUnix) && (eventEndTimeUnix - head >= (p->eventLen * MIN_TO_SEC) + (2 * p->buffer * MIN_TO_SEC)));
 }
 
-void go(const event *event, const searchParameters *p, time_t *head) {
+tm stuckProcedure(event *event, searchParameters *p, time_t *head) {
+    tm dateFound;
+
+    if (headWithinLimits(p, *head)) {
+        *head += p->buffer * MIN_TO_SEC; 
+        dateFound = *localtime(head);
+    } else {
+        setHeadToNextLL (p, head);
+        dateFound.tm_year = look; 
+    }
+
+    return dateFound;
 }
 
-void swallow(const event *event, const searchParameters *p, time_t *head) {
+int headWithinLimits(searchParameters *p, time_t head) {  
     
+    return 1;
 }
+
+void setHeadToNextLL (searchParameters *p, time_t *head) {
+
+}
+
 
 /* 1. Sammenflet alle overlappende events til ét samlet event */
 
