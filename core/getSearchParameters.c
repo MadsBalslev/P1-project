@@ -115,7 +115,7 @@ void getDates(tm *startDate, tm *endDate) {
  * @param upperLimit 
  * @param lowerLimmit 
  */
-void getLimits(tm *upperLimit, tm *lowerLimmit) {
+void getLimits(tm *lowerLimmit, tm *upperLimit) {
     int validInput = 0;
     tm tempLowerLimit = INIT_TM;
     tm tempUpperLimit = INIT_TM;

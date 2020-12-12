@@ -107,7 +107,7 @@ int getPriority(void);
 int getEventLen(void);
 int getEventBuffer(void);
 void getDates(tm *startDate, tm *endDate);
-void getLimits(tm *upperLimit, tm *lowerLimmit);
+void getLimits(tm *lowerLimmit, tm *upperLimit);
 
 /* getCalendarSuite */
 void getCalendarSuite(int argc, char *argv[], calendarSuite *calendarSuite);
@@ -134,6 +134,9 @@ int stuck(time_t eventStartTimeUnix, time_t eventEndTimeUnix, time_t head, const
 tm stuckProcedure(event *event, searchParameters *p, time_t *head); 
 int headWithinLimits(searchParameters *p, time_t head);  
 void setHeadToNextLL (searchParameters *p, time_t *head);
+void print_time_t(time_t time);
+time_t getStartOfLine(const searchParameters *p);
+time_t getEndOfLine(const searchParameters *p);
 
 
 int withinScope(time_t unixCursor, const searchParameters *p);
