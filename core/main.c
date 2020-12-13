@@ -196,6 +196,3 @@ int findAvailableDates(calendarSuite *suite, searchParameters *param, int search
 
     return foundDate;
 }
-
-void userOutput(void) {
-}

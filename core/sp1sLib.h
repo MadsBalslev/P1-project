@@ -128,7 +128,6 @@ int endTimeCmp(const void *arg1, const void *arg2);
 int eventStartsLater(event *event1, event *event2);
 tm lookForFreeSlot(event *allEvents[], int arrLen, searchParameters *p);
 tm lookForFreeSlotSingle(event *event, searchParameters *p, time_t *head);
-
 int endOfLine(searchParameters *p, time_t head);
 int canElongate(time_t eventStartTimeUnix, time_t eventEndTimeUnix, time_t head, const searchParameters *p);
 int canSwallow(time_t eventStartTimeUnix, time_t eventEndTimeUnix, time_t head);
@@ -144,13 +143,6 @@ time_t getStartOfLine(const searchParameters *p);
 time_t getEndOfLine(const searchParameters *p);
 int tmWithinLimits(searchParameters *p, tm *time);
 void print_time_t(time_t time);
-
-int withinScope(time_t unixCursor, const searchParameters *p);
-tm convertUnixTime(time_t unix);
-int eventBeginBeforeEnd(time_t *event1, time_t *event2);
-
-void findAvailableDatesByRestructuring(calendarSuite *suite, const searchParameters *param);
-void userOutput(void);
 
 /* helperFunctions */
 int isTimeValid(tm time);
@@ -168,7 +160,6 @@ void printMetadataCalendar(const calendar *calendar);
 void printCalendar(const calendar *calendar);
 void printCalendars(calendarSuite *calendarSuite);
 void printEvent(const event *a);
-
 void printEventPtrArray(event *allEvents[], int n);
 
 /* UNIT TESTING FUNCTIONS
