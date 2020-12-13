@@ -259,7 +259,13 @@ void setHeadToNextLL(searchParameters *p, time_t *head) {
 }
 
 int overUpperLimit(searchParameters *p, tm *head_tm) {
-    return 1;
+    if (head_tm->tm_hour > p->upperLimit.tm_hour) {
+        return 1;
+    } else if (head_tm->tm_hour == p->upperLimit.tm_hour && head_tm->tm_min > p->upperLimit.tm_min) {
+        return 1;
+    } else {
+        return 0;
+    }
 }
 
 int underLowerLimit(searchParameters *p, tm *head_tm) {
@@ -267,14 +273,12 @@ int underLowerLimit(searchParameters *p, tm *head_tm) {
 }
 
 void goToLowerLimitNextDay(searchParameters *p, tm *head_tm) {
-
 }
 
 void goToLowerLimitThisDay(searchParameters *p, tm *head_tm) {
     head_tm->tm_min = p->lowerLimit.tm_min;
     head_tm->tm_hour = p->lowerLimit.tm_hour;
 }
-
 
 time_t getStartOfLine(const searchParameters *p) {
     tm time_tm = INIT_TM;
