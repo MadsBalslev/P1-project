@@ -12,6 +12,7 @@
 #define MIN_TO_SEC 60
 #define EPOCH 1900
 #define MAX_PRIORITY 1000
+#define UNIX_24H 60 * 60 * 24;
 /*#define timegm _mkgmtime*/ /* timegm for mingw */
 
 typedef struct tm tm;
@@ -137,7 +138,7 @@ int headWithinLimits(searchParameters *p, time_t head);
 void setHeadToNextLL(searchParameters *p, time_t *head);
 int overUpperLimit(searchParameters *p, tm *head_tm);
 int underLowerLimit(searchParameters *p, tm *head_tm);
-void goToLowerLimitNextDay(searchParameters *p, tm *head_tm);
+void goToLowerLimitNextDay(time_t head, searchParameters *p, tm *head_tm);
 void goToLowerLimitThisDay(searchParameters *p, tm *head_tm);
 time_t getStartOfLine(const searchParameters *p);
 time_t getEndOfLine(const searchParameters *p);

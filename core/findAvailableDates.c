@@ -250,7 +250,7 @@ void setHeadToNextLL(searchParameters *p, time_t *head) {
     tm head_tm = *localtime(head);
 
     if (overUpperLimit(p, &head_tm)) {
-        goToLowerLimitNextDay(p, &head_tm);
+        goToLowerLimitNextDay(*head, p, &head_tm);
     } else if (underLowerLimit(p, &head_tm)) {
         goToLowerLimitThisDay(p, &head_tm);
     }
@@ -278,7 +278,10 @@ int underLowerLimit(searchParameters *p, tm *head_tm) {
     }
 }
 
-void goToLowerLimitNextDay(searchParameters *p, tm *head_tm) {
+void goToLowerLimitNextDay(time_t head, searchParameters *p, tm *head_tm) {
+    head += UNIX_24H;
+    head_tm = localtime(&head);
+    goToLowerLimitThisDay(p, head_tm);
 }
 
 void goToLowerLimitThisDay(searchParameters *p, tm *head_tm) {
