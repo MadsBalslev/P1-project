@@ -135,6 +135,7 @@ tm lookForFreeSlot(event *allEvents[], int arrLen, searchParameters *p) {
     time_t head = getStartOfLine(p);
     tm dateFound;
     int i = 0;
+    int d;
 
     dateFound.tm_year = look;
 
@@ -147,6 +148,7 @@ tm lookForFreeSlot(event *allEvents[], int arrLen, searchParameters *p) {
             printf("head: ");
             print_time_t(head);
             printf("\n");
+            scanf("%d", &d);
         }
 
         if (dateFound.tm_year != redo) {
@@ -249,10 +251,12 @@ int tmWithinLimits(searchParameters *p, tm *time) {
 void setHeadToNextLL(searchParameters *p, time_t *head) {
     tm head_tm = *localtime(head);
 
-    if (overUpperLimit(p, &head_tm)) {
-        goToLowerLimitNextDay(*head, p, &head_tm);
-    } else if (underLowerLimit(p, &head_tm)) {
+    if (underLowerLimit(p, &head_tm)) {
+        printf("On line: %d\n", __LINE__);
         goToLowerLimitThisDay(p, &head_tm);
+    } else {
+        printf("On line: %d\n", __LINE__);
+        goToLowerLimitNextDay(*head, p, &head_tm);
     }
 
     *head = mktime(&head_tm);
