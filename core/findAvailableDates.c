@@ -246,7 +246,6 @@ int tmWithinLimits(searchParameters *p, tm *time) {
     }
 }
 
-/* THIS FUNCTIONS IS VERY BROKEN ATM */
 void setHeadToNextLL(searchParameters *p, time_t *head) {
     tm head_tm = *localtime(head);
 
@@ -272,7 +271,8 @@ void goToLowerLimitNextDay(searchParameters *p, tm *head_tm) {
 }
 
 void goToLowerLimitThisDay(searchParameters *p, tm *head_tm) {
-    
+    head_tm->tm_min = p->lowerLimit.tm_min;
+    head_tm->tm_hour = p->lowerLimit.tm_hour;
 }
 
 
