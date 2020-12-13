@@ -135,7 +135,6 @@ tm lookForFreeSlot(event *allEvents[], int arrLen, searchParameters *p) {
     time_t head = getStartOfLine(p);
     tm dateFound;
     int i = 0;
-    int d;
 
     dateFound.tm_year = look;
 
@@ -148,7 +147,6 @@ tm lookForFreeSlot(event *allEvents[], int arrLen, searchParameters *p) {
             printf("head: ");
             print_time_t(head);
             printf("\n");
-            scanf("%d", &d);
         }
 
         if (dateFound.tm_year != redo) {
