@@ -145,7 +145,7 @@ void getCalendarSuite(int argc, char *argv[], calendarSuite *calendarSuite) {
  * @param searchMode Used to check if priority of param is used, or using default value
  * @return int Bool value telling if a possible date for event was found.
  */
-int findAvailableDates(calendarSuite *suite, searchParameters *param, int searchMode) {
+int findAvailableDates(calendarSuite *suite, const searchParameters *param, int searchMode) {
     int foundDate = 0, sumAllEvents = 0; 
     event **allEvents;
     tm freeSlot;
@@ -159,9 +159,9 @@ int findAvailableDates(calendarSuite *suite, searchParameters *param, int search
     errorHandling(allEvents == NULL, "!!!FAILED TO ALLOCATE MEMORY STEP 3!!!");
 
     if (searchMode == bylooking) {
-        calSuiteToEventArray(suite, allEvents, sumAllEvents, MAX_PRIORITY); /* <------ This should be account for elsewhere*/
+        calSuiteToEventArray(suite, sumAllEvents, MAX_PRIORITY, allEvents); /* <------ This should be account for elsewhere*/
     } else if (searchMode == byRestructuring) {
-        calSuiteToEventArray(suite, allEvents, sumAllEvents, param->priority);
+        calSuiteToEventArray(suite, sumAllEvents, param->priority, allEvents);
     }
 
     if (DEBUG) {
@@ -177,7 +177,7 @@ int findAvailableDates(calendarSuite *suite, searchParameters *param, int search
     }
 
     /* Find huller i events */
-    freeSlot = lookForFreeSlot(allEvents, sumAllEvents, param);
+    freeSlot = lookForFreeSlot(param, sumAllEvents, allEvents);
 
     if(freeSlot.tm_year >= 0) {
         printf("Free slot found at: %.2d/%.2d/%.4d %.2d:%.2d\n", 

@@ -34,7 +34,7 @@ int findSumAllEvents(const calendarSuite *suite) {
  * @param priority The priority of the event the user wants to find an avaliable time slot
  * for. Defaults to 1000
  */
-void calSuiteToEventArray(const calendarSuite *suite, event *eventPtrArray[], int sumAllEvents, int priority) {
+void calSuiteToEventArray(const calendarSuite *suite, int sumAllEvents, int priority, event *eventPtrArray[]) {
     int i = 0, k;
     eventLink *cursor;
 
@@ -88,7 +88,7 @@ int endTimeCmp(const void *arg1, const void *arg2) {
  * @return int 1 if event1 ends later than event 2, 0 if event 2 ends later than event1 or
  * they end at the same time
  */
-int eventStartsLater(event *event1, event *event2) {
+int eventStartsLater(const event *event1, const event *event2) {
     if (event1->startTime.tm_year > event2->startTime.tm_year) { /* Check year */
         return 1;
     } else if (event1->startTime.tm_year < event2->startTime.tm_year) {
@@ -131,7 +131,15 @@ void printEventPtrArray(event *allEvents[], int n) {
     }
 }
 
-tm lookForFreeSlot(event *allEvents[], int arrLen, searchParameters *p) {
+/**
+ * @brief 
+ * 
+ * @param p 
+ * @param arrLen 
+ * @param allEvents 
+ * @return tm 
+ */
+tm lookForFreeSlot(const searchParameters *p, int arrLen, event *allEvents[]) {
     time_t head = getStartOfLine(p);
     tm dateFound;
     int i = 0;
@@ -141,7 +149,7 @@ tm lookForFreeSlot(event *allEvents[], int arrLen, searchParameters *p) {
     while (i < arrLen && allEvents[i] != NULL && dateFound.tm_year < 0 && dateFound.tm_year != eol) {
         if (DEBUG) printf("Event: %s\n", allEvents[i]->title);
 
-        dateFound = lookForFreeSlotSingle(allEvents[i], p, &head);
+        dateFound = lookForFreeSlotSingle(p, allEvents[i], &head);
 
         if (DEBUG) {
             printf("head: ");
@@ -156,8 +164,15 @@ tm lookForFreeSlot(event *allEvents[], int arrLen, searchParameters *p) {
 
     return dateFound;
 }
-
-tm lookForFreeSlotSingle(event *event, searchParameters *p, time_t *head) {
+ /**
+  * @brief 
+  * 
+  * @param p 
+  * @param event 
+  * @param head 
+  * @return tm 
+  */
+tm lookForFreeSlotSingle(const searchParameters *p, event *event,  time_t *head) {
     time_t eventStartTimeUnix = mktime(&event->startTime);
     time_t eventEndTimeUnix = mktime(&event->endTime);
     tm dateFound;
@@ -171,32 +186,73 @@ tm lookForFreeSlotSingle(event *event, searchParameters *p, time_t *head) {
         *head = eventEndTimeUnix;
     } else if (canSwallow(eventStartTimeUnix, eventEndTimeUnix, *head)) {
         if (DEBUG) printf("swallow\n");
-    } else if (stuck(eventStartTimeUnix, eventEndTimeUnix, *head, p)) {
+    } else if (stuck(eventStartTimeUnix, *head, p)) {
         dateFound = stuckProcedure(eventStartTimeUnix, eventEndTimeUnix, p, head);
     }
 
     return dateFound;
 }
 
-int endOfLine(searchParameters *p, time_t head) {
+/**
+ * @brief 
+ * 
+ * @param p 
+ * @param head 
+ * @return int 
+ */
+int endOfLine(const searchParameters *p, time_t head) {
     time_t eolTime = getEndOfLine(p);
     return head >= eolTime;
 }
 
+/**
+ * @brief 
+ * 
+ * @param eventStartTimeUnix 
+ * @param eventEndTimeUnix 
+ * @param head 
+ * @param p 
+ * @return int 
+ */
 int canElongate(time_t eventStartTimeUnix, time_t eventEndTimeUnix, time_t head, const searchParameters *p) {
     return ((head < eventEndTimeUnix) && (head >= eventStartTimeUnix)) ||
            ((head < eventStartTimeUnix) && ((eventStartTimeUnix - head) < ((p->eventLen * MIN_TO_SEC) + (2 * p->buffer * MIN_TO_SEC))));
 }
 
+/**
+ * @brief 
+ * 
+ * @param eventStartTimeUnix 
+ * @param eventEndTimeUnix 
+ * @param head 
+ * @return int 
+ */
 int canSwallow(time_t eventStartTimeUnix, time_t eventEndTimeUnix, time_t head) {
     return (head > eventEndTimeUnix) && (head > eventStartTimeUnix);
 }
 
-int stuck(time_t eventStartTimeUnix, time_t eventEndTimeUnix, time_t head, const searchParameters *p) {
+/**
+ * @brief 
+ * 
+ * @param eventStartTimeUnix 
+ * @param head 
+ * @param p 
+ * @return int 
+ */
+int stuck(time_t eventStartTimeUnix, time_t head, const searchParameters *p) {
     return ((head < eventStartTimeUnix) && ((eventStartTimeUnix - head) >= ((p->eventLen * MIN_TO_SEC) + (2 * p->buffer * MIN_TO_SEC))));
 }
 
-tm stuckProcedure(time_t eventStartTimeUnix, time_t eventEndTimeUnix, searchParameters *p, time_t *head) {
+/**
+ * @brief 
+ * 
+ * @param eventStartTimeUnix 
+ * @param eventEndTimeUnix 
+ * @param p 
+ * @param head 
+ * @return tm 
+ */
+tm stuckProcedure(time_t eventStartTimeUnix, time_t eventEndTimeUnix, const searchParameters *p, time_t *head) {
     tm dateFound;
 
     if (headWithinLimits(p, *head)) {
@@ -212,7 +268,14 @@ tm stuckProcedure(time_t eventStartTimeUnix, time_t eventEndTimeUnix, searchPara
     return dateFound;
 }
 
-int headWithinLimits(searchParameters *p, time_t head) {
+/**
+ * @brief 
+ * 
+ * @param p 
+ * @param head 
+ * @return int 
+ */
+int headWithinLimits(const searchParameters *p, const time_t head) {
     int returnFlag = 0;
     tm tm_headStart;
     tm tm_headEnd;
@@ -235,7 +298,14 @@ int headWithinLimits(searchParameters *p, time_t head) {
     return returnFlag;
 }
 
-int tmWithinLimits(searchParameters *p, tm *time) {
+/**
+ * @brief 
+ * 
+ * @param p 
+ * @param time 
+ * @return int 
+ */
+int tmWithinLimits(const searchParameters *p, const tm *time) {
     if (time->tm_hour > p->lowerLimit.tm_hour && time->tm_hour < p->upperLimit.tm_hour) {
         return 1;
     } else if ((time->tm_hour == p->lowerLimit.tm_hour && time->tm_min >= p->lowerLimit.tm_min) &&
@@ -246,7 +316,13 @@ int tmWithinLimits(searchParameters *p, tm *time) {
     }
 }
 
-void setHeadToNextLL(searchParameters *p, time_t *head) {
+/**
+ * @brief Set the Head To Next L L object
+ * 
+ * @param p 
+ * @param head 
+ */
+void setHeadToNextLL(const searchParameters *p, time_t *head) {
     tm head_tm = *localtime(head);
 
     if (underLowerLimit(p, &head_tm)) {
@@ -258,7 +334,14 @@ void setHeadToNextLL(searchParameters *p, time_t *head) {
     *head = mktime(&head_tm);
 }
 
-int overUpperLimit(searchParameters *p, tm *head_tm) {
+/**
+ * @brief 
+ * 
+ * @param p 
+ * @param head_tm 
+ * @return int 
+ */
+int overUpperLimit(const searchParameters *p, const tm *head_tm) {
     if (head_tm->tm_hour > p->upperLimit.tm_hour) {
         return 1;
     } else if (head_tm->tm_hour == p->upperLimit.tm_hour && head_tm->tm_min > p->upperLimit.tm_min) {
@@ -268,7 +351,14 @@ int overUpperLimit(searchParameters *p, tm *head_tm) {
     }
 }
 
-int underLowerLimit(searchParameters *p, tm *head_tm) {
+/**
+ * @brief 
+ * 
+ * @param p 
+ * @param head_tm 
+ * @return int 
+ */
+int underLowerLimit(const searchParameters *p, const tm *head_tm) {
     if (head_tm->tm_hour < p->lowerLimit.tm_hour) {
         return 1;
     } else if (head_tm->tm_hour == p->lowerLimit.tm_hour && head_tm->tm_min < p->lowerLimit.tm_min) {
@@ -278,17 +368,36 @@ int underLowerLimit(searchParameters *p, tm *head_tm) {
     }
 }
 
-void goToLowerLimitNextDay(time_t head, searchParameters *p, tm *head_tm) {
+/**
+ * @brief 
+ * 
+ * @param head 
+ * @param p 
+ * @param head_tm 
+ */
+void goToLowerLimitNextDay(time_t head, const searchParameters *p, tm *head_tm) {
     head += UNIX_24H;
     *head_tm = *localtime(&head);
     goToLowerLimitThisDay(p, head_tm);
 }
 
-void goToLowerLimitThisDay(searchParameters *p, tm *head_tm) {
+/**
+ * @brief 
+ * 
+ * @param p 
+ * @param head_tm 
+ */
+void goToLowerLimitThisDay(const searchParameters *p, tm *head_tm) {
     head_tm->tm_min = p->lowerLimit.tm_min;
     head_tm->tm_hour = p->lowerLimit.tm_hour;
 }
 
+/**
+ * @brief Get the Start Of Line object
+ * 
+ * @param p 
+ * @return time_t 
+ */
 time_t getStartOfLine(const searchParameters *p) {
     tm time_tm = INIT_TM;
     time_t time;
@@ -304,6 +413,12 @@ time_t getStartOfLine(const searchParameters *p) {
     return time;
 }
 
+/**
+ * @brief Get the End Of Line object
+ * 
+ * @param p 
+ * @return time_t 
+ */
 time_t getEndOfLine(const searchParameters *p) {
     tm time_tm = INIT_TM;
     time_t time;
@@ -319,6 +434,11 @@ time_t getEndOfLine(const searchParameters *p) {
     return time;
 }
 
+/**
+ * @brief 
+ * 
+ * @param time 
+ */
 void print_time_t(time_t time) {
     tm *time_tm = localtime(&time);
 
