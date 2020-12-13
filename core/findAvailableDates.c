@@ -200,11 +200,11 @@ tm stuckProcedure(time_t eventStartTimeUnix, time_t eventEndTimeUnix, searchPara
     tm dateFound;
 
     if (headWithinLimits(p, *head)) {
-        if (DEBUG) printf("stuck but found date\n");
+        if (DEBUG) printf("found date\n");
         *head += p->buffer * MIN_TO_SEC;
         dateFound = *localtime(head);
     } else {
-        if (DEBUG) printf("stuck but got on\n");
+        if (DEBUG) printf("going to next lowerLimit\n");
         setHeadToNextLL(p, head);
         dateFound.tm_year = redo;
     }
