@@ -135,10 +135,14 @@ int stuck(time_t eventStartTimeUnix, time_t eventEndTimeUnix, time_t head, const
 tm stuckProcedure(time_t eventStartTimeUnix, time_t eventEndTimeUnix, searchParameters *p, time_t *head);
 int headWithinLimits(searchParameters *p, time_t head);
 void setHeadToNextLL(searchParameters *p, time_t *head);
-void print_time_t(time_t time);
+int overUpperLimit(searchParameters *p, tm *head_tm);
+int underLowerLimit(searchParameters *p, tm *head_tm);
+void goToLowerLimitNextDay(searchParameters *p, tm *head_tm);
+void goToLowerLimitThisDay(searchParameters *p, tm *head_tm);
 time_t getStartOfLine(const searchParameters *p);
 time_t getEndOfLine(const searchParameters *p);
 int tmWithinLimits(searchParameters *p, tm *time);
+void print_time_t(time_t time);
 
 int withinScope(time_t unixCursor, const searchParameters *p);
 tm convertUnixTime(time_t unix);

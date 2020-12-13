@@ -250,12 +250,31 @@ int tmWithinLimits(searchParameters *p, tm *time) {
 void setHeadToNextLL(searchParameters *p, time_t *head) {
     tm head_tm = *localtime(head);
 
-    head_tm.tm_mday += 1;
-    head_tm.tm_min = p->lowerLimit.tm_min;
-    head_tm.tm_hour = p->lowerLimit.tm_hour;
+    if (overUpperLimit(p, &head_tm)) {
+        goToLowerLimitNextDay(p, &head_tm);
+    } else if (underLowerLimit(p, &head_tm)) {
+        goToLowerLimitThisDay(p, &head_tm);
+    }
 
     *head = mktime(&head_tm);
 }
+
+int overUpperLimit(searchParameters *p, tm *head_tm) {
+    return 1;
+}
+
+int underLowerLimit(searchParameters *p, tm *head_tm) {
+    return 1;
+}
+
+void goToLowerLimitNextDay(searchParameters *p, tm *head_tm) {
+
+}
+
+void goToLowerLimitThisDay(searchParameters *p, tm *head_tm) {
+    
+}
+
 
 time_t getStartOfLine(const searchParameters *p) {
     tm time_tm = INIT_TM;
