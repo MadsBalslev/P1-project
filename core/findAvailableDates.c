@@ -269,7 +269,13 @@ int overUpperLimit(searchParameters *p, tm *head_tm) {
 }
 
 int underLowerLimit(searchParameters *p, tm *head_tm) {
-    return 1;
+    if (head_tm->tm_hour < p->lowerLimit.tm_hour) {
+        return 1;
+    } else if (head_tm->tm_hour == p->lowerLimit.tm_hour && head_tm->tm_min < p->lowerLimit.tm_min) {
+        return 1;
+    } else {
+        return 0;
+    }
 }
 
 void goToLowerLimitNextDay(searchParameters *p, tm *head_tm) {
