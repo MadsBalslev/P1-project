@@ -163,14 +163,12 @@ int findAvailableDates(calendarSuite *suite, const searchParameters *param, int 
     } else if (searchMode == byRestructuring) {
         calSuiteToEventArray(suite, sumAllEvents, param->priority, allEvents);
     }
-
     if (DEBUG) {
         printf("\nEVENT ARRAY:\n");
         printEventPtrArray(allEvents, sumAllEvents);
     }
 
     qsort(allEvents, sumAllEvents, sizeof(event *), endTimeCmp); /* Sorting array of events in chronological order by endTime */
-
     if (DEBUG) {
         printf("\nSORTED EVENT ARRAY:\n");
         printEventPtrArray(allEvents, sumAllEvents);
@@ -178,7 +176,6 @@ int findAvailableDates(calendarSuite *suite, const searchParameters *param, int 
 
     /* Find huller i events */
     freeSlot = lookForFreeSlot(param, sumAllEvents, allEvents);
-
     if(freeSlot.tm_year >= 0) {
         printf("Free slot found at: %.2d/%.2d/%.4d %.2d:%.2d\n", 
                 freeSlot.tm_mday, 
@@ -191,8 +188,6 @@ int findAvailableDates(calendarSuite *suite, const searchParameters *param, int 
         printf("Found no date :(\n");
     }
 
-
-    free(allEvents); /* <------ MIGHT BREAK EVERYTHING */
-
+    free(allEvents); 
     return foundDate;
 }
