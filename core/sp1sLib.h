@@ -194,5 +194,7 @@ void     test9_isTimeValid    (CuTest *tc);
 void     test10_isTimeValid   (CuTest *tc);
 CuSuite *suite_sharedFunctions(void);
 
+/* findAvailableDates.c */
+
 /* general */
 void runAllTests(void);
