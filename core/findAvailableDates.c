@@ -164,7 +164,8 @@ tm lookForFreeSlot(const searchParameters *p, int arrLen, event *allEvents[]) {
 
     return dateFound;
 }
- /**
+
+/**
   * @brief 
   * 
   * @param p 
@@ -172,7 +173,7 @@ tm lookForFreeSlot(const searchParameters *p, int arrLen, event *allEvents[]) {
   * @param head 
   * @return tm 
   */
-tm lookForFreeSlotSingle(const searchParameters *p, event *event,  time_t *head) {
+tm lookForFreeSlotSingle(const searchParameters *p, event *event, time_t *head) {
     time_t eventStartTimeUnix = mktime(&event->startTime);
     time_t eventEndTimeUnix = mktime(&event->endTime);
     tm dateFound;
