@@ -252,10 +252,8 @@ void setHeadToNextLL(searchParameters *p, time_t *head) {
     tm head_tm = *localtime(head);
 
     if (underLowerLimit(p, &head_tm)) {
-        printf("On line: %d\n", __LINE__);
         goToLowerLimitThisDay(p, &head_tm);
     } else {
-        printf("On line: %d\n", __LINE__);
         goToLowerLimitNextDay(*head, p, &head_tm);
     }
 
@@ -284,7 +282,7 @@ int underLowerLimit(searchParameters *p, tm *head_tm) {
 
 void goToLowerLimitNextDay(time_t head, searchParameters *p, tm *head_tm) {
     head += UNIX_24H;
-    head_tm = localtime(&head);
+    *head_tm = *localtime(&head);
     goToLowerLimitThisDay(p, head_tm);
 }
 
