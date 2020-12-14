@@ -126,8 +126,8 @@ eventLink *mallocEventLink              (event *eventP, eventLink *eventLinkP);
 int    findAvailableDates   (calendarSuite *suite, const searchParameters *param, int searchMode);
 int    findSumAllEvents     (const calendarSuite *suite);
 void   calSuiteToEventArray (const calendarSuite *suite, int sumAllEvents, int priority, event *eventPtrArray[]);
-int    endTimeCmp           (const void *arg1, const void *arg2);
-int    eventStartsLater     (const event *event1, const event *event2);
+int    startTimeCmp           (const void *arg1, const void *arg2);
+int    eventStartsEarlier     (const event *event1, const event *event2);
 tm     lookForFreeSlot      (const searchParameters *p, int arrLen, event *allEvents[]);
 tm     lookForFreeSlotSingle(const searchParameters *p, event *event, time_t *head);
 int    endOfLine            (const searchParameters *p, time_t head);
@@ -167,52 +167,8 @@ void printEventPtrArray        (event *allEvents[], int n);
 /* UNIT TESTING FUNCTIONS
  * -------------------------------------------------------------------------------------------
  */
-
-/* ctrlAndDoArgs */
-void     test1_doArg        (CuTest *tc);
-void     test2_doArg        (CuTest *tc);
-void     test3_doArg        (CuTest *tc);
 CuSuite *suite_ctrlAndDoArgs(void);
-
-/* getCalendarSuite */
-void     test1_getCalendarSuiteGetFile      (CuTest *tc);
-void     test2_getCalendarSuiteGetFile      (CuTest *tc);
-void     test1_getCalendarSuiteGetFileSingle(CuTest *tc);
-void     test2_getCalendarSuiteGetFileSingle(CuTest *tc);
-CuSuite *suite_getCalendarSuite             (void);
-
-/* findAvaliableDates */
-void     test1_underLowerLimit   (CuTest *tc);
-void     test2_underLowerLimit   (CuTest *tc);
-void     test3_underLowerLimit   (CuTest *tc);
-void     test1_tmWithinLimits    (CuTest *tc);
-void     test2_tmWithinLimits    (CuTest *tc);
-void     test3_tmWithinLimits    (CuTest *tc);
-void     test1_headWithinLimits  (CuTest *tc);
-void     test2_headWithinLimits  (CuTest *tc);
-void     test1_canElongate       (CuTest *tc);
-void     test2_canElongate       (CuTest *tc);
-void     test3_canElongate       (CuTest *tc);
-void     test1_endOfLine         (CuTest *tc);
-void     test2_endOfLine         (CuTest *tc);
-void     test1_canSwallow        (CuTest *tc);
-void     test2_canSwallow        (CuTest *tc);
+CuSuite *suite_getCalendarSuite(void);
 CuSuite *suite_findAvaliableDates(void);
-
-/* sharedFunctions.c */
-void     test1_isTimeValid    (CuTest *tc);
-void     test2_isTimeValid    (CuTest *tc);
-void     test3_isTimeValid    (CuTest *tc);
-void     test4_isTimeValid    (CuTest *tc);
-void     test5_isTimeValid    (CuTest *tc);
-void     test6_isTimeValid    (CuTest *tc);
-void     test7_isTimeValid    (CuTest *tc);
-void     test8_isTimeValid    (CuTest *tc);
-void     test9_isTimeValid    (CuTest *tc);
-void     test10_isTimeValid   (CuTest *tc);
 CuSuite *suite_sharedFunctions(void);
-
-/* findAvailableDates.c */
-
-/* general */
 void runAllTests(void);
