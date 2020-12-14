@@ -87,6 +87,9 @@ void mallocCalendarSuite(int n, calendarSuite *calendarSuite) {
 /**
  * @brief 
  * 
+ * Gets all of the search parameters and stores them in the struct.
+ * It also prints out the priority and length of the event.
+ * 
  * @param a 
  */
 void getSearchParameters(searchParameters *a) {
