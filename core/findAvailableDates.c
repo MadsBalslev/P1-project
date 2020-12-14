@@ -176,14 +176,25 @@ tm lookForFreeSlot(const searchParameters *p, int arrLen, event *allEvents[]) {
 }
 
 /**
-  * @brief 
+  * @brief Looks for a free time slot between head and event->startTime.
   *
-  * @param p 
-  * @param event 
-  * @param head 
+  * - If head is at endOfLine: .tm_year in the return struct tm is set to eol. This causes
+  *   lookForFreeSlot() to stop looking for an event.
+  * - Else if head is able to elongate, head elongates meaning head is set to event->endTime
+  *   (in unix time). lookForFreeSlot() should then iterates to next event.
+  * - Else if head is able to swallow, head swallows meaning head is unchanged.
+  *   lookForFreeSlot() should then iterates to next event.
+  * - Else if head is stuck, stuck mening it found a time slot of lenght greater than eventLen
+  *   + buffer * 2, lookForFreeSlot() either does not iterate if date was not within limits as
+  *   defined by p, or causes lookForFreeSlot() to stop looking as a date was found.
+  *
+  * @param p Search parameters.
+  * @param event Pointer to event to compare.
+  * @param head in-/output parameter: current head to compare and change.
   * @return If a date is found that date is returned as a tm structure. Else returns a date
   * where .tm_year < 0.  
-  * @pre enum look should be defined as -2.  
+  * @pre enum lookForFreeSlotStatus { eol = -1, endOfLine  look = -2, redo = -3 }; should be
+ * in header.
   */
 tm lookForFreeSlotSingle(const searchParameters *p, event *event, time_t *head) {
     time_t eventStartTimeUnix = mktime(&event->startTime);
