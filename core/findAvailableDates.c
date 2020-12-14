@@ -171,13 +171,14 @@ tm lookForFreeSlot(const searchParameters *p, int arrLen, event *allEvents[]) {
   * @param p 
   * @param event 
   * @param head 
-  * @return tm 
+  * @return tm
+  * @pre enum look should be defined as -2.  
   */
 tm lookForFreeSlotSingle(const searchParameters *p, event *event, time_t *head) {
     time_t eventStartTimeUnix = mktime(&event->startTime);
     time_t eventEndTimeUnix = mktime(&event->endTime);
     tm dateFound;
-    dateFound.tm_year = look;
+    dateFound.tm_year = look; /* <--- This might be redundant  */
 
     if (endOfLine(p, *head)) {
         if (DEBUG) printf("endOfLine\n");

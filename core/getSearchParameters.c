@@ -79,7 +79,7 @@ void getDates(tm *startDate, tm *endDate) {
     tm tempEndDate = INIT_TM; 
 
     do {
-        printf("Enter the earliest date the event can take place on the form dd/mm/yyyy> ");
+        printf("Enter the earliest date the event can take place in the format: dd/mm/yyyy> ");
         scanf(" %d/%d/%d", &tempStartDate.tm_mday, &tempStartDate.tm_mon, &tempStartDate.tm_year);
         tempStartDate.tm_mon--;
         tempStartDate.tm_year = tempStartDate.tm_year - EPOCH;
@@ -88,7 +88,7 @@ void getDates(tm *startDate, tm *endDate) {
     } while (!validInput);
 
     do {
-        printf("Enter the latest date the event can take place on the form dd/mm/yyyy> ");
+        printf("Enter the latest date the event can take place in the format: dd/mm/yyyy> ");
         scanf(" %d/%d/%d", &tempEndDate.tm_mday, &tempEndDate.tm_mon, &tempEndDate.tm_year);
         tempEndDate.tm_mon--;
         tempEndDate.tm_year = tempEndDate.tm_year - EPOCH;
@@ -121,14 +121,14 @@ void getLimits(tm *lowerLimmit, tm *upperLimit) {
     tm tempUpperLimit = INIT_TM;
 
     do {
-        printf("Enter the earliest time the event can take place on the form HH:MM>  ");
+        printf("Enter the earliest time the event can take place in the format: HH:MM>  ");
         scanf(" %d:%d", &tempLowerLimit.tm_hour, &tempLowerLimit.tm_min);
         validInput = isTimeValid(tempLowerLimit);
         fflush(stdin);
     } while (!validInput);
 
     do {
-        printf("Enter the latest time the event can take place on the form HH:MM>  ");
+        printf("Enter the latest time the event can take place in the format: HH:MM>  ");
         scanf(" %d:%d", &tempUpperLimit.tm_hour, &tempUpperLimit.tm_min);
         validInput = isTimeValid(tempUpperLimit);
         fflush(stdin);
