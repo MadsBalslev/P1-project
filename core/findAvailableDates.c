@@ -309,7 +309,7 @@ int headWithinLimits(const searchParameters *p, const time_t head) {
 int tmWithinLimits(const searchParameters *p, const tm *time) {
     if (time->tm_hour > p->lowerLimit.tm_hour && time->tm_hour < p->upperLimit.tm_hour) {
         return 1;
-    } else if ((time->tm_hour == p->lowerLimit.tm_hour && time->tm_min >= p->lowerLimit.tm_min) &&
+    } else if ((time->tm_hour == p->lowerLimit.tm_hour && time->tm_min >= p->lowerLimit.tm_min) ||
                (time->tm_hour == p->upperLimit.tm_hour && time->tm_min <= p->upperLimit.tm_min)) {
         return 1;
     } else {
