@@ -190,7 +190,7 @@ tm lookForFreeSlot(const searchParameters *p, int arrLen, event *allEvents[]) {
   *
   * @param p Search parameters.
   * @param event Pointer to event to compare.
-  * @param head in-/output parameter: current head to compare and change.
+  * @param[in, out] head Current head to compare and change.
   * @return If a date is found that date is returned as a tm structure. Else returns a date
   * where .tm_year < 0.  
   * @pre enum lookForFreeSlotStatus { eol = -1, endOfLine  look = -2, redo = -3 }; should be
@@ -292,7 +292,7 @@ int stuck(time_t eventStartTimeUnix, time_t head, const searchParameters *p) {
  * .tm_year = redo.
  *
  * @param p Search parameters.
- * @param head in/out parameter, time_t to do the procedure on.
+ * @param[in, out] head time_t to do the procedure on.
  * @return A valid tm time if a date is found within limits defined in p. Else if the date
  * found is invalid i.e. not within the limits defined in p, returns tm date where .tm_year =
  * redo.
@@ -322,7 +322,7 @@ tm stuckProcedure(const searchParameters *p, time_t *head) {
  * @return 1 if it is within limits, else 0.
  * @pre MIN_TO_SEC should be #defined as 60. 
  */
-int headWithinLimits(const searchParameters *p, const time_t head) {
+int headWithinLimits(const searchParameters *p, time_t head) {
     int returnFlag = 0;
     tm tm_headStart;
     tm tm_headEnd;
@@ -367,7 +367,7 @@ int tmWithinLimits(const searchParameters *p, const tm *time) {
  * @brief Sets head to be the next lowerLimit
  * 
  * @param p Search paramters, where lowerLimit is defined.
- * @param head In/output parameter, head to set.
+ * @param[in, out] head Head to set.
  */
 void setHeadToNextLL(const searchParameters *p, time_t *head) {
     tm head_tm = *localtime(head);
@@ -420,7 +420,7 @@ int underLowerLimit(const searchParameters *p, const tm *head_tm) {
  * 
  * @param head head_tm in unix time
  * @param p Search paramters, where lowerLimit is defined.
- * @param head_tm tm structure to change.
+ * @param[in, out] head_tm tm structure to change.
  * @pre UNIX_24H should be #defined as 60 * 60 * 24 or 86400.
  */
 void goToLowerLimitNextDay(time_t head, const searchParameters *p, tm *head_tm) {
