@@ -184,7 +184,7 @@ int findAvailableDates(calendarSuite *suite, const searchParameters *param, int 
     }
 
     /* -4- */
-    qsort(allEvents, sumAllEvents, sizeof(event *), endTimeCmp); /* Sorting array of events in chronological order by endTime */
+    qsort(allEvents, sumAllEvents, sizeof(event *), startTimeCmp); /* Sorting array of events in chronological order by endTime */
     if (DEBUG) {
         printf("\nSORTED EVENT ARRAY:\n");
         printEventPtrArray(allEvents, sumAllEvents);

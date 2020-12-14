@@ -54,14 +54,14 @@ void calSuiteToEventArray(const calendarSuite *suite, int sumAllEvents, int prio
 }
 
 /**
- * @brief Compares two events to determine which event ends the latest.
+ * @brief Compares two events to determine which event start the earliest.
  *
  * @param arg1 first event to be compared
  * @param arg2 second event to be compared
  * @return 1 if the first event ends before the second, -1 if the second event ends before the
  * first, 0 if both events end at the same time. 
  */
-int endTimeCmp(const void *arg1, const void *arg2) {
+int startTimeCmp(const void *arg1, const void *arg2) {
     event **event1 = (event **)arg1;
     event **event2 = (event **)arg2;
 
@@ -71,9 +71,9 @@ int endTimeCmp(const void *arg1, const void *arg2) {
         return -1;
     } else if (*event1 == NULL && *event2 == NULL) {
         return 0;
-    } else if (eventStartsLater(*event1, *event2)) {
+    } else if (eventStartsEarlier(*event1, *event2)) {
         return 1;
-    } else if (eventStartsLater(*event2, *event1)) {
+    } else if (eventStartsEarlier(*event2, *event1)) {
         return -1;
     } else {
         return 0;
@@ -81,14 +81,14 @@ int endTimeCmp(const void *arg1, const void *arg2) {
 }
 
 /**
- * @brief Determines if event1 ends later than event2.
+ * @brief Determines if event1 starts earlier than event2.
  *
  * @param event1 pointer to event structure
  * @param event2 pointer to event structure
  * @return int 1 if event1 ends later than event 2, 0 if event 2 ends later than event1 or
  * they end at the same time
  */
-int eventStartsLater(const event *event1, const event *event2) {
+int eventStartsEarlier(const event *event1, const event *event2) {
     if (event1->startTime.tm_year > event2->startTime.tm_year) { /* Check year */
         return 1;
     } else if (event1->startTime.tm_year < event2->startTime.tm_year) {

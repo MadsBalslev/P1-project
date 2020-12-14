@@ -516,6 +516,51 @@ void test3_goToLowerLimitNextDay(CuTest *tc) {
     CuAssertIntEquals(tc, expected6, input3.tm_year);
 }
 
+void test1_eventStartsEarlier(CuTest *tc) {
+    event input1;
+    event input2;
+    int actual;
+    int expected = 0;
+    tm init = INIT_TM;
+    
+    input1.startTime = init;
+    input1.endTime = init;
+    
+    input2.startTime = init;
+    input2.endTime = init;
+
+    input2.startTime.tm_min  = 16;
+    input2.startTime.tm_hour = 16;
+    input2.startTime.tm_mon  = 02;
+    input2.startTime.tm_mday = 02;
+
+    actual = eventStartsEarlier(&input1, &input2);
+    CuAssertIntEquals(tc, expected, actual);
+}
+
+void test2_eventStartsEarlier(CuTest *tc) {
+    event input1;
+    event input2;
+    int actual;
+    int expected = 1;
+    tm init = INIT_TM;
+    
+    input1.startTime = init;
+    input1.endTime = init;
+    
+    input2.startTime = init;
+    input2.endTime = init;
+
+    input1.startTime.tm_min  = 16;
+    input1.startTime.tm_hour = 16;
+    input1.startTime.tm_mon  = 02;
+    input1.startTime.tm_mday = 02;
+
+    actual = eventStartsEarlier(&input1, &input2);
+    CuAssertIntEquals(tc, expected, actual);
+
+}
+
 CuSuite *suite_findAvaliableDates(void) {
     CuSuite *suite = CuSuiteNew();
     SUITE_ADD_TEST(suite, test1_underLowerLimit);
@@ -537,6 +582,9 @@ CuSuite *suite_findAvaliableDates(void) {
     SUITE_ADD_TEST(suite, test1_goToLowerLimitNextDay);
     SUITE_ADD_TEST(suite, test2_goToLowerLimitNextDay);
     SUITE_ADD_TEST(suite, test3_goToLowerLimitNextDay);
+    SUITE_ADD_TEST(suite, test1_eventStartsEarlier);
+    SUITE_ADD_TEST(suite, test2_goToLowerLimitNextDay);
+    
     return suite;
 }
 
