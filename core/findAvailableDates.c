@@ -318,10 +318,10 @@ int tmWithinLimits(const searchParameters *p, const tm *time) {
 }
 
 /**
- * @brief Set the Head To Next L L object
+ * @brief Sets head to be the next lowerLimit
  * 
- * @param p 
- * @param head 
+ * @param p Search paramters, where lowerLimit is defined.
+ * @param head In/output parameter, head to set.
  */
 void setHeadToNextLL(const searchParameters *p, time_t *head) {
     tm head_tm = *localtime(head);
