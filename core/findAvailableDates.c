@@ -237,12 +237,16 @@ int canSwallow(time_t eventStartTimeUnix, time_t eventEndTimeUnix, time_t head) 
 }
 
 /**
- * @brief 
- * 
- * @param eventStartTimeUnix 
- * @param head 
- * @param p 
- * @return int 
+ * @brief Controls if head is considered stuck.
+ *
+ * Head is considered stuck if head is less than evenStartTimeUnix and the time between head
+ * and eventStartTimeUnix is greater or equal to eventLen + buffer * 2.
+ *
+ * @param eventStartTimeUnix Start time(unix) for an event.
+ * @param head Head to control.
+ * @param p Search parameters, where eventLen and buffer are contained.
+ * @return 1 if head is stuck, else 0.
+ * @pre MIN_TO_SEC should be #defined as 60. 
  */
 int stuck(time_t eventStartTimeUnix, time_t head, const searchParameters *p) {
     return ((head < eventStartTimeUnix) && ((eventStartTimeUnix - head) >= ((p->eventLen * MIN_TO_SEC) + (2 * p->buffer * MIN_TO_SEC))));
@@ -252,8 +256,8 @@ int stuck(time_t eventStartTimeUnix, time_t head, const searchParameters *p) {
  * @brief Runs the procedure corresponding to when head is considered stuck.
  *
  * Checks if an event, as defined by p, starting at head is within limits, if this is the case
- * the date is returned. Else head is set to the next lowerLimit, and returns tm date where .tm_year =
- * redo.
+ * the date is returned. Else head is set to the next lowerLimit, and returns tm date where
+ * .tm_year = redo.
  *
  * @param p Search parameters.
  * @param head in/out parameter, time_t to do the procedure on.
