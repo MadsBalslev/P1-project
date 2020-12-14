@@ -138,8 +138,17 @@ void getCalendarSuite(int argc, char *argv[], calendarSuite *calendarSuite) {
 }
 
 /**
- * @brief 
- * 
+ * @brief As of now finds one time slot in suite, as defined by param and searchMode.
+ *
+ * 1. The sum of all events across the whole suite is found.
+ * 2. Space is allocated for an array of pointers to events(allEvents), the lenght of this
+ *    array is equal to the sum of all events across the whole suite.
+ * 3. The allEvents array is then filled with pointers to all events in suite. If searchMode
+ *    == byRestructuring, events with a higher priority than param->priority are ignored.
+ * 4. The allEvents array is sorted by endTime in ascending order.
+ * 5. The functions tries to find one avalible date, and prints the result of the search on
+ *    screen.
+ *
  * @param suite A pointer to a calendarSuite for the program to find a date in.
  * @param param A struct of search paramerters
  * @param searchMode Used to check if priority of param is used, or using default value
@@ -150,14 +159,17 @@ int findAvailableDates(calendarSuite *suite, const searchParameters *param, int 
     event **allEvents;
     tm freeSlot;
 
+    /* -1- */
     sumAllEvents = findSumAllEvents(suite);
     if (DEBUG) {
         printf("\nsumAllEvents: %d", sumAllEvents);
     }
 
+    /* -2- */
     allEvents = (event **)malloc(sumAllEvents * sizeof(event *));
     errorHandling(allEvents == NULL, "!!!FAILED TO ALLOCATE MEMORY STEP 3!!!");
 
+    /* -3- */
     if (searchMode == bylooking) {
         calSuiteToEventArray(suite, sumAllEvents, MAX_PRIORITY, allEvents); /* <------ This should be account for elsewhere*/
     } else if (searchMode == byRestructuring) {
@@ -168,19 +180,20 @@ int findAvailableDates(calendarSuite *suite, const searchParameters *param, int 
         printEventPtrArray(allEvents, sumAllEvents);
     }
 
+    /* -4- */
     qsort(allEvents, sumAllEvents, sizeof(event *), endTimeCmp); /* Sorting array of events in chronological order by endTime */
     if (DEBUG) {
         printf("\nSORTED EVENT ARRAY:\n");
         printEventPtrArray(allEvents, sumAllEvents);
     }
 
-    /* Find huller i events */
+    /* -5- */
     freeSlot = lookForFreeSlot(param, sumAllEvents, allEvents);
     if(freeSlot.tm_year >= 0) {
         printf("Free slot found at: %.2d/%.2d/%.4d %.2d:%.2d\n", 
                 freeSlot.tm_mday, 
                 freeSlot.tm_mon + 1, 
-                freeSlot.tm_year + 1900,
+                freeSlot.tm_year + EPOCH,
                 freeSlot.tm_hour,
                 freeSlot.tm_min);
         foundDate = 1;
