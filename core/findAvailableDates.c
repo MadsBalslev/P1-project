@@ -370,11 +370,11 @@ int underLowerLimit(const searchParameters *p, const tm *head_tm) {
 }
 
 /**
- * @brief 
+ * @brief Sets head_tm to lowerLimit the next day.
  * 
- * @param head 
- * @param p 
- * @param head_tm 
+ * @param head head_tm in unix time
+ * @param p Search paramters, where lowerLimit is defined.
+ * @param head_tm tm structure to change.
  */
 void goToLowerLimitNextDay(time_t head, const searchParameters *p, tm *head_tm) {
     head += UNIX_24H;
