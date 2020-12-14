@@ -195,11 +195,14 @@ tm lookForFreeSlotSingle(const searchParameters *p, event *event, time_t *head) 
 }
 
 /**
- * @brief 
- * 
- * @param p 
- * @param head 
- * @return int 
+ * @brief Controls that head has not gone over the final time, called endOfLine, where an
+ * event could be found as defined by p.
+ *
+ * endOfLine is given by getEndOfLine().
+ *
+ * @param p Search parameters, where endOfLine can be found.
+ * @param head time_t to control.
+ * @return 1 if head is a or over endOfLine. 
  */
 int endOfLine(const searchParameters *p, time_t head) {
     time_t eolTime = getEndOfLine(p);
@@ -214,6 +217,7 @@ int endOfLine(const searchParameters *p, time_t head) {
  * @param head 
  * @param p 
  * @return int 
+ * @pre MIN_TO_SEC should be #defined as 60.
  */
 int canElongate(time_t eventStartTimeUnix, time_t eventEndTimeUnix, time_t head, const searchParameters *p) {
     return ((head < eventEndTimeUnix) && (head >= eventStartTimeUnix)) ||
@@ -252,6 +256,7 @@ int stuck(time_t eventStartTimeUnix, time_t head, const searchParameters *p) {
  * @param p 
  * @param head 
  * @return tm 
+ * @pre MIN_TO_SEC should be #defined as 60.
  */
 tm stuckProcedure(time_t eventStartTimeUnix, time_t eventEndTimeUnix, const searchParameters *p, time_t *head) {
     tm dateFound;
