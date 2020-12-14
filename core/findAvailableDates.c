@@ -394,10 +394,10 @@ void goToLowerLimitThisDay(const searchParameters *p, tm *head_tm) {
 }
 
 /**
- * @brief Get the Start Of Line object
+ * @brief Finds the earliest time an event can take place, according to p.
  * 
- * @param p 
- * @return time_t 
+ * @param p Search parameters 
+ * @return Latest time an event can take place as a time_t. 
  */
 time_t getStartOfLine(const searchParameters *p) {
     tm time_tm = INIT_TM;
