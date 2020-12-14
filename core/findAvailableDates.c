@@ -210,13 +210,19 @@ int endOfLine(const searchParameters *p, time_t head) {
 }
 
 /**
- * @brief 
- * 
- * @param eventStartTimeUnix 
- * @param eventEndTimeUnix 
- * @param head 
- * @param p 
- * @return int 
+ * @brief Controls if head is considered able to elongate over event.
+ *
+ * Head is considered able to elongate if:
+ * - head is smaller than eventEndTimeUnix and head is larger than or equal to
+ *   eventStartTimeUnix
+ * - head is smaller than eventStartTimeUnix, and the time between head and eventStartTimeUnix
+ *   is smaller than: eventLen + buffer * 2 (unix time) 
+ *
+ * @param eventStartTimeUnix Start of event in unix time.
+ * @param eventEndTimeUnix End of event in unix time. 
+ * @param head Head to control.
+ * @param p Search parameters, where eventLen and buffer are contained.
+ * @return 1 if it is able to elongate, else 0.
  * @pre MIN_TO_SEC should be #defined as 60.
  */
 int canElongate(time_t eventStartTimeUnix, time_t eventEndTimeUnix, time_t head, const searchParameters *p) {
@@ -243,7 +249,7 @@ int canSwallow(time_t eventStartTimeUnix, time_t eventEndTimeUnix, time_t head) 
  * @brief Controls if head is considered stuck.
  *
  * Head is considered stuck if head is less than evenStartTimeUnix and the time between head
- * and eventStartTimeUnix is greater or equal to eventLen + buffer * 2.
+ * and eventStartTimeUnix is greater or equal to: eventLen + buffer * 2 (unix time).
  *
  * @param eventStartTimeUnix Start time(unix) for an event.
  * @param head Head to control.
