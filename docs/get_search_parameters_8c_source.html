@@ -114,7 +114,7 @@ $(function() {
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <a class="code" href="sp1s_lib_8h.html#a110bf4e13553ccfd709f41c6e92f0ca2">tm</a> tempEndDate = <a class="code" href="sp1s_lib_8h.html#a4218250a2c1b842883b09e3e1da48a10">INIT_TM</a>; </div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keywordflow">do</span> {</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        printf(<span class="stringliteral">&quot;Enter the earliest date the event can take place on the form dd/mm/yyyy&gt; &quot;</span>);</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        printf(<span class="stringliteral">&quot;Enter the earliest date the event can take place in the format: dd/mm/yyyy&gt; &quot;</span>);</div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        scanf(<span class="stringliteral">&quot; %d/%d/%d&quot;</span>, &amp;tempStartDate.tm_mday, &amp;tempStartDate.tm_mon, &amp;tempStartDate.tm_year);</div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        tempStartDate.tm_mon--;</div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        tempStartDate.tm_year = tempStartDate.tm_year - <a class="code" href="sp1s_lib_8h.html#a0ac447c7f69530e0caadc891c59d7244">EPOCH</a>;</div>
@@ -123,7 +123,7 @@ $(function() {
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    } <span class="keywordflow">while</span> (!validInput);</div>
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160; </div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <span class="keywordflow">do</span> {</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        printf(<span class="stringliteral">&quot;Enter the latest date the event can take place on the form dd/mm/yyyy&gt; &quot;</span>);</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        printf(<span class="stringliteral">&quot;Enter the latest date the event can take place in the format: dd/mm/yyyy&gt; &quot;</span>);</div>
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        scanf(<span class="stringliteral">&quot; %d/%d/%d&quot;</span>, &amp;tempEndDate.tm_mday, &amp;tempEndDate.tm_mon, &amp;tempEndDate.tm_year);</div>
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        tempEndDate.tm_mon--;</div>
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        tempEndDate.tm_year = tempEndDate.tm_year - <a class="code" href="sp1s_lib_8h.html#a0ac447c7f69530e0caadc891c59d7244">EPOCH</a>;</div>
@@ -146,14 +146,14 @@ $(function() {
 <div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    <a class="code" href="sp1s_lib_8h.html#a110bf4e13553ccfd709f41c6e92f0ca2">tm</a> tempUpperLimit = <a class="code" href="sp1s_lib_8h.html#a4218250a2c1b842883b09e3e1da48a10">INIT_TM</a>;</div>
 <div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160; </div>
 <div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    <span class="keywordflow">do</span> {</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;        printf(<span class="stringliteral">&quot;Enter the earliest time the event can take place on the form HH:MM&gt;  &quot;</span>);</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;        printf(<span class="stringliteral">&quot;Enter the earliest time the event can take place in the format: HH:MM&gt;  &quot;</span>);</div>
 <div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;        scanf(<span class="stringliteral">&quot; %d:%d&quot;</span>, &amp;tempLowerLimit.tm_hour, &amp;tempLowerLimit.tm_min);</div>
 <div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;        validInput = <a class="code" href="helper_functions_8c.html#ac98ba39821c96c7ba1282f086ffa3ef1">isTimeValid</a>(tempLowerLimit);</div>
 <div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;        fflush(stdin);</div>
 <div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    } <span class="keywordflow">while</span> (!validInput);</div>
 <div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160; </div>
 <div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;    <span class="keywordflow">do</span> {</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;        printf(<span class="stringliteral">&quot;Enter the latest time the event can take place on the form HH:MM&gt;  &quot;</span>);</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;        printf(<span class="stringliteral">&quot;Enter the latest time the event can take place in the format: HH:MM&gt;  &quot;</span>);</div>
 <div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;        scanf(<span class="stringliteral">&quot; %d:%d&quot;</span>, &amp;tempUpperLimit.tm_hour, &amp;tempUpperLimit.tm_min);</div>
 <div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;        validInput = <a class="code" href="helper_functions_8c.html#ac98ba39821c96c7ba1282f086ffa3ef1">isTimeValid</a>(tempUpperLimit);</div>
 <div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;        fflush(stdin);</div>

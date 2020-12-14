@@ -132,12 +132,22 @@ void printEventPtrArray(event *allEvents[], int n) {
 }
 
 /**
- * @brief 
- * 
- * @param p 
- * @param arrLen 
- * @param allEvents 
- * @return tm 
+ * @brief Looks for a free time slot, defined by p, in a sorted array of pointers to events.
+ *
+ * Iterating over allEvents, this functions looks a timeslot of lenght  eventLen + buffer * 2
+ * (in minutes). The function will keep looking until:
+ * - End of list is reached           (i < arrLen && allEvents[i] != NULL) and
+ * - A date is found                  (dateFound.tm_year < 0)
+ * - head has not gone over endOfLine (dateFound.tm_year != eol)
+ *
+ * @param p Search parameters, controls what timeslot loofForFreeSlot should look for, and
+ * where it should look.
+ * @param arrLen length of array allEvents
+ * @param allEvents sorted array of pointers
+ * @return If a date is found that date is returned as a tm structure. Else returns a date
+ * where .tm_year < 0.
+ * @pre enum lookForFreeSlotStatus { eol = -1, endOfLine  look = -2, redo = -3 }; should be in
+ * header. allEvents should be sorted in acending order by starting date.
  */
 tm lookForFreeSlot(const searchParameters *p, int arrLen, event *allEvents[]) {
     time_t head = getStartOfLine(p);
@@ -166,12 +176,25 @@ tm lookForFreeSlot(const searchParameters *p, int arrLen, event *allEvents[]) {
 }
 
 /**
-  * @brief 
-  * 
-  * @param p 
-  * @param event 
-  * @param head 
-  * @return tm 
+  * @brief Looks for a free time slot between head and event->startTime.
+  *
+  * - If head is at endOfLine: .tm_year in the return struct tm is set to eol. This causes
+  *   lookForFreeSlot() to stop looking for an event.
+  * - Else if head is able to elongate, head elongates meaning head is set to event->endTime
+  *   (in unix time). lookForFreeSlot() should then iterates to next event.
+  * - Else if head is able to swallow, head swallows meaning head is unchanged.
+  *   lookForFreeSlot() should then iterates to next event.
+  * - Else if head is stuck, stuck mening it found a time slot of lenght greater than eventLen
+  *   + buffer * 2, lookForFreeSlot() either does not iterate if date was not within limits as
+  *   defined by p, or causes lookForFreeSlot() to stop looking as a date was found.
+  *
+  * @param p Search parameters.
+  * @param event Pointer to event to compare.
+  * @param[in, out] head Current head to compare and change.
+  * @return If a date is found that date is returned as a tm structure. Else returns a date
+  * where .tm_year < 0.  
+  * @pre enum lookForFreeSlotStatus { eol = -1, endOfLine  look = -2, redo = -3 }; should be
+ * in header.
   */
 tm lookForFreeSlotSingle(const searchParameters *p, event *event, time_t *head) {
     time_t eventStartTimeUnix = mktime(&event->startTime);
@@ -188,18 +211,21 @@ tm lookForFreeSlotSingle(const searchParameters *p, event *event, time_t *head) 
     } else if (canSwallow(eventStartTimeUnix, eventEndTimeUnix, *head)) {
         if (DEBUG) printf("swallow\n");
     } else if (stuck(eventStartTimeUnix, *head, p)) {
-        dateFound = stuckProcedure(eventStartTimeUnix, eventEndTimeUnix, p, head);
+        dateFound = stuckProcedure(p, head);
     }
 
     return dateFound;
 }
 
 /**
- * @brief 
- * 
- * @param p 
- * @param head 
- * @return int 
+ * @brief Controls that head has not gone over the final time, called endOfLine, where an
+ * event could be found as defined by p.
+ *
+ * endOfLine is given by getEndOfLine().
+ *
+ * @param p Search parameters, where endOfLine can be found.
+ * @param head time_t to control.
+ * @return 1 if head is a or over endOfLine. 
  */
 int endOfLine(const searchParameters *p, time_t head) {
     time_t eolTime = getEndOfLine(p);
@@ -207,13 +233,20 @@ int endOfLine(const searchParameters *p, time_t head) {
 }
 
 /**
- * @brief 
- * 
- * @param eventStartTimeUnix 
- * @param eventEndTimeUnix 
- * @param head 
- * @param p 
- * @return int 
+ * @brief Controls if head is considered able to elongate over event.
+ *
+ * Head is considered able to elongate if:
+ * - head is smaller than eventEndTimeUnix and head is larger than or equal to
+ *   eventStartTimeUnix
+ * - head is smaller than eventStartTimeUnix, and the time between head and eventStartTimeUnix
+ *   is smaller than: eventLen + buffer * 2 (unix time) 
+ *
+ * @param eventStartTimeUnix Start of event in unix time.
+ * @param eventEndTimeUnix End of event in unix time. 
+ * @param head Head to control.
+ * @param p Search parameters, where eventLen and buffer are contained.
+ * @return 1 if it is able to elongate, else 0.
+ * @pre MIN_TO_SEC should be #defined as 60.
  */
 int canElongate(time_t eventStartTimeUnix, time_t eventEndTimeUnix, time_t head, const searchParameters *p) {
     return ((head < eventEndTimeUnix) && (head >= eventStartTimeUnix)) ||
@@ -221,39 +254,51 @@ int canElongate(time_t eventStartTimeUnix, time_t eventEndTimeUnix, time_t head,
 }
 
 /**
- * @brief 
- * 
- * @param eventStartTimeUnix 
- * @param eventEndTimeUnix 
- * @param head 
- * @return int 
+ * @brief Controls if head is considered able to swallow event.
+ *
+ * Head is considered able to swallow event if: head is larger than both eventStartTimeUnix
+ * and eventEndTimeUnix.
+ *
+ * @param eventStartTimeUnix Start of event in unix time.
+ * @param eventEndTimeUnix End of event in unix time. 
+ * @param head Head to control.
+ * @return 1 if head is able to swallow, else 0.  
  */
 int canSwallow(time_t eventStartTimeUnix, time_t eventEndTimeUnix, time_t head) {
     return (head > eventEndTimeUnix) && (head > eventStartTimeUnix);
 }
 
 /**
- * @brief 
- * 
- * @param eventStartTimeUnix 
- * @param head 
- * @param p 
- * @return int 
+ * @brief Controls if head is considered stuck.
+ *
+ * Head is considered stuck if head is less than evenStartTimeUnix and the time between head
+ * and eventStartTimeUnix is greater or equal to: eventLen + buffer * 2 (unix time).
+ *
+ * @param eventStartTimeUnix Start time(unix) for an event.
+ * @param head Head to control.
+ * @param p Search parameters, where eventLen and buffer are contained.
+ * @return 1 if head is stuck, else 0.
+ * @pre MIN_TO_SEC should be #defined as 60. 
  */
 int stuck(time_t eventStartTimeUnix, time_t head, const searchParameters *p) {
     return ((head < eventStartTimeUnix) && ((eventStartTimeUnix - head) >= ((p->eventLen * MIN_TO_SEC) + (2 * p->buffer * MIN_TO_SEC))));
 }
 
 /**
- * @brief 
- * 
- * @param eventStartTimeUnix 
- * @param eventEndTimeUnix 
- * @param p 
- * @param head 
- * @return tm 
+ * @brief Runs the procedure corresponding to when head is considered stuck.
+ *
+ * Checks if an event, as defined by p, starting at head is within limits, if this is the case
+ * the date is returned. Else head is set to the next lowerLimit, and returns tm date where
+ * .tm_year = redo.
+ *
+ * @param p Search parameters.
+ * @param[in, out] head time_t to do the procedure on.
+ * @return A valid tm time if a date is found within limits defined in p. Else if the date
+ * found is invalid i.e. not within the limits defined in p, returns tm date where .tm_year =
+ * redo.
+ * @pre MIN_TO_SEC should be #defined as 60. enum redo should be equal to -3.
  */
-tm stuckProcedure(time_t eventStartTimeUnix, time_t eventEndTimeUnix, const searchParameters *p, time_t *head) {
+tm stuckProcedure(const searchParameters *p, time_t *head) {
     tm dateFound;
 
     if (headWithinLimits(p, *head)) {
@@ -270,13 +315,14 @@ tm stuckProcedure(time_t eventStartTimeUnix, time_t eventEndTimeUnix, const sear
 }
 
 /**
- * @brief 
+ * @brief Controls that an event that starts at head, and is defined by p is within limits.
  * 
- * @param p 
- * @param head 
- * @return int 
+ * @param p Search paramters, where limits are defined, and where event is defined.
+ * @param head Start time of event.
+ * @return 1 if it is within limits, else 0.
+ * @pre MIN_TO_SEC should be #defined as 60. 
  */
-int headWithinLimits(const searchParameters *p, const time_t head) {
+int headWithinLimits(const searchParameters *p, time_t head) {
     int returnFlag = 0;
     tm tm_headStart;
     tm tm_headEnd;
@@ -300,16 +346,16 @@ int headWithinLimits(const searchParameters *p, const time_t head) {
 }
 
 /**
- * @brief 
+ * @brief Controls that time is within lowerLimit and upperLimit defined in p.
  * 
- * @param p 
- * @param time 
- * @return int 
+ * @param p Search paramters, where lowerLimit and upperLimit is defined.
+ * @param time tm struct to control.
+ * @return 1 if within the limits, else 0.
  */
 int tmWithinLimits(const searchParameters *p, const tm *time) {
     if (time->tm_hour > p->lowerLimit.tm_hour && time->tm_hour < p->upperLimit.tm_hour) {
         return 1;
-    } else if ((time->tm_hour == p->lowerLimit.tm_hour && time->tm_min >= p->lowerLimit.tm_min) &&
+    } else if ((time->tm_hour == p->lowerLimit.tm_hour && time->tm_min >= p->lowerLimit.tm_min) ||
                (time->tm_hour == p->upperLimit.tm_hour && time->tm_min <= p->upperLimit.tm_min)) {
         return 1;
     } else {
@@ -318,10 +364,10 @@ int tmWithinLimits(const searchParameters *p, const tm *time) {
 }
 
 /**
- * @brief Set the Head To Next L L object
+ * @brief Sets head to be the next lowerLimit
  * 
- * @param p 
- * @param head 
+ * @param p Search paramters, where lowerLimit is defined.
+ * @param[in, out] head Head to set.
  */
 void setHeadToNextLL(const searchParameters *p, time_t *head) {
     tm head_tm = *localtime(head);
@@ -336,11 +382,11 @@ void setHeadToNextLL(const searchParameters *p, time_t *head) {
 }
 
 /**
- * @brief 
+ * @brief Controls if head_tm is over upperLimit.
  * 
- * @param p 
- * @param head_tm 
- * @return int 
+ * @param p Search paramters, where upperLimit is defined.
+ * @param head_tm tm structure to control
+ * @return 1 if it is, else 0 
  */
 int overUpperLimit(const searchParameters *p, const tm *head_tm) {
     if (head_tm->tm_hour > p->upperLimit.tm_hour) {
@@ -353,11 +399,11 @@ int overUpperLimit(const searchParameters *p, const tm *head_tm) {
 }
 
 /**
- * @brief 
+ * @brief Controls if head_tm is under lowerLimit.
  * 
- * @param p 
- * @param head_tm 
- * @return int 
+ * @param p Search paramters, where lowerLimit is defined.
+ * @param head_tm tm structure to control
+ * @return 1 if it is, else 0 
  */
 int underLowerLimit(const searchParameters *p, const tm *head_tm) {
     if (head_tm->tm_hour < p->lowerLimit.tm_hour) {
@@ -370,11 +416,12 @@ int underLowerLimit(const searchParameters *p, const tm *head_tm) {
 }
 
 /**
- * @brief 
+ * @brief Sets head_tm to lowerLimit the next day.
  * 
- * @param head 
- * @param p 
- * @param head_tm 
+ * @param head head_tm in unix time
+ * @param p Search paramters, where lowerLimit is defined.
+ * @param[in, out] head_tm tm structure to change.
+ * @pre UNIX_24H should be #defined as 60 * 60 * 24 or 86400.
  */
 void goToLowerLimitNextDay(time_t head, const searchParameters *p, tm *head_tm) {
     head += UNIX_24H;
@@ -383,10 +430,10 @@ void goToLowerLimitNextDay(time_t head, const searchParameters *p, tm *head_tm) 
 }
 
 /**
- * @brief 
+ * @brief Sets head_tm to lowerLimit same day.
  * 
- * @param p 
- * @param head_tm 
+ * @param p Search paramters, where lowerLimit is defined.
+ * @param head_tm tm structure to change.
  */
 void goToLowerLimitThisDay(const searchParameters *p, tm *head_tm) {
     head_tm->tm_min = p->lowerLimit.tm_min;
@@ -394,10 +441,11 @@ void goToLowerLimitThisDay(const searchParameters *p, tm *head_tm) {
 }
 
 /**
- * @brief Get the Start Of Line object
+ * @brief Finds the earliest time an event can take place, according to p.
  * 
- * @param p 
- * @return time_t 
+ * @param p Search parameters 
+ * @return Latest time an event can take place as a time_t.
+ * @pre INIT_TM should be #defined as { 0, 0, 0, 1, 0, 0, 0, 0, -1 }.  
  */
 time_t getStartOfLine(const searchParameters *p) {
     tm time_tm = INIT_TM;
@@ -415,10 +463,11 @@ time_t getStartOfLine(const searchParameters *p) {
 }
 
 /**
- * @brief Get the End Of Line object
+ * @brief Finds the latest time an event can take place, according to p.
  * 
- * @param p 
- * @return time_t 
+ * @param p Search parameters 
+ * @return Latest time an event can take place as a time_t.
+ * @pre INIT_TM should be #defined as { 0, 0, 0, 1, 0, 0, 0, 0, -1 }. 
  */
 time_t getEndOfLine(const searchParameters *p) {
     tm time_tm = INIT_TM;
@@ -436,9 +485,10 @@ time_t getEndOfLine(const searchParameters *p) {
 }
 
 /**
- * @brief 
+ * @brief Converts a time_t to a tm structure, prints the tm structure.
  * 
- * @param time 
+ * @param time time_t to print.
+ * @pre EPOCH should be #defined as 1900.
  */
 void print_time_t(time_t time) {
     tm *time_tm = localtime(&time);
