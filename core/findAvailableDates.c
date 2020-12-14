@@ -300,11 +300,11 @@ int headWithinLimits(const searchParameters *p, const time_t head) {
 }
 
 /**
- * @brief 
+ * @brief Controls that time is within lowerLimit and upperLimit defined in p.
  * 
- * @param p 
- * @param time 
- * @return int 
+ * @param p Search paramters, where lowerLimit and upperLimit is defined.
+ * @param time tm struct to control.
+ * @return 1 if within the limits, else 0.
  */
 int tmWithinLimits(const searchParameters *p, const tm *time) {
     if (time->tm_hour > p->lowerLimit.tm_hour && time->tm_hour < p->upperLimit.tm_hour) {
