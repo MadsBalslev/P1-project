@@ -270,11 +270,12 @@ tm stuckProcedure(time_t eventStartTimeUnix, time_t eventEndTimeUnix, const sear
 }
 
 /**
- * @brief 
+ * @brief Controls that an event that starts at head, and is defined by p is within limits.
  * 
- * @param p 
- * @param head 
- * @return int 
+ * @param p Search paramters, where limits are defined, and where event is defined.
+ * @param head Start time of event.
+ * @return 1 if it is within limits, else 0.
+ * @pre MIN_TO_SEC should be #defined as 60. 
  */
 int headWithinLimits(const searchParameters *p, const time_t head) {
     int returnFlag = 0;
