@@ -188,7 +188,7 @@ tm lookForFreeSlotSingle(const searchParameters *p, event *event, time_t *head) 
     } else if (canSwallow(eventStartTimeUnix, eventEndTimeUnix, *head)) {
         if (DEBUG) printf("swallow\n");
     } else if (stuck(eventStartTimeUnix, *head, p)) {
-        dateFound = stuckProcedure(eventStartTimeUnix, eventEndTimeUnix, p, head);
+        dateFound = stuckProcedure(p, head);
     }
 
     return dateFound;
@@ -258,7 +258,7 @@ int stuck(time_t eventStartTimeUnix, time_t head, const searchParameters *p) {
  * @return tm 
  * @pre MIN_TO_SEC should be #defined as 60.
  */
-tm stuckProcedure(time_t eventStartTimeUnix, time_t eventEndTimeUnix, const searchParameters *p, time_t *head) {
+tm stuckProcedure(const searchParameters *p, time_t *head) {
     tm dateFound;
 
     if (headWithinLimits(p, *head)) {
