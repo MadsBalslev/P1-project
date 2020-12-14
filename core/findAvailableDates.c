@@ -249,14 +249,18 @@ int stuck(time_t eventStartTimeUnix, time_t head, const searchParameters *p) {
 }
 
 /**
- * @brief 
- * 
- * @param eventStartTimeUnix 
- * @param eventEndTimeUnix 
- * @param p 
- * @param head 
- * @return tm 
- * @pre MIN_TO_SEC should be #defined as 60.
+ * @brief Runs the procedure corresponding to when head is considered stuck.
+ *
+ * Checks if an event, as defined by p, starting at head is within limits, if this is the case
+ * the date is returned. Else head is set to the next lowerLimit, and returns tm date where .tm_year =
+ * redo.
+ *
+ * @param p Search parameters.
+ * @param head in/out parameter, time_t to do the procedure on.
+ * @return A valid tm time if a date is found within limits defined in p. Else if the date
+ * found is invalid i.e. not within the limits defined in p, returns tm date where .tm_year =
+ * redo.
+ * @pre MIN_TO_SEC should be #defined as 60. enum redo should be equal to -3.
  */
 tm stuckProcedure(const searchParameters *p, time_t *head) {
     tm dateFound;
