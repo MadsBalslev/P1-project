@@ -415,10 +415,10 @@ time_t getStartOfLine(const searchParameters *p) {
 }
 
 /**
- * @brief Get the End Of Line object
+ * @brief Finds the latest time an event can take place, according to p.
  * 
- * @param p 
- * @return time_t 
+ * @param p Search parameters 
+ * @return Latest time an event can take place as a time_t. 
  */
 time_t getEndOfLine(const searchParameters *p) {
     tm time_tm = INIT_TM;
