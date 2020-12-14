@@ -180,7 +180,7 @@ int findAvailableDates(calendarSuite *suite, const searchParameters *param, int 
         printf("Free slot found at: %.2d/%.2d/%.4d %.2d:%.2d\n", 
                 freeSlot.tm_mday, 
                 freeSlot.tm_mon + 1, 
-                freeSlot.tm_year + 1900,
+                freeSlot.tm_year + EPOCH,
                 freeSlot.tm_hour,
                 freeSlot.tm_min);
         foundDate = 1;
