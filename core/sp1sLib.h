@@ -40,7 +40,7 @@ typedef struct eventLink {
 } eventLink;
 
 /**
- * @brief Head of linked list of eventLinks. 
+ * @brief Head of linked list of eventLinks.  
  *
  * contains metadata about the events in the eventLinks, a linked list like this is called a
  * calendar-list. Events form the same calendar are supposed to be stored in the same
@@ -180,6 +180,24 @@ void     test2_getCalendarSuiteGetFile      (CuTest *tc);
 void     test1_getCalendarSuiteGetFileSingle(CuTest *tc);
 void     test2_getCalendarSuiteGetFileSingle(CuTest *tc);
 CuSuite *suite_getCalendarSuite             (void);
+
+/* findAvaliableDates */
+void     test1_underLowerLimit   (CuTest *tc);
+void     test2_underLowerLimit   (CuTest *tc);
+void     test3_underLowerLimit   (CuTest *tc);
+void     test1_tmWithinLimits    (CuTest *tc);
+void     test2_tmWithinLimits    (CuTest *tc);
+void     test3_tmWithinLimits    (CuTest *tc);
+void     test1_headWithinLimits  (CuTest *tc);
+void     test2_headWithinLimits  (CuTest *tc);
+void     test1_canElongate       (CuTest *tc);
+void     test2_canElongate       (CuTest *tc);
+void     test3_canElongate       (CuTest *tc);
+void     test1_endOfLine         (CuTest *tc);
+void     test2_endOfLine         (CuTest *tc);
+void     test1_canSwallow        (CuTest *tc);
+void     test2_canSwallow        (CuTest *tc);
+CuSuite *suite_findAvaliableDates(void);
 
 /* sharedFunctions.c */
 void     test1_isTimeValid    (CuTest *tc);
