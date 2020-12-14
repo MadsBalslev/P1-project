@@ -336,11 +336,11 @@ void setHeadToNextLL(const searchParameters *p, time_t *head) {
 }
 
 /**
- * @brief 
+ * @brief Controls if head_tm is over upperLimit.
  * 
- * @param p 
- * @param head_tm 
- * @return int 
+ * @param p Search paramters, where upperLimit is defined.
+ * @param head_tm tm structure to control
+ * @return 1 if it is, else 0 
  */
 int overUpperLimit(const searchParameters *p, const tm *head_tm) {
     if (head_tm->tm_hour > p->upperLimit.tm_hour) {
@@ -353,11 +353,11 @@ int overUpperLimit(const searchParameters *p, const tm *head_tm) {
 }
 
 /**
- * @brief 
+ * @brief Controls if head_tm is under lowerLimit.
  * 
- * @param p 
- * @param head_tm 
- * @return int 
+ * @param p Search paramters, where lowerLimit is defined.
+ * @param head_tm tm structure to control
+ * @return 1 if it is, else 0 
  */
 int underLowerLimit(const searchParameters *p, const tm *head_tm) {
     if (head_tm->tm_hour < p->lowerLimit.tm_hour) {
