@@ -524,15 +524,15 @@ void test1_eventStartsEarlier(CuTest *tc) {
 
     input1.startTime.tm_min  = 00;
     input1.startTime.tm_hour = 00;
+    input1.startTime.tm_mday = 01;
     input1.startTime.tm_mon  = 00;
-    input1.startTime.tm_mday = 00;
-    input1.startTime.tm_year = 00;
+    input1.startTime.tm_year = 2021 - EPOCH;
 
     input2.startTime.tm_min  = 00;
     input2.startTime.tm_hour = 00;
+    input2.startTime.tm_mday = 01;
     input2.startTime.tm_mon  = 00;
-    input2.startTime.tm_mday = 00;
-    input2.startTime.tm_year = 00;
+    input2.startTime.tm_year = 2020 - EPOCH;
 
     actual = eventStartsEarlier(&input1, &input2);
     CuAssertIntEquals(tc, expected, actual);
@@ -540,22 +540,22 @@ void test1_eventStartsEarlier(CuTest *tc) {
 
 
 void test2_eventStartsEarlier(CuTest *tc) {
-   event input1;
+    event input1;
     event input2;
     int actual;
-    int expected = 1;
+    int expected = 0;
 
     input1.startTime.tm_min  = 00;
     input1.startTime.tm_hour = 00;
+    input1.startTime.tm_mday = 01;
     input1.startTime.tm_mon  = 00;
-    input1.startTime.tm_mday = 00;
-    input1.startTime.tm_year = 00;
+    input1.startTime.tm_year = 2020 - EPOCH;
 
     input2.startTime.tm_min  = 00;
     input2.startTime.tm_hour = 00;
+    input2.startTime.tm_mday = 01;
     input2.startTime.tm_mon  = 00;
-    input2.startTime.tm_mday = 00;
-    input2.startTime.tm_year = 00;
+    input2.startTime.tm_year = 2021 - EPOCH;
 
     actual = eventStartsEarlier(&input1, &input2);
     CuAssertIntEquals(tc, expected, actual);
@@ -569,15 +569,15 @@ void test3_eventStartsEarlier(CuTest *tc) {
 
     input1.startTime.tm_min  = 00;
     input1.startTime.tm_hour = 00;
-    input1.startTime.tm_mon  = 00;
-    input1.startTime.tm_mday = 00;
-    input1.startTime.tm_year = 00;
+    input1.startTime.tm_mday = 01;
+    input1.startTime.tm_mon  = 05;
+    input1.startTime.tm_year = 2020 - EPOCH;
 
     input2.startTime.tm_min  = 00;
     input2.startTime.tm_hour = 00;
+    input2.startTime.tm_mday = 01;
     input2.startTime.tm_mon  = 00;
-    input2.startTime.tm_mday = 00;
-    input2.startTime.tm_year = 00;
+    input2.startTime.tm_year = 2020 - EPOCH;
 
     actual = eventStartsEarlier(&input1, &input2);
     CuAssertIntEquals(tc, expected, actual);
@@ -587,19 +587,19 @@ void test4_eventStartsEarlier(CuTest *tc) {
     event input1;
     event input2;
     int actual;
-    int expected = 1;
+    int expected = 0;
 
     input1.startTime.tm_min  = 00;
     input1.startTime.tm_hour = 00;
+    input1.startTime.tm_mday = 01;
     input1.startTime.tm_mon  = 00;
-    input1.startTime.tm_mday = 00;
-    input1.startTime.tm_year = 00;
+    input1.startTime.tm_year = 2020 - EPOCH;
 
     input2.startTime.tm_min  = 00;
     input2.startTime.tm_hour = 00;
-    input2.startTime.tm_mon  = 00;
-    input2.startTime.tm_mday = 00;
-    input2.startTime.tm_year = 00;
+    input2.startTime.tm_mday = 01;
+    input2.startTime.tm_mon  = 05;
+    input2.startTime.tm_year = 2020 - EPOCH;
 
     actual = eventStartsEarlier(&input1, &input2);
     CuAssertIntEquals(tc, expected, actual);
@@ -613,15 +613,15 @@ void test5_eventStartsEarlier(CuTest *tc) {
 
     input1.startTime.tm_min  = 00;
     input1.startTime.tm_hour = 00;
+    input1.startTime.tm_mday = 25;
     input1.startTime.tm_mon  = 00;
-    input1.startTime.tm_mday = 00;
-    input1.startTime.tm_year = 00;
+    input1.startTime.tm_year = 2020 - EPOCH;
 
     input2.startTime.tm_min  = 00;
     input2.startTime.tm_hour = 00;
+    input2.startTime.tm_mday = 04;
     input2.startTime.tm_mon  = 00;
-    input2.startTime.tm_mday = 00;
-    input2.startTime.tm_year = 00;
+    input2.startTime.tm_year = 2020 - EPOCH;
 
     actual = eventStartsEarlier(&input1, &input2);
     CuAssertIntEquals(tc, expected, actual);
@@ -635,15 +635,15 @@ void test6_eventStartsEarlier(CuTest *tc) {
 
     input1.startTime.tm_min  = 00;
     input1.startTime.tm_hour = 00;
+    input1.startTime.tm_mday = 04;
     input1.startTime.tm_mon  = 00;
-    input1.startTime.tm_mday = 00;
-    input1.startTime.tm_year = 00;
+    input1.startTime.tm_year = 2020 - EPOCH;
 
     input2.startTime.tm_min  = 00;
     input2.startTime.tm_hour = 00;
+    input2.startTime.tm_mday = 25;
     input2.startTime.tm_mon  = 00;
-    input2.startTime.tm_mday = 00;
-    input2.startTime.tm_year = 00;
+    input2.startTime.tm_year = 2020 - EPOCH;
 
     actual = eventStartsEarlier(&input1, &input2);
     CuAssertIntEquals(tc, expected, actual);
@@ -653,19 +653,19 @@ void test7_eventStartsEarlier(CuTest *tc) {
     event input1;
     event input2;
     int actual;
-    int expected = 0;
+    int expected = 1;
 
     input1.startTime.tm_min  = 00;
-    input1.startTime.tm_hour = 00;
+    input1.startTime.tm_hour = 16;
+    input1.startTime.tm_mday = 01;
     input1.startTime.tm_mon  = 00;
-    input1.startTime.tm_mday = 00;
-    input1.startTime.tm_year = 00;
+    input1.startTime.tm_year = 2020 - EPOCH;
 
     input2.startTime.tm_min  = 00;
-    input2.startTime.tm_hour = 00;
+    input2.startTime.tm_hour = 14;
+    input2.startTime.tm_mday = 01;
     input2.startTime.tm_mon  = 00;
-    input2.startTime.tm_mday = 00;
-    input2.startTime.tm_year = 00;
+    input2.startTime.tm_year = 2020 - EPOCH;
 
     actual = eventStartsEarlier(&input1, &input2);
     CuAssertIntEquals(tc, expected, actual);
@@ -678,16 +678,16 @@ void test8_eventStartsEarlier(CuTest *tc) {
     int expected = 0;
 
     input1.startTime.tm_min  = 00;
-    input1.startTime.tm_hour = 00;
+    input1.startTime.tm_hour = 14;
+    input1.startTime.tm_mday = 01;
     input1.startTime.tm_mon  = 00;
-    input1.startTime.tm_mday = 00;
-    input1.startTime.tm_year = 00;
+    input1.startTime.tm_year = 2020 - EPOCH;
 
     input2.startTime.tm_min  = 00;
-    input2.startTime.tm_hour = 00;
+    input2.startTime.tm_hour = 16;
+    input2.startTime.tm_mday = 01;
     input2.startTime.tm_mon  = 00;
-    input2.startTime.tm_mday = 00;
-    input2.startTime.tm_year = 00;
+    input2.startTime.tm_year = 2020 - EPOCH;
 
     actual = eventStartsEarlier(&input1, &input2);
     CuAssertIntEquals(tc, expected, actual);
@@ -697,19 +697,19 @@ void test9_eventStartsEarlier(CuTest *tc) {
     event input1;
     event input2;
     int actual;
-    int expected = 0;
+    int expected = 1;
 
-    input1.startTime.tm_min  = 00;
+    input1.startTime.tm_min  = 30;
     input1.startTime.tm_hour = 00;
+    input1.startTime.tm_mday = 01;
     input1.startTime.tm_mon  = 00;
-    input1.startTime.tm_mday = 00;
-    input1.startTime.tm_year = 00;
+    input1.startTime.tm_year = 2020 - EPOCH;
 
-    input2.startTime.tm_min  = 00;
+    input2.startTime.tm_min  = 21;
     input2.startTime.tm_hour = 00;
+    input2.startTime.tm_mday = 01;
     input2.startTime.tm_mon  = 00;
-    input2.startTime.tm_mday = 00;
-    input2.startTime.tm_year = 00;
+    input2.startTime.tm_year = 2020 - EPOCH;
 
     actual = eventStartsEarlier(&input1, &input2);
     CuAssertIntEquals(tc, expected, actual);
@@ -721,17 +721,39 @@ void test10_eventStartsEarlier(CuTest *tc) {
     int actual;
     int expected = 0;
 
-    input1.startTime.tm_min  = 00;
+    input1.startTime.tm_min  = 21;
     input1.startTime.tm_hour = 00;
+    input1.startTime.tm_mday = 01;
     input1.startTime.tm_mon  = 00;
-    input1.startTime.tm_mday = 00;
-    input1.startTime.tm_year = 00;
+    input1.startTime.tm_year = 2020 - EPOCH;
 
-    input2.startTime.tm_min  = 00;
+    input2.startTime.tm_min  = 30;
     input2.startTime.tm_hour = 00;
+    input2.startTime.tm_mday = 01;
     input2.startTime.tm_mon  = 00;
-    input2.startTime.tm_mday = 00;
-    input2.startTime.tm_year = 00;
+    input2.startTime.tm_year = 2020 - EPOCH;
+
+    actual = eventStartsEarlier(&input1, &input2);
+    CuAssertIntEquals(tc, expected, actual);
+}
+
+void test11_eventStartsEarlier(CuTest *tc) {
+    event input1;
+    event input2;
+    int actual;
+    int expected = 0;
+
+    input1.startTime.tm_min  = 21;
+    input1.startTime.tm_hour = 30;
+    input1.startTime.tm_mday = 25;
+    input1.startTime.tm_mon  = 03;
+    input1.startTime.tm_year = 2020 - EPOCH;
+
+    input2.startTime.tm_min  = 21;
+    input2.startTime.tm_hour = 30;
+    input2.startTime.tm_mday = 25;
+    input2.startTime.tm_mon  = 03;
+    input2.startTime.tm_year = 2020 - EPOCH;
 
     actual = eventStartsEarlier(&input1, &input2);
     CuAssertIntEquals(tc, expected, actual);
@@ -816,6 +838,7 @@ CuSuite *suite_findAvaliableDates(void) {
     SUITE_ADD_TEST(suite, test8_eventStartsEarlier);
     SUITE_ADD_TEST(suite, test9_eventStartsEarlier);
     SUITE_ADD_TEST(suite, test10_eventStartsEarlier);
+    SUITE_ADD_TEST(suite, test11_eventStartsEarlier);
     SUITE_ADD_TEST(suite, test2_goToLowerLimitNextDay);
     SUITE_ADD_TEST(suite, test1_getStartOfLine);
     SUITE_ADD_TEST(suite, test1_getEndOfLine);
