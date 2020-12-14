@@ -842,8 +842,6 @@ CuSuite *suite_findAvaliableDates(void) {
     SUITE_ADD_TEST(suite, test2_goToLowerLimitNextDay);
     SUITE_ADD_TEST(suite, test1_getStartOfLine);
     SUITE_ADD_TEST(suite, test1_getEndOfLine);
-    
-    
     return suite;
 }
 
