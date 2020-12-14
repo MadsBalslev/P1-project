@@ -97,15 +97,23 @@ int getCalendarSuiteGetDataSingle(calendar *calendar) {
         }
 
         if (isEvent) {
+            int temp_year, temp_mon;
+
+            newEvent->startTime.tm_isdst = 0;
+            newEvent->endTime.tm_isdst = 0;
+
             sscanf(line, "SUMMARY: %[^\n]", newEvent->title); /* Reads every character until -1 (EOF) */
             sscanf(line, "DTSTART:%4d%2d%2dT%2d%2d%2d%s",
-                   &newEvent->startTime.tm_year,
-                   &newEvent->startTime.tm_mon,
+                   &temp_year,
+                   &temp_mon,
                    &newEvent->startTime.tm_mday,
                    &newEvent->startTime.tm_hour,
                    &newEvent->startTime.tm_min,
                    &newEvent->startTime.tm_sec,
                    leftOverGarbage);
+
+            newEvent->startTime.tm_year = temp_year - 1900;
+            newEvent->startTime.tm_mon = temp_mon - 1;
             if (sscanf(line, "DESCRIPTION:%[0-9a-zA-Z ]", leftOverGarbage) && leftOverGarbage[0] != '$') {
                 sscanf(line, "DESCRIPTION:$P%d$", &newEvent->priority);
             } else {
@@ -113,17 +121,23 @@ int getCalendarSuiteGetDataSingle(calendar *calendar) {
             }
 
             if (newEvent->priority < 0) {
+                printf("yip");
                 newEvent->priority = 0; 
+            } else if (newEvent->priority > MAX_PRIORITY) {
+                printf("yap");
+                newEvent->priority = MAX_PRIORITY;
             }
 
             sscanf(line, "DTEND:%4d%2d%2dT%2d%2d%2d%s",
-                   &newEvent->endTime.tm_year,
-                   &newEvent->endTime.tm_mon,
+                   &temp_year,
+                   &temp_mon,
                    &newEvent->endTime.tm_mday,
                    &newEvent->endTime.tm_hour,
                    &newEvent->endTime.tm_min,
                    &newEvent->endTime.tm_sec,
                    leftOverGarbage);
+            newEvent->endTime.tm_year = temp_year - 1900;
+            newEvent->endTime.tm_mon = temp_mon - 1;
         }
 
         if (strstr(line, "END:VEVENT")) {

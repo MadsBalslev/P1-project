@@ -21,21 +21,23 @@ int findSumAllEvents(const calendarSuite *suite) {
 }
 
 /**
- * @brief Iterates through all events from all calendar-files and adds them all to one big array
- * 
- * The function loops through all calendars and adds all the events to one array. An event will only be added
- * to the array if it has priority over the event we are finding an avaliable slot for. 
- * 
+ * @brief Iterates through all events from all calendar-files and adds them all to one big
+ * array
+ *
+ * The function loops through all calendars and adds all the events to one array. An event
+ * will only be added to the array if it has priority over the event we are finding an
+ * avaliable slot for. 
+ *
  * @param suite the suite of calendars to look through
  * @param eventPtrArray The array to put all events into
  * @param sumAllEvents The amount of events across all calendar files
- * @param priority The priority of the event the user wants to find an avaliable time slot for. Defaults to 1000
+ * @param priority The priority of the event the user wants to find an avaliable time slot
+ * for. Defaults to 1000
  */
-void calSuiteToEventArray(const calendarSuite *suite, event *eventPtrArray[], int sumAllEvents, int priority) {
+void calSuiteToEventArray(const calendarSuite *suite, int sumAllEvents, int priority, event *eventPtrArray[]) {
     int i = 0, k;
     eventLink *cursor;
 
-    printf("ArrayLen: %d\n", suite->Arraylen);
     for (k = 0; k < suite->Arraylen; k++) {
         cursor = suite->calPtrArray[k]->firstEvent;
         while (cursor != NULL) {
@@ -80,12 +82,13 @@ int endTimeCmp(const void *arg1, const void *arg2) {
 
 /**
  * @brief Determines if event1 ends later than event2.
- * 
+ *
  * @param event1 pointer to event structure
  * @param event2 pointer to event structure
- * @return int 1 if event1 ends later than event 2, 0 if event 2 ends later than event1 or they end at the same time
+ * @return int 1 if event1 ends later than event 2, 0 if event 2 ends later than event1 or
+ * they end at the same time
  */
-int eventStartsLater(event *event1, event *event2) {
+int eventStartsLater(const event *event1, const event *event2) {
     if (event1->startTime.tm_year > event2->startTime.tm_year) { /* Check year */
         return 1;
     } else if (event1->startTime.tm_year < event2->startTime.tm_year) {
@@ -128,76 +131,322 @@ void printEventPtrArray(event *allEvents[], int n) {
     }
 }
 
-/* 1. Sammenflet alle overlappende events til ét samlet event */
-
-event lookForFreeSlot(event *allEvents[], int arrLen, int minutes) {
+/**
+ * @brief 
+ * 
+ * @param p 
+ * @param arrLen 
+ * @param allEvents 
+ * @return tm 
+ */
+tm lookForFreeSlot(const searchParameters *p, int arrLen, event *allEvents[]) {
+    time_t head = getStartOfLine(p);
+    tm dateFound;
     int i = 0;
-    event eventBlock; /* Declare a new eventBlock */
 
-    /* Initialize eventBlock to be the first event */
-    eventBlock.startTime = allEvents[i]->startTime;
-    eventBlock.endTime = allEvents[i]->endTime;
+    dateFound.tm_year = look;
 
-    /* while (eventBeginBeforeEnd(allEvents[i], allEvents[i + 1]) && i < (arrLen - 1)) { Segmentation fault here
-        eventBlock.endTime = allEvents[i + 1]->endTime;
-        i++;
-    } */
+    while (i < arrLen && allEvents[i] != NULL && dateFound.tm_year < 0 && dateFound.tm_year != eol) {
+        if (DEBUG) printf("Event: %s\n", allEvents[i]->title);
 
-    printf("Free slot in calendar from %.2d/%.2d/%.4d %.2d:%.2d to %.2d/%.2d/%.4d %.2d:%.2d\n",
-           eventBlock.endTime.tm_mday,
-           eventBlock.endTime.tm_mon,
-           eventBlock.endTime.tm_year,
-           eventBlock.endTime.tm_hour,
-           eventBlock.endTime.tm_min,
-           allEvents[i + 1]->startTime.tm_mday,
-           allEvents[i + 1]->startTime.tm_mon,
-           allEvents[i + 1]->startTime.tm_year,
-           allEvents[i + 1]->startTime.tm_hour,
-           allEvents[i + 1]->startTime.tm_min);
+        dateFound = lookForFreeSlotSingle(p, allEvents[i], &head);
+
+        if (DEBUG) {
+            printf("head: ");
+            print_time_t(head);
+            printf("\n");
+        }
+
+        if (dateFound.tm_year != redo) {
+            i++;
+        }
+    }
+
+    return dateFound;
 }
 
 /**
- * @brief Checks if an event begins before the event of previous event
+  * @brief 
+  * 
+  * @param p 
+  * @param event 
+  * @param head 
+  * @return tm 
+  */
+tm lookForFreeSlotSingle(const searchParameters *p, event *event, time_t *head) {
+    time_t eventStartTimeUnix = mktime(&event->startTime);
+    time_t eventEndTimeUnix = mktime(&event->endTime);
+    tm dateFound;
+    dateFound.tm_year = look;
+
+    if (endOfLine(p, *head)) {
+        if (DEBUG) printf("endOfLine\n");
+        dateFound.tm_year = eol;
+    } else if (canElongate(eventStartTimeUnix, eventEndTimeUnix, *head, p)) {
+        if (DEBUG) printf("elongate\n");
+        *head = eventEndTimeUnix;
+    } else if (canSwallow(eventStartTimeUnix, eventEndTimeUnix, *head)) {
+        if (DEBUG) printf("swallow\n");
+    } else if (stuck(eventStartTimeUnix, *head, p)) {
+        dateFound = stuckProcedure(eventStartTimeUnix, eventEndTimeUnix, p, head);
+    }
+
+    return dateFound;
+}
+
+/**
+ * @brief 
  * 
- * @param event1 
- * @param event2 
+ * @param p 
+ * @param head 
  * @return int 
  */
-int eventBeginBeforeEnd(event *event1, event *event2) {
-    if (event1->endTime.tm_year >= event2->startTime.tm_year) { /* Check year */
+int endOfLine(const searchParameters *p, time_t head) {
+    time_t eolTime = getEndOfLine(p);
+    return head >= eolTime;
+}
+
+/**
+ * @brief 
+ * 
+ * @param eventStartTimeUnix 
+ * @param eventEndTimeUnix 
+ * @param head 
+ * @param p 
+ * @return int 
+ */
+int canElongate(time_t eventStartTimeUnix, time_t eventEndTimeUnix, time_t head, const searchParameters *p) {
+    return ((head < eventEndTimeUnix) && (head >= eventStartTimeUnix)) ||
+           ((head < eventStartTimeUnix) && ((eventStartTimeUnix - head) < ((p->eventLen * MIN_TO_SEC) + (2 * p->buffer * MIN_TO_SEC))));
+}
+
+/**
+ * @brief 
+ * 
+ * @param eventStartTimeUnix 
+ * @param eventEndTimeUnix 
+ * @param head 
+ * @return int 
+ */
+int canSwallow(time_t eventStartTimeUnix, time_t eventEndTimeUnix, time_t head) {
+    return (head > eventEndTimeUnix) && (head > eventStartTimeUnix);
+}
+
+/**
+ * @brief 
+ * 
+ * @param eventStartTimeUnix 
+ * @param head 
+ * @param p 
+ * @return int 
+ */
+int stuck(time_t eventStartTimeUnix, time_t head, const searchParameters *p) {
+    return ((head < eventStartTimeUnix) && ((eventStartTimeUnix - head) >= ((p->eventLen * MIN_TO_SEC) + (2 * p->buffer * MIN_TO_SEC))));
+}
+
+/**
+ * @brief 
+ * 
+ * @param eventStartTimeUnix 
+ * @param eventEndTimeUnix 
+ * @param p 
+ * @param head 
+ * @return tm 
+ */
+tm stuckProcedure(time_t eventStartTimeUnix, time_t eventEndTimeUnix, const searchParameters *p, time_t *head) {
+    tm dateFound;
+
+    if (headWithinLimits(p, *head)) {
+        if (DEBUG) printf("found date\n");
+        *head += p->buffer * MIN_TO_SEC;
+        dateFound = *localtime(head);
+    } else {
+        if (DEBUG) printf("going to next lowerLimit\n");
+        setHeadToNextLL(p, head);
+        dateFound.tm_year = redo;
+    }
+
+    return dateFound;
+}
+
+/**
+ * @brief 
+ * 
+ * @param p 
+ * @param head 
+ * @return int 
+ */
+int headWithinLimits(const searchParameters *p, const time_t head) {
+    int returnFlag = 0;
+    tm tm_headStart;
+    tm tm_headEnd;
+    time_t headEnd;
+
+    headEnd = head + (p->eventLen * MIN_TO_SEC) + (2 * p->buffer * MIN_TO_SEC);
+
+    tm_headStart = *localtime(&head);
+    tm_headEnd = *localtime(&headEnd);
+
+    returnFlag += tmWithinLimits(p, &tm_headStart);
+    returnFlag += tmWithinLimits(p, &tm_headEnd);
+
+    if (returnFlag == 2) {
+        returnFlag = 1;
+    } else {
+        returnFlag = 0;
+    }
+
+    return returnFlag;
+}
+
+/**
+ * @brief 
+ * 
+ * @param p 
+ * @param time 
+ * @return int 
+ */
+int tmWithinLimits(const searchParameters *p, const tm *time) {
+    if (time->tm_hour > p->lowerLimit.tm_hour && time->tm_hour < p->upperLimit.tm_hour) {
         return 1;
-    } else if (event1->endTime.tm_year < event2->startTime.tm_year) {
-        return 0;
-    } else if (event1->endTime.tm_mon >= event2->startTime.tm_mon) { /* Check month */
-        return 1;
-    } else if (event1->endTime.tm_year < event2->startTime.tm_year) {
-        return 0;
-    } else if (event1->endTime.tm_mday >= event2->startTime.tm_mday) { /* Check day */
-        return 1;
-    } else if (event1->endTime.tm_mday < event2->startTime.tm_mday) {
-        return 0;
-    } else if (event1->endTime.tm_hour >= event2->startTime.tm_hour) { /* Check hour */
-        return 1;
-    } else if (event1->endTime.tm_hour < event2->startTime.tm_hour) {
-        return 0;
-    } else if (event1->endTime.tm_min >= event2->startTime.tm_min) { /* Check min */
-        return 1;
-    } else if (event1->endTime.tm_min < event2->startTime.tm_min) {
-        return 0;
-    } else if (event1->endTime.tm_sec >= event2->startTime.tm_sec) { /* Check secs */
+    } else if ((time->tm_hour == p->lowerLimit.tm_hour && time->tm_min >= p->lowerLimit.tm_min) &&
+               (time->tm_hour == p->upperLimit.tm_hour && time->tm_min <= p->upperLimit.tm_min)) {
         return 1;
     } else {
         return 0;
     }
 }
 
-/* 2. Find ledig tid mellem sammenflettede events */
+/**
+ * @brief Set the Head To Next L L object
+ * 
+ * @param p 
+ * @param head 
+ */
+void setHeadToNextLL(const searchParameters *p, time_t *head) {
+    tm head_tm = *localtime(head);
 
-/* Hvis ikke det lykkedes at finde hultid uden i kalender med alle events:
-   3. Fjern alle events med lavere prioritet end ønskede event */
+    if (underLowerLimit(p, &head_tm)) {
+        goToLowerLimitThisDay(p, &head_tm);
+    } else {
+        goToLowerLimitNextDay(*head, p, &head_tm);
+    }
 
-/* 4. Sammenflet alle overlappende events til ét samlet event */
+    *head = mktime(&head_tm);
+}
 
-/* 5. Find ledig tid mellem sammenflettede events */
+/**
+ * @brief 
+ * 
+ * @param p 
+ * @param head_tm 
+ * @return int 
+ */
+int overUpperLimit(const searchParameters *p, const tm *head_tm) {
+    if (head_tm->tm_hour > p->upperLimit.tm_hour) {
+        return 1;
+    } else if (head_tm->tm_hour == p->upperLimit.tm_hour && head_tm->tm_min > p->upperLimit.tm_min) {
+        return 1;
+    } else {
+        return 0;
+    }
+}
 
-/* Output fund til bruger */
+/**
+ * @brief 
+ * 
+ * @param p 
+ * @param head_tm 
+ * @return int 
+ */
+int underLowerLimit(const searchParameters *p, const tm *head_tm) {
+    if (head_tm->tm_hour < p->lowerLimit.tm_hour) {
+        return 1;
+    } else if (head_tm->tm_hour == p->lowerLimit.tm_hour && head_tm->tm_min < p->lowerLimit.tm_min) {
+        return 1;
+    } else {
+        return 0;
+    }
+}
+
+/**
+ * @brief 
+ * 
+ * @param head 
+ * @param p 
+ * @param head_tm 
+ */
+void goToLowerLimitNextDay(time_t head, const searchParameters *p, tm *head_tm) {
+    head += UNIX_24H;
+    *head_tm = *localtime(&head);
+    goToLowerLimitThisDay(p, head_tm);
+}
+
+/**
+ * @brief 
+ * 
+ * @param p 
+ * @param head_tm 
+ */
+void goToLowerLimitThisDay(const searchParameters *p, tm *head_tm) {
+    head_tm->tm_min = p->lowerLimit.tm_min;
+    head_tm->tm_hour = p->lowerLimit.tm_hour;
+}
+
+/**
+ * @brief Get the Start Of Line object
+ * 
+ * @param p 
+ * @return time_t 
+ */
+time_t getStartOfLine(const searchParameters *p) {
+    tm time_tm = INIT_TM;
+    time_t time;
+
+    time_tm.tm_min = p->lowerLimit.tm_min;
+    time_tm.tm_hour = p->lowerLimit.tm_hour;
+    time_tm.tm_mday = p->startDate.tm_mday;
+    time_tm.tm_mon = p->startDate.tm_mon;
+    time_tm.tm_year = p->startDate.tm_year;
+
+    time = mktime(&time_tm);
+
+    return time;
+}
+
+/**
+ * @brief Get the End Of Line object
+ * 
+ * @param p 
+ * @return time_t 
+ */
+time_t getEndOfLine(const searchParameters *p) {
+    tm time_tm = INIT_TM;
+    time_t time;
+
+    time_tm.tm_min = p->upperLimit.tm_min;
+    time_tm.tm_hour = p->upperLimit.tm_hour;
+    time_tm.tm_mday = p->endDate.tm_mday;
+    time_tm.tm_mon = p->endDate.tm_mon;
+    time_tm.tm_year = p->endDate.tm_year;
+
+    time = mktime(&time_tm);
+
+    return time;
+}
+
+/**
+ * @brief 
+ * 
+ * @param time 
+ */
+void print_time_t(time_t time) {
+    tm *time_tm = localtime(&time);
+
+    printf("%.2d/%.2d/%.2d - %.2d:%.2d\n",
+           time_tm->tm_mday,
+           time_tm->tm_mon + 1,
+           time_tm->tm_year + EPOCH,
+           time_tm->tm_hour,
+           time_tm->tm_min);
+}

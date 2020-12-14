@@ -80,6 +80,8 @@ Data Fields</h2></td></tr>
 <tr class="separator:acec9ce2df15222151ad66fcb1d74eb9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a473d2beffe3e98ac4784c466bb12cc10"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsearch_parameters.html#a473d2beffe3e98ac4784c466bb12cc10">eventLen</a></td></tr>
 <tr class="separator:a473d2beffe3e98ac4784c466bb12cc10"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0c7afc3fbe2c84da5f8852c76839b03b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsearch_parameters.html#a0c7afc3fbe2c84da5f8852c76839b03b">buffer</a></td></tr>
+<tr class="separator:a0c7afc3fbe2c84da5f8852c76839b03b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac34d589525bbc0bb9900ccbb153cc577"><td class="memItemLeft" align="right" valign="top"><a class="el" href="sp1s_lib_8h.html#a110bf4e13553ccfd709f41c6e92f0ca2">tm</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsearch_parameters.html#ac34d589525bbc0bb9900ccbb153cc577">startDate</a></td></tr>
 <tr class="separator:ac34d589525bbc0bb9900ccbb153cc577"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a220e219464225f2dea062927ee503c1d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="sp1s_lib_8h.html#a110bf4e13553ccfd709f41c6e92f0ca2">tm</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsearch_parameters.html#a220e219464225f2dea062927ee503c1d">endDate</a></td></tr>
@@ -92,8 +94,27 @@ Data Fields</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Struct for search parameters used to scope the search of available dates in calendar-lists. </p>
 
-<p class="definition">Definition at line <a class="el" href="sp1s_lib_8h_source.html#l00056">56</a> of file <a class="el" href="sp1s_lib_8h_source.html">sp1sLib.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sp1s_lib_8h_source.html#l00063">63</a> of file <a class="el" href="sp1s_lib_8h_source.html">sp1sLib.h</a>.</p>
 </div><h2 class="groupheader">Field Documentation</h2>
+<a id="a0c7afc3fbe2c84da5f8852c76839b03b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0c7afc3fbe2c84da5f8852c76839b03b">&#9670;&nbsp;</a></span>buffer</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int buffer</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Buffer to be added at both start and end of event </p>
+
+<p class="definition">Definition at line <a class="el" href="sp1s_lib_8h_source.html#l00066">66</a> of file <a class="el" href="sp1s_lib_8h_source.html">sp1sLib.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="find_available_dates_8c_source.html#l00218">canElongate()</a>, <a class="el" href="main_8c_source.html#l00092">getSearchParameters()</a>, <a class="el" href="find_available_dates_8c_source.html#l00279">headWithinLimits()</a>, <a class="el" href="find_available_dates_8c_source.html#l00243">stuck()</a>, and <a class="el" href="find_available_dates_8c_source.html#l00256">stuckProcedure()</a>.</p>
+
+</div>
+</div>
 <a id="a220e219464225f2dea062927ee503c1d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a220e219464225f2dea062927ee503c1d">&#9670;&nbsp;</a></span>endDate</h2>
 
@@ -106,9 +127,9 @@ Data Fields</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="sp1s_lib_8h_source.html#l00060">60</a> of file <a class="el" href="sp1s_lib_8h_source.html">sp1sLib.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sp1s_lib_8h_source.html#l00068">68</a> of file <a class="el" href="sp1s_lib_8h_source.html">sp1sLib.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="main_8c_source.html#l00093">getSearchParameters()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="find_available_dates_8c_source.html#l00423">getEndOfLine()</a>, and <a class="el" href="main_8c_source.html#l00092">getSearchParameters()</a>.</p>
 
 </div>
 </div>
@@ -125,9 +146,9 @@ Data Fields</h2></td></tr>
 </div><div class="memdoc">
 <p>Length of the event in minutes </p>
 
-<p class="definition">Definition at line <a class="el" href="sp1s_lib_8h_source.html#l00058">58</a> of file <a class="el" href="sp1s_lib_8h_source.html">sp1sLib.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sp1s_lib_8h_source.html#l00065">65</a> of file <a class="el" href="sp1s_lib_8h_source.html">sp1sLib.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="main_8c_source.html#l00093">getSearchParameters()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="find_available_dates_8c_source.html#l00218">canElongate()</a>, <a class="el" href="main_8c_source.html#l00092">getSearchParameters()</a>, <a class="el" href="find_available_dates_8c_source.html#l00279">headWithinLimits()</a>, and <a class="el" href="find_available_dates_8c_source.html#l00243">stuck()</a>.</p>
 
 </div>
 </div>
@@ -143,9 +164,9 @@ Data Fields</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="sp1s_lib_8h_source.html#l00062">62</a> of file <a class="el" href="sp1s_lib_8h_source.html">sp1sLib.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sp1s_lib_8h_source.html#l00070">70</a> of file <a class="el" href="sp1s_lib_8h_source.html">sp1sLib.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="main_8c_source.html#l00093">getSearchParameters()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="main_8c_source.html#l00092">getSearchParameters()</a>, <a class="el" href="find_available_dates_8c_source.html#l00402">getStartOfLine()</a>, <a class="el" href="find_available_dates_8c_source.html#l00391">goToLowerLimitThisDay()</a>, <a class="el" href="find_available_dates_8c_source.html#l00309">tmWithinLimits()</a>, and <a class="el" href="find_available_dates_8c_source.html#l00362">underLowerLimit()</a>.</p>
 
 </div>
 </div>
@@ -161,9 +182,9 @@ Data Fields</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="sp1s_lib_8h_source.html#l00057">57</a> of file <a class="el" href="sp1s_lib_8h_source.html">sp1sLib.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sp1s_lib_8h_source.html#l00064">64</a> of file <a class="el" href="sp1s_lib_8h_source.html">sp1sLib.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="main_8c_source.html#l00148">findAvailableDates()</a>, and <a class="el" href="main_8c_source.html#l00093">getSearchParameters()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="main_8c_source.html#l00148">findAvailableDates()</a>, and <a class="el" href="main_8c_source.html#l00092">getSearchParameters()</a>.</p>
 
 </div>
 </div>
@@ -179,9 +200,9 @@ Data Fields</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="sp1s_lib_8h_source.html#l00059">59</a> of file <a class="el" href="sp1s_lib_8h_source.html">sp1sLib.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sp1s_lib_8h_source.html#l00067">67</a> of file <a class="el" href="sp1s_lib_8h_source.html">sp1sLib.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="main_8c_source.html#l00093">getSearchParameters()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="main_8c_source.html#l00092">getSearchParameters()</a>, and <a class="el" href="find_available_dates_8c_source.html#l00402">getStartOfLine()</a>.</p>
 
 </div>
 </div>
@@ -197,9 +218,9 @@ Data Fields</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="sp1s_lib_8h_source.html#l00061">61</a> of file <a class="el" href="sp1s_lib_8h_source.html">sp1sLib.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sp1s_lib_8h_source.html#l00069">69</a> of file <a class="el" href="sp1s_lib_8h_source.html">sp1sLib.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="main_8c_source.html#l00093">getSearchParameters()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="find_available_dates_8c_source.html#l00423">getEndOfLine()</a>, <a class="el" href="main_8c_source.html#l00092">getSearchParameters()</a>, <a class="el" href="find_available_dates_8c_source.html#l00345">overUpperLimit()</a>, and <a class="el" href="find_available_dates_8c_source.html#l00309">tmWithinLimits()</a>.</p>
 
 </div>
 </div>

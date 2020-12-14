@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['init_5ftm_360',['INIT_TM',['../sp1s_lib_8h.html#a4218250a2c1b842883b09e3e1da48a10',1,'sp1sLib.h']]]
+  ['huge_5fstring_5flen_392',['HUGE_STRING_LEN',['../_cu_test_8h.html#a0c9dd98f46b90b5bcd4cbf75e252d0da',1,'CuTest.h']]]
 ];

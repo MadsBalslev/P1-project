@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['string_5finc_363',['STRING_INC',['../_cu_test_8h.html#aebbf25c57ad1257fe25ae880888213df',1,'CuTest.h']]],
-  ['string_5fmax_364',['STRING_MAX',['../_cu_test_8h.html#a41f16f17393bc7dfd8c3a44a6ba595ba',1,'CuTest.h']]],
-  ['suite_5fadd_5ftest_365',['SUITE_ADD_TEST',['../_cu_test_8h.html#a9d9dfb4e9970c9a775ae3ff1aff9da92',1,'CuTest.h']]]
+  ['max_5fpriority_395',['MAX_PRIORITY',['../sp1s_lib_8h.html#a81e3b7a44caf87cdffee98fe20cd45da',1,'sp1sLib.h']]],
+  ['max_5ftest_5fcases_396',['MAX_TEST_CASES',['../_cu_test_8h.html#a4c86bc0fe1ca1bfdabdbc9ce2f06bf3d',1,'CuTest.h']]],
+  ['min_5fto_5fsec_397',['MIN_TO_SEC',['../sp1s_lib_8h.html#a703000715c95eae14f731e17938b6aeb',1,'sp1sLib.h']]]
 ];
