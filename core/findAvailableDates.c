@@ -436,9 +436,9 @@ time_t getEndOfLine(const searchParameters *p) {
 }
 
 /**
- * @brief 
+ * @brief Converts a time_t to a tm structure, prints the tm structure.
  * 
- * @param time 
+ * @param time time_t to print.
  */
 void print_time_t(time_t time) {
     tm *time_tm = localtime(&time);
