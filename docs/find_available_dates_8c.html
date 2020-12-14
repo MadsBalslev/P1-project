@@ -85,12 +85,12 @@ Functions</h2></td></tr>
 <tr class="memitem:a10a0ebd76eb8ebd2c4b3b95ad23d6e6f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="find_available_dates_8c.html#a10a0ebd76eb8ebd2c4b3b95ad23d6e6f">calSuiteToEventArray</a> (const <a class="el" href="structcalendar_suite.html">calendarSuite</a> *suite, int sumAllEvents, int priority, <a class="el" href="structevent.html">event</a> *eventPtrArray[])</td></tr>
 <tr class="memdesc:a10a0ebd76eb8ebd2c4b3b95ad23d6e6f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Iterates through all events from all calendar-files and adds them all to one big array.  <a href="find_available_dates_8c.html#a10a0ebd76eb8ebd2c4b3b95ad23d6e6f">More...</a><br /></td></tr>
 <tr class="separator:a10a0ebd76eb8ebd2c4b3b95ad23d6e6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5d8ba0641470e0250dd619c311f787f7"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="find_available_dates_8c.html#a5d8ba0641470e0250dd619c311f787f7">endTimeCmp</a> (const void *arg1, const void *arg2)</td></tr>
-<tr class="memdesc:a5d8ba0641470e0250dd619c311f787f7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compares two events to determine which event ends the latest.  <a href="find_available_dates_8c.html#a5d8ba0641470e0250dd619c311f787f7">More...</a><br /></td></tr>
-<tr class="separator:a5d8ba0641470e0250dd619c311f787f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:accfe4782f0b7436be81d3490a6e1ed6e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="find_available_dates_8c.html#accfe4782f0b7436be81d3490a6e1ed6e">eventStartsLater</a> (const <a class="el" href="structevent.html">event</a> *event1, const <a class="el" href="structevent.html">event</a> *event2)</td></tr>
-<tr class="memdesc:accfe4782f0b7436be81d3490a6e1ed6e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Determines if event1 ends later than event2.  <a href="find_available_dates_8c.html#accfe4782f0b7436be81d3490a6e1ed6e">More...</a><br /></td></tr>
-<tr class="separator:accfe4782f0b7436be81d3490a6e1ed6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adeee9d7db0ced38a9243df39f8be7177"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="find_available_dates_8c.html#adeee9d7db0ced38a9243df39f8be7177">startTimeCmp</a> (const void *arg1, const void *arg2)</td></tr>
+<tr class="memdesc:adeee9d7db0ced38a9243df39f8be7177"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compares two events to determine which event start the earliest.  <a href="find_available_dates_8c.html#adeee9d7db0ced38a9243df39f8be7177">More...</a><br /></td></tr>
+<tr class="separator:adeee9d7db0ced38a9243df39f8be7177"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0789c9aec704609d94728e36cf353885"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="find_available_dates_8c.html#a0789c9aec704609d94728e36cf353885">eventStartsEarlier</a> (const <a class="el" href="structevent.html">event</a> *event1, const <a class="el" href="structevent.html">event</a> *event2)</td></tr>
+<tr class="memdesc:a0789c9aec704609d94728e36cf353885"><td class="mdescLeft">&#160;</td><td class="mdescRight">Determines if event1 starts earlier than event2.  <a href="find_available_dates_8c.html#a0789c9aec704609d94728e36cf353885">More...</a><br /></td></tr>
+<tr class="separator:a0789c9aec704609d94728e36cf353885"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6ea4ffcb3925da349bd7e7f575d32bda"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="find_available_dates_8c.html#a6ea4ffcb3925da349bd7e7f575d32bda">printEventPtrArray</a> (<a class="el" href="structevent.html">event</a> *allEvents[], int n)</td></tr>
 <tr class="memdesc:a6ea4ffcb3925da349bd7e7f575d32bda"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints all event data in a given array of pointer to events of length n.  <a href="find_available_dates_8c.html#a6ea4ffcb3925da349bd7e7f575d32bda">More...</a><br /></td></tr>
 <tr class="separator:a6ea4ffcb3925da349bd7e7f575d32bda"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -398,76 +398,14 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="a5d8ba0641470e0250dd619c311f787f7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5d8ba0641470e0250dd619c311f787f7">&#9670;&nbsp;</a></span>endTimeCmp()</h2>
+<a id="a0789c9aec704609d94728e36cf353885"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0789c9aec704609d94728e36cf353885">&#9670;&nbsp;</a></span>eventStartsEarlier()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int endTimeCmp </td>
-          <td>(</td>
-          <td class="paramtype">const void *&#160;</td>
-          <td class="paramname"><em>arg1</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const void *&#160;</td>
-          <td class="paramname"><em>arg2</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Compares two events to determine which event ends the latest. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">arg1</td><td>first event to be compared </td></tr>
-    <tr><td class="paramname">arg2</td><td>second event to be compared </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>1 if the first event ends before the second, -1 if the second event ends before the first, 0 if both events end at the same time. </dd></dl>
-
-<p class="definition">Definition at line <a class="el" href="find_available_dates_8c_source.html#l00064">64</a> of file <a class="el" href="find_available_dates_8c_source.html">findAvailableDates.c</a>.</p>
-<div class="fragment"><div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;                                                   {</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keyword">event</span> **event1 = (<span class="keyword">event</span> **)arg1;</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keyword">event</span> **event2 = (<span class="keyword">event</span> **)arg2;</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keywordflow">if</span> (*event1 == NULL &amp;&amp; *event2 != NULL) {</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        <span class="keywordflow">return</span> 1;</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (*event1 != NULL &amp;&amp; *event2 == NULL) {</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        <span class="keywordflow">return</span> -1;</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (*event1 == NULL &amp;&amp; *event2 == NULL) {</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code" href="find_available_dates_8c.html#accfe4782f0b7436be81d3490a6e1ed6e">eventStartsLater</a>(*event1, *event2)) {</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        <span class="keywordflow">return</span> 1;</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code" href="find_available_dates_8c.html#accfe4782f0b7436be81d3490a6e1ed6e">eventStartsLater</a>(*event2, *event1)) {</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        <span class="keywordflow">return</span> -1;</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    }</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;}</div>
-</div><!-- fragment -->
-<p class="reference">References <a class="el" href="find_available_dates_8c_source.html#l00091">eventStartsLater()</a>.</p>
-
-<p class="reference">Referenced by <a class="el" href="main_8c_source.html#l00160">findAvailableDates()</a>.</p>
-
-</div>
-</div>
-<a id="accfe4782f0b7436be81d3490a6e1ed6e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#accfe4782f0b7436be81d3490a6e1ed6e">&#9670;&nbsp;</a></span>eventStartsLater()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int eventStartsLater </td>
+          <td class="memname">int eventStartsEarlier </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="structevent.html">event</a> *&#160;</td>
           <td class="paramname"><em>event1</em>, </td>
@@ -486,7 +424,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Determines if event1 ends later than event2. </p>
+<p>Determines if event1 starts earlier than event2. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">event1</td><td>pointer to event structure </td></tr>
@@ -497,7 +435,7 @@ Variables</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>int 1 if event1 ends later than event 2, 0 if event 2 ends later than event1 or they end at the same time </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="find_available_dates_8c_source.html#l00091">91</a> of file <a class="el" href="find_available_dates_8c_source.html">findAvailableDates.c</a>.</p>
-<div class="fragment"><div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;                                                               {</div>
+<div class="fragment"><div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;                                                                 {</div>
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <span class="keywordflow">if</span> (event1-&gt;<a class="code" href="structevent.html#a4130c0a62a25fc141c76d3872edfdfc7">startTime</a>.tm_year &gt; event2-&gt;<a class="code" href="structevent.html#a4130c0a62a25fc141c76d3872edfdfc7">startTime</a>.tm_year) { <span class="comment">/* Check year */</span></div>
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        <span class="keywordflow">return</span> 1;</div>
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (event1-&gt;<a class="code" href="structevent.html#a4130c0a62a25fc141c76d3872edfdfc7">startTime</a>.tm_year &lt; event2-&gt;<a class="code" href="structevent.html#a4130c0a62a25fc141c76d3872edfdfc7">startTime</a>.tm_year) {</div>
@@ -527,7 +465,7 @@ Variables</h2></td></tr>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="sp1s_lib_8h_source.html#l00027">event::startTime</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="find_available_dates_8c_source.html#l00064">endTimeCmp()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="find_available_dates_8c_source.html#l00064">startTimeCmp()</a>, <a class="el" href="all_tests_8c_source.html#l00718">test10_eventStartsEarlier()</a>, <a class="el" href="all_tests_8c_source.html#l00740">test11_eventStartsEarlier()</a>, <a class="el" href="all_tests_8c_source.html#l00519">test1_eventStartsEarlier()</a>, <a class="el" href="all_tests_8c_source.html#l00542">test2_eventStartsEarlier()</a>, <a class="el" href="all_tests_8c_source.html#l00564">test3_eventStartsEarlier()</a>, <a class="el" href="all_tests_8c_source.html#l00586">test4_eventStartsEarlier()</a>, <a class="el" href="all_tests_8c_source.html#l00608">test5_eventStartsEarlier()</a>, <a class="el" href="all_tests_8c_source.html#l00630">test6_eventStartsEarlier()</a>, <a class="el" href="all_tests_8c_source.html#l00652">test7_eventStartsEarlier()</a>, <a class="el" href="all_tests_8c_source.html#l00674">test8_eventStartsEarlier()</a>, and <a class="el" href="all_tests_8c_source.html#l00696">test9_eventStartsEarlier()</a>.</p>
 
 </div>
 </div>
@@ -619,7 +557,7 @@ Variables</h2></td></tr>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="sp1s_lib_8h_source.html#l00068">searchParameters::endDate</a>, <a class="el" href="sp1s_lib_8h_source.html#l00017">INIT_TM</a>, and <a class="el" href="sp1s_lib_8h_source.html#l00069">searchParameters::upperLimit</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="find_available_dates_8c_source.html#l00230">endOfLine()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="find_available_dates_8c_source.html#l00230">endOfLine()</a>, and <a class="el" href="all_tests_8c_source.html#l00786">test1_getEndOfLine()</a>.</p>
 
 </div>
 </div>
@@ -668,7 +606,7 @@ Variables</h2></td></tr>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="sp1s_lib_8h_source.html#l00017">INIT_TM</a>, <a class="el" href="sp1s_lib_8h_source.html#l00070">searchParameters::lowerLimit</a>, and <a class="el" href="sp1s_lib_8h_source.html#l00067">searchParameters::startDate</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="find_available_dates_8c_source.html#l00152">lookForFreeSlot()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="find_available_dates_8c_source.html#l00152">lookForFreeSlot()</a>, and <a class="el" href="all_tests_8c_source.html#l00762">test1_getStartOfLine()</a>.</p>
 
 </div>
 </div>
@@ -724,7 +662,7 @@ Variables</h2></td></tr>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="find_available_dates_8c_source.html#l00438">goToLowerLimitThisDay()</a>, and <a class="el" href="sp1s_lib_8h_source.html#l00016">UNIX_24H</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="find_available_dates_8c_source.html#l00372">setHeadToNextLL()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="find_available_dates_8c_source.html#l00372">setHeadToNextLL()</a>, <a class="el" href="all_tests_8c_source.html#l00420">test1_goToLowerLimitNextDay()</a>, <a class="el" href="all_tests_8c_source.html#l00453">test2_goToLowerLimitNextDay()</a>, and <a class="el" href="all_tests_8c_source.html#l00486">test3_goToLowerLimitNextDay()</a>.</p>
 
 </div>
 </div>
@@ -771,7 +709,7 @@ Variables</h2></td></tr>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="sp1s_lib_8h_source.html#l00070">searchParameters::lowerLimit</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="find_available_dates_8c_source.html#l00426">goToLowerLimitNextDay()</a>, and <a class="el" href="find_available_dates_8c_source.html#l00372">setHeadToNextLL()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="find_available_dates_8c_source.html#l00426">goToLowerLimitNextDay()</a>, <a class="el" href="find_available_dates_8c_source.html#l00372">setHeadToNextLL()</a>, and <a class="el" href="all_tests_8c_source.html#l00399">test1_goToLowerLimitThisDay()</a>.</p>
 
 </div>
 </div>
@@ -1205,6 +1143,68 @@ Variables</h2></td></tr>
 
 </div>
 </div>
+<a id="adeee9d7db0ced38a9243df39f8be7177"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adeee9d7db0ced38a9243df39f8be7177">&#9670;&nbsp;</a></span>startTimeCmp()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int startTimeCmp </td>
+          <td>(</td>
+          <td class="paramtype">const void *&#160;</td>
+          <td class="paramname"><em>arg1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const void *&#160;</td>
+          <td class="paramname"><em>arg2</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Compares two events to determine which event start the earliest. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">arg1</td><td>first event to be compared </td></tr>
+    <tr><td class="paramname">arg2</td><td>second event to be compared </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>1 if the first event ends before the second, -1 if the second event ends before the first, 0 if both events end at the same time. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="find_available_dates_8c_source.html#l00064">64</a> of file <a class="el" href="find_available_dates_8c_source.html">findAvailableDates.c</a>.</p>
+<div class="fragment"><div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;                                                     {</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keyword">event</span> **event1 = (<span class="keyword">event</span> **)arg1;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keyword">event</span> **event2 = (<span class="keyword">event</span> **)arg2;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keywordflow">if</span> (*event1 == NULL &amp;&amp; *event2 != NULL) {</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        <span class="keywordflow">return</span> 1;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (*event1 != NULL &amp;&amp; *event2 == NULL) {</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        <span class="keywordflow">return</span> -1;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (*event1 == NULL &amp;&amp; *event2 == NULL) {</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code" href="find_available_dates_8c.html#a0789c9aec704609d94728e36cf353885">eventStartsEarlier</a>(*event1, *event2)) {</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        <span class="keywordflow">return</span> 1;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code" href="find_available_dates_8c.html#a0789c9aec704609d94728e36cf353885">eventStartsEarlier</a>(*event2, *event1)) {</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        <span class="keywordflow">return</span> -1;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    }</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;}</div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="find_available_dates_8c_source.html#l00091">eventStartsEarlier()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="main_8c_source.html#l00160">findAvailableDates()</a>.</p>
+
+</div>
+</div>
 <a id="ab714ca969e64ccfe03597d2f06b28021"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab714ca969e64ccfe03597d2f06b28021">&#9670;&nbsp;</a></span>stuck()</h2>
 
@@ -1459,7 +1459,6 @@ Variables</h2></td></tr>
 </div><!-- contents -->
 <div class="ttc" id="afind_available_dates_8c_html_a5aceb34140821f9bd67fa026bb4b7596"><div class="ttname"><a href="find_available_dates_8c.html#a5aceb34140821f9bd67fa026bb4b7596">underLowerLimit</a></div><div class="ttdeci">int underLowerLimit(const searchParameters *p, const tm *head_tm)</div><div class="ttdoc">Controls if head_tm is under lowerLimit.</div><div class="ttdef"><b>Definition:</b> <a href="find_available_dates_8c_source.html#l00408">findAvailableDates.c:408</a></div></div>
 <div class="ttc" id="afind_available_dates_8c_html_a20519a78c55349fa60cd817777880cd6"><div class="ttname"><a href="find_available_dates_8c.html#a20519a78c55349fa60cd817777880cd6">endOfLine</a></div><div class="ttdeci">int endOfLine(const searchParameters *p, time_t head)</div><div class="ttdoc">Controls that head has not gone over the final time, called endOfLine, where an event could be found ...</div><div class="ttdef"><b>Definition:</b> <a href="find_available_dates_8c_source.html#l00230">findAvailableDates.c:230</a></div></div>
-<div class="ttc" id="afind_available_dates_8c_html_accfe4782f0b7436be81d3490a6e1ed6e"><div class="ttname"><a href="find_available_dates_8c.html#accfe4782f0b7436be81d3490a6e1ed6e">eventStartsLater</a></div><div class="ttdeci">int eventStartsLater(const event *event1, const event *event2)</div><div class="ttdoc">Determines if event1 ends later than event2.</div><div class="ttdef"><b>Definition:</b> <a href="find_available_dates_8c_source.html#l00091">findAvailableDates.c:91</a></div></div>
 <div class="ttc" id="astructevent_link_html"><div class="ttname"><a href="structevent_link.html">eventLink</a></div><div class="ttdoc">Struct for a linked list of event structs.</div><div class="ttdef"><b>Definition:</b> <a href="sp1s_lib_8h_source.html#l00037">sp1sLib.h:37</a></div></div>
 <div class="ttc" id="astructsearch_parameters_html_a473d2beffe3e98ac4784c466bb12cc10"><div class="ttname"><a href="structsearch_parameters.html#a473d2beffe3e98ac4784c466bb12cc10">searchParameters::eventLen</a></div><div class="ttdeci">int eventLen</div><div class="ttdef"><b>Definition:</b> <a href="sp1s_lib_8h_source.html#l00065">sp1sLib.h:65</a></div></div>
 <div class="ttc" id="afind_available_dates_8c_html_a1f0dc602e6567df608e32b8987abd88d"><div class="ttname"><a href="find_available_dates_8c.html#a1f0dc602e6567df608e32b8987abd88d">setHeadToNextLL</a></div><div class="ttdeci">void setHeadToNextLL(const searchParameters *p, time_t *head)</div><div class="ttdoc">Sets head to be the next lowerLimit.</div><div class="ttdef"><b>Definition:</b> <a href="find_available_dates_8c_source.html#l00372">findAvailableDates.c:372</a></div></div>
@@ -1494,6 +1493,7 @@ Variables</h2></td></tr>
 <div class="ttc" id="asp1s_lib_8h_html_a703000715c95eae14f731e17938b6aeb"><div class="ttname"><a href="sp1s_lib_8h.html#a703000715c95eae14f731e17938b6aeb">MIN_TO_SEC</a></div><div class="ttdeci">#define MIN_TO_SEC</div><div class="ttdef"><b>Definition:</b> <a href="sp1s_lib_8h_source.html#l00012">sp1sLib.h:12</a></div></div>
 <div class="ttc" id="astructevent_html_acec9ce2df15222151ad66fcb1d74eb9f"><div class="ttname"><a href="structevent.html#acec9ce2df15222151ad66fcb1d74eb9f">event::priority</a></div><div class="ttdeci">int priority</div><div class="ttdef"><b>Definition:</b> <a href="sp1s_lib_8h_source.html#l00029">sp1sLib.h:29</a></div></div>
 <div class="ttc" id="astructsearch_parameters_html_a220e219464225f2dea062927ee503c1d"><div class="ttname"><a href="structsearch_parameters.html#a220e219464225f2dea062927ee503c1d">searchParameters::endDate</a></div><div class="ttdeci">tm endDate</div><div class="ttdef"><b>Definition:</b> <a href="sp1s_lib_8h_source.html#l00068">sp1sLib.h:68</a></div></div>
+<div class="ttc" id="afind_available_dates_8c_html_a0789c9aec704609d94728e36cf353885"><div class="ttname"><a href="find_available_dates_8c.html#a0789c9aec704609d94728e36cf353885">eventStartsEarlier</a></div><div class="ttdeci">int eventStartsEarlier(const event *event1, const event *event2)</div><div class="ttdoc">Determines if event1 starts earlier than event2.</div><div class="ttdef"><b>Definition:</b> <a href="find_available_dates_8c_source.html#l00091">findAvailableDates.c:91</a></div></div>
 <div class="ttc" id="asp1s_lib_8h_html_aab0ab1f349b72458960ec97032d6bab1aa2b1812925aaddb73ee4fb1bca0351c7"><div class="ttname"><a href="sp1s_lib_8h.html#aab0ab1f349b72458960ec97032d6bab1aa2b1812925aaddb73ee4fb1bca0351c7">look</a></div><div class="ttdeci">@ look</div><div class="ttdef"><b>Definition:</b> <a href="sp1s_lib_8h_source.html#l00092">sp1sLib.h:92</a></div></div>
 <div class="ttc" id="asp1s_lib_8h_html_aab0ab1f349b72458960ec97032d6bab1a441cf6c79172538fcc82d476a881cf9d"><div class="ttname"><a href="sp1s_lib_8h.html#aab0ab1f349b72458960ec97032d6bab1a441cf6c79172538fcc82d476a881cf9d">eol</a></div><div class="ttdeci">@ eol</div><div class="ttdef"><b>Definition:</b> <a href="sp1s_lib_8h_source.html#l00091">sp1sLib.h:91</a></div></div>
 <div class="ttc" id="afind_available_dates_8c_html_ae79ef7da07333eee22fb46dc722b4e14"><div class="ttname"><a href="find_available_dates_8c.html#ae79ef7da07333eee22fb46dc722b4e14">goToLowerLimitNextDay</a></div><div class="ttdeci">void goToLowerLimitNextDay(time_t head, const searchParameters *p, tm *head_tm)</div><div class="ttdoc">Sets head_tm to lowerLimit the next day.</div><div class="ttdef"><b>Definition:</b> <a href="find_available_dates_8c_source.html#l00426">findAvailableDates.c:426</a></div></div>
