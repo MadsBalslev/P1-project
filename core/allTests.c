@@ -558,7 +558,54 @@ void test2_eventStartsEarlier(CuTest *tc) {
 
     actual = eventStartsEarlier(&input1, &input2);
     CuAssertIntEquals(tc, expected, actual);
+}
 
+void test1_getStartOfLine(CuTest *tc) {
+    searchParameters input1;
+    time_t actual;
+    time_t expected;
+    tm expected_tm = INIT_TM;
+
+    expected_tm.tm_min   =  15;
+    expected_tm.tm_hour  =  06;
+    expected_tm.tm_mday  =  05;
+    expected_tm.tm_mon   =  03;
+    expected_tm.tm_year  =  2020 - EPOCH;
+
+    input1.lowerLimit.tm_min  =  15;
+    input1.lowerLimit.tm_hour =  06;
+    input1.startDate.tm_mday  =  05;
+    input1.startDate.tm_mon   =  03;
+    input1.startDate.tm_year  =  2020 - EPOCH;
+
+    expected = mktime(&expected_tm); 
+    actual = getStartOfLine(&input1);
+
+    CuAssertIntEquals(tc, expected, actual);
+}
+
+void test1_getEndOfLine(CuTest *tc) {
+    searchParameters input1;
+    time_t actual;
+    time_t expected;
+    tm expected_tm = INIT_TM;
+
+    expected_tm.tm_min   =  27;
+    expected_tm.tm_hour  =  12;
+    expected_tm.tm_mday  =  23;
+    expected_tm.tm_mon   =  05;
+    expected_tm.tm_year  =  2019 - EPOCH;
+
+    input1.upperLimit.tm_min  =  27;
+    input1.upperLimit.tm_hour =  12;
+    input1.endDate.tm_mday    =  23;
+    input1.endDate.tm_mon     =  05;
+    input1.endDate.tm_year    =  2019 - EPOCH;
+
+    expected = mktime(&expected_tm); 
+    actual = getEndOfLine(&input1);
+
+    CuAssertIntEquals(tc, expected, actual);   
 }
 
 CuSuite *suite_findAvaliableDates(void) {
@@ -584,6 +631,9 @@ CuSuite *suite_findAvaliableDates(void) {
     SUITE_ADD_TEST(suite, test3_goToLowerLimitNextDay);
     SUITE_ADD_TEST(suite, test1_eventStartsEarlier);
     SUITE_ADD_TEST(suite, test2_goToLowerLimitNextDay);
+    SUITE_ADD_TEST(suite, test1_getStartOfLine);
+    SUITE_ADD_TEST(suite, test1_getEndOfLine);
+    
     
     return suite;
 }
