@@ -396,6 +396,126 @@ void test2_canSwallow(CuTest *tc) {
     CuAssertIntEquals(tc, expected, actual);    
 }
 
+void test1_goToLowerLimitThisDay(CuTest *tc) {
+    searchParameters input1;
+    tm input2;
+    int expected1;
+    int expected2;
+
+    input1.lowerLimit.tm_min  = 15;
+    input1.lowerLimit.tm_hour = 06;
+
+    input2.tm_min  = 00;
+    input2.tm_hour = 00;
+
+    expected1 = 15;
+    expected2 = 06;
+
+    goToLowerLimitThisDay(&input1, &input2);
+
+    CuAssertIntEquals(tc, expected1, input2.tm_min);
+    CuAssertIntEquals(tc, expected2, input2.tm_hour);
+}
+
+void test1_goToLowerLimitNextDay(CuTest *tc) {
+    time_t input1;
+    searchParameters input2;
+    tm input3;
+    int expected1 = 00;  
+    int expected2 = 15;
+    int expected3 = 06;
+    int expected4 = 01;
+    int expected5 = 00;
+    int expected6 = 2021 - EPOCH;
+
+    input2.lowerLimit.tm_min  = 15;
+    input2.lowerLimit.tm_hour = 06;
+
+    input3.tm_sec  = 00;
+    input3.tm_min  = 00;
+    input3.tm_hour = 00;
+    input3.tm_mday = 31;
+    input3.tm_mon  = 11;
+    input3.tm_year = 2020 - EPOCH;
+
+    input1 = mktime(&input3);
+
+    goToLowerLimitNextDay(input1, &input2, &input3);
+
+    CuAssertIntEquals(tc, expected1, input3.tm_sec);
+    CuAssertIntEquals(tc, expected2, input3.tm_min);
+    CuAssertIntEquals(tc, expected3, input3.tm_hour);
+    CuAssertIntEquals(tc, expected4, input3.tm_mday);
+    CuAssertIntEquals(tc, expected5, input3.tm_mon);
+    CuAssertIntEquals(tc, expected6, input3.tm_year);
+}
+
+void test2_goToLowerLimitNextDay(CuTest *tc) {
+    time_t input1;
+    searchParameters input2;
+    tm input3;
+    int expected1 = 00;  
+    int expected2 = 15;
+    int expected3 = 06;
+    int expected4 = 01;
+    int expected5 = 02;
+    int expected6 = 2003 - EPOCH;
+
+    input2.lowerLimit.tm_min  = 15;
+    input2.lowerLimit.tm_hour = 06;
+
+    input3.tm_sec  = 00;
+    input3.tm_min  = 00;
+    input3.tm_hour = 00;
+    input3.tm_mday = 28;
+    input3.tm_mon  = 01;
+    input3.tm_year = 2003 - EPOCH;
+
+    input1 = mktime(&input3);
+
+    goToLowerLimitNextDay(input1, &input2, &input3);
+
+    CuAssertIntEquals(tc, expected1, input3.tm_sec);
+    CuAssertIntEquals(tc, expected2, input3.tm_min);
+    CuAssertIntEquals(tc, expected3, input3.tm_hour);
+    CuAssertIntEquals(tc, expected4, input3.tm_mday);
+    CuAssertIntEquals(tc, expected5, input3.tm_mon);
+    CuAssertIntEquals(tc, expected6, input3.tm_year);
+}
+
+void test3_goToLowerLimitNextDay(CuTest *tc) {
+    time_t input1;
+    searchParameters input2;
+    tm input3;
+    int expected1 = 00;  
+    int expected2 = 15;
+    int expected3 = 06;
+    int expected4 = 01;
+    int expected5 = 02;
+    int expected6 = 2004 - EPOCH;
+
+    input2.lowerLimit.tm_min  = 15;
+    input2.lowerLimit.tm_hour = 06;
+
+    input3.tm_sec  = 00;
+    input3.tm_min  = 00;
+    input3.tm_hour = 00;
+    input3.tm_mday = 29;
+    input3.tm_mon  = 01;
+    input3.tm_year = 2004 - EPOCH;
+
+    input1 = mktime(&input3);
+
+    goToLowerLimitNextDay(input1, &input2, &input3);
+
+    CuAssertIntEquals(tc, expected1, input3.tm_sec);
+    CuAssertIntEquals(tc, expected2, input3.tm_min);
+    CuAssertIntEquals(tc, expected3, input3.tm_hour);
+    CuAssertIntEquals(tc, expected4, input3.tm_mday);
+    CuAssertIntEquals(tc, expected5, input3.tm_mon);
+    CuAssertIntEquals(tc, expected6, input3.tm_year);
+}
+
 CuSuite *suite_findAvaliableDates(void) {
     CuSuite *suite = CuSuiteNew();
     SUITE_ADD_TEST(suite, test1_underLowerLimit);
@@ -413,6 +533,10 @@ CuSuite *suite_findAvaliableDates(void) {
     SUITE_ADD_TEST(suite, test2_endOfLine);
     SUITE_ADD_TEST(suite, test1_canSwallow);
     SUITE_ADD_TEST(suite, test2_canSwallow);
+    SUITE_ADD_TEST(suite, test1_goToLowerLimitThisDay);
+    SUITE_ADD_TEST(suite, test1_goToLowerLimitNextDay);
+    SUITE_ADD_TEST(suite, test2_goToLowerLimitNextDay);
+    SUITE_ADD_TEST(suite, test3_goToLowerLimitNextDay);
     return suite;
 }
 
