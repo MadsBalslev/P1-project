@@ -132,12 +132,22 @@ void printEventPtrArray(event *allEvents[], int n) {
 }
 
 /**
- * @brief 
- * 
- * @param p 
- * @param arrLen 
- * @param allEvents 
- * @return tm 
+ * @brief Looks for a free time slot, defined by p, in a sorted array of pointers to events.
+ *
+ * Iterating over allEvents, this functions looks a timeslot of lenght  eventLen + buffer * 2
+ * (in minutes). The function will keep looking until:
+ * - End of list is reached           (i < arrLen && allEvents[i] != NULL) and
+ * - A date is found                  (dateFound.tm_year < 0)
+ * - head has not gone over endOfLine (dateFound.tm_year != eol)
+ *
+ * @param p Search parameters, controls what timeslot loofForFreeSlot should look for, and
+ * where it should look.
+ * @param arrLen length of array allEvents
+ * @param allEvents sorted array of pointers
+ * @return If a date is found that date is returned as a tm structure. Else returns a date
+ * where .tm_year < 0.
+ * @pre enum lookForFreeSlotStatus { eol = -1, endOfLine  look = -2, redo = -3 }; should be in
+ * header. allEvents should be sorted in acending order by starting date.
  */
 tm lookForFreeSlot(const searchParameters *p, int arrLen, event *allEvents[]) {
     time_t head = getStartOfLine(p);
@@ -167,18 +177,19 @@ tm lookForFreeSlot(const searchParameters *p, int arrLen, event *allEvents[]) {
 
 /**
   * @brief 
-  * 
+  *
   * @param p 
   * @param event 
   * @param head 
-  * @return tm
+  * @return If a date is found that date is returned as a tm structure. Else returns a date
+  * where .tm_year < 0.  
   * @pre enum look should be defined as -2.  
   */
 tm lookForFreeSlotSingle(const searchParameters *p, event *event, time_t *head) {
     time_t eventStartTimeUnix = mktime(&event->startTime);
     time_t eventEndTimeUnix = mktime(&event->endTime);
     tm dateFound;
-    dateFound.tm_year = look; /* <--- This might be redundant  */
+    dateFound.tm_year = look;
 
     if (endOfLine(p, *head)) {
         if (DEBUG) printf("endOfLine\n");
