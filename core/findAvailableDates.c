@@ -383,10 +383,10 @@ void goToLowerLimitNextDay(time_t head, const searchParameters *p, tm *head_tm) 
 }
 
 /**
- * @brief 
+ * @brief Sets head_tm to lowerLimit same day.
  * 
- * @param p 
- * @param head_tm 
+ * @param p Search paramters, where lowerLimit is defined.
+ * @param head_tm tm structure to change.
  */
 void goToLowerLimitThisDay(const searchParameters *p, tm *head_tm) {
     head_tm->tm_min = p->lowerLimit.tm_min;
