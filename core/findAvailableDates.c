@@ -375,6 +375,7 @@ int underLowerLimit(const searchParameters *p, const tm *head_tm) {
  * @param head head_tm in unix time
  * @param p Search paramters, where lowerLimit is defined.
  * @param head_tm tm structure to change.
+ * @pre UNIX_24H should be #defined as 60 * 60 * 24 or 86400.
  */
 void goToLowerLimitNextDay(time_t head, const searchParameters *p, tm *head_tm) {
     head += UNIX_24H;
@@ -397,7 +398,8 @@ void goToLowerLimitThisDay(const searchParameters *p, tm *head_tm) {
  * @brief Finds the earliest time an event can take place, according to p.
  * 
  * @param p Search parameters 
- * @return Latest time an event can take place as a time_t. 
+ * @return Latest time an event can take place as a time_t.
+ * @pre INIT_TM should be #defined as { 0, 0, 0, 1, 0, 0, 0, 0, -1 }.  
  */
 time_t getStartOfLine(const searchParameters *p) {
     tm time_tm = INIT_TM;
@@ -418,7 +420,8 @@ time_t getStartOfLine(const searchParameters *p) {
  * @brief Finds the latest time an event can take place, according to p.
  * 
  * @param p Search parameters 
- * @return Latest time an event can take place as a time_t. 
+ * @return Latest time an event can take place as a time_t.
+ * @pre INIT_TM should be #defined as { 0, 0, 0, 1, 0, 0, 0, 0, -1 }. 
  */
 time_t getEndOfLine(const searchParameters *p) {
     tm time_tm = INIT_TM;
@@ -439,6 +442,7 @@ time_t getEndOfLine(const searchParameters *p) {
  * @brief Converts a time_t to a tm structure, prints the tm structure.
  * 
  * @param time time_t to print.
+ * @pre EPOCH should be #defined as 1900.
  */
 void print_time_t(time_t time) {
     tm *time_tm = localtime(&time);
