@@ -1,5 +1,7 @@
 # P1 - Møder
 
+![SP1S Logo](https://raw.githubusercontent.com/MadsBalslev/P1-project/main/docs/cooltext.gif?token=AB2OBDOLTQBD4BGRX66EOUS74GWZC)
+
 Projekt om mødeplanlægning på 1. semester af Softwarestudiet 2020
 
 ## Beskrivelse
@@ -22,8 +24,8 @@ ToDo liste:
   - [x] Kan parse indlæste filer og lagre det
     - [x] Den skal udfra en .ics event description kunne genkende prioriteringsniveauet. Som er formateret som `$px$` hvor x er en int. 
     - [x] Lagrer hver kalender for sig
-- [ ] Finde et hul i kalendrene indenfor et tidsrum/periode inputtet af brugeren og returnere dette til brugeren
-- [ ] Hvis ikke det er muligt at finde et hul, skal programmet kunne rykke rundt på events baseret på prioritet og derved finde et tidspunkt.
+- [x] Finde et hul i kalendrene indenfor et tidsrum/periode inputtet af brugeren og returnere dette til brugeren
+  - [x] Hvis ikke det er muligt at finde et hul, skal programmet kunne rykke rundt på events baseret på prioritet og derved finde et tidspunkt.
 
 ### Stretch goals
 - [ ] Kan generere nye .ics filer, som brugeren bare kan importere direkte ind i sin kalender
