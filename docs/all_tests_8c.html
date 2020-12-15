@@ -738,7 +738,7 @@ Variables</h2></td></tr>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keywordtype">int</span> actual;</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keywordtype">int</span> expected;</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keywordtype">int</span> input1 = 4;</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keywordtype">char</span> *input2[] = {<span class="stringliteral">&quot;a&quot;</span>, <span class="stringliteral">&quot;.\\sample-ics-files\\cal1.ics&quot;</span>, <span class="stringliteral">&quot;.\\sample-ics-files\\cal2.ics&quot;</span>, <span class="stringliteral">&quot;.\\sample-ics-files\\cal3.ics&quot;</span>};</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keywordtype">char</span> *input2[] = {<span class="stringliteral">&quot;a&quot;</span>, <span class="stringliteral">&quot;./sample-ics-files/cal1.ics&quot;</span>, <span class="stringliteral">&quot;./sample-ics-files/cal2.ics&quot;</span>, <span class="stringliteral">&quot;./sample-ics-files/cal3.ics&quot;</span>};</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <a class="code" href="structcalendar_suite.html">calendarSuite</a> input3;</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <a class="code" href="main_8c.html#a3abe2f53fd23c4260ac49df136253456">mallocCalendarSuite</a>(3, &amp;input3);</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    actual = <a class="code" href="get_calendar_suite_8c.html#a8cdfe1ffd4164801c99708ba7075b230">getCalendarSuiteGetFile</a>(input1, input2, input3.<a class="code" href="structcalendar_suite.html#a67026a93f07ea5de6989fb1d50b490e3">calPtrArray</a>);</div>
@@ -771,7 +771,7 @@ Variables</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="all_tests_8c_source.html#l00081">81</a> of file <a class="el" href="all_tests_8c_source.html">allTests.c</a>.</p>
 <div class="fragment"><div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;                                                     {</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="keywordtype">char</span> input1[] = <span class="stringliteral">&quot;.\\sample-ics-files\\cal1.ics&quot;</span>;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="keywordtype">char</span> input1[] = <span class="stringliteral">&quot;./sample-ics-files/cal1.ics&quot;</span>;</div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <a class="code" href="structcalendar.html">calendar</a> input2;</div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <span class="keywordtype">int</span> actual = <a class="code" href="get_calendar_suite_8c.html#abde63f2a2f79d3e18a2df3d131a051a0">getCalendarSuiteGetFileSingle</a>(input1, &amp;input2);</div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <span class="keywordtype">int</span> expected = 1;</div>
@@ -1358,7 +1358,7 @@ Variables</h2></td></tr>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keywordtype">int</span> actual;</div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="keywordtype">int</span> expected;</div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="keywordtype">int</span> input1 = 4;</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="keywordtype">char</span> *input2[] = {<span class="stringliteral">&quot;a&quot;</span>, <span class="stringliteral">&quot;.\\sample-ics-files\\notAValidFileLocation.ics&quot;</span>, <span class="stringliteral">&quot;.\\sample-ics-files\\cal2.ics&quot;</span>, <span class="stringliteral">&quot;.\\sample-ics-files\\cal3.ics&quot;</span>};</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="keywordtype">char</span> *input2[] = {<span class="stringliteral">&quot;a&quot;</span>, <span class="stringliteral">&quot;./sample-ics-files/notAValidFileLocation.ics&quot;</span>, <span class="stringliteral">&quot;./sample-ics-files/cal2.ics&quot;</span>, <span class="stringliteral">&quot;./sample-ics-files/cal3.ics&quot;</span>};</div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <a class="code" href="structcalendar_suite.html">calendarSuite</a> input3;</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <a class="code" href="main_8c.html#a3abe2f53fd23c4260ac49df136253456">mallocCalendarSuite</a>(3, &amp;input3);</div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    actual = <a class="code" href="get_calendar_suite_8c.html#a8cdfe1ffd4164801c99708ba7075b230">getCalendarSuiteGetFile</a>(input1, input2, input3.<a class="code" href="structcalendar_suite.html#a67026a93f07ea5de6989fb1d50b490e3">calPtrArray</a>);</div>
@@ -1391,7 +1391,7 @@ Variables</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="all_tests_8c_source.html#l00089">89</a> of file <a class="el" href="all_tests_8c_source.html">allTests.c</a>.</p>
 <div class="fragment"><div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;                                                     {</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <span class="keywordtype">char</span> input1[] = <span class="stringliteral">&quot;.\\sample-ics-files\\notAValidFileLocation.ics&quot;</span>;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <span class="keywordtype">char</span> input1[] = <span class="stringliteral">&quot;./sample-ics-files/notAValidFileLocation.ics&quot;</span>;</div>
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <a class="code" href="structcalendar.html">calendar</a> input2;</div>
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <span class="keywordtype">int</span> actual = <a class="code" href="get_calendar_suite_8c.html#abde63f2a2f79d3e18a2df3d131a051a0">getCalendarSuiteGetFileSingle</a>(input1, &amp;input2);</div>
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    <span class="keywordtype">int</span> expected = 0;</div>
