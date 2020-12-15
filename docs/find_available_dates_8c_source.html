@@ -217,7 +217,7 @@ $(function() {
 <div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;}</div>
 <div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160; </div>
 <div class="line"><a name="l00267"></a><span class="lineno"><a class="line" href="sp1s_lib_8h.html#aeebd79198c6b56bd5a542e8e266c6546">  267</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="find_available_dates_8c.html#aeebd79198c6b56bd5a542e8e266c6546">canSwallow</a>(time_t eventStartTimeUnix, time_t eventEndTimeUnix, time_t head) {</div>
-<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;    <span class="keywordflow">return</span> (head &gt; eventEndTimeUnix) &amp;&amp; (head &gt; eventStartTimeUnix);</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;    <span class="keywordflow">return</span> (head &gt;= eventEndTimeUnix) &amp;&amp; (head &gt; eventStartTimeUnix);</div>
 <div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;}</div>
 <div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160; </div>
 <div class="line"><a name="l00283"></a><span class="lineno"><a class="line" href="sp1s_lib_8h.html#ab714ca969e64ccfe03597d2f06b28021">  283</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="find_available_dates_8c.html#ab714ca969e64ccfe03597d2f06b28021">stuck</a>(time_t eventStartTimeUnix, time_t head, <span class="keyword">const</span> <a class="code" href="structsearch_parameters.html">searchParameters</a> *p) {</div>

@@ -867,7 +867,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Controls if head is considered able to swallow event. </p>
-<p>Head is considered able to swallow event if: head is larger than both eventStartTimeUnix and eventEndTimeUnix.</p>
+<p>Head is considered able to swallow event if: head is larger than eventStartTimeUnix and head is equal to or larger than eventEndTimeUnix.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">eventStartTimeUnix</td><td>Start of event in unix time. </td></tr>
@@ -881,7 +881,7 @@ Functions</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="find_available_dates_8c_source.html#l00267">267</a> of file <a class="el" href="find_available_dates_8c_source.html">findAvailableDates.c</a>.</p>
 <div class="fragment"><div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;                                                                                {</div>
-<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;    <span class="keywordflow">return</span> (head &gt; eventEndTimeUnix) &amp;&amp; (head &gt; eventStartTimeUnix);</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;    <span class="keywordflow">return</span> (head &gt;= eventEndTimeUnix) &amp;&amp; (head &gt; eventStartTimeUnix);</div>
 <div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;}</div>
 </div><!-- fragment -->
 <p class="reference">Referenced by <a class="el" href="find_available_dates_8c_source.html#l00199">lookForFreeSlotSingle()</a>, <a class="el" href="all_tests_8c_source.html#l00365">test1_canSwallow()</a>, and <a class="el" href="all_tests_8c_source.html#l00382">test2_canSwallow()</a>.</p>
