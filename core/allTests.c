@@ -56,7 +56,7 @@ void test1_getCalendarSuiteGetFile(CuTest *tc) {
     int actual;
     int expected;
     int input1 = 4;
-    char *input2[] = {"a", ".\\sample-ics-files\\cal1.ics", ".\\sample-ics-files\\cal2.ics", ".\\sample-ics-files\\cal3.ics"};
+    char *input2[] = {"a", "./sample-ics-files/cal1.ics", "./sample-ics-files/cal2.ics", "./sample-ics-files/cal3.ics"};
     calendarSuite input3;
     mallocCalendarSuite(3, &input3);
     actual = getCalendarSuiteGetFile(input1, input2, input3.calPtrArray);
@@ -69,7 +69,7 @@ void test2_getCalendarSuiteGetFile(CuTest *tc) {
     int actual;
     int expected;
     int input1 = 4;
-    char *input2[] = {"a", ".\\sample-ics-files\\notAValidFileLocation.ics", ".\\sample-ics-files\\cal2.ics", ".\\sample-ics-files\\cal3.ics"};
+    char *input2[] = {"a", "./sample-ics-files/notAValidFileLocation.ics", "./sample-ics-files/cal2.ics", "./sample-ics-files/cal3.ics"};
     calendarSuite input3;
     mallocCalendarSuite(3, &input3);
     actual = getCalendarSuiteGetFile(input1, input2, input3.calPtrArray);
@@ -79,7 +79,7 @@ void test2_getCalendarSuiteGetFile(CuTest *tc) {
 }
 
 void test1_getCalendarSuiteGetFileSingle(CuTest *tc) {
-    char input1[] = ".\\sample-ics-files\\cal1.ics";
+    char input1[] = "./sample-ics-files/cal1.ics";
     calendar input2;
     int actual = getCalendarSuiteGetFileSingle(input1, &input2);
     int expected = 1;
@@ -87,7 +87,7 @@ void test1_getCalendarSuiteGetFileSingle(CuTest *tc) {
 }
 
 void test2_getCalendarSuiteGetFileSingle(CuTest *tc) {
-    char input1[] = ".\\sample-ics-files\\notAValidFileLocation.ics";
+    char input1[] = "./sample-ics-files/notAValidFileLocation.ics";
     calendar input2;
     int actual = getCalendarSuiteGetFileSingle(input1, &input2);
     int expected = 0;
