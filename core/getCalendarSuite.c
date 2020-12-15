@@ -121,10 +121,8 @@ int getCalendarSuiteGetDataSingle(calendar *calendar) {
             }
 
             if (newEvent->priority < 0) {
-                printf("yip");
                 newEvent->priority = 0; 
             } else if (newEvent->priority > MAX_PRIORITY) {
-                printf("yap");
                 newEvent->priority = MAX_PRIORITY;
             }
 
