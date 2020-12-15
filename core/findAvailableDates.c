@@ -256,8 +256,8 @@ int canElongate(time_t eventStartTimeUnix, time_t eventEndTimeUnix, time_t head,
 /**
  * @brief Controls if head is considered able to swallow event.
  *
- * Head is considered able to swallow event if: head is larger than both eventStartTimeUnix
- * and eventEndTimeUnix.
+ * Head is considered able to swallow event if: head is larger than eventStartTimeUnix and
+ * head is equal to or larger than eventEndTimeUnix.
  *
  * @param eventStartTimeUnix Start of event in unix time.
  * @param eventEndTimeUnix End of event in unix time. 
@@ -265,7 +265,7 @@ int canElongate(time_t eventStartTimeUnix, time_t eventEndTimeUnix, time_t head,
  * @return 1 if head is able to swallow, else 0.  
  */
 int canSwallow(time_t eventStartTimeUnix, time_t eventEndTimeUnix, time_t head) {
-    return (head > eventEndTimeUnix) && (head > eventStartTimeUnix);
+    return (head >= eventEndTimeUnix) && (head > eventStartTimeUnix);
 }
 
 /**
