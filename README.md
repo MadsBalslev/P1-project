@@ -47,7 +47,7 @@ Dokumentatíon af de forskellige funktioner kan læses [her](https://madsbalslev
 
 * cd ind i `/core` directory
 * kør makefilen ved at skrive `make` i terminalen
-* Kør programmet ved at skrive `a [sti til cal1] [sti til cal2] [sti til caln]`
+* Kør programmet ved at skrive `./a [sti til cal1] [sti til cal2] [sti til caln]`
 
 ## Authors
 
