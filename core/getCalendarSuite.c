@@ -1,15 +1,15 @@
 #include "sp1sLib.h"
 
 /**
- * @brief Opens and stores file-pointer / file-path in calPtrArray.
+ * @brief Opens and stores file-pointer and file-path in calPtrArray.
  * 
  * Goes through argc number of arguments argv, if the argv is an *.ics file tries to open the
  * file. The file-path, and file-pointer is stored in calPtrArray, for each *.ics file.
  * 
- * @param argc number of arguments
- * @param argv arguments
- * @param calPtrArray output parameter
- * @return 1 if all file locations where valid, else 0 
+ * @param argc Number of arguments.
+ * @param argv Arguments.
+ * @param calPtrArray Output parameter.
+ * @return 1 if all file locations where valid, else 0. 
  */
 int getCalendarSuiteGetFile(int argc, char *argv[], calendar *calPtrArray[]) {
     int i = 1;
@@ -30,9 +30,9 @@ int getCalendarSuiteGetFile(int argc, char *argv[], calendar *calPtrArray[]) {
 /**
  * @brief Tries to open arg as a file, stores the file-path and file-pointer in calendar.
  * 
- * @param arg file-path to an *.ics file
- * @param calendar Output parameter, where file-path and file-pointer should be stored
- * @return 1 if file-path was valid, else 0 
+ * @param arg File-path to an *.ics file.
+ * @param calendar Output parameter, where file-path and file-pointer should be stored.
+ * @return 1 if file-path was valid, else 0. 
  */
 int getCalendarSuiteGetFileSingle(char arg[], calendar *calendar) {
     int validFileLocation = 0;
@@ -192,21 +192,3 @@ eventLink *mallocEventLink(event *event, eventLink *pointer) {
 
     return newLink;
 }
-
-/*                    ____________________
- *                   |                   |
- *                   |   -------------   |   
- *                   |   FUNCTION JAIL   |
- *                   |   -------------   | 
- *                   |___________________|
- *                      |             |
- *                   #####################
- *                   ##                 ##
- *                k  ##                 ##       k
- *             O  |  ## free(newEvent); ##    O  |
- *           ()Y==o  ##                 ##  ()Y==o
- *            /_\ |  ##                 ##   /_\ |
- *            _W_ |  #####################   _W_ |
- *                         LOOOOL
- * 
- */
