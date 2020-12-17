@@ -5,7 +5,7 @@ extern int DEBUG;
  * @brief Controls what a command line argument is considered, and executes options if command
  * line argument is an option. 
  *
- * @param arg argument to be controlled
+ * @param arg Argument to be controlled.
  * @return enum icsFile if the argument is an *.ics file, enum option if the argument is an
  * option, else enum invalid. 
  */
@@ -23,8 +23,8 @@ int doArg(char arg[]) {
 /**
  * @brief Controls if a string is considered an option from the command line.
  * 
- * @param arg string to be controlled
- * @return 1 if it is an option, else 0 
+ * @param arg String to be controlled.
+ * @return 1 if it is an option, else 0. 
  */
 int isOption(char arg[]) {
     if (!(strncmp(arg, "--", 2) == 0)) {
@@ -43,8 +43,8 @@ int isOption(char arg[]) {
 /**
  * @brief Controls that a string ends with ".ics".
  * 
- * @param arg string to control
- * @return 1 if it does end with ".ics", else 0
+ * @param arg String to control
+ * @return 1 if it does end with ".ics", else 0.
  */
 int isIcsFile(char arg[]) {
     if ((strlen(arg)) < 5) {
@@ -57,7 +57,7 @@ int isIcsFile(char arg[]) {
 /**
  * @brief Executes an option.
  * 
- * @param arg string of option to be executed
+ * @param arg String of option to be executed.
  */
 void doOption(char arg[]) {
     if (strncmp(arg, "--test", 6) == 0) {
