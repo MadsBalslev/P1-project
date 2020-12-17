@@ -43,7 +43,7 @@ int isOption(char arg[]) {
 /**
  * @brief Controls that a string ends with ".ics".
  * 
- * @param arg String to control
+ * @param arg String to control.
  * @return 1 if it does end with ".ics", else 0.
  */
 int isIcsFile(char arg[]) {
