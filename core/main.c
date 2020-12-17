@@ -3,10 +3,11 @@ int DEBUG = 0;
 
 /**
  * @brief This is where the magic happens 🤖
- * 
- * @param argc Amount of arguments provided as a command line input including the program itself
- * @param argv An array of all command line arguments including the program itself 
- * @return int The exit code of the program
+ *
+ * @param argc Amount of arguments provided as a command line input including the program
+ * itself.
+ * @param argv An array of all command line arguments including the program itself.
+ * @return The exit code of the program.
  */
 int main(int argc, char *argv[]) {
     int foundDatesByLooking = 0;
@@ -34,8 +35,8 @@ int main(int argc, char *argv[]) {
  * All arguments are considered valid if they are either an *.ics file location or an option,
  * and when there are more than two arguments.
  *
- * @param argc number of arguments
- * @param argv array of argument strings
+ * @param argc Number of arguments.
+ * @param argv Array of argument strings.
  */
 int ctrlAndDoArgs(int argc, char *argv[]) {
     int i = 1;
@@ -66,8 +67,8 @@ int ctrlAndDoArgs(int argc, char *argv[]) {
  * 
  * Terminates the program if it fails to allocate memory.
  * 
- * @param n length of array
- * @param calendarSuite output parameter, calendarSuite to be allocated memory
+ * @param n length of array.
+ * @param[out] calendarSuite CalendarSuite to be allocated memory.
  */
 void mallocCalendarSuite(int n, calendarSuite *calendarSuite) {
     int i = 0;
