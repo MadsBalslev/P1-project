@@ -7,6 +7,10 @@ Projekt om mødeplanlægning på 1. semester af Softwarestudiet 2020
 Programmet har fået sit navn, SP1S, da teksten man skriver for at beskrive prioritet, $P1$, minder lidt om dette, når man giver det en prioritet på 1.
 
 ## Beskrivelse
+Programmet her, kan bruges til at finde fælles huller i flere kalendre, til planlægning af møder. Dette gør programmet ved at sammenligne `.ics`-filer, som en form for fil, der indeholder alt data fra en kalender.
+
+Såfremt det ikke er muligt for programmet at finde et fælles hul i kalendrene, som er stort nok til det møde man vil finde plads til, så har programmet også mulighed for at læse en evt. prioritet ud fra `DESCRIPTION`-feltet i `.ics`-filerne. Dette giver programmet mulighed for at se bort fra begivnheder i kalendrene, som er mindre vigtige end mødet der planlægges.
+
 ### Eksempel på prompt:
 
 ```sh
