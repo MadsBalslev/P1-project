@@ -46,7 +46,7 @@ int getEventLen(void) {
  * 
  * Input by user can not be under 0.
  * 
- * @return buffer entered.  
+ * @return Buffer entered.  
  */
 int getEventBuffer(void) {
     int eventBuffer = 0;
@@ -64,11 +64,11 @@ int getEventBuffer(void) {
  * @brief Get the Dates object
  * 
  * 
- * First we ask for a start date, and reuce the value by 1. We do this because tm_mon in the
+ * First we ask for a start date, and reduce the value by 1. We do this because tm_mon in the
  * tm struct, uses months after january, so if we want the event to start in february, the
- * input needs to be 1 because february is one month after january. We do this for the enddate
+ * input needs to be 1 because february is one month after january. We do this for the endDate
  * for the event as well. And to end it off we print the dates and confirm the start- and end
- * dates.
+ * dates, if DEBUG == 1.
  * 
  * @param startDate 
  * @param endDate 
@@ -110,7 +110,7 @@ void getDates(tm *startDate, tm *endDate) {
  * 
  * Here we ask how much the event can be moved witin the same day, so only hours and minutes.
  * We do this for both the upper- and lower limit. And at the end of the function we print,
- * and confirm the upper- and lower limit.
+ * and confirm the upper- and lower limit, if DEBUG == 1.
  * 
  * @param upperLimit 
  * @param lowerLimmit 
