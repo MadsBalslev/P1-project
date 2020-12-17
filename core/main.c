@@ -86,12 +86,12 @@ void mallocCalendarSuite(int n, calendarSuite *calendarSuite) {
 }
 
 /**
- * @brief 
+ * @brief Prompts user for search parameters, stores values in a.
  * 
  * Gets all of the search parameters and stores them in the struct.
  * It also prints out the priority and length of the event.
  * 
- * @param a 
+ * @param[out] a Where search parameters should be stored.
  */
 void getSearchParameters(searchParameters *a) {
     a->priority = getPriority();
@@ -118,9 +118,9 @@ void getSearchParameters(searchParameters *a) {
  * *.ics file paths, but all *.ics filepaths have to be valid, if this is not the case
  * function terminates program with an error message.
  *
- * @param argc number of arguments
- * @param argv arguments
- * @param[in, out] calendarSuite
+ * @param argc Number of arguments.
+ * @param argv Arguments.
+ * @param[in, out] calendarSuite suite where the calendar data should be stored.
  *
  * @warning This function does not control the validity of the data gotten from the *.ics
  * files. [errorHandling(!returnFlag, "!!!ERROR IN *.ICS FILE!!!");] does nothing at the
@@ -153,7 +153,7 @@ void getCalendarSuite(int argc, char *argv[], calendarSuite *calendarSuite) {
  * 5. The functions tries to find one avalible date, and prints the result of the search on
  *    screen.
  *
- * @param suite A pointer to a calendarSuite for the program to find a date in.
+ * @param[in, out] suite A pointer to a calendarSuite for the program to find a date in.
  * @param param A struct of search paramerters
  * @param searchMode Used to check if priority of param is used, or using default value
  * @return int Bool value telling if a possible date for event was found.
