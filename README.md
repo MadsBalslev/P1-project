@@ -4,48 +4,50 @@
 
 Projekt om mødeplanlægning på 1. semester af Softwarestudiet 2020
 
+Programmet har fået sit navn, SP1S, da teksten man skriver for at beskrive prioritet, $P1$, minder lidt om dette, når man giver det en prioritet på 1.
+
 ## Beskrivelse
 ### Eksempel på prompt:
 
 ```sh
-$ ./main.exe fil1.ics fil2.ics filn.ics
-$ Indtast ønskede længde for møde i minutter> 120
-$ Indtast to datoer mødet skal ligge imellem> 1/12/2020 7/12/2020
-$ Magic is happening...
-$ Mødet kan ligge den 4/12 klokken 12:30 - 14:30
+$ ./a ./sample-ics-files/cal6.ics ./sample-ics-files/cal7.ics
+$ Enter a priority for the event> 1
+$ Enter estimated length of the event in minutes> 60
+$ Enter how much buffer time should be in beginning and end of event in minutes> 10
+$ Enter the earliest date the event can take place in the format: dd/mm/yyyy> 04/01/2021
+$ Enter the latest date the event can take place in the format: dd/mm/yyyy> 10/01/2021
+$ Enter the earliest time the event can take place in the format: HH:MM>  08:00
+$ Enter the latest time the event can take place in the format: HH:MM>  16:00
+$ Free slot found at: 07/01/2021 08:10
 ```
-
-Programmet kan evt. læse DESCRIPTION tagget på hvert event i `.ics` filen og evt. kigge efter: `$P2$` i beskrivelsen som fortæller at eventet har en prioritet på 2
 
 ## Features
 
-ToDo liste:
+Feauture liste:
 - [x] Kan indlæse x antal .ics filer
-  - [x] Kan parse indlæste filer og lagre det
-    - [x] Den skal udfra en .ics event description kunne genkende prioriteringsniveauet. Som er formateret som `$px$` hvor x er en int. 
+  - [x] Kan parse indlæste filer og lagre det nødvendige information
+    - [x] Den skal udfra en .ics event description kunne genkende prioriteringsniveauet. Som er formateret som `$PX$` hvor X er en int. 
     - [x] Lagrer hver kalender for sig
-- [x] Finde et hul i kalendrene indenfor et tidsrum/periode inputtet af brugeren og returnere dette til brugeren
+- [x] Kan finde et hul i kalendrene indenfor et tidsrum/periode angivet af brugeren og returnerer det fundne hul
   - [x] Hvis ikke det er muligt at finde et hul, skal programmet kunne rykke rundt på events baseret på prioritet og derved finde et tidspunkt.
 
 ### Stretch goals
 - [ ] Kan generere nye .ics filer, som brugeren bare kan importere direkte ind i sin kalender
 
 ## Getting Started
-Read the docs [here](https://madsbalslev.github.io/P1-project/)
+Dokumentatíon af de forskellige funktioner kan læses [her](https://madsbalslev.github.io/P1-project/).
 
-### Dependencies
+### Opsætning
 
-* Er der noget man skal have installeret først?
+* Det er nødvendigt, for at kunne compile programmet, at man har [GCC](https://gcc.gnu.org/) installeret.
+* Man skal på forhånd have en eller flere `.ics`-filer (dem man vil finde et tidsrum i) gemt på sin computer.
+  * Vi har vedlagt nogle samplefiles som kan findes i mappen `./core/sample-ics-files`
 
-### Setup
+### Sådan kører du programmet:
 
-* Nogle ændringer man skal lave? Evt. hvordan man indlæser en fil fra sin kalender
-
-### Running the program
-
-* cd into `/core` direcotry
-* run makefile by writing `make` in the terminal
-* Run program by writing `a [path to cal1] [path to cal2] [path to caln]`
+* cd ind i `/core` directory
+* kør makefilen ved at skrive `make` i terminalen
+* Kør programmet ved at skrive `a [sti til cal1] [sti til cal2] [sti til caln]`
 
 ## Authors
 
@@ -58,7 +60,4 @@ Programmet er skrevet og udviklet af:
 - [Nicolai Kjøller Hansen](mailto:nkha20@student.aau.dk)
 - [Mads Balslev](mailto:mbalsl20@student.aau.dk)
 
-
-## Acknowledgments
-
-Ting / referencer vi har brugt som er værd at acknowledge
+Made with :heart: in Aalborg
