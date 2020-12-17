@@ -6,8 +6,8 @@ extern int DEBUG;
  * 
  * The sum is found by adding up all the sums found in suite->calPtrArray[i]->numOfEvents.
  * 
- * @param suite calendarSuite where sum of all events should be found
- * @return sum of all events in calendarSuite
+ * @param suite calendarSuite where sum of all events should be found.
+ * @return Sum of all events in calendarSuite.
  */
 int findSumAllEvents(const calendarSuite *suite) {
     int i = 0, sum = 0;
@@ -22,17 +22,17 @@ int findSumAllEvents(const calendarSuite *suite) {
 
 /**
  * @brief Iterates through all events from all calendar-files and adds them all to one big
- * array
+ * array.
  *
  * The function loops through all calendars and adds all the events to one array. An event
  * will only be added to the array if it has priority over the event we are finding an
  * avaliable slot for. 
  *
- * @param suite the suite of calendars to look through
- * @param eventPtrArray The array to put all events into
- * @param sumAllEvents The amount of events across all calendar files
+ * @param suite The suite of calendars to look through.
+ * @param eventPtrArray The array to put all events into.
+ * @param sumAllEvents The amount of events across all calendar files.
  * @param priority The priority of the event the user wants to find an avaliable time slot
- * for. Defaults to 1000
+ * for. Defaults to 1000.
  */
 void calSuiteToEventArray(const calendarSuite *suite, int sumAllEvents, int priority, event *eventPtrArray[]) {
     int i = 0, k;
@@ -56,8 +56,8 @@ void calSuiteToEventArray(const calendarSuite *suite, int sumAllEvents, int prio
 /**
  * @brief Compares two events to determine which event start the earliest.
  *
- * @param arg1 first event to be compared
- * @param arg2 second event to be compared
+ * @param arg1 First event to be compared.
+ * @param arg2 Second event to be compared.
  * @return 1 if the first event ends before the second, -1 if the second event ends before the
  * first, 0 if both events end at the same time. 
  */
@@ -83,10 +83,10 @@ int startTimeCmp(const void *arg1, const void *arg2) {
 /**
  * @brief Determines if event1 starts earlier than event2.
  *
- * @param event1 pointer to event structure
- * @param event2 pointer to event structure
- * @return int 1 if event1 ends later than event 2, 0 if event 2 ends later than event1 or
- * they end at the same time
+ * @param event1 Pointer to event structure.
+ * @param event2 Pointer to event structure.
+ * @return 1 if event1 ends later than event 2, 0 if event 2 ends later than event1 or
+ * they end at the same time.
  */
 int eventStartsEarlier(const event *event1, const event *event2) {
     if (event1->startTime.tm_year > event2->startTime.tm_year) { /* Check year */
@@ -117,10 +117,10 @@ int eventStartsEarlier(const event *event1, const event *event2) {
 }
 
 /**
- * @brief Prints all event data in a given array of pointer to events of length n.
+ * @brief Prints all event data in a given array of pointers to events of length n.
  * 
- * @param allEvents pointer to array of pointers to events
- * @param n length of array to be printed
+ * @param allEvents Array of pointers to events.
+ * @param n Length of array to be printed.
  */
 void printEventPtrArray(event *allEvents[], int n) {
     int i;
@@ -134,16 +134,16 @@ void printEventPtrArray(event *allEvents[], int n) {
 /**
  * @brief Looks for a free time slot, defined by p, in a sorted array of pointers to events.
  *
- * Iterating over allEvents, this functions looks a timeslot of lenght  eventLen + buffer * 2
- * (in minutes). The function will keep looking until:
- * - End of list is reached           (i < arrLen && allEvents[i] != NULL) and
+ * Iterating over allEvents, this functions looks for a timeslot of lenght eventLen + buffer *
+ * 2 (in minutes). The function will keep looking until:
+ * - End of list is reached           (i < arrLen && allEvents[i] != NULL)
  * - A date is found                  (dateFound.tm_year < 0)
- * - head has not gone over endOfLine (dateFound.tm_year != eol)
+ * - Head has not gone over endOfLine (dateFound.tm_year != eol)
  *
  * @param p Search parameters, controls what timeslot loofForFreeSlot should look for, and
  * where it should look.
- * @param arrLen length of array allEvents
- * @param allEvents sorted array of pointers
+ * @param arrLen Length of array allEvents.
+ * @param allEvents Sorted array of pointers to events.
  * @return If a date is found that date is returned as a tm structure. Else returns a date
  * where .tm_year < 0.
  * @pre enum lookForFreeSlotStatus { eol = -1, endOfLine  look = -2, redo = -3 }; should be in
@@ -364,7 +364,7 @@ int tmWithinLimits(const searchParameters *p, const tm *time) {
 }
 
 /**
- * @brief Sets head to be the next lowerLimit
+ * @brief Sets head to be the next lowerLimit.
  * 
  * @param p Search paramters, where lowerLimit is defined.
  * @param[in, out] head Head to set.
@@ -385,8 +385,8 @@ void setHeadToNextLL(const searchParameters *p, time_t *head) {
  * @brief Controls if head_tm is over upperLimit.
  * 
  * @param p Search paramters, where upperLimit is defined.
- * @param head_tm tm structure to control
- * @return 1 if it is, else 0 
+ * @param head_tm tm structure to control.
+ * @return 1 if it is, else 0. 
  */
 int overUpperLimit(const searchParameters *p, const tm *head_tm) {
     if (head_tm->tm_hour > p->upperLimit.tm_hour) {
@@ -402,8 +402,8 @@ int overUpperLimit(const searchParameters *p, const tm *head_tm) {
  * @brief Controls if head_tm is under lowerLimit.
  * 
  * @param p Search paramters, where lowerLimit is defined.
- * @param head_tm tm structure to control
- * @return 1 if it is, else 0 
+ * @param head_tm tm structure to control.
+ * @return 1 if it is, else 0. 
  */
 int underLowerLimit(const searchParameters *p, const tm *head_tm) {
     if (head_tm->tm_hour < p->lowerLimit.tm_hour) {
@@ -418,7 +418,7 @@ int underLowerLimit(const searchParameters *p, const tm *head_tm) {
 /**
  * @brief Sets head_tm to lowerLimit the next day.
  * 
- * @param head head_tm in unix time
+ * @param head head_tm in unix time.
  * @param p Search paramters, where lowerLimit is defined.
  * @param[in, out] head_tm tm structure to change.
  * @pre UNIX_24H should be #defined as 60 * 60 * 24 or 86400.

@@ -2,13 +2,13 @@
 extern int DEBUG;
 
 /**
- * @brief Controls that a time is valid in terms of minutes, hours, month number, year, month
+ * @brief Controls that a time (struct tm) is valid in terms of minutes, hours, month number, year, month
  * day.
  * 
- * The functions take leap years into account.
+ * The functions takes leap years into account.
  *
- * @param time struct tm, from time.h, to be controlled 
- * @return 1 if time is valid, else 0
+ * @param time Struct tm, from time.h, to be controlled. 
+ * @return 1 if time is valid, else 0.
  */
 int isTimeValid(tm time) {
     int returnFlag = 0;
@@ -30,8 +30,8 @@ int isTimeValid(tm time) {
 /**
  * @brief Controls that tm_min == [0, 59].
  * 
- * @param tm_min member of struct tm from time.h
- * @return 1 if it’s within the boundary, else 0  
+ * @param tm_min Member of struct tm from time.h
+ * @return 1 if it’s within the boundary, else 0.  
  */
 int isTimeValid_min(int tm_min) {
     if (tm_min >= 0 && tm_min <= 59) {
@@ -44,8 +44,8 @@ int isTimeValid_min(int tm_min) {
 /**
  * @brief Controls that tm_hour == [0, 23].
  * 
- * @param tm_hour member of struct tm from time.h
- * @return 1 if it’s within the boundary, else 0  
+ * @param tm_hour Member of struct tm from time.h
+ * @return 1 if it’s within the boundary, else 0:  
  */
 int isTimeValid_hour(int tm_hour) {
     if (tm_hour >= 0 && tm_hour <= 23) {
@@ -58,8 +58,8 @@ int isTimeValid_hour(int tm_hour) {
 /**
  * @brief Controls that tm_mon == [0, 11].
  * 
- * @param tm_mon member of struct tm from time.h
- * @return 1 if it’s within the boundary, else 0  
+ * @param tm_mon Member of struct tm from time.h.
+ * @return 1 if it’s within the boundary, else 0.  
  */
 int isTimeValid_mon(int tm_mon) {
     if (tm_mon >= 0 && tm_mon <= 11) {
@@ -72,8 +72,8 @@ int isTimeValid_mon(int tm_mon) {
 /**
  * @brief Controls that tm_year > 1900.
  * 
- * @param tm_year member of struct tm from time.h
- * @return 1 if it’s within the boundary, else 0  
+ * @param tm_year Member of struct tm from time.h.
+ * @return 1 if it’s within the boundary, else 0. 
  */
 int isTimeValid_year(int tm_year) {
     if (tm_year >= 0) {
@@ -86,10 +86,10 @@ int isTimeValid_year(int tm_year) {
 /**
  * @brief Controls that a month day is valid depending on the year and month.
  * 
- * @param tm_year year
- * @param tm_mon month, january is month 0
- * @param tm_mday month day
- * @return 1 if the month day is valid, else 0
+ * @param tm_year Year.
+ * @param tm_mon Month, january is month 0.
+ * @param tm_mday Month day.
+ * @return 1 if the month day is valid, else 0.
  */
 int isTimeValid_mday(int tm_year, int tm_mon, int tm_mday) {
     if (tm_mday <= daysInMonth(tm_mon, tm_year) && tm_mday > 0) {
@@ -102,9 +102,9 @@ int isTimeValid_mday(int tm_year, int tm_mon, int tm_mday) {
 /**
  * @brief Calculates number of days in a month depending on the month and year.
  * 
- * @param tm_mon month, january is month 0
- * @param tm_year year
- * @return number of days in month 
+ * @param tm_mon Month, january is month 0.
+ * @param tm_year Year.
+ * @return Number of days in month. 
  */
 int daysInMonth(int tm_mon, int tm_year) {
     int returnValue;
@@ -152,8 +152,8 @@ int daysInMonth(int tm_mon, int tm_year) {
 /**
  * @brief Calculates the number of days in february on a given year.
  *
- * @param tm_year year
- * @return number of days in february 
+ * @param tm_year Year.
+ * @return Number of days in february. 
  */
 int daysInMonthFeb(int tm_year) {
     if (isLeapYear(tm_year)) {
@@ -166,8 +166,8 @@ int daysInMonthFeb(int tm_year) {
 /**
  * @brief Controls is a year is a leap year.
  * 
- * @param tm_year year
- * @return 1 if the year is a leap year, else 0
+ * @param tm_year Year.
+ * @return 1 if the year is a leap year, else 0.
  */
 int isLeapYear(int tm_year) {
     if (tm_year % 100 == 0 && tm_year % 400 != 0) {
@@ -183,7 +183,7 @@ int isLeapYear(int tm_year) {
  * @brief If statement is true: print errorMessage and exit program returning EXIT_FAILURE.
  * 
  * @param statement Boolean expression.
- * @param errorMessage message to print if statement is true.
+ * @param errorMessage Message to print if statement is true.
  */
 void errorHandling(int statement, char errorMessage[]) {
     if (statement) {
@@ -264,7 +264,7 @@ void printEvent(const event *a) {
 }
 
 /**
- * @brief Prints all data stored in calendar structs pointed to by calendarSuite.calPtrArray
+ * @brief Prints all data stored in calendar structs pointed to by calendarSuite.calPtrArray.
  * 
  * @param calendarSuite Suite from where the data should be printed from.
  */
