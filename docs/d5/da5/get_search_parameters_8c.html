@@ -128,7 +128,7 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Get the Dates object. </p>
-<p>First we ask for a start date, and reuce the value by 1. We do this because tm_mon in the tm struct, uses months after january, so if we want the event to start in february, the input needs to be 1 because february is one month after january. We do this for the enddate for the event as well. And to end it off we print the dates and confirm the start- and end dates.</p>
+<p>First we ask for a start date, and reduce the value by 1. We do this because tm_mon in the tm struct, uses months after january, so if we want the event to start in february, the input needs to be 1 because february is one month after january. We do this for the endDate for the event as well. And to end it off we print the dates and confirm the start- and end dates, if DEBUG == 1.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">startDate</td><td></td></tr>
@@ -172,7 +172,7 @@ Variables</h2></td></tr>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="../../d0/d29/main_8c_source.html#l00002">DEBUG</a>, <a class="el" href="../../d2/dbe/sp1s_lib_8h_source.html#l00013">EPOCH</a>, <a class="el" href="../../d2/dbe/sp1s_lib_8h_source.html#l00017">INIT_TM</a>, and <a class="el" href="../../db/d44/helper_functions_8c_source.html#l00013">isTimeValid()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../d0/d29/main_8c_source.html#l00095">getSearchParameters()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d0/d29/main_8c_source.html#l00096">getSearchParameters()</a>.</p>
 
 </div>
 </div>
@@ -194,7 +194,7 @@ Variables</h2></td></tr>
 
 <p>Prompts user: Enter how much buffer time should be in beginning and end of event. </p>
 <p>Input by user can not be under 0.</p>
-<dl class="section return"><dt>Returns</dt><dd>buffer entered. <br  />
+<dl class="section return"><dt>Returns</dt><dd>Buffer entered. <br  />
  </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="../../d5/da5/get_search_parameters_8c_source.html#l00051">51</a> of file <a class="el" href="../../d5/da5/get_search_parameters_8c_source.html">getSearchParameters.c</a>.</p>
@@ -210,7 +210,7 @@ Variables</h2></td></tr>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keywordflow">return</span> eventBuffer;</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;}</div>
 </div><!-- fragment -->
-<p class="reference">Referenced by <a class="el" href="../../d0/d29/main_8c_source.html#l00095">getSearchParameters()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d0/d29/main_8c_source.html#l00096">getSearchParameters()</a>.</p>
 
 </div>
 </div>
@@ -247,7 +247,7 @@ Variables</h2></td></tr>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordflow">return</span> eventLen;</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;}</div>
 </div><!-- fragment -->
-<p class="reference">Referenced by <a class="el" href="../../d0/d29/main_8c_source.html#l00095">getSearchParameters()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d0/d29/main_8c_source.html#l00096">getSearchParameters()</a>.</p>
 
 </div>
 </div>
@@ -278,7 +278,7 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Get the Limits object. </p>
-<p>Here we ask how much the event can be moved witin the same day, so only hours and minutes. We do this for both the upper- and lower limit. And at the end of the function we print, and confirm the upper- and lower limit.</p>
+<p>Here we ask how much the event can be moved witin the same day, so only hours and minutes. We do this for both the upper- and lower limit. And at the end of the function we print, and confirm the upper- and lower limit, if DEBUG == 1.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">upperLimit</td><td></td></tr>
@@ -318,7 +318,7 @@ Variables</h2></td></tr>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="../../d0/d29/main_8c_source.html#l00002">DEBUG</a>, <a class="el" href="../../d2/dbe/sp1s_lib_8h_source.html#l00017">INIT_TM</a>, and <a class="el" href="../../db/d44/helper_functions_8c_source.html#l00013">isTimeValid()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../d0/d29/main_8c_source.html#l00095">getSearchParameters()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d0/d29/main_8c_source.html#l00096">getSearchParameters()</a>.</p>
 
 </div>
 </div>
@@ -354,7 +354,7 @@ Variables</h2></td></tr>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="keywordflow">return</span> priority;</div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;}</div>
 </div><!-- fragment -->
-<p class="reference">Referenced by <a class="el" href="../../d0/d29/main_8c_source.html#l00095">getSearchParameters()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d0/d29/main_8c_source.html#l00096">getSearchParameters()</a>.</p>
 
 </div>
 </div>
@@ -389,7 +389,7 @@ Variables</h2></td></tr>
 <div class="ttc" id="asp1s_lib_8h_html_a0ac447c7f69530e0caadc891c59d7244"><div class="ttname"><a href="../../d2/dbe/sp1s_lib_8h.html#a0ac447c7f69530e0caadc891c59d7244">EPOCH</a></div><div class="ttdeci">#define EPOCH</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/dbe/sp1s_lib_8h_source.html#l00013">sp1sLib.h:13</a></div></div>
 <div class="ttc" id="aget_search_parameters_8c_html_a48f76a8c0dc23567f303ed6aa221e078"><div class="ttname"><a href="../../d5/da5/get_search_parameters_8c.html#a48f76a8c0dc23567f303ed6aa221e078">DEBUG</a></div><div class="ttdeci">int DEBUG</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d29/main_8c_source.html#l00002">main.c:2</a></div></div>
 <div class="ttc" id="asp1s_lib_8h_html_a110bf4e13553ccfd709f41c6e92f0ca2"><div class="ttname"><a href="../../d2/dbe/sp1s_lib_8h.html#a110bf4e13553ccfd709f41c6e92f0ca2">tm</a></div><div class="ttdeci">struct tm tm</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/dbe/sp1s_lib_8h_source.html#l00001">sp1sLib.h:20</a></div></div>
-<div class="ttc" id="ahelper_functions_8c_html_ac98ba39821c96c7ba1282f086ffa3ef1"><div class="ttname"><a href="../../db/d44/helper_functions_8c.html#ac98ba39821c96c7ba1282f086ffa3ef1">isTimeValid</a></div><div class="ttdeci">int isTimeValid(tm time)</div><div class="ttdoc">Controls that a time is valid in terms of minutes, hours, month number, year, month day.</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d44/helper_functions_8c_source.html#l00013">helperFunctions.c:13</a></div></div>
+<div class="ttc" id="ahelper_functions_8c_html_ac98ba39821c96c7ba1282f086ffa3ef1"><div class="ttname"><a href="../../db/d44/helper_functions_8c.html#ac98ba39821c96c7ba1282f086ffa3ef1">isTimeValid</a></div><div class="ttdeci">int isTimeValid(tm time)</div><div class="ttdoc">Controls that a time (struct tm) is valid in terms of minutes, hours, month number,...</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d44/helper_functions_8c_source.html#l00013">helperFunctions.c:13</a></div></div>
 <div class="ttc" id="asp1s_lib_8h_html_a4218250a2c1b842883b09e3e1da48a10"><div class="ttname"><a href="../../d2/dbe/sp1s_lib_8h.html#a4218250a2c1b842883b09e3e1da48a10">INIT_TM</a></div><div class="ttdeci">#define INIT_TM</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/dbe/sp1s_lib_8h_source.html#l00017">sp1sLib.h:17</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

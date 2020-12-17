@@ -35,8 +35,8 @@ typedef struct event {
  * 
  */
 typedef struct eventLink {
-    event *currentEvent;
-    struct eventLink *nextEventLink;
+    event *currentEvent;             /*!< Event data */ 
+    struct eventLink *nextEventLink; /*!< Next link i linked list */
 } eventLink;
 
 /**
@@ -48,11 +48,11 @@ typedef struct eventLink {
  *
  */
 typedef struct calendar {
-    char calName[LINE_LEN];
-    char fileName[LINE_LEN];
-    int numOfEvents;
-    FILE *file;
-    eventLink *firstEvent;
+    char calName[LINE_LEN];  /*!< Name of calendar */ 
+    char fileName[LINE_LEN]; /*!< Filepath to *.ics file */
+    int numOfEvents;         /*!< Number of events linked to this calendar */
+    FILE *file;              /*!< Pointer to FILE */
+    eventLink *firstEvent;   /*!< Pointer to first eventLink */
 } calendar;
 
 /**
@@ -61,13 +61,13 @@ typedef struct calendar {
  *
  */
 typedef struct searchParameters {
-    int priority;
-    int eventLen; /*!< Length of the event in minutes */
-    int buffer;   /*!< Buffer to be added at both start and end of event */
-    tm startDate;
-    tm endDate;
-    tm upperLimit;
-    tm lowerLimit;
+    int priority;  /*!< Priority of the event */
+    int eventLen;  /*!< Length of the event in minutes */
+    int buffer;    /*!< Buffer to be added at both start and end of event */
+    tm startDate;  /*!< Earliest date event can take place */
+    tm endDate;    /*!< Latest date event can take place */
+    tm upperLimit; /*!< Earliest time event can take place. */
+    tm lowerLimit; /*!< Latest time event can take place.*/ 
 } searchParameters;
 
 /**
@@ -77,8 +77,8 @@ typedef struct searchParameters {
  *
  */
 typedef struct calendarSuite {
-    calendar **calPtrArray;
-    int Arraylen;
+    calendar **calPtrArray; /*!< Array of pointers to calendar structs*/
+    int Arraylen;           /*!< lenght of above array */
 } calendarSuite;
 
 enum argType { invalid,
@@ -126,8 +126,8 @@ eventLink *mallocEventLink              (event *eventP, eventLink *eventLinkP);
 int    findAvailableDates   (calendarSuite *suite, const searchParameters *param, int searchMode);
 int    findSumAllEvents     (const calendarSuite *suite);
 void   calSuiteToEventArray (const calendarSuite *suite, int sumAllEvents, int priority, event *eventPtrArray[]);
-int    startTimeCmp           (const void *arg1, const void *arg2);
-int    eventStartsEarlier     (const event *event1, const event *event2);
+int    startTimeCmp         (const void *arg1, const void *arg2);
+int    eventStartsEarlier   (const event *event1, const event *event2);
 tm     lookForFreeSlot      (const searchParameters *p, int arrLen, event *allEvents[]);
 tm     lookForFreeSlotSingle(const searchParameters *p, event *event, time_t *head);
 int    endOfLine            (const searchParameters *p, time_t head);
@@ -147,7 +147,7 @@ time_t getEndOfLine         (const searchParameters *p);
 void   print_time_t         (time_t time);
 
 /* helperFunctions */
-int  isTimeValid                (tm time);
+int  isTimeValid               (tm time);
 int  isTimeValid_min           (int tm_min);
 int  isTimeValid_hour          (int tm_hour);
 int  isTimeValid_mon           (int tm_mon);
@@ -167,8 +167,8 @@ void printEventPtrArray        (event *allEvents[], int n);
 /* UNIT TESTING FUNCTIONS
  * -------------------------------------------------------------------------------------------
  */
-CuSuite *suite_ctrlAndDoArgs(void);
-CuSuite *suite_getCalendarSuite(void);
+CuSuite *suite_ctrlAndDoArgs     (void);
+CuSuite *suite_getCalendarSuite  (void);
 CuSuite *suite_findAvaliableDates(void);
-CuSuite *suite_sharedFunctions(void);
-void runAllTests(void);
+CuSuite *suite_sharedFunctions   (void);
+void    runAllTests              (void);

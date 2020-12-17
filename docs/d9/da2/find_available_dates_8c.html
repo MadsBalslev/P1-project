@@ -92,7 +92,7 @@ Functions</h2></td></tr>
 <tr class="memdesc:a0789c9aec704609d94728e36cf353885"><td class="mdescLeft">&#160;</td><td class="mdescRight">Determines if event1 starts earlier than event2.  <a href="../../d9/da2/find_available_dates_8c.html#a0789c9aec704609d94728e36cf353885">More...</a><br /></td></tr>
 <tr class="separator:a0789c9aec704609d94728e36cf353885"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6ea4ffcb3925da349bd7e7f575d32bda"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/da2/find_available_dates_8c.html#a6ea4ffcb3925da349bd7e7f575d32bda">printEventPtrArray</a> (<a class="el" href="../../df/d7d/structevent.html">event</a> *allEvents[], int n)</td></tr>
-<tr class="memdesc:a6ea4ffcb3925da349bd7e7f575d32bda"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints all event data in a given array of pointer to events of length n.  <a href="../../d9/da2/find_available_dates_8c.html#a6ea4ffcb3925da349bd7e7f575d32bda">More...</a><br /></td></tr>
+<tr class="memdesc:a6ea4ffcb3925da349bd7e7f575d32bda"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints all event data in a given array of pointers to events of length n.  <a href="../../d9/da2/find_available_dates_8c.html#a6ea4ffcb3925da349bd7e7f575d32bda">More...</a><br /></td></tr>
 <tr class="separator:a6ea4ffcb3925da349bd7e7f575d32bda"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af705c1458377bcbe127a943f82e65b59"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d2/dbe/sp1s_lib_8h.html#a110bf4e13553ccfd709f41c6e92f0ca2">tm</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/da2/find_available_dates_8c.html#af705c1458377bcbe127a943f82e65b59">lookForFreeSlot</a> (const <a class="el" href="../../d0/dbe/structsearch_parameters.html">searchParameters</a> *p, int arrLen, <a class="el" href="../../df/d7d/structevent.html">event</a> *allEvents[])</td></tr>
 <tr class="memdesc:af705c1458377bcbe127a943f82e65b59"><td class="mdescLeft">&#160;</td><td class="mdescRight">Looks for a free time slot, defined by p, in a sorted array of pointers to events.  <a href="../../d9/da2/find_available_dates_8c.html#af705c1458377bcbe127a943f82e65b59">More...</a><br /></td></tr>
@@ -194,10 +194,10 @@ Variables</h2></td></tr>
 <p>The function loops through all calendars and adds all the events to one array. An event will only be added to the array if it has priority over the event we are finding an avaliable slot for.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">suite</td><td>the suite of calendars to look through </td></tr>
-    <tr><td class="paramname">eventPtrArray</td><td>The array to put all events into </td></tr>
-    <tr><td class="paramname">sumAllEvents</td><td>The amount of events across all calendar files </td></tr>
-    <tr><td class="paramname">priority</td><td>The priority of the event the user wants to find an avaliable time slot for. Defaults to 1000 </td></tr>
+    <tr><td class="paramname">suite</td><td>The suite of calendars to look through. </td></tr>
+    <tr><td class="paramname">eventPtrArray</td><td>The array to put all events into. </td></tr>
+    <tr><td class="paramname">sumAllEvents</td><td>The amount of events across all calendar files. </td></tr>
+    <tr><td class="paramname">priority</td><td>The priority of the event the user wants to find an avaliable time slot for. Defaults to 1000. </td></tr>
   </table>
   </dd>
 </dl>
@@ -224,7 +224,7 @@ Variables</h2></td></tr>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="../../d2/dbe/sp1s_lib_8h_source.html#l00081">calendarSuite::Arraylen</a>, <a class="el" href="../../d2/dbe/sp1s_lib_8h_source.html#l00080">calendarSuite::calPtrArray</a>, <a class="el" href="../../d2/dbe/sp1s_lib_8h_source.html#l00038">eventLink::currentEvent</a>, <a class="el" href="../../d2/dbe/sp1s_lib_8h_source.html#l00055">calendar::firstEvent</a>, <a class="el" href="../../d2/dbe/sp1s_lib_8h_source.html#l00039">eventLink::nextEventLink</a>, and <a class="el" href="../../d2/dbe/sp1s_lib_8h_source.html#l00029">event::priority</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../d0/d29/main_8c_source.html#l00160">findAvailableDates()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d0/d29/main_8c_source.html#l00161">findAvailableDates()</a>.</p>
 
 </div>
 </div>
@@ -427,12 +427,12 @@ Variables</h2></td></tr>
 <p>Determines if event1 starts earlier than event2. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">event1</td><td>pointer to event structure </td></tr>
-    <tr><td class="paramname">event2</td><td>pointer to event structure </td></tr>
+    <tr><td class="paramname">event1</td><td>Pointer to event structure. </td></tr>
+    <tr><td class="paramname">event2</td><td>Pointer to event structure. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>int 1 if event1 ends later than event 2, 0 if event 2 ends later than event1 or they end at the same time </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>1 if event1 ends later than event 2, 0 if event 2 ends later than event1 or they end at the same time. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="../../d9/da2/find_available_dates_8c_source.html#l00091">91</a> of file <a class="el" href="../../d9/da2/find_available_dates_8c_source.html">findAvailableDates.c</a>.</p>
 <div class="fragment"><div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;                                                                 {</div>
@@ -489,11 +489,11 @@ Variables</h2></td></tr>
 <p>The sum is found by adding up all the sums found in suite-&gt;calPtrArray[i]-&gt;numOfEvents.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">suite</td><td><a class="el" href="../../d8/d08/structcalendar_suite.html" title="struct for containing an array of pointer to calendar-lists.">calendarSuite</a> where sum of all events should be found </td></tr>
+    <tr><td class="paramname">suite</td><td><a class="el" href="../../d8/d08/structcalendar_suite.html" title="struct for containing an array of pointer to calendar-lists.">calendarSuite</a> where sum of all events should be found. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>sum of all events in <a class="el" href="../../d8/d08/structcalendar_suite.html" title="struct for containing an array of pointer to calendar-lists.">calendarSuite</a> </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Sum of all events in <a class="el" href="../../d8/d08/structcalendar_suite.html" title="struct for containing an array of pointer to calendar-lists.">calendarSuite</a>. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="../../d9/da2/find_available_dates_8c_source.html#l00012">12</a> of file <a class="el" href="../../d9/da2/find_available_dates_8c_source.html">findAvailableDates.c</a>.</p>
 <div class="fragment"><div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;                                                 {</div>
@@ -509,7 +509,7 @@ Variables</h2></td></tr>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="../../d2/dbe/sp1s_lib_8h_source.html#l00080">calendarSuite::calPtrArray</a>, and <a class="el" href="../../d2/dbe/sp1s_lib_8h_source.html#l00053">calendar::numOfEvents</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../d0/d29/main_8c_source.html#l00160">findAvailableDates()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d0/d29/main_8c_source.html#l00161">findAvailableDates()</a>.</p>
 
 </div>
 </div>
@@ -645,7 +645,7 @@ Variables</h2></td></tr>
 <p>Sets head_tm to lowerLimit the next day. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir"></td><td class="paramname">head</td><td>head_tm in unix time </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">head</td><td>head_tm in unix time. </td></tr>
     <tr><td class="paramdir"></td><td class="paramname">p</td><td>Search paramters, where lowerLimit is defined. </td></tr>
     <tr><td class="paramdir">[in,out]</td><td class="paramname">head_tm</td><td>tm structure to change. </td></tr>
   </table>
@@ -813,16 +813,16 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Looks for a free time slot, defined by p, in a sorted array of pointers to events. </p>
-<p>Iterating over allEvents, this functions looks a timeslot of lenght eventLen + buffer * 2 (in minutes). The function will keep looking until:</p><ul>
-<li>End of list is reached (i &lt; arrLen &amp;&amp; allEvents[i] != NULL) and</li>
+<p>Iterating over allEvents, this functions looks for a timeslot of lenght eventLen + buffer * 2 (in minutes). The function will keep looking until:</p><ul>
+<li>End of list is reached (i &lt; arrLen &amp;&amp; allEvents[i] != NULL)</li>
 <li>A date is found (dateFound.tm_year &lt; 0)</li>
-<li>head has not gone over endOfLine (dateFound.tm_year != eol)</li>
+<li>Head has not gone over endOfLine (dateFound.tm_year != eol)</li>
 </ul>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">p</td><td>Search parameters, controls what timeslot loofForFreeSlot should look for, and where it should look. </td></tr>
-    <tr><td class="paramname">arrLen</td><td>length of array allEvents </td></tr>
-    <tr><td class="paramname">allEvents</td><td>sorted array of pointers </td></tr>
+    <tr><td class="paramname">arrLen</td><td>Length of array allEvents. </td></tr>
+    <tr><td class="paramname">allEvents</td><td>Sorted array of pointers to events. </td></tr>
   </table>
   </dd>
 </dl>
@@ -858,7 +858,7 @@ Variables</h2></td></tr>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="../../d0/d29/main_8c_source.html#l00002">DEBUG</a>, <a class="el" href="../../d2/dbe/sp1s_lib_8h_source.html#l00091">eol</a>, <a class="el" href="../../d9/da2/find_available_dates_8c_source.html#l00450">getStartOfLine()</a>, <a class="el" href="../../d2/dbe/sp1s_lib_8h_source.html#l00092">look</a>, <a class="el" href="../../d9/da2/find_available_dates_8c_source.html#l00199">lookForFreeSlotSingle()</a>, <a class="el" href="../../d9/da2/find_available_dates_8c_source.html#l00493">print_time_t()</a>, and <a class="el" href="../../d2/dbe/sp1s_lib_8h_source.html#l00093">redo</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../d0/d29/main_8c_source.html#l00160">findAvailableDates()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d0/d29/main_8c_source.html#l00161">findAvailableDates()</a>.</p>
 
 </div>
 </div>
@@ -974,11 +974,11 @@ Variables</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">p</td><td>Search paramters, where upperLimit is defined. </td></tr>
-    <tr><td class="paramname">head_tm</td><td>tm structure to control </td></tr>
+    <tr><td class="paramname">head_tm</td><td>tm structure to control. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>1 if it is, else 0 </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>1 if it is, else 0. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="../../d9/da2/find_available_dates_8c_source.html#l00391">391</a> of file <a class="el" href="../../d9/da2/find_available_dates_8c_source.html">findAvailableDates.c</a>.</p>
 <div class="fragment"><div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;                                                                 {</div>
@@ -1064,11 +1064,11 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Prints all event data in a given array of pointer to events of length n. </p>
+<p>Prints all event data in a given array of pointers to events of length n. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">allEvents</td><td>pointer to array of pointers to events </td></tr>
-    <tr><td class="paramname">n</td><td>length of array to be printed </td></tr>
+    <tr><td class="paramname">allEvents</td><td>Array of pointers to events. </td></tr>
+    <tr><td class="paramname">n</td><td>Length of array to be printed. </td></tr>
   </table>
   </dd>
 </dl>
@@ -1085,7 +1085,7 @@ Variables</h2></td></tr>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="../../db/d44/helper_functions_8c_source.html#l00247">printEvent()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../d0/d29/main_8c_source.html#l00160">findAvailableDates()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d0/d29/main_8c_source.html#l00161">findAvailableDates()</a>.</p>
 
 </div>
 </div>
@@ -1172,8 +1172,8 @@ Variables</h2></td></tr>
 <p>Compares two events to determine which event start the earliest. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">arg1</td><td>first event to be compared </td></tr>
-    <tr><td class="paramname">arg2</td><td>second event to be compared </td></tr>
+    <tr><td class="paramname">arg1</td><td>First event to be compared. </td></tr>
+    <tr><td class="paramname">arg2</td><td>Second event to be compared. </td></tr>
   </table>
   </dd>
 </dl>
@@ -1201,7 +1201,7 @@ Variables</h2></td></tr>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="../../d9/da2/find_available_dates_8c_source.html#l00091">eventStartsEarlier()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="../../d0/d29/main_8c_source.html#l00160">findAvailableDates()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d0/d29/main_8c_source.html#l00161">findAvailableDates()</a>.</p>
 
 </div>
 </div>
@@ -1406,11 +1406,11 @@ Variables</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">p</td><td>Search paramters, where lowerLimit is defined. </td></tr>
-    <tr><td class="paramname">head_tm</td><td>tm structure to control </td></tr>
+    <tr><td class="paramname">head_tm</td><td>tm structure to control. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>1 if it is, else 0 </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>1 if it is, else 0. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="../../d9/da2/find_available_dates_8c_source.html#l00408">408</a> of file <a class="el" href="../../d9/da2/find_available_dates_8c_source.html">findAvailableDates.c</a>.</p>
 <div class="fragment"><div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;                                                                  {</div>
