@@ -123,7 +123,7 @@ int getCalendarSuiteGetDataSingle(calendar *calendar) {
             if (newEvent->priority < 0) {
                 newEvent->priority = 0; 
             } else if (newEvent->priority > MAX_PRIORITY) {
-                newEvent->priority = MAX_PRIORITY;
+                newEvent->priority = 0;
             }
 
             sscanf(line, "DTEND:%4d%2d%2dT%2d%2d%2d%s",
